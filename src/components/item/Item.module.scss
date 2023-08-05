@@ -1,4 +1,4 @@
-@import "./../../style/variables";
+@import "./../../style/variables.scss";
 .item {
   width: 30%;
   margin-bottom: 50px;
@@ -43,5 +43,6 @@
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
+    background-color: rgba(0,0,0,.6);
   }
 }

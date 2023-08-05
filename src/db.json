@@ -137,7 +137,7 @@
       {
         "id": 13,
         "name": "Стол Eames ",
-        "description": "null",
+        "description": null,
         "price": 5499,
         "image": "tablre_eames.jpg",
         "collectionImg":{
@@ -535,5 +535,5 @@
             "imgToSlide":[
             null
         ]}
-      },
+      }
   ]

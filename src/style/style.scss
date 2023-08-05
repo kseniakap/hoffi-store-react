@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+@import "./_variables.scss";
 
 * {
   padding: 0;
@@ -16,4 +17,4 @@ body {
   margin: 50px auto;
 }
 
-@import "./style/_variables.scss"
+
