@@ -8,6 +8,8 @@ const List = () => {
   const [list, setList] = useState([])
   const [newItemLoading, setNewItemLoading] = useState(false)
   const [charEnded, setCharEnded] = useState(false)
+  const [start, setStart] = useState(0)
+  const [limit, setLimit] = useState(5)
 
   const { loading, error, getAllItems } = ItemServices()
 
@@ -17,17 +19,18 @@ const List = () => {
 
   const onRequest = (initial) => {
     initial ? setNewItemLoading(false) : setNewItemLoading(true)
-    getAllItems().then(onCharListLoaded)
+    getAllItems(start, limit).then(onCharListLoaded)
   }
 
   const onCharListLoaded = (newcharList) => {
     let ended = false
-    if (newcharList.length < 9) {
+    if (newcharList.length < limit) {
       ended = true
     }
     setList((charList) => [...charList, ...newcharList])
-    setNewItemLoading(false);
+    setNewItemLoading(false)
     setCharEnded(ended)
+    setStart(start + limit)
   }
 
   function renderItems(arr) {
@@ -43,10 +46,11 @@ const List = () => {
 
   return (
     <>
+    <button className={st.btn}>Увидеть больше</button>
       {errorMessage}
       {spinner}
       {items}
-      {/* <button disabled={setNewItemLoading}></button> */}
+      
     </>
   )
 }

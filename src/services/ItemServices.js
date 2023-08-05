@@ -14,10 +14,9 @@ const useMarvelService = () => {
     return {
       id: item.id,
       image: item.image,
-      description:
-        item.description
-          ? `${item.description.slice(0, 170)}...`
-          : "У этого товара нет описания",
+      description: item.description
+        ? `${item.description.slice(0, 170)}...`
+        : "У этого товара нет описания",
       price: item.price,
     };
   };
