@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import List from "./components/list/List";
+
 
 function App() {
+  const [list, setList] = useState();
+
+  useEffect(() => {
+    fetch("https://64cd27f5bb31a268409a6c77.mockapi.io/list").then((res) =>
+      res
+        .json()
+        .then((json) => {
+          setList(json);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    );
+  }, [list]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <Header />
+        <List list={list}/>
+      </div>
+      <Footer />
+    </>
   );
 }
 
