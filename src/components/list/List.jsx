@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
+// import { Link } from 'react-router-dom';
+
 import Item from '../item/Item'
 import ItemServices from './../../services/ItemServices'
+
 import st from './List.module.scss'
 
 const List = () => {
   const [list, setList] = useState([])
   const [newItemLoading, setNewItemLoading] = useState(false)
   const [charEnded, setCharEnded] = useState(false)
-  const [start, setStart] = useState(0)
-  const [limit, setLimit] = useState(5)
-
   const { loading, error, getAllItems } = ItemServices()
 
   useEffect(() => {
@@ -19,23 +19,31 @@ const List = () => {
 
   const onRequest = (initial) => {
     initial ? setNewItemLoading(false) : setNewItemLoading(true)
-    getAllItems(start, limit).then(onCharListLoaded)
+    getAllItems().then(onListItemLoaded)
   }
 
-  const onCharListLoaded = (newcharList) => {
+  const onListItemLoaded = (newcharList) => {
     let ended = false
-    if (newcharList.length < limit) {
+    if (newcharList.length < 3) {
       ended = true
     }
-    setList((charList) => [...charList, ...newcharList])
+    setList((list) => [...list, ...newcharList])
     setNewItemLoading(false)
     setCharEnded(ended)
-    setStart(start + limit)
   }
+  
+  const [order, setOrder] = useState([]);
+
+  const addToOrder = (item) => {
+    setOrder([...order, item]);
+    console.log(order)
+  };
+
+
 
   function renderItems(arr) {
-    const items = arr.map((item) => {
-      return <Item key={item.id} list={item} />
+    const items = arr.map((item, i) => {
+      return <Item key={i} list={item} addToOrder={addToOrder}/>
     })
     return <div className={st.main}>{items}</div>
   }
@@ -46,11 +54,12 @@ const List = () => {
 
   return (
     <>
-    <button className={st.btn}>Увидеть больше</button>
       {errorMessage}
       {spinner}
       {items}
-      
+      <button className={st.btn} onClick={() => onRequest()}>
+        Увидеть больше
+      </button>
     </>
   )
 }

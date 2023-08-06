@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { FaBasketShopping } from 'react-icons/fa6'
+import Order from '../order/Order'
+
 import logoImg from './../../assets/img/logo.png'
+
 import './../../style/style.scss'
 import st from './Header.module.scss'
 
@@ -30,7 +33,13 @@ const Header = () => {
             className={`basket ${cardOpen && 'active'}`}
           />
         </div>
-        {cardOpen && <div className={st.shop__list}>Backet</div>}
+        {cardOpen && (
+          <div className={st.shop__list}>
+            {/* {order.map((el) => {
+              <Order key={el.id} item={el} />
+            })} */}
+          </div>
+        )}
       </div>
       <div className={st.presentation}></div>
     </header>
