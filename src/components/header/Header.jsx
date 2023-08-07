@@ -29,7 +29,7 @@ const Header = ({ order, deleteOrder }) => {
   const showNothing = () => {
     return (
       <div>
-        <h2 className="">Корзина пуста</h2>
+        <h2 className={st.basket}>Ваша корзина пуста</h2>
       </div>
     )
   }

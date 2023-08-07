@@ -1,0 +1,18 @@
+@import "./../../style/variables";
+.categories {
+  display: flex;
+  gap: 15px;
+}
+.elem {
+  padding: 5px 15px;
+  background-color: $main-color;
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: $transition;
+  cursor: pointer;
+  &:hover {
+    transform: scale((1.1));
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
