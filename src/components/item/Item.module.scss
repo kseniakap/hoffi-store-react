@@ -1,7 +1,7 @@
 @import "./../../style/variables.scss";
 .item {
   width: 30%;
-  min-height: 420px;
+  min-height: 440px;
   margin-bottom: 50px;
   overflow: hidden;
   transition: box-shadow 0.5s ease;
@@ -25,6 +25,10 @@
   width: 90%;
   transition: $transition;
   
+}
+.name{
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .content {

@@ -7,8 +7,32 @@ import logoImg from './../../assets/img/logo.png'
 import './../../style/style.scss'
 import st from './Header.module.scss'
 
-const Header = () => {
+const Header = ({ order, deleteOrder }) => {
   const [cardOpen, setCardOpen] = useState(false)
+
+  const showOrders = (order) => {
+    let sum = 0
+    order.forEach((el) => (sum += el.price))
+    return (
+      <div>
+        {order.map((el) => (
+          <Order key={el.id} item={el} deleteOrder={deleteOrder} />
+        ))}
+        <p className={st.sum}>
+          <span>Итого: </span>
+          {sum} ₽
+        </p>
+      </div>
+    )
+  }
+
+  const showNothing = () => {
+    return (
+      <div>
+        <h2 className="">Корзина пуста</h2>
+      </div>
+    )
+  }
 
   return (
     <header>
@@ -35,9 +59,8 @@ const Header = () => {
         </div>
         {cardOpen && (
           <div className={st.shop__list}>
-            {/* {order.map((el) => {
-              <Order key={el.id} item={el} />
-            })} */}
+            <h2 className={st.title}>Ваша корзина</h2>
+            {order.length > 0 ? showOrders(order) : showNothing()}
           </div>
         )}
       </div>

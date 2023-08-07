@@ -7,10 +7,9 @@ import ItemServices from './../../services/ItemServices'
 
 import st from './List.module.scss'
 
-const List = () => {
+const List = ({addToOrder}) => {
   const [list, setList] = useState([])
   const [newItemLoading, setNewItemLoading] = useState(false)
-  const [charEnded, setCharEnded] = useState(false)
   const { loading, error, getAllItems } = ItemServices()
 
   useEffect(() => {
@@ -23,23 +22,9 @@ const List = () => {
   }
 
   const onListItemLoaded = (newcharList) => {
-    let ended = false
-    if (newcharList.length < 3) {
-      ended = true
-    }
     setList((list) => [...list, ...newcharList])
     setNewItemLoading(false)
-    setCharEnded(ended)
   }
-  
-  const [order, setOrder] = useState([]);
-
-  const addToOrder = (item) => {
-    setOrder([...order, item]);
-    console.log(order)
-  };
-
-
 
   function renderItems(arr) {
     const items = arr.map((item, i) => {
