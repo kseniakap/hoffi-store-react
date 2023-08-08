@@ -16,6 +16,10 @@ const Categories = ({chooseCategory}) => {
       name: 'Стул',
     },
     {
+      key: 'armchair',
+      name: 'Кресло',
+    },
+    {
       key: 'sofa',
       name: 'Диван',
     },
@@ -30,6 +34,14 @@ const Categories = ({chooseCategory}) => {
     {
       key: 'bed',
       name: 'Кровать',
+    },
+    {
+      key: 'press',
+      name: 'Шкаф',
+    },
+    {
+      key: 'puff',
+      name: 'пуф',
     },
   ])
 

@@ -6,11 +6,20 @@ import Categories from "../categories/Categories";
 
 function App() {
   const [order, setOrder] = useState([]);
-  const [list, setList] = useState([])
-  const [categoryItem, setCategoryItem] = useState([]);
+  const [list, setList] = useState([]);
+  // const [categoryItem, setCategoryItem] = useState([]);
 
   const addToOrder = (item) => {
-    setOrder([...order, item]);
+    const index = order.findIndex((el) => el.id === item.id);
+    if (index !== -1) {
+      // Если элемент уже есть в заказе, увеличиваем количество
+      const updatedOrder = [...order];
+      updatedOrder[index].count += 1;
+      console.log(updatedOrder[index].count);
+      setOrder(updatedOrder);
+    } else {
+      setOrder([...order, { ...item, count: 1 }]);
+    }
   };
 
   const deleteOrder = (id) => {
@@ -23,15 +32,22 @@ function App() {
     // } else {
     //   setCategoryItem(categoryItem.filter((el) => el.category === category));
     // }
+    console.log(list);
     console.log(category);
   };
 
   return (
     <>
       <div className="container">
-        <Header order={order} deleteOrder={deleteOrder} />
+        <Header
+          order={order}
+          setOrder={setOrder}
+          deleteOrder={deleteOrder}
+          setList={setList}
+          list={list}
+        />
         <Categories chooseCategory={chooseCategory} />
-        <List addToOrder={addToOrder} list={list} setList={setList}/>
+        <List addToOrder={addToOrder} list={list} setList={setList} />
       </div>
       <Footer />
     </>

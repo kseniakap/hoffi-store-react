@@ -1,7 +1,7 @@
 @import "./../../style/variables";
 
 .item {
-  padding: 5px 10px;
+  padding: 10px;
   width: 100%;
   min-height: 150px;
   margin-bottom: 5px;
@@ -29,5 +29,26 @@
   &:hover {
     color: $main-color;
     transform: scale(1.2);
+  }
+}
+.counter {
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  background-color: $main-color;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: none;
+  transition: $transition;
+  cursor: pointer;
+  span {
+    line-height: 20px;
+    
+  }
+  &:hover,
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

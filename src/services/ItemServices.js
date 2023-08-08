@@ -11,7 +11,6 @@ const ItemServices = () => {
   };
 
   const _transformItems = (item) => {
-   
     const { id, image, name, description, price } = item;
     return {
       id: id,
@@ -21,6 +20,7 @@ const ItemServices = () => {
         ? `${item.description.slice(0, 130)}...`
         : "Чтобы узнать больше, нажмите на товар",
       price: price,
+      // count: 1,
     };
   };
 
@@ -33,8 +33,3 @@ const ItemServices = () => {
 };
 
 export default ItemServices;
-
-
-const a = "10 023";
-console.log(a.split(" ").join(""));
-console.log(Number.parseInt(a));

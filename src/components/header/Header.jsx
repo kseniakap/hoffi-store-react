@@ -7,21 +7,36 @@ import logoImg from './../../assets/img/logo.png'
 import './../../style/style.scss'
 import st from './Header.module.scss'
 
-const Header = ({ order, deleteOrder }) => {
+const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
   const [cardOpen, setCardOpen] = useState(false)
 
   const showOrders = (order) => {
     let sum = 0
-    order.forEach((el) => (sum += el.price))
+    order.forEach((el) => (sum += el.price * el.count))
     return (
       <div>
-        {order.map((el) => (
-          <Order key={el.id} item={el} deleteOrder={deleteOrder} />
-        ))}
-        <p className={st.sum}>
-          <span>Итого: </span>
-          {sum} ₽
-        </p>
+        {order &&
+          order.map((el) => (
+            <Order
+              order={order}
+              setOrder={setOrder}
+              key={el.id}
+              item={el}
+              deleteOrder={deleteOrder}
+              numberOfOrder={numberOfOrder}
+            />
+          ))}
+        <div className={st.sum}>
+          <span>Доставка:</span>
+          <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
+          <span>
+            Итого:{' '}
+            <span style={{ color: sum > 50000 ? 'green' : 'black' }}>
+              {' '}
+              {sum} ₽
+            </span>
+          </span>
+        </div>
       </div>
     )
   }
@@ -29,7 +44,12 @@ const Header = ({ order, deleteOrder }) => {
   const showNothing = () => {
     return (
       <div>
-        <h2 className={st.basket}>Ваша корзина пуста</h2>
+        <h2 className={st.basket}>Корзина пуста</h2>
+        <p className={st.text}>
+          Купите комплекст из <a href="/">журнального стола Бруклин</a> и стула{' '}
+          <a href="/">Белен</a> в сентябре, и вы получите в подарок
+          <a href="/"> каркас кровати Бланка</a>
+        </p>
       </div>
     )
   }

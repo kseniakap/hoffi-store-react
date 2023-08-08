@@ -22,13 +22,15 @@ const List = ({ addToOrder, list, setList }) => {
   }
 
   const onListItemLoaded = (newcharList) => {
-    setList((list) => [...list, ...newcharList])
+    setList(newcharList)
     setNewItemLoading(false)
   }
 
+  
+
   function renderItems(arr) {
-    const items = arr.map((item, i) => {
-      return <Item key={i} list={item} addToOrder={addToOrder} />
+    const items = arr.map((item) => {
+      return <Item key={item.id} list={item} addToOrder={addToOrder} />
     })
     return <div className={st.main}>{items}</div>
   }
