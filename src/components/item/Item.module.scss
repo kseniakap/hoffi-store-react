@@ -1,6 +1,6 @@
 @import "./../../style/variables.scss";
 .item {
-  width: 30%;
+  width: 400px;
   min-height: 440px;
   margin-bottom: 50px;
   overflow: hidden;
@@ -24,9 +24,8 @@
   margin: 0 auto;
   width: 90%;
   transition: $transition;
-  
 }
-.name{
+.name {
   font-size: 20px;
   margin-bottom: 10px;
 }
@@ -34,6 +33,7 @@
 .content {
   padding: 10px;
 }
+
 .price {
   position: absolute;
   left: 20px;
@@ -57,6 +57,9 @@
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: $btn-hover;
+  }
+  &:active {
+    background-color: #fff;
   }
 }

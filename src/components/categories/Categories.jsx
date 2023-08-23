@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import st from "./Categories.module.scss"
+import React, { useState } from 'react'
+import st from './Categories.module.scss'
 
-const Categories = ({chooseCategory}) => {
-  const [categories, setState] = useState([
+const Categories = ({ chooseCategory, selectedCategory }) => {
+  const [categories, setCategoties] = useState([
     {
       key: 'all',
       name: 'Всё',
@@ -41,14 +41,22 @@ const Categories = ({chooseCategory}) => {
     },
     {
       key: 'puff',
-      name: 'пуф',
+      name: 'Пуф',
     },
   ])
 
   return (
     <div className={st.categories}>
       {categories.map((el) => (
-        <div key={el.key} onClick={()=>chooseCategory(el.key)} className={st.elem}>
+        <div
+          key={el.key}
+          onClick={() => {
+            chooseCategory(el.key)
+          }}
+          className={`${st.elem} ${
+            selectedCategory === el.key ? st.active : ''
+          }`}
+        >
           {el.name}
         </div>
       ))}

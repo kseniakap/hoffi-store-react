@@ -4,8 +4,11 @@ import './../../style/style.scss'
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="container">&copy;Ноff, 2009–2023</div>
+    <footer >
+      <div className="container">
+        <div className={st.wrapper}>
+          &copy;Ноff, 2009–2023</div>
+        </div>
     </footer>
   )
 }

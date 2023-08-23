@@ -1,0 +1,56 @@
+@import "./../../style/variables";
+
+.presentation {
+  margin: 40px auto 60px;
+  background: url("./../../assets/img/presentation.jpg") center center/cover
+    no-repeat;
+  width: 100%;
+  border-radius: 50px;
+  height: 550px;
+  background-blend-mode: multiply;
+  background-color: #bcbcbc;
+  position: relative;
+  filter: brightness(120%);
+  transition: $translow;
+  &::after {
+    content: "Лучшие товары для вашего дома";
+    position: absolute;
+    font-family: "DM Serif Display", serif;
+    top: 100px;
+    left: 50px;
+    width: 350px;
+    font-family: "DM Serif Display", serif;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 55px; /* 62.5px */
+    letter-spacing: 1px;
+    margin-bottom: 35px;
+    color: #fff;
+  }
+  &::before {
+    content: "Широкий выбор стилей и комплектаций в наличии";
+    position: absolute;
+    top: 280px;
+    left: 50px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+  }
+}
+.btn {
+  padding: 26px 48px;
+  background-color: $main-color;
+  position: absolute;
+  bottom: 140px;
+  left: 50px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

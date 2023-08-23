@@ -45,10 +45,10 @@
   cursor: pointer;
   span {
     line-height: 20px;
-    
+    color: #fff;
   }
   &:hover,
   &:active {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: $btn-hover;
   }
 }

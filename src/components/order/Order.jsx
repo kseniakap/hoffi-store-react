@@ -4,6 +4,8 @@ import st from './Order.module.scss'
 
 const Order = ({ item, deleteOrder, order, setOrder }) => {
   const { name, price, image } = item
+  const s = String(price)
+
 
   const handleIncrease = () => {
     const updatedOrder = [...order]
@@ -28,7 +30,9 @@ const Order = ({ item, deleteOrder, order, setOrder }) => {
       <img className={st.img} src={'./img/' + image} alt={name} />
       <h2 className={st.name}>{name}</h2>
       <div className={st.wrapper}>
-        <p className={st.price}>{price} ₽ </p>
+        <p className={st.price}>
+          {s.slice(0, s.length - 3) + ' ' + s.slice(-3)} ₽
+        </p>
         <div className={st.counter}>
           <button className={st.btn} onClick={handleDecrease}>
             <span>-</span>

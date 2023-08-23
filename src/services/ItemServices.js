@@ -11,16 +11,16 @@ const ItemServices = () => {
   };
 
   const _transformItems = (item) => {
-    const { id, image, name, description, price } = item;
+    const { id, image, name, description, price, category } = item;
     return {
       id: id,
       image: image,
       name: name,
       description: description
         ? `${item.description.slice(0, 130)}...`
-        : "Чтобы узнать больше, нажмите на товар",
+        : "Чтобы узнать больше, нажмите на товар", 
       price: price,
-      // count: 1,
+      category: category,
     };
   };
 

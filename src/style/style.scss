@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import "./_variables.scss";
 
 * {
@@ -12,9 +13,26 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
 }
+.global_container {
+  position: relative;
+  min-height: 100vh;
+}
 .container {
-  width: 1280px;
+  max-width: 1280px;
   margin: 30px auto;
+}
+.content {
+  min-height: calc(100vh - 200px);
+}
+.title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 55px; /* 62.5px */
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+
 }
 
 .basket {

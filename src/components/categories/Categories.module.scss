@@ -1,6 +1,7 @@
 @import "./../../style/variables";
 .categories {
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 }
 .elem {
@@ -10,7 +11,13 @@
   border-radius: 10px;
   margin-bottom: 20px;
   transition: $transition;
+  transition: background-color 0.3s;
   cursor: pointer;
+  &.active,
+  &.active:hover {
+    background-color: $btn-hover;
+    transform: scale((1.1));
+  }
   &:hover {
     transform: scale((1.1));
     background-color: rgba(0, 0, 0, 0.2);

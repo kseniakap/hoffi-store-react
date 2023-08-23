@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Header from "./../header/Header";
 import Footer from "./../footer/Footer";
-import List from "./../list/List";
-import Categories from "../categories/Categories";
+import { MainPage, About, Contacts, Page404 } from "./../pages";
+
 
 function App() {
   const [order, setOrder] = useState([]);
   const [list, setList] = useState([]);
-  // const [categoryItem, setCategoryItem] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const addToOrder = (item) => {
     const index = order.findIndex((el) => el.id === item.id);
     if (index !== -1) {
-      // Если элемент уже есть в заказе, увеличиваем количество
       const updatedOrder = [...order];
       updatedOrder[index].count += 1;
       console.log(updatedOrder[index].count);
@@ -27,29 +27,46 @@ function App() {
   };
 
   const chooseCategory = (category) => {
-    // if (category === "all") {
-    //   setCategoryItem([]);
-    // } else {
-    //   setCategoryItem(categoryItem.filter((el) => el.category === category));
-    // }
-    console.log(list);
-    console.log(category);
+    setSelectedCategory(category);
   };
+
+  const filteredList =
+    selectedCategory === "all"
+      ? list
+      : list.filter((item) => item.category === selectedCategory);
 
   return (
     <>
-      <div className="container">
-        <Header
-          order={order}
-          setOrder={setOrder}
-          deleteOrder={deleteOrder}
-          setList={setList}
-          list={list}
-        />
-        <Categories chooseCategory={chooseCategory} />
-        <List addToOrder={addToOrder} list={list} setList={setList} />
+      <div className="global_container">
+        <div className="container content">
+          <Header
+            order={order}
+            setOrder={setOrder}
+            deleteOrder={deleteOrder}
+            setList={setList}
+            list={list}
+          />
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MainPage
+                  chooseCategory={chooseCategory}
+                  selectedCategory={selectedCategory}
+                  addToOrder={addToOrder}
+                  list={filteredList}
+                  setList={setList}
+                />
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
