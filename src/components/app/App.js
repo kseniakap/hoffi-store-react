@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./../header/Header";
 import Footer from "./../footer/Footer";
-import { MainPage, About, Contacts, Page404 } from "./../pages";
-
+import { MainPage, About, Goods, Contacts, Page404 } from "./../pages";
 
 function App() {
   const [order, setOrder] = useState([]);
@@ -48,10 +47,12 @@ function App() {
           />
 
           <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/about" element={<About />} />
             <Route
-              path="/"
+              path="/goods"
               element={
-                <MainPage
+                <Goods
                   chooseCategory={chooseCategory}
                   selectedCategory={selectedCategory}
                   addToOrder={addToOrder}
@@ -60,7 +61,6 @@ function App() {
                 />
               }
             />
-            <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="*" element={<Page404 />} />
           </Routes>

@@ -22,3 +22,10 @@
     background-color: rgba(0, 0, 0, 0.6);
   }
 }
+.loading {
+  width: 100%;
+  img {
+    display: flex;
+    margin: 0 auto 50px;
+  }
+}

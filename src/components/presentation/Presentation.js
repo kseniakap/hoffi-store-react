@@ -1,17 +1,24 @@
-import React from 'react'
+import React from "react";
+import { fadeIn } from "react-animations";
+import Radium, { StyleRoot } from "radium";
+import st from "./Presentation.module.scss";
+import arrowImg from "./arrow.svg";
 
-import st from "./Presentation.module.scss"
-import arrowImg from "./arrow.svg"
+const styles = {
+  fadeIn: {
+    animation: "x 2s",
+    animationName: Radium.keyframes(fadeIn, "fadeIn"),
+  },
+};
 
 const Presentation = () => {
   return (
     <>
-      <div className={st.presentation}>
-        {/* <a href="/"  className={st.btn}>
-          Товары <img src={arrowImg} alt="arrow" /></a> */}
-      </div>
+      <StyleRoot>
+        <div style={styles.fadeIn} className={st.presentation}></div>
+      </StyleRoot>
     </>
-  )
-}
+  );
+};
 
-export default Presentation
+export default Presentation;

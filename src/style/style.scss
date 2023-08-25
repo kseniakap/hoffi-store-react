@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,100;1,300&display=swap');
+@import "animate.css";
 @import "./_variables.scss";
 
 * {
@@ -32,7 +34,6 @@ body {
   line-height: 55px; /* 62.5px */
   letter-spacing: 1px;
   margin-bottom: 35px;
-
 }
 
 .basket {

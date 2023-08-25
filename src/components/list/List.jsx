@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-// import { Link } from 'react-router-dom';
+import loadingImg from './loading.gif'
 
 import Item from '../item/Item'
 import ItemServices from './../../services/ItemServices'
@@ -26,8 +26,6 @@ const List = ({ addToOrder, list, setList }) => {
     setNewItemLoading(false)
   }
 
-  
-
   function renderItems(arr) {
     const items = arr.map((item) => {
       return <Item key={item.id} list={item} addToOrder={addToOrder} />
@@ -37,7 +35,7 @@ const List = ({ addToOrder, list, setList }) => {
 
   const items = renderItems(list)
   const errorMessage = error ? 'error' : null
-  const spinner = loading && !newItemLoading ? 'loading...' : null
+  const spinner = loading && !newItemLoading ? <Loading /> : null
 
   return (
     <>
@@ -48,6 +46,14 @@ const List = ({ addToOrder, list, setList }) => {
         Увидеть больше
       </button>
     </>
+  )
+}
+
+const Loading = () => {
+  return (
+    <div className={st.loading}>
+      <img src={loadingImg} alt="loading..." />
+    </div>
   )
 }
 

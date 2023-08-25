@@ -1,0 +1,74 @@
+@import "./../../style/variables";
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px auto;
+  margin-bottom: 100px;
+}
+.content {
+  width: 470px;
+}
+.descr {
+  color: $text-color;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.22px;
+  margin-bottom: 45px;
+}
+.tel {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  span {
+    display: block;
+    color: $text-color;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.22px;
+  }
+}
+.imgTel {
+  width: 93px;
+  height: 93px;
+  cursor: pointer;
+  img {
+    transition: $transition;
+  }
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+.number {
+  color: $text-color;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.24px;
+  text-decoration: none;
+  transition: $translow;
+  &:hover {
+    color: $accent-color;
+  }
+}
+.img {
+  width: 700px;
+  height: 653px;
+  border-radius: 0 320px 0px 125px;
+  filter: brightness(85%);
+}
+.btn {
+  padding: 26px 48px;
+  background-color: $main-color;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
