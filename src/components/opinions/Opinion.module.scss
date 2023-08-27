@@ -6,7 +6,7 @@
   border-radius: 20px;
   width: 100%;
   min-height: 680px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 .title {
   text-align: center;
@@ -17,4 +17,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }

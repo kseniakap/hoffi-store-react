@@ -59,43 +59,45 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
 
   return (
     <header>
-      <div className={st.header}>
-        <a href="/" className={st.logo}>
-          <img src={logoIcon} alt="logo icon" />
-          <img src={logoImg} alt="logo" className={st.logoImg} />
-        </a>
-        <div>
-          <nav >
-            <ul className={st.list} >
-             <li>
-                <CustomNavLink to="/">Главная</CustomNavLink>
-              </li>
-              <li>
-                <CustomNavLink to="/about">Про нас</CustomNavLink>
-              </li>
-              <li>
-                <CustomNavLink to="/goods">Товары</CustomNavLink>
-              </li>
-              <li>
-                <CustomNavLink to="/contacts">Контакты</CustomNavLink>
-              </li>
-              <li>
-                <CustomNavLink to="/account">Кабинет</CustomNavLink>
-              </li>
-            </ul>
-          
-          <FaBasketShopping
-            onClick={() => setCardOpen(!cardOpen)}
-            className={`basket ${cardOpen && 'active'}`}
-          />
-          </nav>
-        </div>
-        {cardOpen && (
-          <div className={st.shop__list}>
-            <h2 className={st.title}>Ваша корзина</h2>
-            {order.length > 0 ? showOrders(order) : showNothing()}
+      <div className="container">
+        <div className={st.header}>
+          <a href="/" className={st.logo}>
+            <img src={logoIcon} alt="logo icon" />
+            <img src={logoImg} alt="logo" className={st.logoImg} />
+          </a>
+          <div>
+            <nav>
+              <ul className={st.list}>
+                <li>
+                  <CustomNavLink to="/">Главная</CustomNavLink>
+                </li>
+                <li>
+                  <CustomNavLink to="/about">Про нас</CustomNavLink>
+                </li>
+                <li>
+                  <CustomNavLink to="/goods">Товары</CustomNavLink>
+                </li>
+                <li>
+                  <CustomNavLink to="/contacts">Контакты</CustomNavLink>
+                </li>
+                <li>
+                  <CustomNavLink to="/account">Кабинет</CustomNavLink>
+                </li>
+              </ul>
+
+              <FaBasketShopping
+                onClick={() => setCardOpen(!cardOpen)}
+                className={`basket ${cardOpen && 'active'}`}
+              />
+            </nav>
           </div>
-        )}
+          {cardOpen && (
+            <div className={st.shop__list}>
+              <h2 className={st.title}>Ваша корзина</h2>
+              {order.length > 0 ? showOrders(order) : showNothing()}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   )
@@ -103,16 +105,15 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
 
 export default Header
 
-
 const CustomNavLink = ({ to, children }) => (
   <NavLink
     to={to}
     style={({ isActive, isPending }) => {
       return {
-        fontWeight: isActive ? "bold" : "",
-      };
+        fontWeight: isActive ? 'bold' : '',
+      }
     }}
   >
     {children}
   </NavLink>
-);
+)

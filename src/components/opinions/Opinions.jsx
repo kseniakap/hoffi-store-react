@@ -31,12 +31,14 @@ const reviews = [
 const Opinions = () => {
   return (
     <section>
-      <div className={st.wrapper}>
-        <div className={`title ${st.title}`}>Что люди думают о нас</div>
-        <div className={st.items}>
-          {reviews.map((item, i) => {
-            return <OpinionItem key={i} {...item} />
-          })}
+      <div className="container">
+        <div className={st.wrapper}>
+          <div className={`title ${st.title}`}>Что люди думают о нас</div>
+          <div className={st.items}>
+            {reviews.map((item, i) => {
+              return <OpinionItem key={i} {...item} />
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -1,12 +1,10 @@
 import React from "react";
-import AboutUs from "./../aboutUs/About";
-import Opinions from "./../opinions/Opinions";
+import AboutUs from "../aboutUs/AboutUs";
 
 const About = () => {
   return (
     <>
       <AboutUs />
-      <Opinions />
     </>
   );
 };

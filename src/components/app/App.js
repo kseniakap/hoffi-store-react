@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <div className="global_container">
-        <div className="container content">
+        <div className="content">
           <Header
             order={order}
             setOrder={setOrder}
@@ -62,6 +62,7 @@ function App() {
               }
             />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/account" element={<Contacts />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </div>
