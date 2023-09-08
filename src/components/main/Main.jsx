@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CustomContext } from '../../Context'
+import { useTranslation } from 'react-i18next'
 import { fadeIn } from 'react-animations'
 import Radium, { StyleRoot } from 'radium'
-import Img from './photo.jpg'
-import MainImgHeader from './../../assets/img/presentation.jpg'
-import imgTel from './imgTel.svg'
-import arrowImg from './../../assets/img/arrow.svg'
+import ICONS from './../../assets/icons'
+import IMAGES from './../../assets/img'
 import './../../style/style.scss'
 import st from './Main.module.scss'
 
@@ -14,21 +14,36 @@ const styles = {
     animationName: Radium.keyframes(fadeIn, 'fadeIn'),
   },
 }
+
 const Main = () => {
+  const { count, user } = useContext(CustomContext)
+  const { t } = useTranslation()
+
   return (
     <>
-      <div className={st.mainImg}>
-        <img
-          style={styles.fadeIn}
-          src={MainImgHeader}
-          alt="изобрашение в шапке сайта"
-        />
-        <h1 className={`title ${st.title}`}>Лучшие товары для вашего дома</h1>
-        <p className={`text-descr ${st.text_descr}`}>
-          Широкий выбор стилей и комплектаций в наличии
-        </p>
-      </div>
-      <section>
+      <StyleRoot>
+        <div className={st.mainImg}>
+          <img
+            style={styles.fadeIn}
+            src={IMAGES.presentationImg}
+            alt="изобрашение в шапке сайта"
+          />
+        </div>
+        <div className={st.mainImgText}>
+          <div className="container">
+            <h1 className={`title ${st.title}`}>
+              {t('homePage.mainImg.title')}
+            </h1>
+            <p
+              className={`text-descr ${st.text_descr}`}
+              dangerouslySetInnerHTML={{
+                __html: t('homePage.mainImg.subtitle'),
+              }}
+            />
+          </div>
+        </div>
+      </StyleRoot>
+      <section className={st.plans}>
         <div className="container">
           <div className={st.list}>
             <div className={st.item}>
@@ -39,7 +54,7 @@ const Main = () => {
               </div>
               <a className={st.item__link} href="/">
                 Смотреть больше
-                <img src={arrowImg} alt="arrrow" />
+                <img src={ICONS.iconArrow} alt="стрелка" />
               </a>
             </div>
             <div className={st.item}>
@@ -50,7 +65,7 @@ const Main = () => {
               </div>
               <a className={st.item__link} href="/">
                 Смотреть больше
-                <img src={arrowImg} alt="arrrow" />
+                <img src={ICONS.iconArrow} alt="стрелка" />
               </a>
             </div>
             <div className={st.item}>
@@ -61,49 +76,57 @@ const Main = () => {
               </div>
               <a className={st.item__link} href="/">
                 Смотреть больше
-                <img src={arrowImg} alt="arrrow" />
+                <img src={ICONS.iconArrow} alt="arrrow" />
               </a>
             </div>
           </div>
         </div>
       </section>
       <section>
-        <StyleRoot>
-          <div className="container">
-            <div className={st.wrapper}>
-              <div className={st.content}>
-                <h1 className="title"> Дом для создания интерьера</h1>
-                <p className={st.descr}>
-                  — Расшифровывается как "Home of furnishing", что в дословном
-                  переводе означает — "Дом для создания интерьера" <br /> <br />
-                  Сеть гипермаркетов Hoff — это одна из крупнейших российских и
-                  динамично развивающихся мебельных сетей. Это единственная
-                  российская сеть мебели и аксессуаров для дома, работающая в
-                  формате гипермаркета.
-                </p>
-                <div className={st.tel}>
-                  <a href="tel:89103022000" className={st.imgTel}>
-                    <img src={imgTel} alt="картинка телефона" />
-                  </a>
-                  <div className={st.telNum}>
-                    <span>
-                      <a href="tel:89103022000" className={st.number}>
-                        8-910-302-20-00
-                      </a>
-                    </span>
-                    <span>Позвонить прямо сейчас</span>
-                  </div>
+        <div className="container">
+          <div className={st.wrapper}>
+            <div className={st.content}>
+              <h1 className="title"> Дом для создания интерьера</h1>
+              <p className={st.descr}>
+                — Расшифровывается как "Home of furnishing", что в дословном
+                переводе означает — "Дом для создания интерьера" <br /> <br />
+                Сеть гипермаркетов Hoff — это одна из крупнейших российских и
+                динамично развивающихся мебельных сетей. Это единственная
+                российская сеть мебели и аксессуаров для дома, работающая в
+                формате гипермаркета.
+              </p>
+              <div className={st.tel}>
+                <a href="tel:89103022000" className={st.imgTel}>
+                  <img src={ICONS.imgTel} alt="картинка телефона" />
+                </a>
+                <div className={st.telNum}>
+                  <span>
+                    <a href="tel:89103022000" className={st.number}>
+                      8-910-302-20-00
+                    </a>
+                  </span>
+                  <span>Позвонить прямо сейчас</span>
                 </div>
               </div>
-              <img
-                style={styles.fadeIn}
-                className={st.img}
-                src={Img}
-                alt="about us"
-              />
             </div>
+            <img
+              className={st.img}
+              src={IMAGES.interiorPhoto}
+              alt="about us"
+            />
           </div>
-        </StyleRoot>
+        </div>
+      </section>
+      <section className={st.brand}>
+        <div className="container">
+          <div className={st.brandWrapper}>
+            <img src={ICONS.iconHome} alt="брэнд Home" />
+            <img src={ICONS.iconStyleVintage} alt="брэнд StyleVintage" />
+            <img src={ICONS.iconBrand} alt="брэнд Brand" />
+            <img src={ICONS.iconNatureHome} alt="брэнд NatureHome" />
+            <img src={ICONS.iconClassic} alt="брэнд Classic" />
+          </div>
+        </div>
       </section>
     </>
   )

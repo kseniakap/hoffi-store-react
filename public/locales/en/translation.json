@@ -1,0 +1,17 @@
+{
+    "homePage":{
+        "headerMenu":{
+            "link1": "Main",
+            "link2": "About us",
+            "link3": "Goods",
+            "link4": "Our team",
+            "link5": "Contacts",
+            "link6": "Account"
+
+        },
+        "mainImg":{
+            "title":"The best furniture for your home",
+            "subtitle":"Wide range of styles </br> and trims available"
+        }
+    }
+}

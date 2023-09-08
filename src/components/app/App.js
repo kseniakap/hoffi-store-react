@@ -1,13 +1,24 @@
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import "../../i18n";
 import Header from "./../header/Header";
 import Footer from "./../footer/Footer";
-import { MainPage, About, Goods, Contacts, Page404 } from "./../pages";
+import {
+  MainPage,
+  AboutPage,
+  GoodsPage,
+  TeamPage,
+  ContactsPage,
+  AccountPage,
+  Page404,
+} from "./../../pages";
 
 function App() {
   const [order, setOrder] = useState([]);
   const [list, setList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const location = useLocation();
 
   const addToOrder = (item) => {
     const index = order.findIndex((el) => el.id === item.id);
@@ -48,11 +59,11 @@ function App() {
 
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route
               path="/goods"
               element={
-                <Goods
+                <GoodsPage
                   chooseCategory={chooseCategory}
                   selectedCategory={selectedCategory}
                   addToOrder={addToOrder}
@@ -61,12 +72,24 @@ function App() {
                 />
               }
             />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/account" element={<Contacts />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/login" element={<AccountPage />} />
+            <Route path="/register" element={<AccountPage />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </div>
-        <Footer />
+
+        {location.pathname === "/" ||
+        location.pathname === "/about" ||
+        location.pathname === "/goods" ||
+        location.pathname === "/contacts" ||
+        location.pathname === "/team" ||
+        location.pathname === "/account" ? (
+          <Footer />
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-import loadingImg from './loading.gif'
-
 import Item from '../item/Item'
 import ItemServices from './../../services/ItemServices'
-
+import IMAGES from '../../assets/img'
 import st from './List.module.scss'
 
 const List = ({ addToOrder, list, setList }) => {
   const [newItemLoading, setNewItemLoading] = useState(false)
-
   const { loading, error, getAllItems } = ItemServices()
 
   useEffect(() => {
@@ -36,7 +33,6 @@ const List = ({ addToOrder, list, setList }) => {
   const items = renderItems(list)
   const errorMessage = error ? 'error' : null
   const spinner = loading && !newItemLoading ? <Loading /> : null
-
   return (
     <>
       {errorMessage}
@@ -52,7 +48,7 @@ const List = ({ addToOrder, list, setList }) => {
 const Loading = () => {
   return (
     <div className={st.loading}>
-      <img src={loadingImg} alt="loading..." />
+      <img src={IMAGES.loadingGif} alt="loading..." />
     </div>
   )
 }

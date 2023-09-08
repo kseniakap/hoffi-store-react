@@ -4,26 +4,32 @@
   width: 100%;
   height: 600px;
   margin-bottom: 100px;
-  position: relative;
+  position: absolute;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 0px 0px 0px 100px;
-    // filter: brightness(75%);
-    
+    filter: brightness(75%);
   }
+}
+
+.plans {
+  margin-top: 700px;
 }
 .title {
   position: absolute;
   top: 100px;
   left: 50px;
   width: 350px;
+  font-size: 75px;
+  width: 500px;
+  line-height: 90%;
   color: #fff;
 }
 .text_descr {
   position: absolute;
-  top: 280px;
+  top: 330px;
   left: 50px;
   width: 300px;
   color: #fff;
@@ -142,4 +148,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.brand {
+  margin-bottom: 150px;
+}
+.brandWrapper {
+  display: flex;
+  justify-content: space-between;
 }

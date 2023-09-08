@@ -19,6 +19,7 @@
   align-items: center;
   position: relative;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 ul.list {
@@ -33,7 +34,7 @@ ul.list {
       text-decoration: none;
       color: #000;
       position: relative;
-    
+
       &::after {
         content: "";
         background-color: #b5b3b3;
@@ -50,6 +51,25 @@ ul.list {
     }
   }
 }
+.language {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  button {
+    border: none;
+    padding: 5px 20px;
+    background-color: $accent-color;
+    color: #fff;
+    border-radius: 10%;
+    transition: $translow;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $btn-hover;
+    }
+  }
+}
+
 
 .shop__list {
   padding: 10px;

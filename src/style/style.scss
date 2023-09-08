@@ -23,7 +23,10 @@ body {
 }
 .container {
   width: 1280px;
+  padding: 0 40px;
+  min-height: auto;
   margin: 0 auto;
+  position: relative;
 }
 .content {
   min-height: calc(100vh - 200px);
@@ -60,4 +63,15 @@ body {
     color: rgba(0, 0, 0, 0.8);
     transform: scale(1.2);
   }
+}
+.active-lang {
+  background-color: $main-color!important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
 }

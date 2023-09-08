@@ -1,26 +1,30 @@
 @import "./../../style/variables";
+
 .categories {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 50px auto;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 18px;
+  border: 1px solid $accent-color;
+  height: 55px;
+  margin-bottom: 50px;
 }
 .elem {
-  padding: 5px 15px;
-  background-color: $main-color;
-  color: #fff;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 35px;
+  border-radius: 17px;
+  height: 100%;
   transition: $transition;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
   cursor: pointer;
   &.active,
   &.active:hover {
-    background-color: $btn-hover;
-    transform: scale((1.1));
+    background: $accent-color;
+    color: #fff;
   }
   &:hover {
-    transform: scale((1.1));
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

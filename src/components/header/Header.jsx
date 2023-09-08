@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaBasketShopping } from 'react-icons/fa6'
+import { useTranslation } from 'react-i18next'
 import Order from '../order/Order'
-
-import { MainPage, About, Contacts, Page404 } from './../pages'
-
-import logoImg from './../../assets/img/logo.png'
-import logoIcon from './logo_img.svg'
+import ICONS from '../../assets/icons'
+import IMAGES from '../../assets/img'
 
 import './../../style/style.scss'
 import st from './Header.module.scss'
 
 const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
   const [cardOpen, setCardOpen] = useState(false)
+
+  const { t, i18n } = useTranslation()
+  const currentLanguage = i18n.language
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang)
+  }
 
   const showOrders = (order) => {
     let sum = 0
@@ -62,26 +67,41 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
       <div className="container">
         <div className={st.header}>
           <a href="/" className={st.logo}>
-            <img src={logoIcon} alt="logo icon" />
-            <img src={logoImg} alt="logo" className={st.logoImg} />
+            <img src={ICONS.iconLogoSign} alt="logo icon" />
+            <img src={IMAGES.iconLogo} alt="logo" className={st.logoImg} />
           </a>
           <div>
             <nav>
               <ul className={st.list}>
                 <li>
-                  <CustomNavLink to="/">Главная</CustomNavLink>
+                  <CustomNavLink to="/">
+                    {t('homePage.headerMenu.link1')}
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <CustomNavLink to="/about">Про нас</CustomNavLink>
+                  <CustomNavLink to="/about">
+                    {t('homePage.headerMenu.link2')}
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <CustomNavLink to="/goods">Товары</CustomNavLink>
+                  <CustomNavLink to="/goods">
+                    {t('homePage.headerMenu.link3')}
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <CustomNavLink to="/contacts">Контакты</CustomNavLink>
+                  <CustomNavLink to="/team">
+                    {t('homePage.headerMenu.link4')}
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <CustomNavLink to="/account">Кабинет</CustomNavLink>
+                  <CustomNavLink to="/contacts">
+                    {t('homePage.headerMenu.link5')}
+                  </CustomNavLink>
+                </li>
+                <li>
+                  <CustomNavLink to="/login">
+                    {t('homePage.headerMenu.link6')}
+                  </CustomNavLink>
                 </li>
               </ul>
 
@@ -97,6 +117,25 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
               {order.length > 0 ? showOrders(order) : showNothing()}
             </div>
           )}
+          <div className={st.language}>
+            <button
+              type="button"
+              data-lang="ru"
+              className={currentLanguage === 'ru' ? 'active-lang' : ''}
+              onClick={() => changeLanguage('ru')}
+            >
+              ru
+            </button>
+            <span>/</span>
+            <button
+              type="button"
+              data-lang="en"
+              className={currentLanguage === 'en' ? 'active-lang' : ''}
+              onClick={() => changeLanguage('en')}
+            >
+              en
+            </button>
+          </div>
         </div>
       </div>
     </header>
