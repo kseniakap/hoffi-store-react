@@ -15,6 +15,36 @@ const Team = () => {
       name: 'Наталья Смирнова ',
       prof: 'дизайнер',
     },
+    {
+      img: IMAGES.person_3,
+      name: 'Ирина Новикова',
+      prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_4,
+      name: 'Светлана Иванова',
+      prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_5,
+      name: 'Макс Цветков',
+      prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_6,
+      name: 'Никита Смирнов',
+      prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_7,
+      name: 'Анна Хохлова',
+      prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_8,
+      name: 'Алексей Виноградов',
+      prof: 'дизайнер',
+    },
   ]
   return (
     <>

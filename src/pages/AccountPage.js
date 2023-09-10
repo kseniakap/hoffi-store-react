@@ -1,10 +1,20 @@
 import React from "react";
-import Account from "../components/account/Account";
+import { useLocation } from "react-router-dom";
+import HeaderComponents from "../components/headerComponents/HeaderComponents";
+import IMAGES from "../assets/img";
+import Login from "../components/login/Login";
+import Register from "../components/register/Register";
 
 const AccountPage = () => {
+  const location = useLocation();
   return (
     <>
-      <Account />
+      <HeaderComponents
+        pageTitle="Аккаунт"
+        headerImage={IMAGES.aboutUsHeaderImg}
+        activeLink={"/login"}
+      />
+      {location.pathname === "/login" ? <Login /> : <Register />}
     </>
   );
 };

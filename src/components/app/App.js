@@ -49,6 +49,18 @@ function App() {
     <>
       <div className="global_container">
         <div className="content">
+          {/* {location.pathname !== "/login" &&
+          location.pathname !== "/register" ? (
+            <Header
+              order={order}
+              setOrder={setOrder}
+              deleteOrder={deleteOrder}
+              setList={setList}
+              list={list}
+            />
+          ) : (
+            ""
+          )} */}
           <Header
             order={order}
             setOrder={setOrder}
@@ -56,7 +68,6 @@ function App() {
             setList={setList}
             list={list}
           />
-
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -85,7 +96,8 @@ function App() {
         location.pathname === "/goods" ||
         location.pathname === "/contacts" ||
         location.pathname === "/team" ||
-        location.pathname === "/account" ? (
+        location.pathname === "/login" ||
+        location.pathname === "/register" ? (
           <Footer />
         ) : (
           ""

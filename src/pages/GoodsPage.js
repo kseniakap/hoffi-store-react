@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
 import Categories from "../components/categories/Categories";
 import List from "../components/list/List";
 import HeaderComponents from "../components/headerComponents/HeaderComponents";
@@ -11,10 +12,11 @@ const GoodsPage = ({
   list,
   setList,
 }) => {
+  const { t } = useTranslation()
   return (
     <>
       <HeaderComponents
-        pageTitle="Товары"
+        pageTitle={t('goodsPage.headerTitle')}
         headerImage={IMAGES.goodsHeaderImg}
         activeLink={"/goods"}
       />

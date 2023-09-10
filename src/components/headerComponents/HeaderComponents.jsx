@@ -1,22 +1,24 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 import { fadeIn } from 'react-animations'
-import Radium, { StyleRoot } from 'radium'
+// import Radium, { StyleRoot } from 'radium'
 import st from './HeaderComponents.module.scss'
 
 const HeaderComponents = ({ pageTitle, headerImage, activeLink }) => {
-  const styles = {
-    fadeIn: {
-      animation: 'x 2s',
-      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-    },
-  }
+  const { t } = useTranslation()
+  // const styles = {
+  //   fadeIn: {
+  //     animation: 'x 2s',
+  //     animationName: Radium.keyframes(fadeIn, 'fadeIn'),
+  //   },
+  // }
 
   return (
-    <StyleRoot>
+    // <StyleRoot>
     <div className={st.header__img}>
       <img
-        style={styles.fadeIn}
+        // style={styles.fadeIn}
         src={headerImage}
         alt="картинка в шапке сайта"
       />
@@ -31,7 +33,7 @@ const HeaderComponents = ({ pageTitle, headerImage, activeLink }) => {
               pointerEvents: isActive ? 'none' : 'auto',
             })}
           >
-            Главная
+            {t('homePage.headerMenu.link1')}
           </NavLink>
         </span>
         <span>/</span>
@@ -49,7 +51,7 @@ const HeaderComponents = ({ pageTitle, headerImage, activeLink }) => {
         </span>
       </div>
     </div>
-    </StyleRoot>
+    // </StyleRoot>
   )
 }
 
