@@ -1,47 +1,49 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import st from './Categories.module.scss'
 
-const Categories = ({ chooseCategory, selectedCategory }) => {
+const Categories = ({ chooseCategory, selectedCategory, setPage }) => {
+  const { t } = useTranslation()
   const [categories, setCategoties] = useState([
     {
       key: 'all',
-      name: 'Всё',
+      name: t('goodsPage.categories.oneCategory'),
     },
     {
       key: 'table',
-      name: 'Стол',
+      name: t('goodsPage.categories.twoCategory'),
     },
     {
       key: 'chair',
-      name: 'Стул',
+      name: t('goodsPage.categories.threeCategory'),
     },
     {
       key: 'armchair',
-      name: 'Кресло',
+      name: t('goodsPage.categories.fourCategory'),
     },
     {
       key: 'sofa',
-      name: 'Диван',
+      name: t('goodsPage.categories.fiveCategory'),
     },
     {
       key: 'sofa-bed',
-      name: 'Диван-кровать',
+      name: t('goodsPage.categories.sixCategory'),
     },
     {
       key: 'comod',
-      name: 'Тумба',
+      name: t('goodsPage.categories.sevenCategory'),
     },
     {
       key: 'bed',
-      name: 'Кровать',
+      name: t('goodsPage.categories.eightCategory'),
     },
     {
       key: 'press',
-      name: 'Шкаф',
+      name: t('goodsPage.categories.nineCategory'),
     },
     {
       key: 'puff',
-      name: 'Пуф',
+      name: t('goodsPage.categories.tenCategory'),
     },
   ])
 
@@ -52,6 +54,7 @@ const Categories = ({ chooseCategory, selectedCategory }) => {
           key={el.key}
           onClick={() => {
             chooseCategory(el.key)
+            setPage(1)
           }}
           className={`${st.elem} ${
             selectedCategory === el.key ? st.active : ''

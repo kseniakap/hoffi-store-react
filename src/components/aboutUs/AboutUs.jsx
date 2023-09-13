@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 import ICONS from './../../assets/icons'
 import IMAGES from '../../assets/img'
@@ -6,6 +7,7 @@ import st from './AboutUs.module.scss'
 
 const AboutUs = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
+  const { t } = useTranslation()
 
   const [blockStyle, setBlockStyle] = useState({
     position: 'absolute',
@@ -64,10 +66,7 @@ const AboutUs = () => {
       <div className="container">
         <div className={st.quote}>
           <img src={ICONS.iconQuote} alt="quote" className={st.quote__img} />
-          <q>
-            В хорошем дизайне функциональность всегда первична, независимо от
-            форм. Но она не должна угнетать эмоции
-          </q>
+          <q>{t('aboutUsPage.quote')}</q>
           <p>&#8212; Giorgio Saporiti</p>
         </div>
       </div>
@@ -76,13 +75,14 @@ const AboutUs = () => {
         <div className="container">
           <div className={st.aboutWork__block}>
             <div className={st.aboutWork__info}>
-              <h2 className={`title ${st.aboutWork__title}`}>Что мы делаем</h2>
+              <h2 className={`title ${st.aboutWork__title}`}>
+                {t('aboutUsPage.aboutWork.sectionOne.title')}
+              </h2>
               <p className="text-descr">
-                Наша главная задача — это создание уюта в вашем доме. Мы создаем
-                мебель, которая отлично впишется в ваш интерьер
+                {t('aboutUsPage.aboutWork.sectionOne.descr')}
               </p>
               <NavLink to="/team">
-                Наша команда
+                {t('aboutUsPage.aboutWork.sectionOne.link')}
                 <img src={ICONS.iconArrow} alt="arrow" />
               </NavLink>
             </div>
@@ -96,16 +96,13 @@ const AboutUs = () => {
             </div>
             <div className={st.aboutWork__info}>
               <h2 className={`title ${st.aboutWork__title}`}>
-                Наше преимущество
+                {t('aboutUsPage.aboutWork.sectionTwo.title')}
               </h2>
               <p className="text-descr">
-                Мы напрямую работаем с проверенными мебельными фабриками и
-                делаем недорогую мебель на собственном производстве, поэтому
-                наши цены по-настоящему низкие. В нашем каталоге каждый сможет
-                найти мебель по вкусу и купить ее по низкой цене.
+                {t('aboutUsPage.aboutWork.sectionTwo.descr')}
               </p>
               <NavLink to="/goods">
-                К товару
+                {t('aboutUsPage.aboutWork.sectionTwo.link')}
                 <img src={ICONS.iconArrow} alt="arrow" />
               </NavLink>
             </div>

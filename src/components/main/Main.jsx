@@ -8,16 +8,15 @@ import IMAGES from './../../assets/img'
 import './../../style/style.scss'
 import st from './Main.module.scss'
 
-const styles = {
-  fadeIn: {
-    animation: '2s',
-    animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-  },
-}
-
 const Main = () => {
-  const { count, user } = useContext(CustomContext)
   const { t } = useTranslation()
+
+  const styles = {
+    fadeIn: {
+      animation: '2s',
+      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
+    },
+  }
 
   return (
     <>
@@ -86,15 +85,13 @@ const Main = () => {
         <div className="container">
           <div className={st.wrapper}>
             <div className={st.content}>
-              <h1 className="title"> Дом для создания интерьера</h1>
-              <p className={st.descr}>
-                — Расшифровывается как "Home of furnishing", что в дословном
-                переводе означает — "Дом для создания интерьера" <br /> <br />
-                Сеть гипермаркетов Hoff — это одна из крупнейших российских и
-                динамично развивающихся мебельных сетей. Это единственная
-                российская сеть мебели и аксессуаров для дома, работающая в
-                формате гипермаркета.
-              </p>
+              <h1 className="title"> {t('homePage.mainContent.title')}</h1>
+              <p
+                className={st.descr}
+                dangerouslySetInnerHTML={{
+                  __html: t('homePage.mainContent.descr'),
+                }}
+              ></p>
               <div className={st.tel}>
                 <a href="tel:89103022000" className={st.imgTel}>
                   <img src={ICONS.imgTel} alt="картинка телефона" />
@@ -105,15 +102,11 @@ const Main = () => {
                       8-910-302-20-00
                     </a>
                   </span>
-                  <span>Позвонить прямо сейчас</span>
+                  <span> {t('homePage.mainContent.signature')}</span>
                 </div>
               </div>
             </div>
-            <img
-              className={st.img}
-              src={IMAGES.interiorPhoto}
-              alt="about us"
-            />
+            <img className={st.img} src={IMAGES.interiorPhoto} alt="about us" />
           </div>
         </div>
       </section>

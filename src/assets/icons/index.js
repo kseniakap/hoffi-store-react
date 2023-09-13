@@ -8,7 +8,7 @@ const ICONS = {
   imgTel: require("./imgTel.svg").default,
   iconQuote: require("./quote.svg").default,
   iconLogoSign: require("./logoSign.svg").default,
+  iconv1: require("./v1.svg").default,
 };
 
-
-export default ICONS ;
+export default ICONS;

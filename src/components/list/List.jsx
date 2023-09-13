@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Item from '../item/Item'
 import ItemServices from './../../services/ItemServices'
 import IMAGES from '../../assets/img'
@@ -8,6 +7,7 @@ import st from './List.module.scss'
 const List = ({ addToOrder, list, setList }) => {
   const [newItemLoading, setNewItemLoading] = useState(false)
   const { loading, error, getAllItems } = ItemServices()
+
 
   useEffect(() => {
     onRequest(true)
@@ -38,9 +38,10 @@ const List = ({ addToOrder, list, setList }) => {
       {errorMessage}
       {spinner}
       {items}
-      <button className={st.btn} onClick={() => onRequest()}>
+      
+      {/* <button className={st.btn} onClick={() => onRequest()}>
         Увидеть больше
-      </button>
+      </button> */}
     </>
   )
 }

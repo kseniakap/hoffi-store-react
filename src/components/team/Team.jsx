@@ -13,7 +13,37 @@ const Team = () => {
     {
       img: IMAGES.person_2,
       name: 'Наталья Смирнова ',
+      prof: 'менеджер по продажам мебели',
+    },
+    {
+      img: IMAGES.person_3,
+      name: 'Ирина Новикова',
       prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_4,
+      name: 'Светлана Иванова',
+      prof: 'дизайнер',
+    },
+    {
+      img: IMAGES.person_5,
+      name: 'Макс Цветков',
+      prof: 'креативный дизайнер',
+    },
+    {
+      img: IMAGES.person_6,
+      name: 'Никита Смирнов',
+      prof: 'менеджер',
+    },
+    {
+      img: IMAGES.person_7,
+      name: 'Анна Хохлова',
+      prof: 'дизайнер-консультант',
+    },
+    {
+      img: IMAGES.person_8,
+      name: 'Алексей Виноградов',
+      prof: 'художник-дизайнер',
     },
   ]
   return (

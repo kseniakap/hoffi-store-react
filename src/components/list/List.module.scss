@@ -7,20 +7,8 @@
   justify-content: center;
   gap: 30px;
 }
-.btn {
-  display: flex;
-  margin: 0 auto;
-  padding: 10px 15px;
-  background-color: $accent-color;
-  color: #fff;
-  border: none;
-  border-radius: 10px 10px 0 0;
-  transition: $transition;
-  margin-bottom: 20px;
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
+.pagination {
+  margin: 0 auto 100px;
 }
 .loading {
   width: 100%;

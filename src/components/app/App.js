@@ -16,7 +16,6 @@ import {
 function App() {
   const [order, setOrder] = useState([]);
   const [list, setList] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const location = useLocation();
 
@@ -36,27 +35,11 @@ function App() {
     setOrder(order.filter((el) => el.id !== id));
   };
 
-  const chooseCategory = (category) => {
-    setSelectedCategory(category);
-  };
-
-  const filteredList =
-    selectedCategory === "all"
-      ? list
-      : list.filter((item) => item.category === selectedCategory);
-
   return (
     <>
       <div className="global_container">
         <div className="content">
-          <Header
-            order={order}
-            setOrder={setOrder}
-            deleteOrder={deleteOrder}
-            setList={setList}
-            list={list}
-          />
-
+          <Header order={order} setOrder={setOrder} deleteOrder={deleteOrder} />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -64,10 +47,8 @@ function App() {
               path="/goods"
               element={
                 <GoodsPage
-                  chooseCategory={chooseCategory}
-                  selectedCategory={selectedCategory}
                   addToOrder={addToOrder}
-                  list={filteredList}
+                  list={list}
                   setList={setList}
                 />
               }
@@ -85,7 +66,8 @@ function App() {
         location.pathname === "/goods" ||
         location.pathname === "/contacts" ||
         location.pathname === "/team" ||
-        location.pathname === "/account" ? (
+        location.pathname === "/login" ||
+        location.pathname === "/register" ? (
           <Footer />
         ) : (
           ""

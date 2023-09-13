@@ -1,0 +1,42 @@
+@import "./../../style/style.scss";
+.item {
+  text-align: center;
+  margin-bottom: 50px;
+  width: 284;
+  img {
+    width: 100%;
+    height: 433px;
+    border-radius: 30px;
+    transition: $transition;
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(90%);
+    }
+  }
+  &_name {
+    color: #292f36;
+    text-align: center;
+    font-family: DM Serif Display;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.25px;
+  }
+  &_prof {
+    margin-bottom: 17px;
+  }
+}
+.social {
+  display: flex;
+  gap: 37px;
+  justify-content: center;
+  &_icon {
+    transition: $translow;
+    &:hover,
+    &.active {
+      color: rgba(0, 0, 0, 0.8);
+      transform: scale(1.2);
+    }
+  }
+}

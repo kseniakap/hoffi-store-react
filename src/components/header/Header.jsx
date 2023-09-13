@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { CustomContext } from '../../Context'
+import { Link, NavLink } from 'react-router-dom'
 import { FaBasketShopping } from 'react-icons/fa6'
 import { useTranslation } from 'react-i18next'
 import Order from '../order/Order'
@@ -11,6 +12,8 @@ import st from './Header.module.scss'
 
 const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
   const [cardOpen, setCardOpen] = useState(false)
+
+  const { user, logOutUser } = useContext(CustomContext)
 
   const { t, i18n } = useTranslation()
   const currentLanguage = i18n.language
@@ -135,6 +138,15 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
             >
               en
             </button>
+          </div>
+          <div className={st.entranceExit}>
+            {user && user.login && user.login.length ? (
+              <Link to="/" onClick={() => logOutUser()}>
+                {t('homePage.headerMenu.logOut')}
+              </Link>
+            ) : (
+              <Link to="/login"> {t('homePage.headerMenu.loginIn')}</Link>
+            )}
           </div>
         </div>
       </div>
