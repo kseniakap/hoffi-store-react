@@ -11,17 +11,40 @@ const ItemServices = () => {
   };
 
   const _transformItems = (item) => {
-    const { id, image, name, description, price, newPrice, category } = item;
+    const { id, image, name, description, price, newPrice, colors, category } =
+      item;
+
     return {
       id: id,
       image: image,
       name: name,
       description: description
         ? `${item.description.slice(0, 130)}...`
-        : "Чтобы узнать больше, нажмите на товар",
+        : "В данный момент описание о данном товаре отсутствует",
       price: price,
       newPrice: newPrice,
+      colors: colors,
       category: category,
+    };
+  };
+
+  const getAllMembers = async () => {
+    const res = await request("http://localhost:3001/members");
+    return res.map((item) => _transformDataMembers(item));
+  };
+
+  const _transformDataMembers = (item) => {
+    const { id, name, prof, img, bio, email, number, linkSite } = item;
+
+    return {
+      id: id,
+      name: name,
+      bio: bio,
+      img: img,
+      prof: prof,
+      email: email,
+      number: number,
+      linkSite: linkSite,
     };
   };
 
@@ -30,6 +53,7 @@ const ItemServices = () => {
     error,
     clearError,
     getAllItems,
+    getAllMembers,
   };
 };
 

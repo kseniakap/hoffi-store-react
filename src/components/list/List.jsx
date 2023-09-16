@@ -38,10 +38,6 @@ const List = ({ addToOrder, list, setList }) => {
       {errorMessage}
       {spinner}
       {items}
-      
-      {/* <button className={st.btn} onClick={() => onRequest()}>
-        Увидеть больше
-      </button> */}
     </>
   )
 }

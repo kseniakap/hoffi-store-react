@@ -58,6 +58,7 @@
     , 
     "goodsPage":{
         "headerTitle": "Товары",
+        "goodOne": "Товар", 
         "categories":{
             "oneCategory":"Всё",
             "twoCategory":"Стол",
@@ -72,7 +73,9 @@
         }
     },
     "ourTeamPage":{
-        "headerTitle":"Наша команда"
+        "headerTitle":"Наша команда",
+        "oneMember":"Участник"
+ 
     }, 
     "accountPage":{
         "headerTitle":"Аккаунт",
@@ -106,6 +109,8 @@
         "containLetter":"Пароль должен содержать не более 20 символов",
         "containNum":"Пароль должен содержать хотя бы одну цифру",
         "passwordMatch":""
+ 
+ 
     }
 }
 
@@ -117,4 +122,7 @@
 
 
 
+ 
 
+ 
+ 

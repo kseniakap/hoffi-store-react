@@ -28,20 +28,19 @@ const Main = () => {
             alt="изобрашение в шапке сайта"
           />
         </div>
-        <div className={st.mainImgText}>
-          <div className="container">
-            <h1 className={`title ${st.title}`}>
-              {t('homePage.mainImg.title')}
-            </h1>
-            <p
-              className={`text-descr ${st.text_descr}`}
-              dangerouslySetInnerHTML={{
-                __html: t('homePage.mainImg.subtitle'),
-              }}
-            />
-          </div>
-        </div>
       </StyleRoot>
+      <div className={st.mainImgText}>
+        <div className="container">
+          <h1 className={`title ${st.title}`}>{t('homePage.mainImg.title')}</h1>
+          <p
+            className={`text-descr ${st.text_descr}`}
+            dangerouslySetInnerHTML={{
+              __html: t('homePage.mainImg.subtitle'),
+            }}
+          />
+        </div>
+      </div>
+
       <section className={st.plans}>
         <div className="container">
           <div className={st.list}>

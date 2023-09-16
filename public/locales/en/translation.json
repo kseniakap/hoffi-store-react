@@ -57,6 +57,7 @@
     }, 
     "goodsPage":{
         "headerTitle": "Goods",
+        "goodOne": "Good",
         "categories":{
             "oneCategory":"All",
             "twoCategory":"Table",
@@ -71,7 +72,9 @@
         }
     },
     "ourTeamPage":{
-        "headerTitle":"Our team"
+        "headerTitle":"Our team", 
+        "oneMember":"Team single"
+ 
     },
     "accountPage":{
         "headerTitle":"Account",
@@ -107,16 +110,4 @@
         "passwordMatch":""
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

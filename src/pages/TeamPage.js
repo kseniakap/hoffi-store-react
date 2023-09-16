@@ -12,6 +12,8 @@ const TeamPage = () => {
         pageTitle={t("ourTeamPage.headerTitle")}
         headerImage={IMAGES.teamHeaderImg}
         activeLink={"/team"}
+        link="/"
+        textLink={t("homePage.headerMenu.link1")}
       />
       <Team />
     </>

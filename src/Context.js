@@ -9,6 +9,9 @@ export const Context = (props) => {
     login: "",
   });
   const [error, setError] = useState(false);
+  const [cardOpen, setCardOpen] = useState(false);
+  const [imgChoose, setImgChoose] = useState(null);
+  const [colorName, setColorName] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,7 +57,17 @@ export const Context = (props) => {
     });
   };
 
+  const formatPrice = (p) => {
+    if (!p) return "";
+    const priceStr = p.toString();
+    return priceStr.length > 3
+      ? priceStr.slice(0, -3) + " " + priceStr.slice(-3)
+      : priceStr;
+  };
+
   const value = {
+    cardOpen,
+    setCardOpen,
     user,
     setUser,
     registerUser,
@@ -62,6 +75,11 @@ export const Context = (props) => {
     loginUser,
     error,
     setError,
+    formatPrice,
+    imgChoose,
+    setImgChoose,
+    colorName,
+    setColorName,
   };
 
   return (

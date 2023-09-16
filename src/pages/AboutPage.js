@@ -12,6 +12,8 @@ const AboutPage = () => {
         pageTitle={t('aboutUsPage.headerTitle')}
         headerImage={IMAGES.aboutUsHeaderImg}
         activeLink={"/about"}
+        link = "/"
+        textLink = {t('homePage.headerMenu.link1')}
       />
       <AboutUs />
     </>

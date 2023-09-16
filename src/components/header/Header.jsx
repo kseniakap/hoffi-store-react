@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import { CustomContext } from '../../Context'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBasketShopping } from 'react-icons/fa6'
 import { useTranslation } from 'react-i18next'
-import Order from '../order/Order'
+import OrderList from '../orderList/OrderList'
 import ICONS from '../../assets/icons'
 import IMAGES from '../../assets/img'
 
@@ -11,59 +11,15 @@ import './../../style/style.scss'
 import st from './Header.module.scss'
 
 const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
-  const [cardOpen, setCardOpen] = useState(false)
-
-  const { user, logOutUser } = useContext(CustomContext)
-
+  const { user, logOutUser, cardOpen, setCardOpen } = useContext(CustomContext)
   const { t, i18n } = useTranslation()
   const currentLanguage = i18n.language
+
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang)
   }
 
-  const showOrders = (order) => {
-    let sum = 0
-    order.forEach((el) => (sum += Number(el.price) * el.count))
-    return (
-      <div>
-        {order &&
-          order.map((el) => (
-            <Order
-              order={order}
-              setOrder={setOrder}
-              key={el.id}
-              item={el}
-              deleteOrder={deleteOrder}
-              numberOfOrder={numberOfOrder}
-            />
-          ))}
-        <div className={st.sum}>
-          <span>Доставка:</span>
-          <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
-          <div className={st.result}>
-            <span> Итого:</span>
-            <span style={{ color: sum > 50000 ? 'green' : 'black' }}>
-              {sum.toString().slice(0, -3) + ' ' + sum.toString().slice(-3)} ₽
-            </span>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  const showNothing = () => {
-    return (
-      <div>
-        <h2 className={st.basket}>Корзина пуста</h2>
-        <p className={st.text}>
-          Купите комплекст из <a href="/">журнального стола Бруклин</a> и стула{' '}
-          <a href="/">Белен</a> в сентябре, и вы получите в подарок
-          <a href="/"> каркас кровати Бланка</a>
-        </p>
-      </div>
-    )
-  }
 
   return (
     <header>
@@ -114,12 +70,7 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
               />
             </nav>
           </div>
-          {cardOpen && (
-            <div className={st.shop__list}>
-              <h2 className={st.title}>Ваша корзина</h2>
-              {order.length > 0 ? showOrders(order) : showNothing()}
-            </div>
-          )}
+        <OrderList  order={order} setOrder={setOrder} deleteOrder={deleteOrder} numberOfOrder={numberOfOrder}/>
           <div className={st.language}>
             <button
               type="button"

@@ -6,9 +6,13 @@ import List from "../components/list/List";
 import HeaderComponents from "../components/headerComponents/HeaderComponents";
 import IMAGES from "../assets/img";
 
+import "./../style/style.scss";
+
 const GoodsPage = ({ addToOrder, list, setList }) => {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sort, setSort] = useState(null);
+  const isActive = (value) => (sort === value ? "active" : "");
   const [page, setPage] = useState(1);
 
   const numShow = 9; //кол-во отображаемых товаров
@@ -29,12 +33,25 @@ const GoodsPage = ({ addToOrder, list, setList }) => {
     return id + 1 <= page * numShow && id >= page * numShow - numShow;
   });
 
+  const sortList = [...filteredListByCategory].sort((a, b) => {
+    const A = (a.newPrice && a.price) || a.price;
+    const B = (b.newPrice && b.price) || b.price;
+    if (sort === "big") {
+      return A - B;
+    } else if (sort === "less") {
+      return B - A;
+    }
+    return filteredListByCategory;
+  });
+
   return (
     <>
       <HeaderComponents
         pageTitle={t("goodsPage.headerTitle")}
         headerImage={IMAGES.goodsHeaderImg}
         activeLink={"/goods"}
+        link="/"
+        textLink={t("homePage.headerMenu.link1")}
       />
       <div className="container">
         <Categories
@@ -42,15 +59,30 @@ const GoodsPage = ({ addToOrder, list, setList }) => {
           selectedCategory={selectedCategory}
           setPage={setPage}
         />
-        <div style={{ marginBottom: "30px" }}>
-          Показано: {filteredListByCategory.length} из{" "}
-          {filterListByCountPage.length} товаров
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "10px",
+          }}
+        >
+          <div style={{ marginBottom: "30px" }}>
+            Показано: {filteredListByCategory.length} из{" "}
+            {filterListByCountPage.length} товаров
+          </div>
+          <div className="btnSort">
+            <button className={isActive("big")} onClick={() => setSort("big")}>
+              По возрастанию
+            </button>
+            <button
+              className={isActive("less")}
+              onClick={() => setSort("less")}
+            >
+              По убыванию
+            </button>
+          </div>
         </div>
-        <List
-          addToOrder={addToOrder}
-          list={filteredListByCategory}
-          setList={setList}
-        />
+        <List addToOrder={addToOrder} list={sortList} setList={setList} />
         {filterListByCountPage.length > numShow && (
           <Pagination
             simple
@@ -61,8 +93,6 @@ const GoodsPage = ({ addToOrder, list, setList }) => {
             style={{ margin: "0 auto 100px", textAlign: "center" }}
           />
         )}
-
-        {/* <Pagination disabled simple current={page} total={list.length} /> */}
       </div>
     </>
   );

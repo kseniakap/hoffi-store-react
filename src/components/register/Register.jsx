@@ -10,14 +10,13 @@ import ICONS from './../../assets/icons'
 import st from './Register.module.scss'
 
 const Register = () => {
-  const { register, handleSubmit, formState, watch } = useForm({
-    resolver: yupResolver(UserSchema),
-  })
+  const { register, handleSubmit, formState, reset, watch } = useForm()
 
   const { errors } = formState
   const { registerUser } = useContext(CustomContext)
 
   const password = watch('password')
+
   const { t } = useTranslation()
 
   return (
