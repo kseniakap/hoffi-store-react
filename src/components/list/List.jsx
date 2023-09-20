@@ -8,7 +8,6 @@ const List = ({ addToOrder, list, setList }) => {
   const [newItemLoading, setNewItemLoading] = useState(false)
   const { loading, error, getAllItems } = ItemServices()
 
-
   useEffect(() => {
     onRequest(true)
   }, [])
@@ -21,6 +20,7 @@ const List = ({ addToOrder, list, setList }) => {
   const onListItemLoaded = (newcharList) => {
     setList(newcharList)
     setNewItemLoading(false)
+    // console.log(list)
   }
 
   function renderItems(arr) {

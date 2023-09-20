@@ -74,7 +74,79 @@
 }
 .otherGood {
   margin-bottom: 100px;
-  &__wrapper{
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__wrapper {
     display: flex;
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.item {
+  width: 380px;
+  min-height: 440px;
+  margin-bottom: 50px;
+  overflow: hidden;
+  transition: box-shadow 0.5s ease;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+    img {
+      transform: scale(1.05);
+    }
+  }
+  .img {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 220px;
+    transition: $transition;
+  }
+  .name {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .price {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .add {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: $main-color;
+    color: #fff;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: $transition;
+    z-index: 100;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      background-color: $btn-hover;
+    }
+    &:active {
+      background-color: #fff;
+    }
   }
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import st from './Item.module.scss'
 
 const Item = ({ list, addToOrder }) => {
-  const { id, name, description, price, newPrice, colors } = list
+  const { id, name, description, category, price, newPrice, colors } = list
 
   const firstImg = colors && colors[0].image
   const { formatPrice, setCardOpen } = useContext(CustomContext)

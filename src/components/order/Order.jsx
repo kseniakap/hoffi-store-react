@@ -7,7 +7,7 @@ import st from './Order.module.scss'
 const Order = ({ item, deleteOrder, order, setOrder }) => {
   const { imgChoose, colorName } = useContext(CustomContext)
 
-  const { id, name, price, colors } = item
+  const { id, name, price, colors, category} = item
   const s = String(price)
 
   const handleIncrease = (e) => {
@@ -35,7 +35,7 @@ const Order = ({ item, deleteOrder, order, setOrder }) => {
       <div className={st.item}>
         <img
           className={st.img}
-          src={`${process.env.PUBLIC_URL}/img/${imgChoose}`}
+          src={`${process.env.PUBLIC_URL}/img/${colors[0].image}`}
           alt={name}
         />
         <h2 className={st.name}>{name}</h2>

@@ -20,15 +20,12 @@ function App() {
   const [order, setOrder] = useState([]);
   const [list, setList] = useState([]);
   const location = useLocation();
-  const { colorName } = useContext(CustomContext);
 
   const addToOrder = (item) => {
-    // console.log(item);
     const index = order.findIndex((el) => el.id === item.id);
     if (index !== -1) {
       const updatedOrder = [...order];
       updatedOrder[index].count += 1;
-      // console.log(updatedOrder[index].count);
       setOrder(updatedOrder);
     } else {
       setOrder([...order, { ...item, count: 1 }]);
@@ -60,7 +57,7 @@ function App() {
             />
             <Route
               path="/onegood/:id"
-              element={<OneGoodPage addToOrder={addToOrder} />}
+              element={<OneGoodPage  list={list} addToOrder={addToOrder}/>}
             />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/team" element={<TeamPage />} />
