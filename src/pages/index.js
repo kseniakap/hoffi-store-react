@@ -4,7 +4,7 @@ import GoodsPage from "./GoodsPage";
 import OneGoodPage from "./OneGoodPage";
 import TeamPage from "./TeamPage";
 import TeamMemberPage from "./TeamMemberPage";
-import ContactsPage from "./ContactsPage";
+import OrderPage from "./OrderPage";
 import AccountPage from "./AccountPage";
 import Page404 from "./Page404";
 
@@ -15,7 +15,7 @@ export {
   OneGoodPage,
   TeamPage,
   TeamMemberPage,
-  ContactsPage,
+  OrderPage,
   AccountPage,
   Page404,
 };

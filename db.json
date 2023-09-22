@@ -116,17 +116,20 @@
         {
            "name": "светло-серый",
            "code": "lightgray",
-           "image": "bed_toronto.jpg"
+           "image": "bed_toronto.jpg", 
+           "count": 7
         },
         {
            "name": "бежевый",
            "code": "burlywood",
-           "image": "bed_toronto_beige.jpg"
+           "image": "bed_toronto_beige.jpg", 
+           "count": 0
         },
         {
            "name": "серый",
            "code": "gray",
-           "image": "bed_toronto_gray.jpg"
+           "image": "bed_toronto_gray.jpg", 
+           "count": 8
         }
      ]
     },
@@ -141,12 +144,14 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "press_parma.webp"
+           "image": "press_parma.webp", 
+           "count": 0
         },
         {
           "name": "бежевый",
           "code": "wheat",
-          "image": "press_parma_beige.webp"
+          "image": "press_parma_beige.webp", 
+          "count": 0
        }
      ]
     },
@@ -160,17 +165,20 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "bed_nemi.jpg"
+           "image": "bed_nemi.jpg", 
+           "count":10
         },        
         {
           "name": "серо-голубой",
           "code": "lightsteelblue",
-          "image": "bed_nemi_lightsteelblue.jpg"
+          "image": "bed_nemi_lightsteelblue.jpg", 
+          "count":10
        }, 
         {
           "name": "серый",
           "code": "gray",
-          "image": "bed_nemi_gray.jpg"
+          "image": "bed_nemi_gray.jpg", 
+          "count":20
        }
      ]  
     },
@@ -182,36 +190,42 @@
       "image": "armchair_arata.jpg",
       "category": "chair", 
       "colors":[
-        {
-           "name": "бежевый",
-           "code": "tan",
-           "image": "armchair_arata_beige.jpg"
-        }, 
-        {
-          "name": "горчичный",
-          "code": "goldenrod",
-          "image": "armchair_arata_goldenrod.jpg"
-       },
-        {
-          "name": "серый",
-          "code": "lightgray",
-          "image": "armchair_arata_gray.jpg"
-       }, 
-       {
-        "name": "серо-голубой",
-        "code": "SkyBlue",
-        "image": "armchair_arata_lightsteelblue.jpg"
-      }, 
-      {
-        "name": "темно-серый",
-        "code": "dimgray",
-        "image": "armchair_arata_darkgray.jpg"
-     }, 
-     {
-      "name": "черный",
-      "code": "black",
-      "image": "armchair_arata_black.jpg"
-   }
+         {
+            "name": "бежевый",
+            "code": "tan",
+            "image": "armchair_arata_beige.jpg", 
+            "count": 1
+         }, 
+         {
+            "name": "горчичный",
+            "code": "goldenrod",
+            "image": "armchair_arata_goldenrod.jpg", 
+            "count": 10
+         },
+         {
+            "name": "серый",
+            "code": "lightgray",
+            "image": "armchair_arata_gray.jpg", 
+            "count": 15
+         }, 
+         {
+         "name": "серо-голубой",
+         "code": "SkyBlue",
+         "image": "armchair_arata_lightsteelblue.jpg", 
+         "count": 17
+         }, 
+         {
+         "name": "темно-серый",
+         "code": "dimgray",
+         "image": "armchair_arata_darkgray.jpg", 
+         "count": 10
+         }, 
+         {
+         "name": "черный",
+         "code": "black",
+         "image": "armchair_arata_black.jpg", 
+         "count": 16
+         }
      ]
     },
     {
@@ -224,14 +238,15 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_martin.jpg"
+           "image": "table_martin.jpg", 
+           "count": 17
         },
         {
           "name": "серый",
           "code": "gray",
-          "image": "table_martin_gray.jpg"
-       }
-   
+          "image": "table_martin_gray.jpg", 
+          "count": 10
+         }   
      ]
     },
     {
@@ -243,19 +258,22 @@
       "category": "sofa-bed", 
       "colors":[
         {
-           "name": "бежевый",
-           "code": "Moccasin",
-           "image": "sofa_east.jpg"
+         "name": "бежевый",
+         "code": "Moccasin",
+         "image": "sofa_east.jpg", 
+         "count": 0
         }, 
         {
-          "name": "серо-бежевый",
-          "code": "AntiqueWhite",
-          "image": "sofa_east_beige.jpg"
+         "name": "серо-бежевый",
+         "code": "AntiqueWhite",
+         "image": "sofa_east_beige.jpg" ,
+         "count": 15
        },
        {
         "name": "горчичный",
         "code": "goldenrod",
-        "image": "table_martin_goldenrod.jpg"
+        "image": "table_martin_goldenrod.jpg", 
+        "count": 10
      }
      ]
     },
@@ -268,9 +286,10 @@
       "category": "table", 
       "colors":[
         {
-           "name": "белый",
-           "code": "white",
-           "image": "table_tandem.webp"
+         "name": "белый",
+         "code": "white",
+         "image": "table_tandem.webp" ,
+         "count": 30
         }
      ]
     },
@@ -279,12 +298,13 @@
       "name": "Журнальный стол Yingyang II",
       "description": "Журнальный стол Yingyang – это гармоничное сочетание оригинальных форм и функциональности. Основание, выполненное из качественного МДФ, установлено на прочные ножки. Столешница из стекла, зафиксированная при помощи хромированных опор, подчеркивает современный стиль модели. В комплект входят два пуфа из искусственной кожи и МДФ. Контраст белого цвета и венге придает изделию элегантный вид. Конструкция нижней части может использоваться в качестве удобной полки и в то же время предусматривает компактное размещение пуфов.",
       "price": 11999,
-      "category": "table", 
+      "category": "table",
       "colors":[
         {
            "name": "черный",
            "code": "black",
-           "image": "table.webp"
+           "image": "table.webp", 
+           "count": 20
         }
      ]
     },
@@ -299,8 +319,9 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "comod.jpg"
-        }
+           "image": "comod.jpg",
+           "count": 15
+         }
      ]
     }, 
     {
@@ -313,7 +334,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "bed_solana.jpg"
+           "image": "bed_solana.jpg", 
+           "count": 10
         }
      ]
     },    
@@ -322,12 +344,13 @@
       "name": "Комод широкий Линда",
       "description": "Вместительный и прочный комод широкий Линда выглядит легким и изящным благодаря белоснежным поверхностям каркаса, выполненного из ЛДСП, и глянцевого фасада из МДФ. Материалы долговечны, надежны, безопасны, экологичны и практичны в использовании. Современный дизайн мебели гармонирует с интерьерами в разных стилях: хай-тек, скандинавском, модерн. Шесть глубоких выдвижных ящиков, каждый из которых выдерживает нагрузку до 3 кг, помогут хранить вещи в порядке. Шариковые направляющие обеспечивают их легкое и бесшумное открывание. В дополнение к комоду можно подобрать шкаф для одежды, кровать, зеркало, тумбу для обуви коллекции Линда.",
       "price": 18999,
-      "category": "comod", 
+      "category": "comod",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "comod_linda.jpg"
+           "image": "comod_linda.jpg", 
+           "count": 18
         }
      ]
     },
@@ -341,7 +364,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "tablre_eames.jpg"
+           "image": "tablre_eames.jpg", 
+           "count": 14
         }
      ]
     },
@@ -355,7 +379,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_vega.jpg"
+           "image": "table_vega.jpg", 
+           "count": 16
         }
      ]
     },
@@ -369,7 +394,8 @@
         {
            "name": "бежевый",
            "code": "tan",
-           "image": "table_kaylas.jpg"
+           "image": "table_kaylas.jpg", 
+           "count": 10
         }
      ]
     },
@@ -378,12 +404,13 @@
       "name": "Шкаф для одежды 4-дверный Линда 181,4х220х60,6 см ",
       "description": "Распашной шкаф для одежды Линда сочетает в себе высокую функциональность и эффектный внешний вид. Изделие выполнено в современном стиле. Зеркальные и глянцевые фасады визуально расширяют пространство, добавляют света в помещение. Внутри шкафа предусмотрено несколько разноплановых секций, включая полочки для белья и отделение со штангой. Оттенок «белый снег» универсален, черные мебельные ручки прямоугольной формы создают интересный контраст и завершают образ изделия.",
       "price": 35999, 
-      "category": "press", 
+      "category": "press",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "press_linda.jpg"
+           "image": "press_linda.jpg", 
+           "count": 10
         }
      ]
     },
@@ -397,7 +424,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_eland.jpg"
+           "image": "table_eland.jpg" ,
+           "count": 17
         }
      ]
     }, 
@@ -406,12 +434,13 @@
       "name": "Угловой диван-кровать Лига Диванов Нью-Йорк Люкс с правым углом ",
       "description": null,
       "price": 54999,
-      "category": "sofa-bed", 
+      "category": "sofa-bed",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "sofa_newYourk.jpg"
+           "image": "sofa_newYourk.jpg", 
+           "count": 10
         }
      ]
     },
@@ -420,12 +449,13 @@
       "name": "Журнальный стол Diamond тип 7  ",
       "description": null,
       "price": 2799,
-      "category": "table", 
+      "category": "table",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "table_diamontType7.jpg"
+           "image": "table_diamontType7.jpg", 
+           "count": 17
         }
      ]
     },
@@ -434,12 +464,13 @@
       "name": "Тумба под ТВ Ларго ",
       "description": "Тумба под ТВ Ларго — компактное и минималистичное интерьерное решение, которое поможет вам эффективно использовать пространство в комнате. На столешнице, выдерживающей вес до 20 кг, разместится телевизионная панель, а в отделениях вы сможете разложить книги, диски, гаджеты, аксессуары и другие вещи. Центральный ящик выдвигается, боковые отсеки снабжены распашными дверцами. В центре конструкции, под столешницей, — небольшая открытая полка, на которой удобно хранить пульт дистанционного управления, наушники и другие предметы, которые вы часто используете. Дизайнеры выбрали для этой тумбы сдержанный минималистичный стиль и приятный универсальный оттенок, поэтому модель гармонично впишется практически в любой интерьер.",
       "price": 3999,
-      "category": "comod", 
+      "category": "comod",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "gateleg_largo.jpg"
+           "image": "gateleg_largo.jpg", 
+           "count": 10
         }
      ]
     },
@@ -453,7 +484,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "rocking-chair_skagen.jpg"
+           "image": "rocking-chair_skagen.jpg", 
+           "count": 15
         }
      ]
     },
@@ -468,7 +500,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "puff_rubi.webp"
+           "image": "puff_rubi.webp", 
+           "count": 10
         }
      ]
     },
@@ -482,7 +515,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "dresser_nuar.jpg"
+           "image": "dresser_nuar.jpg", 
+           "count": 20
         }
      ]
     },
@@ -496,7 +530,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "chair_texas.jpg"
+           "image": "chair_texas.jpg",
+           "count": 10
         }
      ]
     },
@@ -510,7 +545,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "bed_mira.jpg"
+           "image": "bed_mira.jpg", 
+           "count": 5
         }
      ]
     },
@@ -519,12 +555,13 @@
       "name": "Диван-кровать Уно",
       "description": "Эта модель доступна только в тех вариантах обивки, которые представлены в нашем ассортименте.",
       "price": 17999,
-      "category": "sofa-bed", 
+      "category": "sofa-bed",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "sofa_uno.jpg"
+           "image": "sofa_uno.jpg", 
+           "count": 5
         }
      ]
     },
@@ -538,7 +575,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "sliding-wardrobe-2-door.jpg"
+           "image": "sliding-wardrobe-2-door.jpg", 
+           "count": 10
         }
      ]
     },
@@ -553,7 +591,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "chair_toleto.webp"
+           "image": "chair_toleto.webp", 
+           "count": 11
         }
      ]
     },
@@ -567,7 +606,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "bedframe_blanka.jpg"
+           "image": "bedframe_blanka.jpg", 
+           "count": 18
         }
      ]
     },
@@ -581,7 +621,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "chair_aspen.jpg"
+           "image": "chair_aspen.jpg", 
+           "count": 19
         }
      ]
     },
@@ -595,7 +636,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_dakota.jpg"
+           "image": "table_dakota.jpg",
+           "count": 15
         }
      ]
     },
@@ -609,17 +651,20 @@
         {
            "name": "бежевый",
            "code": "tan",
-           "image": "chair_belen.jpg"
+           "image": "chair_belen.jpg", 
+           "count": 10
         }, 
         {
           "name": "светло-серый",
           "code": "lightgray",
-          "image": "chair_belen_whitegray.jpg"
+          "image": "chair_belen_whitegray.jpg", 
+          "count": 16
        }, 
        {
         "name": "серый",
         "code": "gray",
-        "image": "chair_belen_gray.jpg"
+        "image": "chair_belen_gray.jpg", 
+        "count": 16
      }
      ]
       
@@ -634,7 +679,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "corner-sofa-bed-manchester.jpg"
+           "image": "corner-sofa-bed-manchester.jpg",
+           "count": 10
         }
      ]
     },
@@ -648,7 +694,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "bed_aphla.jpg"
+           "image": "bed_aphla.jpg", 
+           "count": 10
         }
      ]
     },
@@ -657,12 +704,13 @@
       "name": "Тумба прикроватная Токио",
       "description": null,
       "price": 1299,
-      "category": "comod", 
+      "category": "comod",
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "bedside-table-tokyo.jpg"
+           "image": "bedside-table-tokyo.jpg", 
+           "count": 8
         }
      ]
     },
@@ -676,7 +724,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "chair_scandica.jpg"
+           "image": "chair_scandica.jpg", 
+           "count": 10
         }
      ]
     },
@@ -690,7 +739,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "airmchair_gaudi.jpg"
+           "image": "airmchair_gaudi.jpg", 
+           "count": 10
         }
      ]
     },
@@ -704,7 +754,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "barchair_ostin.jpg"
+           "image": "barchair_ostin.jpg", 
+           "count": 19
         }
      ]
     },
@@ -713,12 +764,13 @@
       "name": "Table-book STK-6VM",
       "description": null,
       "price": 2999,
-      "category": "table", 
+      "category": "table",  
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "table-book-STK-6VM.jpg"
+           "image": "table-book-STK-6VM.jpg", 
+           "count": 18
         }
      ]
     },
@@ -732,7 +784,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "sofa_scandica.jpg"
+           "image": "sofa_scandica.jpg", 
+           "count": 18
         }
      ]
     },
@@ -746,7 +799,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "sofa_coma.jpg"
+           "image": "sofa_coma.jpg", 
+           "count": 19 
         }
      ]
     },
@@ -760,7 +814,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_polaris.webp"
+           "image": "table_polaris.webp", 
+           "count": 19
         }
      ]
     },
@@ -774,17 +829,20 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_bruklin.jpg"
+           "image": "table_bruklin.jpg", 
+           "count": 14
         }, 
         {
           "name": "серый",
           "code": "gray",
-          "image": "table_bruklin_gray.jpg"
+          "image": "table_bruklin_gray.jpg", 
+          "count": 19
        }, 
        {
         "name": "черный",
         "code": "black",
-        "image": "table_bruklin_black.jpg"
+        "image": "table_bruklin_black.jpg", 
+        "count": 15
      }
      ]
     },
@@ -793,12 +851,13 @@
       "name": "Комод SCANDICA Vendela с каркасом и фасадом из материала ЛДСП",
       "description": null,
       "price": 9999,
-      "category": "comod", 
+      "category": "comod",  
       "colors":[
         {
            "name": "белый",
            "code": "white",
-           "image": "comod_scandica_vendela.jpg"
+           "image": "comod_scandica_vendela.jpg", 
+           "count": 1
         }
      ]
     },
@@ -812,7 +871,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "table_promo_type4.jpg"
+           "image": "table_promo_type4.jpg", 
+           "count": 16
         }
      ]
     },
@@ -826,7 +886,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "edside-table-scandica-vendela.jpg"
+           "image": "edside-table-scandica-vendela.jpg", 
+           "count": 15
         }
      ]
     },
@@ -840,7 +901,8 @@
         {
            "name": "белый",
            "code": "white",
-           "image": "chair_kokong.webp"
+           "image": "chair_kokong.webp", 
+           "count": 25
         }
      ]
     }

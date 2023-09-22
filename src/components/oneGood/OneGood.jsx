@@ -1,15 +1,32 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { CustomContext } from '../../Context'
+import ICONS from './../../assets/icons'
+import Slider from 'react-slick'
+import { Link } from 'react-router-dom'
 import './../../style/style.scss'
 import st from './OneGood.module.scss'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const OneGood = ({ addToOrder, list }) => {
   const params = useParams()
   const [good, setGood] = useState({})
   const [colorChoose, setColorChoose] = useState(null)
+
+  var settings = {
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    // variableWidth: true,
+    // autoplay: true,
+    // autoplaySpeed: 3000,
+  }
+
   const {
     formatPrice,
     setCardOpen,
@@ -19,6 +36,8 @@ const OneGood = ({ addToOrder, list }) => {
     setColorName,
   } = useContext(CustomContext)
   const { id } = useParams()
+  const { name, description, price, category, newPrice, colors } = good
+  const [countGoods, setCountGoods] = useState(0)
 
   useEffect(() => {
     axios(`http://localhost:3001/goods/${params.id}`)
@@ -26,19 +45,18 @@ const OneGood = ({ addToOrder, list }) => {
         setGood(data)
         setImgChoose(data.colors[0].image)
         setColorName(data.colors[0].name)
-        console.log(id)
+        setCountGoods(data.colors[0].count)
       })
       .catch((error) => {
         console.error(error)
       })
   }, [id])
 
-  const { name, description, price, category, newPrice, colors } = good
-
   const chooseColor = (color) => {
     setColorName(color.name)
     setColorChoose(color.code)
     setImgChoose(color.image)
+    setCountGoods(color.count)
   }
 
   const handleAddToOrder = (event) => {
@@ -49,6 +67,7 @@ const OneGood = ({ addToOrder, list }) => {
 
   return (
     <>
+      {/* Описание одного товара */}
       <section className={st.oneGood}>
         <div className="container">
           <div className={st.oneGood__wrapper}>
@@ -108,56 +127,82 @@ const OneGood = ({ addToOrder, list }) => {
                     )
                   })}
               </ul>
-
-              <button onClick={handleAddToOrder}>В корзину</button>
+              <div className={st.count}>
+                {countGoods ? (
+                  <p>
+                    В наличии: <span>{countGoods}</span> шт.
+                  </p>
+                ) : (
+                  <p>Нет в наличии</p>
+                )}
+              </div>
+              {countGoods ? (
+                <button onClick={handleAddToOrder}>В корзину</button>
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </div>
       </section>
+      {/* Похожие товары */}
       <section className={st.otherGood}>
         <div className="container">
           <h2 className={st.otherGood__title}>Похожие товары</h2>
           <div className={st.otherGood__container}>
-            {list
-              .filter((item) => item.id !== id && item.category === category)
-              .map((item) => {
-                const { name, description, price, newPrice, colors } = item
-                const firstColorImage =
-                  colors && colors.length > 0 ? colors[0].image : null
-                return (
-                  <Link
-                    to={`/onegood/${item.id}`}
-                    className={st.item}
-                    key={item.id}
-                  >
-                    <img
-                      className={st.img}
-                      src={`${process.env.PUBLIC_URL}/img/${firstColorImage}`}
-                      alt={name}
-                    />
-                    <div className={st.content}>
-                      <h2 className={st.name}>{name}</h2>
-                      <p className={st.descr}>{description}</p>
-                      <div className={st.price}>
-                        {newPrice ? (
-                          <>
-                            <span style={{ textDecoration: 'line-through' }}>
-                              {formatPrice(price)}₽
-                            </span>
-                            <span> / </span>
-                            <span>{formatPrice(newPrice)} ₽</span>
-                          </>
+            <Slider {...settings}>
+              {list
+                .filter(
+                  (item) => item.id !== good.id && item.category === category,
+                )
+                .map((item) => {
+                  const { name, description, price, newPrice, colors } = item
+                  const firstColorImage =
+                    colors && colors.length > 0 ? colors[0].image : null
+                  const totalCount = colors.reduce(
+                    (accumulator, color) => accumulator + color.count,
+                    0,
+                  )
+
+                  return (
+                    <Link
+                      to={`/onegood/${item.id}`}
+                      className={st.item}
+                      key={item.id}
+                    >
+                      <img
+                        className={st.img}
+                        src={`${process.env.PUBLIC_URL}/img/${firstColorImage}`}
+                        alt={name}
+                      />
+                      <div className={st.content}>
+                        <h2 className={st.name}>{name}</h2>
+                        <p className={st.descr}>{description}</p>
+                        <div className={st.price}>
+                          {newPrice ? (
+                            <>
+                              <span style={{ textDecoration: 'line-through' }}>
+                                {formatPrice(price)}₽
+                              </span>
+                              <span> / </span>
+                              <span>{formatPrice(newPrice)} ₽</span>
+                            </>
+                          ) : (
+                            <p>{formatPrice(price)} ₽</p>
+                          )}
+                        </div>
+                        {totalCount ? (
+                          <div className={st.add} onClick={handleAddToOrder}>
+                            +
+                          </div>
                         ) : (
-                          <p>{formatPrice(price)} ₽</p>
+                          <p className={st.instock}>Нет в наличии</p>
                         )}
                       </div>
-                      <div className={st.add} onClick={handleAddToOrder}>
-                        +
-                      </div>
-                    </div>
-                  </Link>
-                )
-              })}
+                    </Link>
+                  )
+                })}
+            </Slider>
           </div>
         </div>
       </section>
@@ -166,3 +211,15 @@ const OneGood = ({ addToOrder, list }) => {
 }
 
 export default OneGood
+
+const CustomPrevArrow = ({ onClick }) => (
+  <button className={st.nextArrow} onClick={onClick}>
+    <img src={ICONS.iconArrowLeft} alt="arrow" />
+  </button>
+)
+
+const CustomNextArrow = ({ onClick }) => (
+  <button className={st.prevArrow} onClick={onClick}>
+    <img src={ICONS.iconArrow} alt="arrow" />
+  </button>
+)

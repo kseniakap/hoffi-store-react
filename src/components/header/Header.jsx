@@ -53,11 +53,6 @@ const Header = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
                   </CustomNavLink>
                 </li>
                 <li>
-                  <CustomNavLink to="/contacts">
-                    {t('homePage.headerMenu.link5')}
-                  </CustomNavLink>
-                </li>
-                <li>
                   <CustomNavLink to="/login">
                     {t('homePage.headerMenu.link6')}
                   </CustomNavLink>

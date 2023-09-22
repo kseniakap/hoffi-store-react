@@ -5,6 +5,7 @@ const ICONS = {
   iconNatureHome: require("./iconNatureHome.svg").default,
   iconClassic: require("./iconClassic.svg").default,
   iconArrow: require("./arrow.svg").default,
+  iconArrowLeft: require("./arrowLeft.svg").default,
   imgTel: require("./imgTel.svg").default,
   iconQuote: require("./quote.svg").default,
   iconLogoSign: require("./logoSign.svg").default,

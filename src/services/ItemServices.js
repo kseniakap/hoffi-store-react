@@ -9,8 +9,17 @@ const ItemServices = () => {
   };
 
   const _transformItems = (item) => {
-    const { id, image, name, description, price, newPrice, colors, category } =
-      item;
+    const {
+      id,
+      image,
+      name,
+      description,
+      price,
+      newPrice,
+      colors,
+      category,
+      count,
+    } = item;
 
     return {
       id: id,

@@ -11,7 +11,7 @@ import {
   OneGoodPage,
   TeamPage,
   TeamMemberPage,
-  ContactsPage,
+  OrderPage,
   AccountPage,
   Page404,
 } from "./../../pages";
@@ -59,7 +59,7 @@ function App() {
               path="/onegood/:id"
               element={<OneGoodPage  list={list} addToOrder={addToOrder}/>}
             />
-            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/order" element={<OrderPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/members/:id" element={<TeamMemberPage />} />
             <Route path="/login" element={<AccountPage />} />
