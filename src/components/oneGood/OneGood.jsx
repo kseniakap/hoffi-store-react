@@ -10,34 +10,25 @@ import st from './OneGood.module.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const OneGood = ({ addToOrder, list }) => {
+const OneGood = ({
+  list,
+}) => {
   const params = useParams()
   const [good, setGood] = useState({})
   const [colorChoose, setColorChoose] = useState(null)
 
-  var settings = {
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    // variableWidth: true,
-    // autoplay: true,
-    // autoplaySpeed: 3000,
-  }
-
   const {
+    AddCart,
     formatPrice,
-    setCardOpen,
     imgChoose,
     setImgChoose,
     colorName,
     setColorName,
   } = useContext(CustomContext)
-  const { id } = useParams()
+
   const { name, description, price, category, newPrice, colors } = good
-  const [countGoods, setCountGoods] = useState(0)
+  const [count, setCount] = useState(1)
+  const [countGoods, setCountGoods] = useState(0) //доступное количество товара
 
   useEffect(() => {
     axios(`http://localhost:3001/goods/${params.id}`)
@@ -50,7 +41,7 @@ const OneGood = ({ addToOrder, list }) => {
       .catch((error) => {
         console.error(error)
       })
-  }, [id])
+  }, [params])
 
   const chooseColor = (color) => {
     setColorName(color.name)
@@ -59,10 +50,16 @@ const OneGood = ({ addToOrder, list }) => {
     setCountGoods(color.count)
   }
 
-  const handleAddToOrder = (event) => {
-    event.preventDefault()
-    addToOrder(good)
-    setCardOpen(true)
+  var settings = {
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    // variableWidth: true,
+    // autoplay: true,
+    // autoplaySpeed: 3000,
   }
 
   return (
@@ -137,7 +134,21 @@ const OneGood = ({ addToOrder, list }) => {
                 )}
               </div>
               {countGoods ? (
-                <button onClick={handleAddToOrder}>В корзину</button>
+                <button
+                  onClick={() =>
+                    AddCart({
+                      id: good.id,
+                      name: good.name,
+                      price: good.newPrice || good.price,
+                      colors: colorName,
+                      image: imgChoose,
+                      count: count,
+                      category: good.category,
+                    })
+                  }
+                >
+                  В корзину
+                </button>
               ) : (
                 ''
               )}
@@ -150,59 +161,61 @@ const OneGood = ({ addToOrder, list }) => {
         <div className="container">
           <h2 className={st.otherGood__title}>Похожие товары</h2>
           <div className={st.otherGood__container}>
-            <Slider {...settings}>
-              {list
-                .filter(
-                  (item) => item.id !== good.id && item.category === category,
-                )
-                .map((item) => {
-                  const { name, description, price, newPrice, colors } = item
-                  const firstColorImage =
-                    colors && colors.length > 0 ? colors[0].image : null
-                  const totalCount = colors.reduce(
-                    (accumulator, color) => accumulator + color.count,
-                    0,
+            {list.length > 0 && (
+              <Slider {...settings}>
+                {list
+                  .filter(
+                    (item) => item.id !== good.id && item.category === category,
                   )
+                  .map((item) => {
+                    const { name, description, price, newPrice, colors } = item
+                    const firstColorImage =
+                      colors && colors.length > 0 ? colors[0].image : null
+                    const totalCount = colors.reduce(
+                      (accumulator, color) => accumulator + color.count,
+                      0,
+                    )
 
-                  return (
-                    <Link
-                      to={`/onegood/${item.id}`}
-                      className={st.item}
-                      key={item.id}
-                    >
-                      <img
-                        className={st.img}
-                        src={`${process.env.PUBLIC_URL}/img/${firstColorImage}`}
-                        alt={name}
-                      />
-                      <div className={st.content}>
-                        <h2 className={st.name}>{name}</h2>
-                        <p className={st.descr}>{description}</p>
-                        <div className={st.price}>
-                          {newPrice ? (
-                            <>
-                              <span style={{ textDecoration: 'line-through' }}>
-                                {formatPrice(price)}₽
-                              </span>
-                              <span> / </span>
-                              <span>{formatPrice(newPrice)} ₽</span>
-                            </>
+                    return (
+                      <Link
+                        to={`/onegood/${item.id}`}
+                        className={st.item}
+                        key={item.id}
+                      >
+                        <img
+                          className={st.img}
+                          src={`${process.env.PUBLIC_URL}/img/${firstColorImage}`}
+                          alt={name}
+                        />
+                        <div className={st.content}>
+                          <h2 className={st.name}>{name}</h2>
+                          <p className={st.descr}>{description}</p>
+                          <div className={st.price}>
+                            {newPrice ? (
+                              <>
+                                <span
+                                  style={{ textDecoration: 'line-through' }}
+                                >
+                                  {formatPrice(price)}₽
+                                </span>
+                                <span> / </span>
+                                <span>{formatPrice(newPrice)} ₽</span>
+                              </>
+                            ) : (
+                              <p>{formatPrice(price)} ₽</p>
+                            )}
+                          </div>
+                          {totalCount ? (
+                            <div className={st.add}>+</div>
                           ) : (
-                            <p>{formatPrice(price)} ₽</p>
+                            <p className={st.instock}>Нет в наличии</p>
                           )}
                         </div>
-                        {totalCount ? (
-                          <div className={st.add} onClick={handleAddToOrder}>
-                            +
-                          </div>
-                        ) : (
-                          <p className={st.instock}>Нет в наличии</p>
-                        )}
-                      </div>
-                    </Link>
-                  )
-                })}
-            </Slider>
+                      </Link>
+                    )
+                  })}
+              </Slider>
+            )}
           </div>
         </div>
       </section>

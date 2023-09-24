@@ -3,7 +3,10 @@ import { CustomContext } from '../../Context'
 import { Link } from 'react-router-dom'
 import st from './Item.module.scss'
 
-const Item = ({ list, addToOrder }) => {
+const Item = ({
+  list,
+  //  addToOrder
+}) => {
   const { id, name, description, price, newPrice, colors } = list
 
   const firstImg = colors && colors[0].image
@@ -11,7 +14,7 @@ const Item = ({ list, addToOrder }) => {
 
   const handleAddToOrder = (event) => {
     event.preventDefault()
-    addToOrder(list)
+    // addToOrder(list)
     setCardOpen(true)
   }
   const totalCount = colors.reduce(
@@ -43,9 +46,10 @@ const Item = ({ list, addToOrder }) => {
             )}
           </div>
           {totalCount ? (
-            <div className={st.add} onClick={handleAddToOrder}>
-              +
-            </div>
+            // <div className={st.add} onClick={handleAddToOrder}>
+            //   +
+            // </div>
+            ''
           ) : (
             <p className={st.instock}>Нет в наличии</p>
           )}

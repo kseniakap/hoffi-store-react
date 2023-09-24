@@ -7,8 +7,15 @@ import { Link } from 'react-router-dom'
 import './../../style/style.scss'
 import st from './OrderList.module.scss'
 
-const OrderList = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
-  const { cardOpen, setCardOpen, isAddToCartClicked } = useContext(
+const OrderList = (
+  {
+    // order,
+    // setOrder,
+    // deleteOrder,
+    // numberOfOrder
+  },
+) => {
+  const { cardOpen, setCardOpen, isAddToCartClicked, cart } = useContext(
     CustomContext,
   )
   const orderRef = useRef(null)
@@ -46,12 +53,12 @@ const OrderList = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
         {order &&
           order.map((el) => (
             <Order
-              order={order}
-              setOrder={setOrder}
+              // order={order}
+              // setOrder={setOrder}
               key={el.id}
               item={el}
-              deleteOrder={deleteOrder}
-              numberOfOrder={numberOfOrder}
+              // deleteOrder={deleteOrder}
+              // numberOfOrder={numberOfOrder}
             />
           ))}
         <div className={st.sum}>
@@ -91,7 +98,10 @@ const OrderList = ({ order, setOrder, deleteOrder, numberOfOrder }) => {
       {cardOpen && (
         <div ref={orderRef} className={st.shop} style={styles.fadeIn}>
           <h2 className={st.title}>Ваша корзина</h2>
-          {order.length > 0 ? showOrders(order) : showNothing()}
+          {/* {cart.length > 0 ? showOrders(cart) : showNothing()} */}
+          <Link to="/order" className={st.orderLink}>
+            Оформить заказ
+          </Link>
         </div>
       )}
     </StyleRoot>

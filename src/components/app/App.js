@@ -17,30 +17,34 @@ import {
 } from "./../../pages";
 
 function App() {
-  const [order, setOrder] = useState([]);
+  // const [order, setOrder] = useState([]);
   const [list, setList] = useState([]);
   const location = useLocation();
 
-  const addToOrder = (item) => {
-    const index = order.findIndex((el) => el.id === item.id);
-    if (index !== -1) {
-      const updatedOrder = [...order];
-      updatedOrder[index].count += 1;
-      setOrder(updatedOrder);
-    } else {
-      setOrder([...order, { ...item, count: 1 }]);
-    }
-  };
+  // const addToOrder = (item) => {
+  //   const index = order.findIndex((el) => el.id === item.id);
+  //   if (index !== -1) {
+  //     const updatedOrder = [...order];
+  //     updatedOrder[index].count += 1;
+  //     setOrder(updatedOrder);
+  //   } else {
+  //     setOrder([...order, { ...item, count: 1 }]);
+  //   }
+  // };
 
-  const deleteOrder = (id) => {
-    setOrder(order.filter((el) => el.id !== id));
-  };
+  // const deleteOrder = (id) => {
+  //   setOrder(order.filter((el) => el.id !== id));
+  // };
 
   return (
     <>
       <div className="global_container">
         <div className="content">
-          <Header order={order} setOrder={setOrder} deleteOrder={deleteOrder} />
+          <Header 
+          // order={order} 
+          // setOrder={setOrder} 
+          // deleteOrder={deleteOrder} 
+          />
 
           <Routes>
             <Route path="/" element={<MainPage />} />
@@ -49,7 +53,7 @@ function App() {
               path="/goods"
               element={
                 <GoodsPage
-                  addToOrder={addToOrder}
+                  // addToOrder={addToOrder}
                   list={list}
                   setList={setList}
                 />
@@ -57,7 +61,9 @@ function App() {
             />
             <Route
               path="/onegood/:id"
-              element={<OneGoodPage  list={list} addToOrder={addToOrder}/>}
+              element={<OneGoodPage list={list} 
+              // addToOrder={addToOrder}
+              />}
             />
             <Route path="/order" element={<OrderPage />} />
             <Route path="/team" element={<TeamPage />} />

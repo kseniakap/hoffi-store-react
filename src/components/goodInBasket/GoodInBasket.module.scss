@@ -1,0 +1,50 @@
+@import "./../../style/style.scss";
+.title {
+  margin-bottom: 20px;
+}
+
+.name_columns {
+  display: grid;
+  min-height: 40px;
+  grid-template-columns: 40% auto auto auto auto;
+  background-color: $main-color;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.item {
+  display: grid;
+  padding: 10px 20px;
+  grid-template-columns: 40% auto auto auto auto;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.delete {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  transition: $transition;
+  font-size: 25px;
+  cursor: pointer;
+  &:hover {
+    color: $accent-color;
+  }
+}
+.block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.img {
+  height: 250px;
+  width: 250px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}

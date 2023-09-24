@@ -1,10 +1,11 @@
 import React from "react";
+import GoodInBasket from "../components/goodInBasket/GoodInBasket";
 import "./../style/style.scss";
 
 const OrderPage = () => {
   return (
     <div className="container">
-      <h2>Корзина</h2>
+      <GoodInBasket />
     </div>
   );
 };

@@ -4,31 +4,36 @@ import { CustomContext } from '../../Context'
 import { Link } from 'react-router-dom'
 import st from './Order.module.scss'
 
-const Order = ({ item, deleteOrder, order, setOrder }) => {
-  const { imgChoose, colorName } = useContext(CustomContext)
+const Order = ({
+  cart,
+  // deleteOrder,
+  //  order,
+  //  setOrder
+}) => {
+  const { colorName } = useContext(CustomContext)
 
-  const { id, name, price, colors, category} = item
+  const { id, name, price, colors, category } = cart
   const s = String(price)
 
-  const handleIncrease = (e) => {
-    e.preventDefault()
-    const updatedOrder = [...order]
-    const index = updatedOrder.findIndex((el) => el.id === item.id)
-    updatedOrder[index].count += 1
-    setOrder(updatedOrder)
-  }
+  // const handleIncrease = (e) => {
+  //   e.preventDefault()
+  //   const updatedOrder = [...order]
+  //   const index = updatedOrder.findIndex((el) => el.id === item.id)
+  //   updatedOrder[index].count += 1
+  //   setOrder(updatedOrder)
+  // }
 
-  const handleDecrease = (e) => {
-    e.preventDefault()
-    const updatedOrder = [...order]
-    const index = updatedOrder.findIndex((el) => el.id === item.id)
-    if (updatedOrder[index].count === 1) {
-      deleteOrder(item.id)
-    } else {
-      updatedOrder[index].count -= 1
-      setOrder(updatedOrder)
-    }
-  }
+  // const handleDecrease = (e) => {
+  //   e.preventDefault()
+  //   const updatedOrder = [...order]
+  //   const index = updatedOrder.findIndex((el) => el.id === item.id)
+  //   if (updatedOrder[index].count === 1) {
+  //     deleteOrder(item.id)
+  //   } else {
+  //     updatedOrder[index].count -= 1
+  //     setOrder(updatedOrder)
+  //   }
+  // }
 
   return (
     <Link to={`/onegood/${id}`}>
@@ -45,19 +50,19 @@ const Order = ({ item, deleteOrder, order, setOrder }) => {
             {s.slice(0, s.length - 3) + ' ' + s.slice(-3)} ₽
           </p>
           <div className={st.counter}>
-            <button className={st.btn} onClick={handleDecrease}>
+            {/* <button className={st.btn} onClick={handleDecrease}>
               <span>-</span>
-            </button>
-            <span>{item.count}</span>
-            <button className={st.btn} onClick={handleIncrease}>
+            </button> */}
+            <span>{cart.count}</span>
+            {/* <button className={st.btn} onClick={handleIncrease}>
               <span>+</span>
-            </button>
+            </button> */}
           </div>
           <FaTrashAlt
             className={st.deleteIcon}
             onClick={(e) => {
               e.preventDefault()
-              deleteOrder(item.id)
+              // deleteOrder(item.id)
             }}
           />
         </div>

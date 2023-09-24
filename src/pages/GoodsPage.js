@@ -8,7 +8,11 @@ import IMAGES from "../assets/img";
 
 import "./../style/style.scss";
 
-const GoodsPage = ({ addToOrder, list, setList }) => {
+const GoodsPage = ({
+  // addToOrder,
+  list,
+  setList,
+}) => {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sort, setSort] = useState(null);
@@ -82,7 +86,11 @@ const GoodsPage = ({ addToOrder, list, setList }) => {
             </button>
           </div>
         </div>
-        <List addToOrder={addToOrder} list={sortList} setList={setList} />
+        <List
+          //  addToOrder={addToOrder}
+          list={sortList}
+          setList={setList}
+        />
         {filterListByCountPage.length > numShow && (
           <Pagination
             simple

@@ -12,7 +12,36 @@ export const Context = (props) => {
   const [cardOpen, setCardOpen] = useState(false);
   const [imgChoose, setImgChoose] = useState(null);
   const [colorName, setColorName] = useState("");
+  const [cart, setCart] = useState([]); //корзина
+
   const navigate = useNavigate();
+
+  const AddCart = (good) => {
+    let idx = cart.findIndex(
+      (item) => item.id === good.id && item.colors === good.colors
+    );
+    if (idx >= 0) {
+      setCart(
+        cart.map((item) => {
+          if (item.id === good.id && item.colors === good.colors) {
+            return { ...item, count: +item.count + +good.count };
+          } else {
+            return item;
+          }
+        })
+      );
+    } else {
+      setCart([...cart, good]);
+    }
+    setCardOpen(true);
+  };
+
+  const deleteCart = (id, colors) => {
+    const updatedCart = cart.filter(
+      (item) => item.id !== id || item.colors !== colors
+    );
+    setCart(updatedCart);
+  };
 
   useEffect(() => {
     if (localStorage.getItem("user") !== null) {
@@ -66,7 +95,11 @@ export const Context = (props) => {
   };
 
   const value = {
+    cart,
+    setCart,
+    AddCart,
     cardOpen,
+    deleteCart,
     setCardOpen,
     user,
     setUser,
