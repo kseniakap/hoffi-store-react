@@ -11,8 +11,13 @@ export const Context = (props) => {
   const [error, setError] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
   const [imgChoose, setImgChoose] = useState(null);
+  const [isDisable, setIsDisable] = useState(false);
+  // если товара выбрано больше, чем доступно
   const [colorName, setColorName] = useState("");
-  const [cart, setCart] = useState([]); //корзина
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
   const navigate = useNavigate();
 
@@ -20,11 +25,18 @@ export const Context = (props) => {
     let idx = cart.findIndex(
       (item) => item.id === good.id && item.colors === good.colors
     );
+    const maxQuantity = good.quantity;
     if (idx >= 0) {
       setCart(
         cart.map((item) => {
           if (item.id === good.id && item.colors === good.colors) {
-            return { ...item, count: +item.count + +good.count };
+            const newTotalCount = item.count + good.count;
+            if (newTotalCount <= maxQuantity) {
+              return { ...item, count: newTotalCount };
+            } else {
+              setIsDisable(true)
+              return { ...item, count: maxQuantity };
+            }
           } else {
             return item;
           }
@@ -47,7 +59,14 @@ export const Context = (props) => {
     if (localStorage.getItem("user") !== null) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
+    if (localStorage.getItem("cart") !== null) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const registerUser = (data) => {
     axios
@@ -81,6 +100,7 @@ export const Context = (props) => {
 
   const logOutUser = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("cart");
     setUser({
       login: "",
     });
@@ -101,6 +121,7 @@ export const Context = (props) => {
     cardOpen,
     deleteCart,
     setCardOpen,
+
     user,
     setUser,
     registerUser,
@@ -113,6 +134,9 @@ export const Context = (props) => {
     setImgChoose,
     colorName,
     setColorName,
+
+    isDisable,
+    setIsDisable,
   };
 
   return (

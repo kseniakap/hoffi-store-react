@@ -10,9 +10,7 @@ import st from './OneGood.module.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const OneGood = ({
-  list,
-}) => {
+const OneGood = ({ list }) => {
   const params = useParams()
   const [good, setGood] = useState({})
   const [colorChoose, setColorChoose] = useState(null)
@@ -24,11 +22,13 @@ const OneGood = ({
     setImgChoose,
     colorName,
     setColorName,
+    isDisable,
+    setIsDisable,
   } = useContext(CustomContext)
 
   const { name, description, price, category, newPrice, colors } = good
   const [count, setCount] = useState(1)
-  const [countGoods, setCountGoods] = useState(0) //доступное количество товара
+  const [quantityGoods, setQuantityGoods] = useState(0) //доступное количество товара
 
   useEffect(() => {
     axios(`http://localhost:3001/goods/${params.id}`)
@@ -36,7 +36,7 @@ const OneGood = ({
         setGood(data)
         setImgChoose(data.colors[0].image)
         setColorName(data.colors[0].name)
-        setCountGoods(data.colors[0].count)
+        setQuantityGoods(data.colors[0].quantity)
       })
       .catch((error) => {
         console.error(error)
@@ -47,7 +47,8 @@ const OneGood = ({
     setColorName(color.name)
     setColorChoose(color.code)
     setImgChoose(color.image)
-    setCountGoods(color.count)
+    setQuantityGoods(color.quantity)
+    setIsDisable(false)
   }
 
   var settings = {
@@ -57,9 +58,6 @@ const OneGood = ({
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    // variableWidth: true,
-    // autoplay: true,
-    // autoplaySpeed: 3000,
   }
 
   return (
@@ -125,15 +123,15 @@ const OneGood = ({
                   })}
               </ul>
               <div className={st.count}>
-                {countGoods ? (
+                {quantityGoods ? (
                   <p>
-                    В наличии: <span>{countGoods}</span> шт.
+                    В наличии: <span>{quantityGoods}</span> шт.
                   </p>
                 ) : (
                   <p>Нет в наличии</p>
                 )}
               </div>
-              {countGoods ? (
+              {quantityGoods ? (
                 <button
                   onClick={() =>
                     AddCart({
@@ -144,10 +142,15 @@ const OneGood = ({
                       image: imgChoose,
                       count: count,
                       category: good.category,
+                      quantity: quantityGoods,
                     })
                   }
+                  style={{
+                    backgroundColor: isDisable ? 'rgba(0,0,0,.2)' : '',
+                    cursor: isDisable ? 'auto' : '',
+                  }}
                 >
-                  В корзину
+                  {isDisable ? 'нет в наличии' : '  В корзину'}
                 </button>
               ) : (
                 ''
@@ -172,7 +175,7 @@ const OneGood = ({
                     const firstColorImage =
                       colors && colors.length > 0 ? colors[0].image : null
                     const totalCount = colors.reduce(
-                      (accumulator, color) => accumulator + color.count,
+                      (accumulator, color) => accumulator + color.quantity,
                       0,
                     )
 
@@ -206,7 +209,24 @@ const OneGood = ({
                             )}
                           </div>
                           {totalCount ? (
-                            <div className={st.add}>+</div>
+                            <div
+                              className={st.add}
+                              onClick={(e) => {
+                                e.preventDefault()
+                                AddCart({
+                                  id: item.id,
+                                  name: item.name,
+                                  price: item.price,
+                                  colors: item.colors[0].name,
+                                  image: item.colors[0].image,
+                                  count: count,
+                                  category: item.category,
+                                  quantity: item.colors[0].quantity,
+                                })
+                              }}
+                            >
+                              +
+                            </div>
                           ) : (
                             <p className={st.instock}>Нет в наличии</p>
                           )}

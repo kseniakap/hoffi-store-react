@@ -3,24 +3,17 @@ import { CustomContext } from '../../Context'
 import { Link } from 'react-router-dom'
 import st from './Item.module.scss'
 
-const Item = ({
-  list,
-  //  addToOrder
-}) => {
+const Item = ({ list }) => {
   const { id, name, description, price, newPrice, colors } = list
 
   const firstImg = colors && colors[0].image
-  const { formatPrice, setCardOpen } = useContext(CustomContext)
+  const { formatPrice } = useContext(CustomContext)
 
-  const handleAddToOrder = (event) => {
-    event.preventDefault()
-    // addToOrder(list)
-    setCardOpen(true)
-  }
   const totalCount = colors.reduce(
-    (accumulator, color) => accumulator + color.count,
+    (accumulator, color) => accumulator + color.quantity,
     0,
   )
+  //общее доступное количество товара
   return (
     <>
       <Link to={`/onegood/${id}`} className={st.item}>
@@ -45,14 +38,7 @@ const Item = ({
               <p>{formatPrice(price)} ₽</p>
             )}
           </div>
-          {totalCount ? (
-            // <div className={st.add} onClick={handleAddToOrder}>
-            //   +
-            // </div>
-            ''
-          ) : (
-            <p className={st.instock}>Нет в наличии</p>
-          )}
+          {totalCount ? '' : <p className={st.instock}>Нет в наличии</p>}
         </div>
       </Link>
     </>

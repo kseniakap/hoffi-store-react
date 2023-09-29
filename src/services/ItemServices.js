@@ -18,7 +18,7 @@ const ItemServices = () => {
       newPrice,
       colors,
       category,
-      count,
+      
     } = item;
 
     return {

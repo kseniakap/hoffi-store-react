@@ -7,14 +7,7 @@ import { Link } from 'react-router-dom'
 import './../../style/style.scss'
 import st from './OrderList.module.scss'
 
-const OrderList = (
-  {
-    // order,
-    // setOrder,
-    // deleteOrder,
-    // numberOfOrder
-  },
-) => {
+const OrderList = () => {
   const { cardOpen, setCardOpen, isAddToCartClicked, cart } = useContext(
     CustomContext,
   )
@@ -43,24 +36,14 @@ const OrderList = (
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [cardOpen])
+  }, [])
 
   const showOrders = (order) => {
     let sum = 0
-    order.forEach((el) => (sum += Number(el.price) * el.count))
+    order && order.forEach((el) => (sum += Number(el.price) * el.count))
     return (
       <div className={st.shop__list}>
-        {order &&
-          order.map((el) => (
-            <Order
-              // order={order}
-              // setOrder={setOrder}
-              key={el.id}
-              item={el}
-              // deleteOrder={deleteOrder}
-              // numberOfOrder={numberOfOrder}
-            />
-          ))}
+        {order && order.map((el, idx) => <Order key={idx} item={el} />)}
         <div className={st.sum}>
           <span>Доставка:</span>
           <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
@@ -70,7 +53,11 @@ const OrderList = (
               {sum.toString().slice(0, -3) + ' ' + sum.toString().slice(-3)} ₽
             </span>
           </div>
-          <Link to="/order" className={st.orderLink}>
+          <Link
+            to="/order"
+            className={st.orderLink}
+            onClick={() => setCardOpen(false)}
+          >
             Оформить заказ
           </Link>
         </div>
@@ -98,10 +85,7 @@ const OrderList = (
       {cardOpen && (
         <div ref={orderRef} className={st.shop} style={styles.fadeIn}>
           <h2 className={st.title}>Ваша корзина</h2>
-          {/* {cart.length > 0 ? showOrders(cart) : showNothing()} */}
-          <Link to="/order" className={st.orderLink}>
-            Оформить заказ
-          </Link>
+          {cart && cart.length > 0 ? showOrders(cart) : showNothing()}
         </div>
       )}
     </StyleRoot>

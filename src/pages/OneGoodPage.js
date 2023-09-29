@@ -4,9 +4,7 @@ import { useTranslation } from "react-i18next";
 import OneGood from "../components/oneGood/OneGood";
 import IMAGES from "../assets/img";
 
-const OneGoodPage = ({ 
-  // addToOrder, 
-  list, setList }) => {
+const OneGoodPage = ({ list }) => {
   const { t } = useTranslation();
   return (
     <>
@@ -17,9 +15,7 @@ const OneGoodPage = ({
         link="/goods"
         textLink={t("goodsPage.headerTitle")}
       />
-      <OneGood 
-      // addToOrder={addToOrder}
-       list={list} />
+      <OneGood list={list} />
     </>
   );
 };

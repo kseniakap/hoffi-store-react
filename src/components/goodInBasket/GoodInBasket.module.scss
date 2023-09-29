@@ -1,7 +1,4 @@
 @import "./../../style/style.scss";
-.title {
-  margin-bottom: 20px;
-}
 
 .name_columns {
   display: grid;
@@ -47,4 +44,45 @@
     height: 100%;
     object-fit: contain;
   }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  background-color: $main-color;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  border: none;
+  transition: $transition;
+  cursor: pointer;
+  span {
+    line-height: 25px;
+    color: #fff;
+  }
+  &:hover,
+  &:active {
+    background-color: $btn-hover;
+  }
+}
+.delivery {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.sum {
+  margin-top: 10px;
+  span {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+.result {
+  font-size: 20px;
+  display: flex;
+  align-items: end;
+  gap: 7px;
+  margin-bottom: 15px;
 }

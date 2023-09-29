@@ -117,19 +117,19 @@
            "name": "светло-серый",
            "code": "lightgray",
            "image": "bed_toronto.jpg", 
-           "count": 7
+           "quantity": 7
         },
         {
            "name": "бежевый",
            "code": "burlywood",
            "image": "bed_toronto_beige.jpg", 
-           "count": 0
+           "quantity": 0
         },
         {
            "name": "серый",
            "code": "gray",
            "image": "bed_toronto_gray.jpg", 
-           "count": 8
+           "quantity": 8
         }
      ]
     },
@@ -145,13 +145,13 @@
            "name": "белый",
            "code": "white",
            "image": "press_parma.webp", 
-           "count": 0
+           "quantity": 0
         },
         {
           "name": "бежевый",
           "code": "wheat",
           "image": "press_parma_beige.webp", 
-          "count": 0
+          "quantity": 0
        }
      ]
     },
@@ -166,19 +166,19 @@
            "name": "белый",
            "code": "white",
            "image": "bed_nemi.jpg", 
-           "count":10
+           "quantity":10
         },        
         {
           "name": "серо-голубой",
           "code": "lightsteelblue",
           "image": "bed_nemi_lightsteelblue.jpg", 
-          "count":10
+          "quantity":10
        }, 
         {
           "name": "серый",
           "code": "gray",
           "image": "bed_nemi_gray.jpg", 
-          "count":20
+          "quantity":20
        }
      ]  
     },
@@ -194,37 +194,37 @@
             "name": "бежевый",
             "code": "tan",
             "image": "armchair_arata_beige.jpg", 
-            "count": 1
+            "quantity": 1
          }, 
          {
             "name": "горчичный",
             "code": "goldenrod",
             "image": "armchair_arata_goldenrod.jpg", 
-            "count": 10
+            "quantity": 10
          },
          {
             "name": "серый",
             "code": "lightgray",
             "image": "armchair_arata_gray.jpg", 
-            "count": 15
+            "quantity": 15
          }, 
          {
          "name": "серо-голубой",
          "code": "SkyBlue",
          "image": "armchair_arata_lightsteelblue.jpg", 
-         "count": 17
+         "quantity": 17
          }, 
          {
          "name": "темно-серый",
          "code": "dimgray",
          "image": "armchair_arata_darkgray.jpg", 
-         "count": 10
+         "quantity": 10
          }, 
          {
          "name": "черный",
          "code": "black",
          "image": "armchair_arata_black.jpg", 
-         "count": 16
+         "quantity": 16
          }
      ]
     },
@@ -239,13 +239,13 @@
            "name": "белый",
            "code": "white",
            "image": "table_martin.jpg", 
-           "count": 17
+           "quantity": 17
         },
         {
           "name": "серый",
           "code": "gray",
           "image": "table_martin_gray.jpg", 
-          "count": 10
+          "quantity": 10
          }   
      ]
     },
@@ -261,19 +261,19 @@
          "name": "бежевый",
          "code": "Moccasin",
          "image": "sofa_east.jpg", 
-         "count": 0
+         "quantity": 0
         }, 
         {
          "name": "серо-бежевый",
          "code": "AntiqueWhite",
          "image": "sofa_east_beige.jpg" ,
-         "count": 15
+         "quantity": 15
        },
        {
         "name": "горчичный",
         "code": "goldenrod",
         "image": "table_martin_goldenrod.jpg", 
-        "count": 10
+        "quantity": 10
      }
      ]
     },
@@ -289,7 +289,7 @@
          "name": "белый",
          "code": "white",
          "image": "table_tandem.webp" ,
-         "count": 30
+         "quantity": 30
         }
      ]
     },
@@ -304,7 +304,7 @@
            "name": "черный",
            "code": "black",
            "image": "table.webp", 
-           "count": 20
+           "quantity": 20
         }
      ]
     },
@@ -320,7 +320,7 @@
            "name": "белый",
            "code": "white",
            "image": "comod.jpg",
-           "count": 15
+           "quantity": 15
          }
      ]
     }, 
@@ -335,7 +335,7 @@
            "name": "белый",
            "code": "white",
            "image": "bed_solana.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },    
@@ -350,7 +350,7 @@
            "name": "белый",
            "code": "white",
            "image": "comod_linda.jpg", 
-           "count": 18
+           "quantity": 18
         }
      ]
     },
@@ -365,7 +365,7 @@
            "name": "белый",
            "code": "white",
            "image": "tablre_eames.jpg", 
-           "count": 14
+           "quantity": 14
         }
      ]
     },
@@ -380,7 +380,7 @@
            "name": "белый",
            "code": "white",
            "image": "table_vega.jpg", 
-           "count": 16
+           "quantity": 16
         }
      ]
     },
@@ -395,7 +395,7 @@
            "name": "бежевый",
            "code": "tan",
            "image": "table_kaylas.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -410,7 +410,7 @@
            "name": "белый",
            "code": "white",
            "image": "press_linda.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -425,7 +425,7 @@
            "name": "белый",
            "code": "white",
            "image": "table_eland.jpg" ,
-           "count": 17
+           "quantity": 17
         }
      ]
     }, 
@@ -440,7 +440,7 @@
            "name": "белый",
            "code": "white",
            "image": "sofa_newYourk.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -455,7 +455,7 @@
            "name": "белый",
            "code": "white",
            "image": "table_diamontType7.jpg", 
-           "count": 17
+           "quantity": 17
         }
      ]
     },
@@ -470,7 +470,7 @@
            "name": "белый",
            "code": "white",
            "image": "gateleg_largo.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -485,7 +485,7 @@
            "name": "белый",
            "code": "white",
            "image": "rocking-chair_skagen.jpg", 
-           "count": 15
+           "quantity": 15
         }
      ]
     },
@@ -501,7 +501,7 @@
            "name": "белый",
            "code": "white",
            "image": "puff_rubi.webp", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -516,7 +516,7 @@
            "name": "белый",
            "code": "white",
            "image": "dresser_nuar.jpg", 
-           "count": 20
+           "quantity": 20
         }
      ]
     },
@@ -531,7 +531,7 @@
            "name": "белый",
            "code": "white",
            "image": "chair_texas.jpg",
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -546,7 +546,7 @@
            "name": "белый",
            "code": "white",
            "image": "bed_mira.jpg", 
-           "count": 5
+           "quantity": 5
         }
      ]
     },
@@ -561,7 +561,7 @@
            "name": "белый",
            "code": "white",
            "image": "sofa_uno.jpg", 
-           "count": 5
+           "quantity": 5
         }
      ]
     },
@@ -576,7 +576,7 @@
            "name": "белый",
            "code": "white",
            "image": "sliding-wardrobe-2-door.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -592,7 +592,7 @@
            "name": "белый",
            "code": "white",
            "image": "chair_toleto.webp", 
-           "count": 11
+           "quantity": 11
         }
      ]
     },
@@ -607,7 +607,7 @@
            "name": "белый",
            "code": "white",
            "image": "bedframe_blanka.jpg", 
-           "count": 18
+           "quantity": 18
         }
      ]
     },
@@ -622,7 +622,7 @@
            "name": "белый",
            "code": "white",
            "image": "chair_aspen.jpg", 
-           "count": 19
+           "quantity": 19
         }
      ]
     },
@@ -637,7 +637,7 @@
            "name": "белый",
            "code": "white",
            "image": "table_dakota.jpg",
-           "count": 15
+           "quantity": 15
         }
      ]
     },
@@ -652,19 +652,19 @@
            "name": "бежевый",
            "code": "tan",
            "image": "chair_belen.jpg", 
-           "count": 10
+           "quantity": 10
         }, 
         {
           "name": "светло-серый",
           "code": "lightgray",
           "image": "chair_belen_whitegray.jpg", 
-          "count": 16
+          "quantity": 16
        }, 
        {
         "name": "серый",
         "code": "gray",
         "image": "chair_belen_gray.jpg", 
-        "count": 16
+        "quantity": 16
      }
      ]
       
@@ -680,7 +680,7 @@
            "name": "белый",
            "code": "white",
            "image": "corner-sofa-bed-manchester.jpg",
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -695,7 +695,7 @@
            "name": "белый",
            "code": "white",
            "image": "bed_aphla.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -710,7 +710,7 @@
            "name": "белый",
            "code": "white",
            "image": "bedside-table-tokyo.jpg", 
-           "count": 8
+           "quantity": 8
         }
      ]
     },
@@ -725,7 +725,7 @@
            "name": "белый",
            "code": "white",
            "image": "chair_scandica.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -740,7 +740,7 @@
            "name": "белый",
            "code": "white",
            "image": "airmchair_gaudi.jpg", 
-           "count": 10
+           "quantity": 10
         }
      ]
     },
@@ -755,7 +755,7 @@
            "name": "белый",
            "code": "white",
            "image": "barchair_ostin.jpg", 
-           "count": 19
+           "quantity": 19
         }
      ]
     },
@@ -770,7 +770,7 @@
            "name": "белый",
            "code": "white",
            "image": "table-book-STK-6VM.jpg", 
-           "count": 18
+           "quantity": 18
         }
      ]
     },
@@ -785,7 +785,7 @@
            "name": "белый",
            "code": "white",
            "image": "sofa_scandica.jpg", 
-           "count": 18
+           "quantity": 18
         }
      ]
     },
@@ -800,7 +800,7 @@
            "name": "белый",
            "code": "white",
            "image": "sofa_coma.jpg", 
-           "count": 19 
+           "quantity": 19 
         }
      ]
     },
@@ -815,7 +815,7 @@
            "name": "белый",
            "code": "white",
            "image": "table_polaris.webp", 
-           "count": 19
+           "quantity": 19
         }
      ]
     },
@@ -830,19 +830,19 @@
            "name": "белый",
            "code": "white",
            "image": "table_bruklin.jpg", 
-           "count": 14
+           "quantity": 14
         }, 
         {
           "name": "серый",
           "code": "gray",
           "image": "table_bruklin_gray.jpg", 
-          "count": 19
+          "quantity": 19
        }, 
        {
         "name": "черный",
         "code": "black",
         "image": "table_bruklin_black.jpg", 
-        "count": 15
+        "quantity": 15
      }
      ]
     },
@@ -857,7 +857,7 @@
            "name": "белый",
            "code": "white",
            "image": "comod_scandica_vendela.jpg", 
-           "count": 1
+           "quantity": 1
         }
      ]
     },
@@ -872,7 +872,7 @@
            "name": "белый",
            "code": "white",
            "image": "table_promo_type4.jpg", 
-           "count": 16
+           "quantity": 16
         }
      ]
     },
@@ -887,7 +887,7 @@
            "name": "белый",
            "code": "white",
            "image": "edside-table-scandica-vendela.jpg", 
-           "count": 15
+           "quantity": 15
         }
      ]
     },
@@ -902,7 +902,7 @@
            "name": "белый",
            "code": "white",
            "image": "chair_kokong.webp", 
-           "count": 25
+           "quantity": 25
         }
      ]
     }
