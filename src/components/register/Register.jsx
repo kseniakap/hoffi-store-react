@@ -28,7 +28,7 @@ const Register = () => {
               <h2>{t('accountPage.register.title')}</h2>
               <div className={st.register_inputs}>
                 <input
-                  {...register('login')}
+                  {...register('name')}
                   type="text"
                   placeholder={t('accountPage.register.inputName')}
                   required

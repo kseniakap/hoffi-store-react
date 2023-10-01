@@ -11,14 +11,13 @@ export const Context = (props) => {
   const [error, setError] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
   const [imgChoose, setImgChoose] = useState(null);
-  const [isDisable, setIsDisable] = useState(false);
-  // если товара выбрано больше, чем доступно
+
   const [colorName, setColorName] = useState("");
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-
+  const [ticket, setTicket] = useState([]); //купон
   const navigate = useNavigate();
 
   const AddCart = (good) => {
@@ -34,7 +33,6 @@ export const Context = (props) => {
             if (newTotalCount <= maxQuantity) {
               return { ...item, count: newTotalCount };
             } else {
-              setIsDisable(true)
               return { ...item, count: maxQuantity };
             }
           } else {
@@ -135,8 +133,11 @@ export const Context = (props) => {
     colorName,
     setColorName,
 
-    isDisable,
-    setIsDisable,
+    ticket,
+    setTicket,
+
+    // isDisable,
+    // setIsDisable,
   };
 
   return (

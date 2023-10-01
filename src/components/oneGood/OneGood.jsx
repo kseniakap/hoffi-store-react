@@ -22,19 +22,19 @@ const OneGood = ({ list }) => {
     setImgChoose,
     colorName,
     setColorName,
-    isDisable,
-    setIsDisable,
   } = useContext(CustomContext)
 
   const { name, description, price, category, newPrice, colors } = good
   const [count, setCount] = useState(1)
   const [quantityGoods, setQuantityGoods] = useState(0) //доступное количество товара
+  const [isDisable, setIsDisable] = useState(false)
 
   useEffect(() => {
     axios(`http://localhost:3001/goods/${params.id}`)
       .then(({ data }) => {
         setGood(data)
         setImgChoose(data.colors[0].image)
+        setColorChoose(data.colors[0].code)
         setColorName(data.colors[0].name)
         setQuantityGoods(data.colors[0].quantity)
       })
@@ -111,7 +111,7 @@ const OneGood = ({ list }) => {
                       <li
                         key={item.code}
                         className={`${st.color} ${
-                          item === colorChoose ? st.active : ''
+                          item.code === colorChoose ? st.active : ''
                         }`}
                         onClick={() => chooseColor(item)}
                         style={{

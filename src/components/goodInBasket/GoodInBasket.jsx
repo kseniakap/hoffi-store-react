@@ -1,28 +1,58 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CustomContext } from './../../Context'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 import './../../style/style.scss'
 import st from './GoodInBasket.module.scss'
 
+//логика страницы заказа
 const GoodInBasket = () => {
-  const { cart, deleteCart, setCart, setIsDisable } = useContext(CustomContext)
-
+  const { cart, deleteCart, setCart, ticket, setTicket } = useContext(
+    CustomContext,
+  )
   const [totalPrice, setTotalPrice] = useState(0)
 
+  const [showMessage, setShowMessage] = useState(false)
+
+  const getAllTickets = (e) => {
+    e.preventDefault()
+    axios(`http://localhost:3001/tickets?title=${e.target[0].value}`).then(
+      ({ data }) => {
+        setTicket(data)
+        if (!Array.isArray(data) || data.length === 0) {
+          setShowMessage(true)
+          setTimeout(() => {
+            setShowMessage(false)
+          }, 4000)
+        }
+      },
+    )
+  }
+  const handleCouponInputChange = () => {
+    setShowMessage(false)
+  }
   useEffect(() => {
     const newTotalPrice = cart.reduce((acc, item) => {
-      const { price, count } = item
-      return acc + price * count
+      const itemTotal = item.price * item.count
+      if (ticket.length) {
+        const discount = (itemTotal / 100) * ticket[0].procent
+        return acc + itemTotal - discount
+      }
+      return acc + itemTotal
     }, 0)
+
     setTotalPrice(newTotalPrice)
-  }, [cart])
+  }, [cart, ticket])
 
   const handleIncrease = (item) => {
+    console.log(item)
     const updatedCart = [...cart]
     const index = updatedCart.findIndex(
       (el) => el.id === item.id && el.colors === item.colors,
     )
 
-    const maxCount = item.colors.quantity
+    const maxCount = item.quantity
+    console.log(maxCount)
     if (index !== -1 && updatedCart[index].count < maxCount) {
       updatedCart[index].count += 1
       setCart(updatedCart)
@@ -44,7 +74,6 @@ const GoodInBasket = () => {
 
   return (
     <>
-      <h2 className="title">Корзина</h2>
       <div className={st.name_columns}>
         <p>Товар</p>
         <p>Цена</p>
@@ -57,8 +86,9 @@ const GoodInBasket = () => {
         <>
           <div className={st.wrapper}>
             {cart.map((item, idx) => {
-              const { id, name, price, image, colors, count } = item
+              const { id, name, price, image, colors, count, quantity } = item
               const res = price * count
+              const isDisable = count >= quantity
               return (
                 <div className={st.item} key={idx}>
                   <div
@@ -88,6 +118,10 @@ const GoodInBasket = () => {
                     <button
                       className={st.btn}
                       onClick={() => handleIncrease(item)}
+                      style={{
+                        backgroundColor: isDisable ? 'rgba(0,0,0,.1)' : '',
+                        cursor: isDisable ? 'auto' : '',
+                      }}
                     >
                       <span>+</span>
                     </button>
@@ -99,22 +133,58 @@ const GoodInBasket = () => {
             })}
           </div>
           <hr />
-          <div className={st.sum}>
-            <span>Доставка:</span>
-            <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
-            <div className={st.result}>
-              <span> Итого:</span>
-              <span style={{ color: totalPrice > 50000 ? 'green' : 'black' }}>
-                {totalPrice.toString().slice(0, -3) +
-                  ' ' +
-                  totalPrice.toString().slice(-3)}{' '}
-                ₽
-              </span>
+          <div className={st.res}>
+            <div className={st.sum}>
+              <span>Доставка:</span>
+              <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
+              <div className={st.result}>
+                <span> Итого:</span>
+                <span style={{ color: totalPrice > 50000 ? 'green' : 'black' }}>
+                  {Math.round(totalPrice).toString().slice(0, -3) +
+                    ' ' +
+                    Math.round(totalPrice).toString().slice(-3)}{' '}
+                  ₽
+                </span>
+              </div>
             </div>
+            <Link to="/finish">
+              <button className={`${st.btn_orange} ${st.btn_top}`}>
+                Оформить заказ
+              </button>
+            </Link>
+          </div>
+          <div className={st.ticket}>
+            <form onSubmit={getAllTickets}>
+              <input
+                onChange={handleCouponInputChange}
+                type="text"
+                placeholder="Введите названию купона"
+              />
+              <button className={st.btn_orange}>Применить</button>
+            </form>
+
+            {Array.isArray(ticket) && ticket.length ? (
+              <p>
+                По данному промокоду вы получаете скидку в размере{' '}
+                {ticket[0].procent} %
+              </p>
+            ) : (
+              <p>*Введите ключевое слово "Hoffi" и вы получите скидку в 10 %</p>
+            )}
+            {showMessage ? <p>Такого промокода не существует</p> : null}
           </div>
         </>
       ) : (
-        <p>Ваша корзина пуста</p>
+        <div>
+          <p className={st.empty}>Корзина пуста</p>
+          <p className={st.text}>
+            Купите комплекст из{' '}
+            <Link to="/onegood/43">журнального стола Бруклин</Link> и стула
+            <Link to="/onegood/32"> Белен</Link> в сентябре, и вы получите в
+            подарок
+            <Link to="/onegood/29"> каркас кровати Бланка</Link>
+          </p>
+        </div>
       )}
     </>
   )

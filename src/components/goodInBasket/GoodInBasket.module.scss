@@ -72,6 +72,27 @@
   font-size: 15px;
   margin-bottom: 10px;
 }
+.res {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  &_orange {
+    padding: 5px 10px;
+    background-color: $accent-color;
+    color: #fff;
+    border-radius: 5px;
+    transition: $transition;
+    cursor: pointer;
+    &:hover {
+      background-color: $btn-hover;
+    }
+  }
+  &_top {
+    margin-top: 20px;
+    padding: 10px 30px;
+  }
+}
 .sum {
   margin-top: 10px;
   span {
@@ -85,4 +106,39 @@
   align-items: end;
   gap: 7px;
   margin-bottom: 15px;
+}
+.ticket {
+  form {
+    margin-bottom: 10px;
+  }
+  input {
+    padding: 5px 10px 5px 0;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-right: 10px;
+    outline: none;
+    font-size: 18px;
+  }
+
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+.empty {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.text {
+  font-size: 14px;
+  a {
+    color: $main-color;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover,
+    &:active {
+      color: #000;
+    }
+  }
 }

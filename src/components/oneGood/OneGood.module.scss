@@ -63,6 +63,7 @@
   height: 30px;
   border-radius: 100%;
   transition: $translow;
+  position: relative;
   cursor: pointer;
 
   &:hover {
@@ -71,6 +72,15 @@
 }
 .active {
   transform: scale(1.2);
+  &:before {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    transform: rotate(10deg) translate(-63%, -45%);
+    color: black;
+  }
 }
 .otherGood {
   margin-bottom: 100px;

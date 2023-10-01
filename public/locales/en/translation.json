@@ -91,7 +91,7 @@
         },
         "register":{
             "title":"Registration",
-            "inputName":"Enter your username",
+            "inputName":"Enter your name",
             "inputEmail":"Enter email",
             "inputPhone":"Enter your phone number",
             "inputPassword":"Enter the password",

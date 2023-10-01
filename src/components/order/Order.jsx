@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 import st from './Order.module.scss'
 
 const Order = ({ item }) => {
-  const { deleteCart,  isDisable, setIsDisable } = useContext(CustomContext)
+  const { deleteCart } = useContext(CustomContext)
   const { id, name, price, colors, count, image } = item
   const [countGoods, setCountGoods] = useState(count)
+  const [isDisable, setIsDisable] = useState(false)
 
   const s = String(price)
 
@@ -55,7 +56,7 @@ const Order = ({ item }) => {
               className={st.btn}
               onClick={handleIncrease}
               style={{
-                backgroundColor: isDisable ? 'rgba(0,0,0,.2)' : '',
+                backgroundColor: isDisable ? 'rgba(0,0,0,.1)' : '',
                 cursor: isDisable ? 'auto' : '',
               }}
             >

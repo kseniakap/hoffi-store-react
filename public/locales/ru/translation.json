@@ -92,7 +92,7 @@
         },
         "register":{
             "title":"Регистрация",
-            "inputName":"Введите логин",
+            "inputName":"Введите свое имя",
             "inputEmail":"Введите email",
             "inputPhone":"Введите телефон",
             "inputPassword":"Введите пароль",

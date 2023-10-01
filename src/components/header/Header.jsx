@@ -10,20 +10,14 @@ import IMAGES from '../../assets/img'
 import './../../style/style.scss'
 import st from './Header.module.scss'
 
-const Header = ({ order,
-  //  setOrder,
-  //   deleteOrder, 
-  //   numberOfOrder
-   }) => {
+const Header = ({ order }) => {
   const { user, logOutUser, cardOpen, setCardOpen } = useContext(CustomContext)
   const { t, i18n } = useTranslation()
   const currentLanguage = i18n.language
 
-
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang)
   }
-
 
   return (
     <header>
@@ -69,11 +63,7 @@ const Header = ({ order,
               />
             </nav>
           </div>
-        <OrderList  order={order}
-        //  setOrder={setOrder}
-        //   deleteOrder={deleteOrder} 
-        //   numberOfOrder={numberOfOrder}
-          />
+          <OrderList order={order} />
           <div className={st.language}>
             <button
               type="button"
