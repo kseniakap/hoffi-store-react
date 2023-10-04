@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import st from './Opinion.module.scss'
 import OpinionItem from '../opinionItem/OpinionItem'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import IMAGES from '../../assets/img'
 
 const Opinions = () => {

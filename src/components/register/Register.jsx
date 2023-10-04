@@ -41,7 +41,7 @@ const Register = () => {
                 />
                 <InputMask
                   {...register('tel')}
-                  mask={t('accountPage.login.loginMask')} // Укажите маску для телефона
+                  mask={t('accountPage.login.loginMask')} 
                   placeholder={t('accountPage.register.inputPhone')}
                   required
                 />

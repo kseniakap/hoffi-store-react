@@ -6,7 +6,7 @@
             "link3": "Товары",
             "link4": "Наша команда",
             "link5": "Контакты",
-            "link6": "Кабинет",
+            "link6": "Аккаунт",
             "loginIn":"Войти",
             "logOut":"Выйти"   
 
@@ -70,7 +70,13 @@
             "eightCategory":"Кровать",
             "nineCategory":"Шкаф",
             "tenCategory":"Пуф"
-        }
+        },
+        "outOfStock":"Нет в наличии",
+        "ascending":"По возрастанию",
+        "descending":"По убыванию ",
+        "shown" :"Показано:",
+        "outOf":"из",
+        "products":"товаров"
     },
     "ourTeamPage":{
         "headerTitle":"Наша команда",
@@ -110,7 +116,15 @@
         "containNum":"Пароль должен содержать хотя бы одну цифру",
         "passwordMatch":""
  
- 
+    },
+    "OrderList":{
+        "delivery":"Доставка:",
+        "free": "Бесплатно при заказе от 50 000 ₽",
+        "total":"Итого:",
+        "logIn":"Зайдите в аккаунт",
+        "placeAnOrder":" Оформить заказ"
+
+
     }
 }
 

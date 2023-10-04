@@ -71,18 +71,22 @@ const GoodsPage = ({
           }}
         >
           <div style={{ marginBottom: "30px" }}>
-            Показано: {filteredListByCategory.length} из{" "}
-            {filterListByCountPage.length} товаров
+            {t("goodsPage.shown")} {filteredListByCategory.length}{" "}
+            <span>
+              {" "}
+              {t("goodsPage.outOf")} {filterListByCountPage.length}{" "}
+            </span>
+            {t("goodsPage.products")}
           </div>
           <div className="btnSort">
             <button className={isActive("big")} onClick={() => setSort("big")}>
-              По возрастанию
+              {t("goodsPage.ascending")}
             </button>
             <button
               className={isActive("less")}
               onClick={() => setSort("less")}
             >
-              По убыванию
+              {t("goodsPage.descending")}
             </button>
           </div>
         </div>

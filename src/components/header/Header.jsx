@@ -36,15 +36,16 @@ const Header = ({ order }) => {
                   </CustomNavLink>
                 </li>
                 <li>
-                  <CustomNavLink to="/about">
-                    {t('homePage.headerMenu.link2')}
-                  </CustomNavLink>
-                </li>
-                <li>
                   <CustomNavLink to="/goods">
                     {t('homePage.headerMenu.link3')}
                   </CustomNavLink>
                 </li>
+                <li>
+                  <CustomNavLink to="/about">
+                    {t('homePage.headerMenu.link2')}
+                  </CustomNavLink>
+                </li>
+
                 <li>
                   <CustomNavLink to="/team">
                     {t('homePage.headerMenu.link4')}
@@ -84,7 +85,7 @@ const Header = ({ order }) => {
             </button>
           </div>
           <div className={st.entranceExit}>
-            {user && user.login && user.login.length ? (
+            {user && user.name && user.name.length ? (
               <Link to="/" onClick={() => logOutUser()}>
                 {t('homePage.headerMenu.logOut')}
               </Link>

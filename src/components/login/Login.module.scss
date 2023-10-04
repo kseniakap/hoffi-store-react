@@ -32,31 +32,6 @@
       letter-spacing: 0.22px;
       outline: none;
     }
-    button {
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      padding: 26px 54px;
-      border-radius: 18px;
-      border: none;
-      background: #292f36;
-      box-shadow: 0px 10px 20px 0px rgba(192, 192, 192, 0.35);
-      color: #fff;
-      text-align: center;
-      font-family: Jost;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 125%; /* 22.5px */
-      letter-spacing: 0.36px;
-      margin-bottom: 20px;
-      transition: $transition;
-      &:hover {
-        background-color: $accent-color;
-      }
-    }
   }
   &_inputs {
     display: flex;
@@ -79,10 +54,38 @@
     }
   }
 }
+.form {
+  button {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 26px 54px;
+    border-radius: 18px;
+    border: none;
+    background: #292f36;
+    box-shadow: 0px 10px 20px 0px rgba(192, 192, 192, 0.35);
+    color: #fff;
+    text-align: center;
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 22.5px */
+    letter-spacing: 0.36px;
+    margin-bottom: 20px;
+    transition: $transition;
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+}
 .text {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 40px;
   p {
     color: #4d5053;
     text-align: center;
@@ -92,5 +95,50 @@
     font-weight: 400;
     line-height: 150%; /* 33px */
     letter-spacing: 0.22px;
+  }
+}
+.changeBtn {
+  padding: 20px 30px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  background-color: $accent-color;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-hover;
+  }
+}
+
+.personalData {
+  border: 1px $main-color solid;
+  padding: 30px;
+  border-radius: 10px;
+  width: max-content;
+  min-height: 250px;
+}
+.wrapper {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.subtitle {
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+.name {
+  input {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $main-color;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+  span {
+    font-weight: 600;
   }
 }

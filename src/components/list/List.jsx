@@ -4,9 +4,11 @@ import ItemServices from './../../services/ItemServices'
 import IMAGES from '../../assets/img'
 import st from './List.module.scss'
 
-const List = ({ 
+const List = ({
   // addToOrder,
-   list, setList }) => {
+  list,
+  setList,
+}) => {
   const [newItemLoading, setNewItemLoading] = useState(false)
   const { loading, error, getAllItems } = ItemServices()
 
@@ -22,14 +24,11 @@ const List = ({
   const onListItemLoaded = (newcharList) => {
     setList(newcharList)
     setNewItemLoading(false)
-    // console.log(list)
   }
 
   function renderItems(arr) {
     const items = arr.map((item) => {
-      return <Item key={item.id} list={item} 
-      // addToOrder={addToOrder} 
-      />
+      return <Item key={item.id} list={item} />
     })
     return <div className={st.main}>{items}</div>
   }

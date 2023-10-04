@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 import emailImg from './email.svg'
 import telImg from './tel.svg'
 import siteImg from './site.svg'
@@ -27,9 +29,12 @@ const TeamMember = () => {
       <div className="container">
         <div className={st.member__wrapper}>
           <div className={st.member__img}>
-            <img
+            <LazyLoadImage
               src={`${process.env.PUBLIC_URL}/img/members/${img}`}
               alt={name}
+              effect="blur"
+              width="100%"
+              height="100%"
             />
           </div>
           <div className={st.member__content}>

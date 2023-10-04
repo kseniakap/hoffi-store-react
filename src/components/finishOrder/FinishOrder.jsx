@@ -3,15 +3,17 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { CustomContext } from '../../Context'
 import axios from 'axios'
-import { useNavigate } from 'react-router'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 import ICONS from '../../assets/icons'
 import st from './FinishOrder.module.scss'
 
 const FinishOrder = () => {
-  const { cart, setCart, ticket, user } = useContext(CustomContext)
+  const { cart, setCart, ticket, setTicket, user, setUser } = useContext(
+    CustomContext,
+  )
   const { reset, register, handleSubmit } = useForm()
   const [isSendOrder, setIsSendOrder] = useState(false)
-  const navigate = useNavigate()
   //расчет всей стоимости (с учетом промокода)
   const totalPrice =
     Array.isArray(ticket) && ticket.length
@@ -28,17 +30,37 @@ const FinishOrder = () => {
         ...data,
         goods: cart,
         totalPrice: totalPrice,
-        user: user,
+        date: new Date(),
       })
       await axios.patch(`http://localhost:3001/users/${user.id}`, {
-        orders: {
-          goods: cart,
-          totalPrice: totalPrice,
-        },
+        orders: [
+          ...user.orders,
+          {
+            goods: cart,
+            totalPrice: totalPrice,
+            date: new Date(),
+          },
+        ],
       })
-      reset()
-      setCart([])
-      setIsSendOrder(true)
+
+      await axios(`http://localhost:3001/users/${user.id}`).then((res) =>
+        setUser(res.data),
+      )
+
+      Array.isArray(ticket) && ticket.length && ticket[0].count > 1
+        ? axios
+            .patch(`http://localhost:3001/tickets/${ticket[0].id}`, {
+              count: ticket[0].quality - 1,
+            })
+            .then(() => console.log(''))
+        : ticket[0].count === 1
+        ? axios.delete(`http://localhost:3001/tickets/${ticket[0].id}`)
+        : console.log('Возникла ошибка')
+
+      await reset()
+      await setCart([])
+      await setIsSendOrder(true)
+      await setTicket([])
     } catch (error) {
       console.error('Возникла ошибка при отправки данных:', error)
     }
@@ -71,9 +93,10 @@ const FinishOrder = () => {
                   <ul key={idx} className={st.table_bottom}>
                     <li className={st.name}>
                       <div className={st.image}>
-                        <img
+                        <LazyLoadImage
                           src={`${process.env.PUBLIC_URL}/img/${image}`}
                           alt={name}
+                          effect="blur"
                         />
                       </div>
                       {name}
@@ -88,26 +111,29 @@ const FinishOrder = () => {
         )}
 
         <form className={st.forms} onSubmit={handleSubmit(sendOrder)}>
-          <div className={st.form_user}>
+          <div className={st.forms_users}>
             <h2 className={st.title}>Ваши данные</h2>
             <input
               {...register('name')}
               type="text"
               placeholder="Имя"
-              defaultValue={user.name || ''}
+              value={user.name || ''}
+              disabled
             />
             <input
               {...register('email')}
               type="email"
               placeholder="Email"
-              defaultValue={user.email || ''}
+              value={user.email || ''}
+              disabled
             />
             <input
               {...register('tel')}
               className={st.forms_tel}
               type="tel"
               placeholder="Телефон"
-              defaultValue={user.tel || ''}
+              value={user.tel || ''}
+              disabled
             />
           </div>
           <div className={st.adress}>
@@ -123,7 +149,18 @@ const FinishOrder = () => {
               placeholder="Уточнения по адресу"
             />
           </div>
-          <button type="submit">Заказать</button>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: isSendOrder
+                ? ' rgba(205, 162, 116, 0.5)'
+                : ' rgb(205, 162, 116)',
+              cursor: isSendOrder ? 'auto' : 'pointer',
+            }}
+            disabled={isSendOrder}
+          >
+            Заказать
+          </button>
         </form>
       </section>
       {isSendOrder ? null : (

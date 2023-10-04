@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CustomContext } from './../../Context'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+
 import './../../style/style.scss'
 import st from './GoodInBasket.module.scss'
 
@@ -99,9 +102,10 @@ const GoodInBasket = () => {
                   </div>
                   <div className={st.block}>
                     <div className={st.img}>
-                      <img
+                      <LazyLoadImage
                         src={`${process.env.PUBLIC_URL}/img/${image}`}
                         alt="фото заказа"
+                        effect="blur"
                       />
                     </div>
                     <p>{name}</p>

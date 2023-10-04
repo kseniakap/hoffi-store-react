@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useEffect } from 'react'
 import { CustomContext } from '../../Context'
+import { useTranslation } from 'react-i18next'
 import Order from '../order/Order'
 import { fadeIn } from 'react-animations'
 import Radium, { StyleRoot } from 'radium'
@@ -8,10 +9,11 @@ import './../../style/style.scss'
 import st from './OrderList.module.scss'
 
 const OrderList = () => {
-  const { cardOpen, setCardOpen, isAddToCartClicked, cart } = useContext(
+  const { user, cardOpen, setCardOpen, isAddToCartClicked, cart } = useContext(
     CustomContext,
   )
   const orderRef = useRef(null)
+  const { t } = useTranslation()
 
   const styles = {
     fadeIn: {
@@ -45,21 +47,31 @@ const OrderList = () => {
       <div className={st.shop__list}>
         {order && order.map((el, idx) => <Order key={idx} item={el} />)}
         <div className={st.sum}>
-          <span>Доставка:</span>
-          <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
+          <span>{t('OrderList.delivery')}:</span>
+          <p className={st.delivery}>{t('OrderList.free')}</p>
           <div className={st.result}>
-            <span> Итого:</span>
+            <span>{t('OrderList.total')}</span>
             <span style={{ color: sum > 50000 ? 'green' : 'black' }}>
               {sum.toString().slice(0, -3) + ' ' + sum.toString().slice(-3)} ₽
             </span>
           </div>
-          <Link
-            to="/order"
-            className={st.orderLink}
-            onClick={() => setCardOpen(false)}
-          >
-            Оформить заказ
-          </Link>
+          {user && user.name ? (
+            <Link
+              to="/order"
+              className={st.orderLink}
+              onClick={() => setCardOpen(false)}
+            >
+              {t('OrderList.placeAnOrder')}
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className={st.orderLink}
+              onClick={() => setCardOpen(false)}
+            >
+              {t('OrderList.logIn')}
+            </Link>
+          )}
         </div>
       </div>
     )

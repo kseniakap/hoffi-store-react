@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { CustomContext } from '../../Context'
 import { useTranslation } from 'react-i18next'
 import { fadeIn } from 'react-animations'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 import Radium, { StyleRoot } from 'radium'
 import ICONS from './../../assets/icons'
 import IMAGES from './../../assets/img'
@@ -22,10 +24,13 @@ const Main = () => {
     <>
       <StyleRoot>
         <div className={st.mainImg}>
-          <img
+          <LazyLoadImage
             style={styles.fadeIn}
             src={IMAGES.presentationImg}
             alt="изобрашение в шапке сайта"
+            effect="blur"
+            height={600}
+            width="100%"
           />
         </div>
       </StyleRoot>
@@ -93,7 +98,11 @@ const Main = () => {
               ></p>
               <div className={st.tel}>
                 <a href="tel:89103022000" className={st.imgTel}>
-                  <img src={ICONS.imgTel} alt="картинка телефона" />
+                  <LazyLoadImage
+                    src={ICONS.imgTel}
+                    alt="картинка телефона"
+                    effect="blur"
+                  />
                 </a>
                 <div className={st.telNum}>
                   <span>
@@ -105,18 +114,43 @@ const Main = () => {
                 </div>
               </div>
             </div>
-            <img className={st.img} src={IMAGES.interiorPhoto} alt="about us" />
+            <LazyLoadImage
+              className={st.img}
+              src={IMAGES.interiorPhoto}
+              alt="about us"
+              effect="blur"
+            />
           </div>
         </div>
       </section>
       <section className={st.brand}>
         <div className="container">
           <div className={st.brandWrapper}>
-            <img src={ICONS.iconHome} alt="брэнд Home" />
-            <img src={ICONS.iconStyleVintage} alt="брэнд StyleVintage" />
-            <img src={ICONS.iconBrand} alt="брэнд Brand" />
-            <img src={ICONS.iconNatureHome} alt="брэнд NatureHome" />
-            <img src={ICONS.iconClassic} alt="брэнд Classic" />
+            <LazyLoadImage
+              src={ICONS.iconHome}
+              alt="брэнд Home"
+              effect="blur"
+            />
+            <LazyLoadImage
+              src={ICONS.iconStyleVintage}
+              alt="брэнд StyleVintage"
+              effect="blur"
+            />
+            <LazyLoadImage
+              src={ICONS.iconBrand}
+              alt="брэнд Brand"
+              effect="blur"
+            />
+            <LazyLoadImage
+              src={ICONS.iconNatureHome}
+              alt="брэнд NatureHome"
+              effect="blur"
+            />
+            <LazyLoadImage
+              src={ICONS.iconClassic}
+              alt="брэнд Classic"
+              effect="blur"
+            />
           </div>
         </div>
       </section>

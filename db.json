@@ -1,16 +1,40 @@
 {
   "users": [
     {
-      "email": "kapurinaksenia@gmail.com",
+      "email": "kapurina@gmail.com",
       "password": "$2a$10$.EcJFyK5eHG0F5JJXKq28.mS672arsqdr/bZ/vy7POIn5k.s1CKPW",
-      "name": "Ksenia Kapurina",
-      "tel": "+7 (179) 543-45-22",
+      "name": "Ксения Капурина",
+      "tel": "+7 (179) 000-00-00",
       "confirmPassword": "1234",
       "orders": [],
       "id": 1
+    },
+    {
+      "email": "sonyasmirnova@gmail.com",
+      "password": "$2a$10$590CbxSTrOcsQWUE4IE6f.rjpBBl1j9Y1Tmw1KYiQTis8sHkIcAbG",
+      "name": "Соня Смирнова",
+      "tel": "+7 (974) 623-28-73",
+      "confirmPassword": "1234",
+      "orders": [],
+      "id": 2
     }
   ],
-  "orders": [],
+  "tickets": [
+    {
+      "id": 2,
+      "title": "Hoffi",
+      "procent": 10,
+      "quality": 20,
+      "count": 9
+    },
+    {
+      "id": 2,
+      "title": "Hoffi-magic",
+      "procent": 15,
+      "quality": 10,
+      "count": 9
+    }
+  ],
   "members": [
     {
       "id": "1",
@@ -93,20 +117,7 @@
       "linkSite": "www.alekseivinogradov.com"
     }
   ],
-  "tickets": [
-    {
-      "id": 1,
-      "title": "Hoffi",
-      "procent": 10,
-      "quantity": 10
-    },
-    {
-      "id": 2,
-      "title": "Hoffi-magic",
-      "procent": 15,
-      "quantity": 5
-    }
-  ],
+  "orders": [],
   "goods": [
     {
       "id": 1,
@@ -595,6 +606,12 @@
           "code": "white",
           "image": "chair_toleto.webp",
           "quantity": 11
+        },
+        {
+          "name": "кремовый",
+          "code": "linen",
+          "image": "chair_toleto_ivory.webp",
+          "quantity": 19
         }
       ]
     },
@@ -903,6 +920,108 @@
           "name": "белый",
           "code": "white",
           "image": "chair_kokong.webp",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Шкаф детский Оскар мини",
+      "description": null,
+      "price": 10712,
+      "category": "press",
+      "colors": [
+        {
+          "name": "белый",
+          "code": "white",
+          "image": "table_2doors_oskar.jpg",
+          "quantity": 20
+        },
+        {
+          "name": "серый",
+          "code": "gray",
+          "image": "table_2doors_oskar_gray.jpg",
+          "quantity": 18
+        },
+        {
+          "name": "дуб",
+          "code": "BurlyWood",
+          "image": "table_2doors_oskar_brown.jpg",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Пуф Мадлен",
+      "description": "Многофункциональность и декоративность — отличное сочетание качеств, которое присуще пуфу Мадлен. В зависимости от обстоятельств он может выполнять разные задачи: в гостиной послужит дополнительным местом для сидения или удобной подставкой для ног, в прихожей заменит скамейку для переобувания, в спальне — дополнит туалетный столик.",
+      "price": 2599,
+      "category": "puff",
+      "colors": [
+        {
+          "name": "светло-белый",
+          "code": "LightGray",
+          "image": "puff_madlen_white.jpg",
+          "quantity": 9
+        },
+        {
+          "name": "коричневый",
+          "code": "BurlyWood",
+          "image": "puff_madlen.jpg",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Пуф Ника",
+      "description": null,
+      "price": 2999,
+      "category": "puff",
+      "colors": [
+        {
+          "name": "бежевый",
+          "code": "AntiqueWhite",
+          "image": "puff_nika_white.jpg",
+          "quantity": 3
+        },
+        {
+          "name": "мокко",
+          "code": "BurlyWood",
+          "image": "puff_nika_moko.jpg",
+          "quantity": 6
+        },
+        {
+          "name": "серый",
+          "code": "DarkGray",
+          "image": "puff_nika_gray.jpg",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "name": "Пуф круглый Garda ",
+      "description": null,
+      "price": 3999,
+      "category": "puff",
+      "colors": [
+        {
+          "name": "белый",
+          "code": "white",
+          "image": "puff_carda_white.jpg",
+          "quantity": 17
+        },
+        {
+          "name": "серый",
+          "code": "gray",
+          "image": "puff_carda_gray.jpg",
+          "quantity": 7
+        },
+        {
+          "name": "бежевый",
+          "code": "AntiqueWhite",
+          "image": "puff_carda_beige.jpg",
           "quantity": 25
         }
       ]

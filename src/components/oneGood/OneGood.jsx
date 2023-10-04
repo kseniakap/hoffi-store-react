@@ -5,10 +5,13 @@ import { CustomContext } from '../../Context'
 import ICONS from './../../assets/icons'
 import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
-import './../../style/style.scss'
-import st from './OneGood.module.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
+import './../../style/style.scss'
+import st from './OneGood.module.scss'
 
 const OneGood = ({ list }) => {
   const params = useParams()
@@ -51,6 +54,13 @@ const OneGood = ({ list }) => {
     setIsDisable(false)
   }
 
+  useEffect(() => {
+    const filteredItems = list.filter(
+      (item) => item.id !== good.id && item.category === category,
+    )
+    console.log('Filtered Items:', filteredItems)
+  }, [list, good, category])
+
   var settings = {
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
@@ -67,9 +77,10 @@ const OneGood = ({ list }) => {
         <div className="container">
           <div className={st.oneGood__wrapper}>
             <div className={st.oneGood__img}>
-              <img
+              <LazyLoadImage
                 src={`${process.env.PUBLIC_URL}/img/${imgChoose}`}
                 alt={name}
+                effect="blur"
               />
             </div>
             <div className={st.oneGood__info}>
@@ -104,7 +115,8 @@ const OneGood = ({ list }) => {
                     const borderColor =
                       item.code === 'white' ||
                       item.code === 'ivory' ||
-                      item.code === 'beige'
+                      item.code === 'beige' ||
+                      item.code === 'linen'
                         ? '0.5px solid #000'
                         : ''
                     return (
@@ -164,7 +176,7 @@ const OneGood = ({ list }) => {
         <div className="container">
           <h2 className={st.otherGood__title}>Похожие товары</h2>
           <div className={st.otherGood__container}>
-            {list.length > 0 && (
+            {list.length > 2 && (
               <Slider {...settings}>
                 {list
                   .filter(
@@ -185,10 +197,11 @@ const OneGood = ({ list }) => {
                         className={st.item}
                         key={item.id}
                       >
-                        <img
+                        <LazyLoadImage
                           className={st.img}
                           src={`${process.env.PUBLIC_URL}/img/${firstColorImage}`}
                           alt={name}
+                          effect="blur"
                         />
                         <div className={st.content}>
                           <h2 className={st.name}>{name}</h2>

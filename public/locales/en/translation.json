@@ -69,7 +69,13 @@
             "eightCategory":"Bed",
             "nineCategory":"Wardrobe",
             "tenCategory":"Stool"
-        }
+        },
+        "outOfStock":"Out of stock",
+        "ascending":"Ascending",
+        "descending":"Descending ",
+        "shown" :"Shown:",
+        "outOf":"out of",
+        "products":"products"
     },
     "ourTeamPage":{
         "headerTitle":"Our team", 
@@ -108,6 +114,12 @@
         "containLetter":"The password must contain no more than 20 characters",
         "containNum":"The password must contain at least one number",
         "passwordMatch":""
+    },
+    "OrderList":{
+        "delivery":"Delivery:",
+        "free": "Free of charge when ordering from 1 000 $",
+        "total":"Total:",
+        "logIn":"Log in to your account",
+        "placeAnOrder":"Place an order"
     }
 }
-

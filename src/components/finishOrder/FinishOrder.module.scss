@@ -77,11 +77,6 @@ hr {
   border-radius: 10px;
   background-color: $main-color;
   min-height: 300px;
-
-  &_users {
-    display: flex;
-    gap: 10px;
-  }
   &_tel {
     margin-bottom: 40px;
   }
@@ -93,7 +88,7 @@ hr {
     outline: none;
     padding: 10px 10px 5px 10px;
     &::placeholder {
-      color: rgba(0, 0, 0, 0.4);
+      color: rgba(0, 0, 0, 0.6);
     }
   }
   textarea {
@@ -101,6 +96,11 @@ hr {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    // background-color: transparent;
+    outline: none;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.6);
+    }
   }
   button {
     padding: 10px 30px;
