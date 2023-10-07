@@ -1,22 +1,13 @@
 {
   "users": [
     {
-      "email": "kapurina@gmail.com",
-      "password": "$2a$10$.EcJFyK5eHG0F5JJXKq28.mS672arsqdr/bZ/vy7POIn5k.s1CKPW",
-      "name": "Ксения Капурина",
-      "tel": "+7 (179) 000-00-00",
+      "email": "sonyasmirnova@gmail.com",
+      "password": "$2a$10$2v1e9LKv2kqEq/RMs3QZHedjmvxk9pRvZ1DfNV7ufrKq0UXu0/nza",
+      "name": "Sonya",
+      "tel": "+7 (953) 545-72-72",
       "confirmPassword": "1234",
       "orders": [],
       "id": 1
-    },
-    {
-      "email": "sonyasmirnova@gmail.com",
-      "password": "$2a$10$590CbxSTrOcsQWUE4IE6f.rjpBBl1j9Y1Tmw1KYiQTis8sHkIcAbG",
-      "name": "Соня Смирнова",
-      "tel": "+7 (974) 623-28-73",
-      "confirmPassword": "1234",
-      "orders": [],
-      "id": 2
     }
   ],
   "tickets": [
