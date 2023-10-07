@@ -112,7 +112,11 @@ const FinishOrder = () => {
 
         <form className={st.forms} onSubmit={handleSubmit(sendOrder)}>
           <div className={st.forms_users}>
-            <h2 className={st.title}>Ваши данные</h2>
+            <div className={st.forms_top}>
+              <h2 className={st.title}>Ваши данные</h2>
+              <Link to="/login">Изменить данные</Link>
+            </div>
+
             <input
               {...register('name')}
               type="text"

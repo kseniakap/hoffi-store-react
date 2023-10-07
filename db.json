@@ -2,12 +2,30 @@
   "users": [
     {
       "email": "sonyasmirnova@gmail.com",
-      "password": "$2a$10$2v1e9LKv2kqEq/RMs3QZHedjmvxk9pRvZ1DfNV7ufrKq0UXu0/nza",
+      "password": "$2a$10$ADCNIhdneLFm5hBw9vk8l.ZKKYI14g/G1GM5qG4/LcQWm5ARTRBZW",
       "name": "Sonya",
       "tel": "+7 (953) 545-72-72",
       "confirmPassword": "1234",
       "orders": [],
       "id": 1
+    },
+    {
+      "email": "max@gmail.com",
+      "password": "$2a$10$JS4wB3NqAq/QCms1yNDl9OGGSy6BA4DKPlewBVd3WvIidJZIb2Y9C",
+      "name": "Max",
+      "tel": "+7 (887) 546-94-58",
+      "confirmPassword": "12345",
+      "orders": [],
+      "id": 2
+    },
+    {
+      "email": "nikita@gmail.com",
+      "password": "$2a$10$.7NCXlcDjkSpJzWfmNY46OUY957YIVTfF2.XHpPLWHHW4H8hK3E1y",
+      "name": "nikita",
+      "tel": "+7 (977) 663-84-73",
+      "confirmPassword": "123456",
+      "orders": [],
+      "id": 3
     }
   ],
   "tickets": [

@@ -77,6 +77,18 @@ hr {
   border-radius: 10px;
   background-color: $main-color;
   min-height: 300px;
+  &_top {
+    display: flex;
+    justify-content: space-between;
+    a {
+      font-weight: 600;
+      font-size: 14px;
+      transition: $transition;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
   &_tel {
     margin-bottom: 40px;
   }

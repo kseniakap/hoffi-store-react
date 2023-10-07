@@ -17,9 +17,18 @@ const ChangePassword = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
 
   const [isCorrectOldPassword, setIsCorrectOldPassword] = useState(false)
+  const [errorNewOldPassword, setErrorNewPasword] = useState(false)
   const [errorComfirm, setErrorComfirm] = useState(false)
+  const [paswordLength, setPasswordLenght] = useState(false)
   const [passwordChangeSuccess, setPasswordChangeSuccess] = useState(false)
   //  состояние  для отображения сообщения об успешном изменении пароля
+
+  const reserAllError = () => {
+    setErrorNewPasword(false)
+    setIsCorrectOldPassword(false)
+    setErrorComfirm(false)
+    setPasswordLenght(false)
+  }
 
   const handleChangePassword = (data) => {
     axios(`http://localhost:3001/users/${user.id}`, data).then(({ data }) => {
@@ -31,36 +40,56 @@ const ChangePassword = () => {
         (err, result) => {
           if (err) {
             console.error('Ошибка при сравнении паролей:', err)
-            // Обработка ошибки при сравнении
           } else if (result) {
-            // Старый пароль верный, можно продолжить изменение пароля
+            setIsCorrectOldPassword(false)
+
             if (newPassword === confirmNewPassword) {
-              console.log('Пaроли совпадают')
-              if (newPassword.length >= 6) {
-                setErrorComfirm(false)
-                const newDataoOfPassword = {
-                  password: newPassword,
+              setErrorComfirm(false)
+              if (newPassword === oldPassword) {
+                // Старый пароль совпадает с новым
+                setErrorNewPasword(true)
+              } else {
+                setErrorNewPasword(false)
+
+                if (newPassword.length >= 6) {
+                  setPasswordLenght(false)
+                  setErrorComfirm(false)
+                  const newDataoOfPassword = {
+                    password: newPassword,
+                  }
+                  axios
+                    .patch(
+                      `http://localhost:3001/users/${user.id}`,
+                      newDataoOfPassword,
+                    )
+                    .then(({ data }) => {
+                      // Очистка полей после успешной смены пароля
+                      setOldPassword('')
+                      setNewPassword('')
+                      setConfirmNewPassword('')
+
+                      setUser(data)
+                      localStorage.setItem('user', JSON.stringify(data))
+                      setPasswordChangeSuccess(true)
+                      setErrorComfirm(false)
+                      setUserPassword(false)
+
+                      // Запуск таймера для скрытия сообщения через 5 секунд
+                      setTimeout(() => {
+                        setPasswordChangeSuccess(false)
+                      }, 5000)
+                    })
+                    .catch((error) => {
+                      console.error('Ошибка при изменении пароля:', error)
+                    })
+                } else {
+                  setPasswordLenght(true)
                 }
-                axios
-                  .patch(
-                    `http://localhost:3001/users/${user.id}`,
-                    newDataoOfPassword,
-                  )
-                  .then(({ data }) => {
-                    setUser(data)
-                    localStorage.setItem('user', JSON.stringify(data))
-                    setPasswordChangeSuccess(true)
-                    setErrorComfirm(false)
-                  })
-                  .catch((error) => {
-                    console.error('Ошибка при изменении пароля:', error)
-                  })
               }
             } else {
               setErrorComfirm(true)
             }
           } else {
-            console.log('Старый пароль не верный')
             setIsCorrectOldPassword(true)
           }
         },
@@ -82,18 +111,24 @@ const ChangePassword = () => {
               {...register('password')}
               type="password"
               value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
+              onChange={(e) => {
+                setOldPassword(e.target.value)
+                reserAllError()
+              }}
               required
             />
           </div>
-          {isCorrectOldPassword && <p>Старый пароль неверный</p>}
+
           <div className={st.name}>
             <p>Новый пароль</p>
             <input
               {...register('newPassword')}
               type="password"
               value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              onChange={(e) => {
+                setNewPassword(e.target.value)
+                reserAllError()
+              }}
               required
             />
           </div>
@@ -103,13 +138,19 @@ const ChangePassword = () => {
               {...register('NewPasswordComfirn')}
               type="password"
               value={confirmNewPassword}
-              onChange={(e) => setConfirmNewPassword(e.target.value)}
+              onChange={(e) => {
+                setConfirmNewPassword(e.target.value)
+                reserAllError()
+              }}
               required
             />
           </div>
-          {errorComfirm && <p>Пароли не совпадают</p>}
         </div>
       )}
+      {isCorrectOldPassword && <p>* Старый пароль неверный</p>}
+      {errorNewOldPassword && <p>* Старый и новый пароли одинаковые</p>}
+      {errorComfirm && <p>* Новый пароль и пароль подверждения не совпадают</p>}
+      {paswordLength && <p>* Пароль должен быть больше 6-ти символов</p>}
 
       <button
         style={{ display: passwordChange ? 'block' : 'none' }}
@@ -122,7 +163,12 @@ const ChangePassword = () => {
       <div
         style={{ display: passwordChange ? 'none' : 'inline-block' }}
         className={`${st.changeBtn} ${st.block}`}
-        onClick={() => setUserPassword(true)}
+        onClick={() => {
+          setUserPassword(true)
+          setOldPassword('')
+          setNewPassword('')
+          setConfirmNewPassword('')
+        }}
       >
         Изменить
       </div>

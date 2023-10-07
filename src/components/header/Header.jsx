@@ -56,6 +56,11 @@ const Header = ({ order }) => {
                     {t('homePage.headerMenu.link6')}
                   </CustomNavLink>
                 </li>
+                <li>
+                  <CustomNavLink to="/admin">
+                   Панель админа
+                  </CustomNavLink>
+                </li>
               </ul>
 
               <FaBasketShopping
