@@ -1,8 +1,38 @@
 .colorWrapper {
   display: flex;
-  gap: 5px;
+  gap: 50px;
+  min-height: 80px;
 }
+.colorsCont {
+  display: flex;
+  gap: 10px;
+}
+
 .color {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: relative;
+  p {
+    position: absolute;
+    bottom: -40px;
+    left: -50%;
+    font-size: 14px;
+  }
+}
+.activeColor {
+  position: relative;
+  &:before {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    transform: rotate(10deg) translate(-63%, -45%);
+    color: black;
+  }
+}
+.chooseColor {
   width: 30px;
   height: 30px;
   border-radius: 100%;
