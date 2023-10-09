@@ -3,8 +3,8 @@
     {
       "email": "sonyasmirnova@gmail.com",
       "password": "$2a$10$ADCNIhdneLFm5hBw9vk8l.ZKKYI14g/G1GM5qG4/LcQWm5ARTRBZW",
-      "name": "Sonya",
-      "tel": "+7 (953) 545-72-72",
+      "name": "Ksenia",
+      "tel": "+7 (567) 890-67-89",
       "confirmPassword": "1234",
       "orders": [],
       "id": 1
@@ -26,6 +26,15 @@
       "confirmPassword": "123456",
       "orders": [],
       "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$U1TBW/XEh0snO/bvsKf7ceAEILJg/3u4Zh03nCnSgW0hAhbSm1VrC",
+      "name": "admin",
+      "tel": "+7 (998) 389-38-43",
+      "confirmPassword": "111111",
+      "orders": [],
+      "id": 4
     }
   ],
   "tickets": [

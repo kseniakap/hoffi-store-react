@@ -56,11 +56,11 @@ const Header = ({ order }) => {
                     {t('homePage.headerMenu.link6')}
                   </CustomNavLink>
                 </li>
-                <li>
-                  <CustomNavLink to="/admin">
-                   Панель админа
-                  </CustomNavLink>
-                </li>
+                {user.email === 'admin@gmail.com' && (
+                  <li>
+                    <CustomNavLink to="/admin">Панель админа</CustomNavLink>
+                  </li>
+                )}
               </ul>
 
               <FaBasketShopping

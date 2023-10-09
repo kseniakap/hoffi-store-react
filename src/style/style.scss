@@ -97,16 +97,42 @@ button:focus {
 //Goods
 .btnSort {
   display: flex;
-  gap: 10px;
+  gap: 80px;
   button {
     padding: 10px 20px;
     background-color: $accent-color;
     color: white;
     border: none;
     border-radius: 10px;
+    transition: $transition;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
   }
   .active {
     background-color: $main-color;
     color: #fff;
+  }
+}
+.containerBtnSort {
+  display: flex;
+  gap: 10px;
+}
+
+.btnAddNewGood {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $accent-color;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: $transition;
+  &:hover {
+    background-color: $main-color !important;
+
+    color: #222;
   }
 }

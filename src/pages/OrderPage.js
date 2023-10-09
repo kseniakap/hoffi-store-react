@@ -10,9 +10,9 @@ const OrderPage = () => {
   return (
     <>
       <HeaderComponents
-        pageTitle={t("goodsPage.headerTitle")}
-        headerImage={IMAGES.goodsHeaderImg}
-        activeLink={"/goods"}
+        pageTitle="Корзина"
+        headerImage={IMAGES.orderHeaderImg}
+        activeLink={"/order"}
         link="/"
         textLink={t("homePage.headerMenu.link1")}
       />

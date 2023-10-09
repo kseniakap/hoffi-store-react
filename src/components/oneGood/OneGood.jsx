@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { CustomContext } from '../../Context'
 import ICONS from './../../assets/icons'
@@ -18,6 +18,8 @@ const OneGood = ({ list }) => {
   const [good, setGood] = useState({})
   const [colorChoose, setColorChoose] = useState(null)
 
+  const location = useLocation()
+  
   const {
     AddCart,
     formatPrice,
@@ -44,7 +46,7 @@ const OneGood = ({ list }) => {
       .catch((error) => {
         console.error(error)
       })
-  }, [params])
+  }, [location])
 
   const chooseColor = (color) => {
     setColorName(color.name)
@@ -58,7 +60,6 @@ const OneGood = ({ list }) => {
     const filteredItems = list.filter(
       (item) => item.id !== good.id && item.category === category,
     )
-    console.log('Filtered Items:', filteredItems)
   }, [list, good, category])
 
   var settings = {

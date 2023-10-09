@@ -8,6 +8,7 @@ const IMAGES = {
   goodsHeaderImg: require("./goods/goodsHeaderImg.jpg"),
   teamHeaderImg: require("./team/teamHeaderImg.jpeg"),
   memberHeaderImg: require("./member/memberHeaderImg.jpg"),
+  orderHeaderImg: require("./order/orderHeaderImg.jpg"),
 
   //Фотографии сотрудников компании
   person_1: require("./team/person-1.jpg"),

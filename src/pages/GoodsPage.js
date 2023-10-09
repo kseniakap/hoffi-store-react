@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Pagination } from "antd";
 import Categories from "../components/categories/Categories";
 import List from "../components/list/List";
+import { Link } from "react-router-dom";
 import HeaderComponents from "../components/headerComponents/HeaderComponents";
 import IMAGES from "../assets/img";
 
@@ -57,6 +58,7 @@ const GoodsPage = ({
         link="/"
         textLink={t("homePage.headerMenu.link1")}
       />
+
       <div className="container">
         <Categories
           chooseCategory={chooseCategory}
@@ -79,15 +81,23 @@ const GoodsPage = ({
             {t("goodsPage.products")}
           </div>
           <div className="btnSort">
-            <button className={isActive("big")} onClick={() => setSort("big")}>
-              {t("goodsPage.ascending")}
-            </button>
-            <button
-              className={isActive("less")}
-              onClick={() => setSort("less")}
-            >
-              {t("goodsPage.descending")}
-            </button>
+            <Link to="/createnewitem" className="btnAddNewGood">
+              Добавить новый товар
+            </Link>
+            <div className="containerBtnSort">
+              <button
+                className={isActive("big")}
+                onClick={() => setSort("big")}
+              >
+                {t("goodsPage.ascending")}
+              </button>
+              <button
+                className={isActive("less")}
+                onClick={() => setSort("less")}
+              >
+                {t("goodsPage.descending")}
+              </button>
+            </div>
           </div>
         </div>
         <List
