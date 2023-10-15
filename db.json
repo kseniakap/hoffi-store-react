@@ -1,40 +1,39 @@
 {
   "users": [
     {
-      "email": "sonyasmirnova@gmail.com",
-      "password": "$2a$10$ADCNIhdneLFm5hBw9vk8l.ZKKYI14g/G1GM5qG4/LcQWm5ARTRBZW",
-      "name": "Ksenia",
-      "tel": "+7 (567) 890-67-89",
-      "confirmPassword": "1234",
-      "orders": [],
-      "id": 1
-    },
-    {
-      "email": "max@gmail.com",
-      "password": "$2a$10$JS4wB3NqAq/QCms1yNDl9OGGSy6BA4DKPlewBVd3WvIidJZIb2Y9C",
-      "name": "Max",
-      "tel": "+7 (887) 546-94-58",
-      "confirmPassword": "12345",
-      "orders": [],
-      "id": 2
-    },
-    {
-      "email": "nikita@gmail.com",
-      "password": "$2a$10$.7NCXlcDjkSpJzWfmNY46OUY957YIVTfF2.XHpPLWHHW4H8hK3E1y",
-      "name": "nikita",
-      "tel": "+7 (977) 663-84-73",
-      "confirmPassword": "123456",
-      "orders": [],
-      "id": 3
-    },
-    {
       "email": "admin@gmail.com",
       "password": "$2a$10$U1TBW/XEh0snO/bvsKf7ceAEILJg/3u4Zh03nCnSgW0hAhbSm1VrC",
       "name": "admin",
       "tel": "+7 (998) 389-38-43",
       "confirmPassword": "111111",
       "orders": [],
-      "id": 4
+      "id": 1
+    },
+    {
+      "email": "ksenia@gmail.com",
+      "password": "$2a$10$B6Isn2VYOhw8ANyu96zv0OY.zlZrRA.8wUyc1N82CElDjXkKUk59.",
+      "name": "Ksenia",
+      "tel": "+7 (896) 587-68-57",
+      "confirmPassword": "123456",
+      "orders": [
+        {
+          "goods": [
+            {
+              "id": 3,
+              "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+              "price": 26999,
+              "colors": "белый",
+              "image": "bed_nemi.jpg",
+              "count": 1,
+              "category": "bed",
+              "quantity": 10
+            }
+          ],
+          "totalPrice": 26999,
+          "date": "2023-10-15T20:12:00.511Z"
+        }
+      ],
+      "id": 2
     }
   ],
   "tickets": [
@@ -42,15 +41,13 @@
       "id": 2,
       "title": "Hoffi",
       "procent": 10,
-      "quality": 20,
-      "count": 9
+      "quality": 20
     },
     {
       "id": 2,
       "title": "Hoffi-magic",
       "procent": 15,
-      "quality": 10,
-      "count": 9
+      "quality": 10
     }
   ],
   "members": [
@@ -135,13 +132,36 @@
       "linkSite": "www.alekseivinogradov.com"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "city": "hhhh",
+      "street": "ggggggggg",
+      "house": "33",
+      "flat": "20",
+      "additional": "",
+      "goods": [
+        {
+          "id": 3,
+          "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+          "price": 26999,
+          "colors": "белый",
+          "image": "bed_nemi.jpg",
+          "count": 1,
+          "category": "bed",
+          "quantity": 10
+        }
+      ],
+      "totalPrice": 26999,
+      "date": "2023-10-15T20:12:00.474Z",
+      "id": 1
+    }
+  ],
   "goods": [
     {
       "id": 1,
       "name": "Угловой диван-кровать Торонто",
       "description": "Максимально использовать площадь небольшой гостиной поможет современный угловой диван-кровать Торонто. Его основным преимуществом является наличие универсального угла, местоположение которого можно выбрать во время сборки. Производитель предусмотрел удобный ящик для хранения вещей или спальных принадлежностей. Надежный механизм типа дельфин позволяет легко трансформировать диван в удобное спальное место.",
-      "price": 23999,
+      "price": "23999",
       "category": "sofa-bed",
       "colors": [
         {
@@ -162,11 +182,12 @@
           "image": "bed_toronto_gray.jpg",
           "quantity": 8
         }
-      ]
+      ],
+      "newPrice": "23999"
     },
     {
       "id": 2,
-      "name": "Шкаф Парма",
+      "name": "Шкаф Пармa",
       "description": "Шкаф Парма легко решит проблему хранения множества вещей в прихожей. Модель представляет собой композицию из открытого стеллажа и закрытого шкафа для верхней одежды. В отделении за глухой дверцей расположены 2 полки – нижняя отделяет нишу для обуви, к поверхности антресольной полки крепится выдвижная штанга. За зеркальной створкой скрывается секция с 5 полками, нижнюю часть блока занимают выдвижные ящики. Опоры из прочного пластика регулируются по высоте. Возможна зеркальная сборка.",
       "price": 20999,
       "category": "press",
@@ -183,7 +204,8 @@
           "image": "press_parma_beige.webp",
           "quantity": 0
         }
-      ]
+      ],
+      "newPrice": "20999"
     },
     {
       "id": 3,
@@ -280,8 +302,8 @@
     },
     {
       "id": 6,
-      "name": "Диван-кровать Лига Диванов Восток  ",
-      "description": "Эта модель доступна только в тех вариантах обивки, которые представлены в нашем ассортименте.",
+      "name": "Диван-кровать Лига Диванов Восток ",
+      "description": "Эта модель доступна только в тех вариантах обивки, которые представлены в нашем ассортименте",
       "price": 28999,
       "category": "sofa-bed",
       "colors": [
@@ -303,7 +325,8 @@
           "image": "table_martin_goldenrod.jpg",
           "quantity": 10
         }
-      ]
+      ],
+      "newPrice": "28999"
     },
     {
       "id": 7,
@@ -339,7 +362,7 @@
     {
       "id": 10,
       "name": "Тумба Bergen",
-      "description": null,
+      "description": "",
       "price": 8999,
       "newPrice": 6999,
       "category": "comod",
@@ -1040,6 +1063,104 @@
           "quantity": 25
         }
       ]
+    },
+    {
+      "name": "Шкаф двухстворчатый Бланко",
+      "description": "",
+      "price": 24299,
+      "category": "press",
+      "colors": [
+        {
+          "name": "белый",
+          "code": "white",
+          "image": "press_twodoors_blanko.jpg",
+          "quantity": "15"
+        }
+      ],
+      "id": 52
     }
-  ]
+  ],
+  "membersEn": [
+    {
+      "id": "1",
+      "name": "Ivan Smirnov",
+      "prof": "furniture salon director",
+      "img": "person-1.jpg ",
+      "bio": "My team and 15 years of experience allow us to carry out the most complex projects. We love and care about our customers, make the space unique, harmonious, and the repair process joyful.",
+      "email": "ivamsmirnov@gmail.com ",
+      "number": "8-953-545-08-08",
+      "linkSite": "www.ivamsmirnov.com"
+    },
+    {
+      "id": "2",
+      "name": "Natalia Smirnova",
+      "prof": "furniture sales manager",
+      "img": "person-2.jpg",
+      "bio": null,
+      "email": "nataliasmirnova@gmail.com",
+      "number": "8-903-545-07-07",
+      "linkSite": "www.nataliasmirnova.com"
+    },
+    {
+      "id": "3",
+      "name": "Irina Novikova",
+      "prof": "designer",
+      "img": "person-3.jpg ",
+      "bio": "I am an expert in the transformation of human life through the interior. When designing the interior, I take into account all the preferences of the residents of the house, their habits and psychological characteristics. You get a comprehensive approach to renovation and a harmonious, comfortable space for your happy life.",
+      "email": "irinanovikova@gmail.com",
+      "number": "8-933-545-06-06",
+      "linkSite": "www.irinanovikova.com"
+    },
+    {
+      "id": "4",
+      "name": "Svetlana Ivanova",
+      "prof": "designer",
+      "img": "person-4.jpg ",
+      "bio": "You will be satisfied with the result of the furniture project. Furniture is offered a lot and for every taste. But there are nuances that make projects attractive, competitive and even, I'm not afraid of this word - exclusive. ",
+      "email": "svetlanaivanova@gmail.com",
+      "number": "8-903-548-05-05",
+      "linkSite": "www.svetlanaivanova.com"
+    },
+    {
+      "id": "5",
+      "name": "Max Tsvetkov",
+      "prof": "creative designer",
+      "img": "person-5.jpg ",
+      "bio": "When designing the interior, I take into account all the preferences of the residents of the house, their habits and psychological characteristics. You get a comprehensive approach to repair and a harmonious, comfortable space for your happy life.",
+      "email": "maxchetkov@gmail.com ",
+      "number": "8-953-590-04-04",
+      "linkSite": "www.maxchetkov.com"
+    },
+    {
+      "id": "6",
+      "name": "Nikita Smirnov",
+      "prof": "manager",
+      "img": "person-6.jpg ",
+      "bio": null,
+      "email": "nikitasmirnov@gmail.com ",
+      "number": "8-952-575-03-03",
+      "linkSite": "www.nikitasmirnov.com"
+    },
+    {
+      "id": "7",
+      "name": "Anna Khokhlova",
+      "prof": "consultant designer",
+      "img": "person-7.jpg",
+      "bio": null,
+      "email": "annahohlova@gmail.com",
+      "number": "8-953-589-02-02",
+      "linkSite": "www.annahohlova.com"
+    },
+    {
+      "id": "8",
+      "name": "Alexey Vinogradov",
+      "prof": "artist-designer",
+      "img": "person-8.png",
+      "bio": "I am an expert in the transformation of human life through the interior. When designing the interior, I take into account all the preferences of the residents of the house, their habits and psychological characteristics. You get a comprehensive approach to repair and a harmonious, comfortable space for your happy life.",
+      "email": "alekseivinogradov@gmail.com ",
+      "number": "8-953-599-01-01",
+      "linkSite": "www.alekseivinogradov.com"
+    }
+  ],
+  "goodsEn": []
 }

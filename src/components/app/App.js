@@ -45,9 +45,7 @@ function App() {
             <Route path="/register" element={<AccountPage />} />
             <Route path="/order" element={<AccountPage />} />
             <Route path="/finish" element={<FinishPage />} />
-            {user.email === "admin@gmail.com" && (
-              <Route path="/admin" element={<AdminPage />} />
-            )}
+
             {user.email === "admin@gmail.com" && (
               <Route path="/createnewitem" element={<AddNewGood />} />
             )}

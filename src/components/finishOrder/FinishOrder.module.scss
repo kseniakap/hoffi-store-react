@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: start;
   padding: 20px 0;
+  margin-top: 30px;
 }
 .table {
   &_top,
@@ -24,7 +25,6 @@
 }
 .tableContainer::-webkit-scrollbar-track {
   border: 1px solid $accent-color;
-
   background-color: #fff;
 }
 .tableContainer::-webkit-scrollbar {

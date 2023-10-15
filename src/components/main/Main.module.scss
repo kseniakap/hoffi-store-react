@@ -17,16 +17,7 @@
 .plans {
   margin-top: 700px;
 }
-.title {
-  position: absolute;
-  top: 100px;
-  left: 50px;
-  width: 350px;
-  font-size: 75px;
-  width: 500px;
-  line-height: 90%;
-  color: #fff;
-}
+
 .text_descr {
   position: absolute;
   top: 330px;
@@ -37,7 +28,7 @@
 .list {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
   margin-bottom: 100px;
 }
@@ -45,7 +36,9 @@
 .item {
   width: 358px;
   text-align: center;
+  height: 200px;
   padding-left: 60px;
+  position: relative;
   & + .item {
     border-left: #292f36 1px solid;
   }
@@ -63,7 +56,6 @@
   }
   &__link {
     color: #4d5053;
-    text-align: center;
     font-family: Jost;
     font-size: 18px;
     font-style: normal;
@@ -73,8 +65,17 @@
     text-decoration: none;
     display: flex;
     gap: 10px;
-    align-items: center;
+    position: absolute;
+    width: 200px;
+    left: 65%;
+    transform: translateX(-50%);
+    bottom: 0;
     justify-content: center;
+    transition: $transition;
+    cursor: pointer;
+    &:hover {
+      color: $main-color;
+    }
   }
 }
 
@@ -113,8 +114,9 @@
   width: 93px;
   height: 93px;
   cursor: pointer;
+  transition: $transition;
   img {
-    transition: $transition;
+    transition: $transition !important;
   }
   &:hover img {
     transform: scale(1.1);
@@ -155,4 +157,5 @@
 .brandWrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }

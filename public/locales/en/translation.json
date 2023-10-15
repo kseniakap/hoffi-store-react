@@ -1,4 +1,8 @@
 {
+    "url":{
+        "allMembers":"membersEn",
+        "allGoods":"goodsEn"
+    },
     "homePage":{
         "headerMenu":{
             "link1": "Main",

@@ -1,25 +1,18 @@
 import { useHttp } from "../hooks/http.hook";
+import { useTranslation } from "react-i18next";
 
 const ItemServices = () => {
+  const { t } = useTranslation();
   const { loading, request, error, clearError } = useHttp();
 
   const getAllItems = async () => {
-    const res = await request("http://localhost:3001/goods");
+    const res = await request(`http://localhost:3001/goods`);
     return res.map((item) => _transformItems(item));
   };
 
   const _transformItems = (item) => {
-    const {
-      id,
-      image,
-      name,
-      description,
-      price,
-      newPrice,
-      colors,
-      category,
-      
-    } = item;
+    const { id, image, name, description, price, newPrice, colors, category } =
+      item;
 
     return {
       id: id,
@@ -28,7 +21,7 @@ const ItemServices = () => {
       description: description
         ? `${item.description.slice(0, 130)}...`
         : "В данный момент описание о данном товаре отсутствует",
-      price: price,
+      price: parseInt(price, 10),
       newPrice: newPrice,
       colors: colors,
       category: category,
@@ -36,7 +29,7 @@ const ItemServices = () => {
   };
 
   const getAllMembers = async () => {
-    const res = await request("http://localhost:3001/members");
+    const res = await request(`http://localhost:3001/${t("url.allMembers")}`);
     return res.map((item) => _transformDataMembers(item));
   };
 

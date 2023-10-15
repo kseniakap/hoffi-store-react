@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CustomContext } from "./../Context";
 import { useTranslation } from "react-i18next";
 import { Pagination } from "antd";
 import Categories from "../components/categories/Categories";
@@ -14,9 +15,11 @@ const GoodsPage = ({
   list,
   setList,
 }) => {
+  const { user } = useContext(CustomContext);
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sort, setSort] = useState(null);
+
   const isActive = (value) => (sort === value ? "active" : "");
   const [page, setPage] = useState(1);
 
@@ -69,7 +72,7 @@ const GoodsPage = ({
           style={{
             display: "flex",
             justifyContent: "space-between",
-            marginBottom: "10px",
+            marginBottom: "20px",
           }}
         >
           <div style={{ marginBottom: "30px" }}>
@@ -80,10 +83,15 @@ const GoodsPage = ({
             </span>
             {t("goodsPage.products")}
           </div>
+
+          {/* Кнопка добавления нового товара */}
           <div className="btnSort">
-            <Link to="/createnewitem" className="btnAddNewGood">
-              Добавить новый товар
-            </Link>
+            {user.email === "admin@gmail.com" && (
+              <Link to="/createnewitem" className="btnAddNewGood">
+                Добавить новый товар
+              </Link>
+            )}
+
             <div className="containerBtnSort">
               <button
                 className={isActive("big")}

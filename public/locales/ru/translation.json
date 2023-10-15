@@ -1,4 +1,8 @@
 {
+    "url":{
+        "allMembers":"members",
+        "allGoods":"goods"
+    },
     "homePage":{
         "headerMenu":{
             "link1": "Главная",

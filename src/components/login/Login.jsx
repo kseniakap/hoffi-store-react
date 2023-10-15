@@ -37,7 +37,6 @@ const Login = () => {
             <div className={st.login_wrapper}>
               <form onSubmit={handleSubmit(loginUser)} className={st.form}>
                 <h2>{t('accountPage.login.title')}</h2>
-
                 <div className={st.login_inputs}>
                   <input
                     {...register('email')}
@@ -55,6 +54,7 @@ const Login = () => {
                     </p>
                   )}
                 </div>
+
                 <button type="submit">
                   {t('accountPage.login.btn')}{' '}
                   <img src={ICONS.iconArrow} alt="arrow" />
@@ -63,6 +63,7 @@ const Login = () => {
                   <p>{t('accountPage.login.text')} </p>
                   <Link to="/register"> {t('accountPage.login.textLink')}</Link>
                 </div>
+                <p>*Данные админа: admin@gmail.com, 111111 </p>
               </form>
             </div>
           )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import TeamPerson from './TeamPerson'
+import { useTranslation } from 'react-i18next'
 import ItemServices from './../../services/ItemServices'
+import TeamPerson from './TeamPerson'
 import IMAGES from '../../assets/img'
 import st from './Team.module.scss'
 
@@ -9,9 +10,11 @@ const Team = () => {
   const { loading, error, getAllMembers } = ItemServices()
   const [members, setMembers] = useState([])
 
+  const { i18n } = useTranslation()
+
   useEffect(() => {
     onRequest(true)
-  }, [])
+  }, [i18n.language])
 
   const onRequest = (initial) => {
     initial ? setNewMemberLoading(false) : setNewMemberLoading(true)

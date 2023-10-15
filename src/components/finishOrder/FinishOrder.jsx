@@ -9,9 +9,15 @@ import ICONS from '../../assets/icons'
 import st from './FinishOrder.module.scss'
 
 const FinishOrder = () => {
-  const { cart, setCart, ticket, setTicket, user, setUser } = useContext(
-    CustomContext,
-  )
+  const {
+    cart,
+    setCart,
+    ticket,
+    setTicket,
+    user,
+    setUser,
+    formatPrice,
+  } = useContext(CustomContext)
   const { reset, register, handleSubmit } = useForm()
   const [isSendOrder, setIsSendOrder] = useState(false)
   //расчет всей стоимости (с учетом промокода)
@@ -25,6 +31,8 @@ const FinishOrder = () => {
       : cart.reduce((acc, rec) => acc + rec.count * rec.price, 0)
 
   const sendOrder = async (data) => {
+    console.log(data)
+    console.log(cart)
     try {
       await axios.post(`http://localhost:3001/orders`, {
         ...data,
@@ -46,16 +54,22 @@ const FinishOrder = () => {
       await axios(`http://localhost:3001/users/${user.id}`).then((res) =>
         setUser(res.data),
       )
-
-      Array.isArray(ticket) && ticket.length && ticket[0].count > 1
-        ? axios
+      
+      if (Array.isArray(ticket) && ticket.length > 0) {
+        if (ticket[0].quality > 1) {
+          axios
             .patch(`http://localhost:3001/tickets/${ticket[0].id}`, {
-              count: ticket[0].quality - 1,
+              quality: ticket[0].quality - 1,
             })
-            .then(() => console.log(''))
-        : ticket[0].count === 1
-        ? axios.delete(`http://localhost:3001/tickets/${ticket[0].id}`)
-        : console.log('Возникла ошибка')
+            .then(() => console.log(''));
+        } else if (ticket[0].quality === 1) {
+          axios.delete(`http://localhost:3001/tickets/${ticket[0].id}`);
+        } else {
+          console.log('Возникла ошибка');
+        }
+      }
+
+  
 
       await reset()
       await setCart([])
@@ -89,6 +103,7 @@ const FinishOrder = () => {
             <div className={st.tableContainer}>
               {cart.map((item, idx) => {
                 const { name, image, colors, count, price } = item
+                const totalPrice = count * price
                 return (
                   <ul key={idx} className={st.table_bottom}>
                     <li className={st.name}>
@@ -102,7 +117,9 @@ const FinishOrder = () => {
                       {name}
                     </li>
                     <li className={st.colors}>{colors}</li>
-                    <li className={st.totalPrice}>{count * price} ₽</li>
+                    <li className={st.totalPrice}>
+                      {formatPrice(totalPrice)} ₽
+                    </li>
                   </ul>
                 )
               })}
@@ -142,14 +159,27 @@ const FinishOrder = () => {
           </div>
           <div className={st.adress}>
             <h2 className={st.title}>Введите адрес доставки</h2>
-            <input {...register('city')} type="text" placeholder="Город" />
-            <input {...register('street')} type="text" placeholder="Улица" />
-            <input {...register('house')} type="number" placeholder="Дом" />
+            <input
+              {...register('city')}
+              type="text"
+              placeholder="Город"
+              required
+            />
+            <input
+              {...register('street')}
+              type="text"
+              placeholder="Улица"
+              required
+            />
+            <input
+              {...register('house')}
+              type="number"
+              placeholder="Дом"
+              required
+            />
             <input {...register('flat')} type="number" placeholder="Квартира" />
             <textarea
               {...register('additional')}
-              name=""
-              id=""
               placeholder="Уточнения по адресу"
             />
           </div>
@@ -188,7 +218,7 @@ const FinishOrder = () => {
                 <p> Итого :</p>
               )}
 
-              <span>{totalPrice}₽</span>
+              <span>{formatPrice(totalPrice)}₽</span>
             </div>
           </div>
         </>

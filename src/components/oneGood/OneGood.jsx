@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { CustomContext } from '../../Context'
 import ICONS from './../../assets/icons'
 import Slider from 'react-slick'
+import ItemServices from '../../services/ItemServices'
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -14,12 +17,18 @@ import './../../style/style.scss'
 import st from './OneGood.module.scss'
 
 const OneGood = ({ list }) => {
+  const { register, handleSubmit, reset } = useForm()
   const params = useParams()
+  const location = useLocation()
+
   const [good, setGood] = useState({})
   const [colorChoose, setColorChoose] = useState(null)
+  const { getAllItems } = ItemServices()
+  const [count, setCount] = useState(1)
+  const [quantityGoods, setQuantityGoods] = useState(0) //доступное количество товара
 
-  const location = useLocation()
-  
+  const [isDisable, setIsDisable] = useState(false)
+  const [changeInfo, setChangeInfo] = useState(false)
   const {
     AddCart,
     formatPrice,
@@ -27,12 +36,10 @@ const OneGood = ({ list }) => {
     setImgChoose,
     colorName,
     setColorName,
+    user,
   } = useContext(CustomContext)
 
-  const { name, description, price, category, newPrice, colors } = good
-  const [count, setCount] = useState(1)
-  const [quantityGoods, setQuantityGoods] = useState(0) //доступное количество товара
-  const [isDisable, setIsDisable] = useState(false)
+  const { name, description, price, newPrice, colors } = good
 
   useEffect(() => {
     axios(`http://localhost:3001/goods/${params.id}`)
@@ -56,19 +63,26 @@ const OneGood = ({ list }) => {
     setIsDisable(false)
   }
 
-  useEffect(() => {
-    const filteredItems = list.filter(
-      (item) => item.id !== good.id && item.category === category,
-    )
-  }, [list, good, category])
-
-  var settings = {
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+  const changeData = (data) => {
+    axios
+      .patch(`http://localhost:3001/goods/${good.id}`, {
+        name: data.name,
+        description: data.description,
+        newPrice: data.newPrice,
+      })
+      .then(({ data }) => {
+        setGood({
+          ...good,
+          name: data.name,
+          description: data.description,
+          newPrice: data.newPrice,
+        })
+        setChangeInfo(false)
+        getAllItems()
+      })
+      .catch((error) => {
+        console.error('Возникла ошибка при изменении товара:', error)
+      })
   }
 
   return (
@@ -84,28 +98,114 @@ const OneGood = ({ list }) => {
                 effect="blur"
               />
             </div>
-            <div className={st.oneGood__info}>
-              <h2>{name}</h2>
-              <div className={st.oneGood__descr}>
-                {description ? description : ''}
-              </div>
-              <div className={st.oneGood__price}>
-                {newPrice ? (
+            <form
+              className={st.oneGood__info}
+              onSubmit={handleSubmit(changeData)}
+            >
+              {
+                (user.enail = 'admin@gmail.com' ? (
                   <>
-                    <div style={{ textDecoration: 'line-through' }}>
-                      {formatPrice(price)} <span> ₽</span>
-                    </div>
-                    <span> / </span>
-                    <div>
-                      {formatPrice(newPrice)} <span> ₽</span>
+                    <button
+                      className={st.btnChange}
+                      type="submit"
+                      onClick={() => setChangeInfo(true)}
+                      style={{ display: changeInfo ? 'block' : 'none' }}
+                    >
+                      Сохранить изменения
+                    </button>
+
+                    <div
+                      className={st.btnChange}
+                      onClick={() => setChangeInfo(true)}
+                      style={{ display: changeInfo ? 'none' : 'block' }}
+                    >
+                      Изменить товар
                     </div>
                   </>
                 ) : (
-                  <div>
-                    {formatPrice(price)} <span> ₽</span>
-                  </div>
-                )}
-              </div>
+                  ''
+                ))
+              }
+              {/* Изменение названия товара */}
+              {changeInfo ? (
+                <>
+                  <label htmlFor="name">Название</label>
+                  <input
+                    {...register('name')}
+                    type="text"
+                    defaultValue={name}
+                    placeholder="Введите название товара"
+                    id="name"
+                  />
+                </>
+              ) : (
+                <h2>{name}</h2>
+              )}
+              {/* Описание товара */}
+              {changeInfo ? (
+                <>
+                  <label htmlFor="descr">Описание товара</label>
+                  <textarea
+                    {...register('description')}
+                    type="text"
+                    defaultValue={description}
+                    placeholder="Введите опимание товара"
+                    id="descr"
+                  />
+                </>
+              ) : (
+                <div className={st.oneGood__descr}>
+                  {description ? description : ''}
+                </div>
+              )}
+              {/* Цена товара */}
+              {changeInfo ? (
+                <>
+                  {newPrice ? (
+                    <>
+                      <label htmlFor="price">
+                        Старая цена товара (неизмен.)
+                      </label>
+                      <input defaultValue={price} disabled id="price" />
+                    </>
+                  ) : null}
+                  <label htmlFor="newPrice">Новая цена товара</label>
+                  <input
+                    {...register('newPrice')}
+                    type="number"
+                    defaultValue={price}
+                    placeholder="Введите новую цену"
+                    id="newPrice"
+                  />
+                </>
+              ) : (
+                <div className={st.oneGood__price}>
+                  {newPrice ? (
+                    <>
+                      {newPrice > price ? (
+                        <div>
+                          {formatPrice(newPrice)} <span> ₽</span>
+                        </div>
+                      ) : (
+                        <>
+                          <div style={{ textDecoration: 'line-through' }}>
+                            {formatPrice(price)} <span> ₽</span>
+                          </div>
+                          <span> / </span>
+                          <div>
+                            {formatPrice(newPrice)} <span> ₽</span>
+                          </div>
+                        </>
+                      )}
+                    </>
+                  ) : (
+                    <div>
+                      {formatPrice(price)} <span> ₽</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {colors && colors.length && (
                 <p className={st.chooseColors}>Выбранный цвет: {colorName} </p>
               )}
@@ -135,6 +235,7 @@ const OneGood = ({ list }) => {
                     )
                   })}
               </ul>
+
               <div className={st.count}>
                 {quantityGoods ? (
                   <p>
@@ -144,7 +245,7 @@ const OneGood = ({ list }) => {
                   <p>Нет в наличии</p>
                 )}
               </div>
-              {quantityGoods ? (
+              {changeInfo ? null : quantityGoods ? (
                 <button
                   onClick={() =>
                     AddCart({
@@ -163,16 +264,49 @@ const OneGood = ({ list }) => {
                     cursor: isDisable ? 'auto' : '',
                   }}
                 >
-                  {isDisable ? 'нет в наличии' : '  В корзину'}
+                  {isDisable ? 'нет в наличии' : 'В корзину'}
                 </button>
               ) : (
                 ''
               )}
-            </div>
+            </form>
           </div>
         </div>
       </section>
       {/* Похожие товары */}
+      <SimilarProducts list={list} good={good} count={count} />
+    </>
+  )
+}
+
+export default OneGood
+
+const CustomPrevArrow = ({ onClick }) => (
+  <button className={st.nextArrow} onClick={onClick}>
+    <img src={ICONS.iconArrowLeft} alt="arrow" />
+  </button>
+)
+
+const CustomNextArrow = ({ onClick }) => (
+  <button className={st.prevArrow} onClick={onClick}>
+    <img src={ICONS.iconArrow} alt="arrow" />
+  </button>
+)
+
+const SimilarProducts = ({ list, good, count }) => {
+  const { category } = good
+  const { AddCart, formatPrice } = useContext(CustomContext)
+
+  const settings = {
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  }
+  return (
+    <>
       <section className={st.otherGood}>
         <div className="container">
           <h2 className={st.otherGood__title}>Похожие товары</h2>
@@ -256,17 +390,3 @@ const OneGood = ({ list }) => {
     </>
   )
 }
-
-export default OneGood
-
-const CustomPrevArrow = ({ onClick }) => (
-  <button className={st.nextArrow} onClick={onClick}>
-    <img src={ICONS.iconArrowLeft} alt="arrow" />
-  </button>
-)
-
-const CustomNextArrow = ({ onClick }) => (
-  <button className={st.prevArrow} onClick={onClick}>
-    <img src={ICONS.iconArrow} alt="arrow" />
-  </button>
-)

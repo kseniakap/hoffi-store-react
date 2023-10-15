@@ -53,6 +53,15 @@ export const Context = (props) => {
     setCart(updatedCart);
   };
 
+  const [totalPrice, setTotalPrice] = useState(0);
+  const updateTotalPrice = () => {
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      totalPrice += item.count * item.price;
+    });
+    setTotalPrice(totalPrice);
+  };
+
   useEffect(() => {
     if (localStorage.getItem("user") !== null) {
       setUser(JSON.parse(localStorage.getItem("user")));
@@ -136,8 +145,7 @@ export const Context = (props) => {
     ticket,
     setTicket,
 
-    // isDisable,
-    // setIsDisable,
+    updateTotalPrice
   };
 
   return (

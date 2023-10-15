@@ -25,6 +25,7 @@
       padding: 10px 30px;
       background-color: $accent-color;
       border-radius: 10px;
+      width: 200px !important;
       color: #fff;
       border: none;
       outline: none;
@@ -198,4 +199,46 @@
 .prevArrow {
   left: inherit;
   right: -70px;
+}
+
+.btnChange {
+  position: absolute;
+  right: 0px;
+  bottom: 0;
+}
+.oneGood__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  label {
+    display: block;
+    width: 200px;
+  }
+  input {
+    width: 450px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+  }
+  textarea {
+    width: 450px;
+    min-height: 200px;
+    padding: 5px 10px;
+    outline: none;
+  }
+}
+textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
+}
+
+textarea::-webkit-scrollbar-track {
+  border: 1px solid $accent-color;
+  background-color: #fff;
 }

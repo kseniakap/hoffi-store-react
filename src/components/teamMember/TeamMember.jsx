@@ -6,16 +6,17 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import emailImg from './email.svg'
 import telImg from './tel.svg'
 import siteImg from './site.svg'
-
+import { useTranslation } from 'react-i18next'
 import './../../style/style.scss'
 import st from './TeamMember.module.scss'
 
 const TeamMember = () => {
   const params = useParams()
   const [member, setMember] = useState({})
+  const { t } = useTranslation()
 
   useEffect(() => {
-    axios(`http://localhost:3001/members/${params.id}`)
+    axios(`http://localhost:3001/${t('url.allMembers')}/${params.id}`)
       .then(({ data }) => setMember(data))
       .catch((error) => {
         console.error(error)

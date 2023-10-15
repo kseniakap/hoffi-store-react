@@ -12,14 +12,14 @@ const AboutUs = () => {
   const [blockStyle, setBlockStyle] = useState({
     position: 'absolute',
     top: '0px',
-    left: '60%',
+    left: '50%',
     transition: 'left 3s ease-out',
   })
 
   const [blockStyleRight, setBlockStyleRight] = useState({
     position: 'absolute',
     top: '0px',
-    right: '60%',
+    right: '50%',
     transition: 'right 3s ease-out',
   })
 
@@ -109,7 +109,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <section className={st.team}></section>
+   
     </>
   )
 }

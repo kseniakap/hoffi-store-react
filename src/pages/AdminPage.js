@@ -1,7 +1,12 @@
 import React from "react";
+import AdminPanel from "../components/adminPanel/AdminPanel";
 import "./../style/style.scss";
 const AdminPage = () => {
-  return <div className="container">admin</div>;
+  return (
+   
+      <AdminPanel />
+
+  );
 };
 
 export default AdminPage;

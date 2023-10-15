@@ -8,10 +8,10 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import st from './Item.module.scss'
 
 const Item = ({ list }) => {
-  const { id, name, description, price, newPrice, colors } = list
+  const { id, name, description, price, newPrice, colors,category } = list
 
   const firstImg = colors && colors[0].image
-  const { formatPrice } = useContext(CustomContext)
+  const { formatPrice,AddCart } = useContext(CustomContext)
 
   const { t } = useTranslation()
 
@@ -45,8 +45,25 @@ const Item = ({ list }) => {
               <p>{formatPrice(price)} ₽</p>
             )}
           </div>
-          {totalCount ? (
-            ''
+          {totalCount && colors[0].quantity? (
+            <div
+            className={st.add}
+            onClick={(e) => {
+              e.preventDefault()
+              AddCart({
+                id: id,
+                name: name,
+                price: price,
+                colors: colors[0].name,
+                image: colors[0].image,
+                count: 1,
+                category: category,
+                quantity: colors[0].quantity,
+              })
+            }}
+          >
+            +
+          </div>
           ) : (
             <p className={st.instock}>{t('goodsPage.outOfStock')}</p>
           )}

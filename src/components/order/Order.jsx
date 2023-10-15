@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import st from './Order.module.scss'
 
 const Order = ({ item }) => {
-  const { deleteCart } = useContext(CustomContext)
+  const { deleteCart, updateTotalPrice } = useContext(CustomContext)
   const { id, name, price, colors, count, image } = item
   const [countGoods, setCountGoods] = useState(count)
   const [isDisable, setIsDisable] = useState(false)
@@ -17,6 +17,7 @@ const Order = ({ item }) => {
     if (item.quantity > item.count) {
       item.count += 1
       setCountGoods(item.count)
+      updateTotalPrice()
     } else {
       setIsDisable(true)
     }
@@ -30,6 +31,7 @@ const Order = ({ item }) => {
       item.count -= 1
       setCountGoods(item.count)
       setIsDisable(false)
+      updateTotalPrice()
     }
   }
 

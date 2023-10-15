@@ -9,9 +9,7 @@ import './../../style/style.scss'
 import st from './OrderList.module.scss'
 
 const OrderList = () => {
-  const { user, cardOpen, setCardOpen, isAddToCartClicked, cart } = useContext(
-    CustomContext,
-  )
+  const { user, cardOpen, setCardOpen, cart } = useContext(CustomContext)
   const orderRef = useRef(null)
   const { t } = useTranslation()
 
@@ -22,32 +20,15 @@ const OrderList = () => {
     },
   }
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        !isAddToCartClicked &&
-        cardOpen &&
-        orderRef.current &&
-        !orderRef.current.contains(event.target)
-      ) {
-        setCardOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
-
   const showOrders = (order) => {
     let sum = 0
-    order && order.forEach((el) => (sum += Number(el.price) * el.count))
+    order && order.forEach((el) => (sum += Number(el.price) * +el.count))
     return (
       <div className={st.shop__list}>
         {order && order.map((el, idx) => <Order key={idx} item={el} />)}
         <div className={st.sum}>
-          <span>{t('OrderList.delivery')}:</span>
+          {/* Доставка */}
+          <span>{t('OrderList.delivery')}</span>
           <p className={st.delivery}>{t('OrderList.free')}</p>
           <div className={st.result}>
             <span>{t('OrderList.total')}</span>
@@ -91,7 +72,6 @@ const OrderList = () => {
       </div>
     )
   }
-
   return (
     <StyleRoot>
       {cardOpen && (

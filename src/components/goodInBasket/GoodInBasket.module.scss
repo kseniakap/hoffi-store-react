@@ -45,7 +45,9 @@
     object-fit: contain;
   }
 }
-
+.nameGood{
+  width: 200px;
+}
 .counter {
   display: flex;
   align-items: center;
@@ -108,6 +110,7 @@
   margin-bottom: 15px;
 }
 .ticket {
+  margin-bottom: 100px;
   form {
     margin-bottom: 10px;
   }

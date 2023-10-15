@@ -12,12 +12,27 @@ const AddNewGood = () => {
   const [selectedColors, setSelectedColors] = useState([])
   const [colorImages, setColorImages] = useState({})
   const [colorQuantities, setColorQuantities] = useState({})
-
+  const [newColor, setNewColor] = useState('')
+  const [addColor, setAddColor] = useState(false)
+  const [newColorCode, setNewColorCode] = useState('#fff')
+  //добавление нового цвета
   const { getAllItems } = ItemServices()
+
+  const colors = [
+    'white',
+    'burlywood',
+    'goldenrod',
+    'Gainsboro',
+    'silver',
+    'DarkGray',
+    'dimgray',
+    'black',
+    // Add more colors as needed
+  ]
 
   const navigate = useNavigate()
 
-  const AddcNewGood = (data) => {
+  const AddNewGood = (data) => {
     axios
       .post(`http://localhost:3001/goods`, {
         ...data,
@@ -38,7 +53,7 @@ const AddNewGood = () => {
     switch (colorCode) {
       case 'white':
         return 'белый'
-      case 'lightgray':
+      case 'Gainsboro':
         return 'светло-серый'
       case 'burlywood':
         return 'бежевый'
@@ -46,12 +61,15 @@ const AddNewGood = () => {
         return 'светло-голубой'
       case 'goldenrod':
         return 'горчичный'
-      case 'SkyBlue':
-        return 'серо-голубой'
+      case 'Silver':
+        return 'Серебрянный'
+      case 'DarkGray':
+        return 'темно-серый'
       case 'dimgray':
         return 'темно-серый'
       case 'black':
         return 'черный'
+
       default:
         return 'Неизвестный цвет'
     }
@@ -75,24 +93,40 @@ const AddNewGood = () => {
     setColorQuantities({ ...colorQuantities, [color]: quantity })
   }
 
+  const addNewColor = () => {
+    setAddColor(true)
+    setSelectedColors([...selectedColors, newColorCode])
+  }
+
   return (
     <section className={st.create}>
       <div className="container">
-        <form className={st.form} onSubmit={handleSubmit(AddcNewGood)}>
+        <form className={st.form} onSubmit={handleSubmit(AddNewGood)}>
+          <h1 className="title">Создание нового товара</h1>
+          {/* название товара */}
           <div className={st.formSubtitle}>
             <label htmlFor="name">Название</label>
-            <input {...register('name')} type="text" id="name" />
+            <input {...register('name')} type="text" id="name" required />
           </div>
+          {/* описание товара */}
           <div className={st.formSubtitle}>
             <label htmlFor="descr">Описание товара</label>
-            <input {...register('description')} type="text" id="descr" />
+            <textarea {...register('description')} type="text" id="descr" />
           </div>
+          {/* цена */}
           <div className={st.formSubtitle}>
             <label htmlFor="price">Цена</label>
-            <input {...register('price')} type="text" id="price" />
+            <input
+              {...register('price')}
+              type="text"
+              id="price"
+              style={{ width: '150px' }}
+              required
+            />
           </div>
+          {/* категории */}
           <div className={st.formSubtitle}>
-            <p>Категория</p>
+            <label>Категория</label>
             <select id="category" {...register('category')}>
               <option value="" defaultValue disabled hidden>
                 Выберите категорию
@@ -108,35 +142,48 @@ const AddNewGood = () => {
               <option value="puff">Пуф</option>
             </select>
           </div>
+          {/* цвета */}
           <div className={st.formSubtitle}>
-            <p>Цвета</p>
+            <label>Цвета</label>
             <ul className={st.colorWrapper}>
-              {renderColorOption('white', selectedColors, handleColorSelect)}
-              {renderColorOption(
-                'lightgray',
-                selectedColors,
-                handleColorSelect,
-              )}
-              {renderColorOption(
-                'burlywood',
-                selectedColors,
-                handleColorSelect,
-              )}
-              {renderColorOption(
-                'lightsteelblue',
-                selectedColors,
-                handleColorSelect,
-              )}
-              {renderColorOption(
-                'goldenrod',
-                selectedColors,
-                handleColorSelect,
-              )}
-              {renderColorOption('SkyBlue', selectedColors, handleColorSelect)}
-              {renderColorOption('dimgray', selectedColors, handleColorSelect)}
-              {renderColorOption('black', selectedColors, handleColorSelect)}
+              {colors.map((color) => (
+                <li
+                  onClick={() => handleColorSelect(color)}
+                  key={color}
+                  style={{
+                    backgroundColor: color,
+                    border: '1px solid black',
+                    cursor: 'pointer',
+                  }}
+                  className={`${st.color} ${
+                    selectedColors.includes(color) ? st.activeColor : ''
+                  }`}
+                ></li>
+              ))}
             </ul>
           </div>
+
+          {/* Добавление нового цвета */}
+          {/* <div className={st.addNewColorWrapper}>
+            <div className={st.addNewColor} type="button" onClick={addNewColor}>
+              Добавить цвет
+            </div>
+            {addColor ? (
+              <>
+                <input
+                  type="color"
+                  value={newColorCode}
+                  onChange={(e) => setNewColorCode(e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="Введите название нового цвета"
+                  value={newColor}
+                  onChange={(e) => setNewColor(e.target.value)}
+                />
+              </>
+            ) : null}
+          </div> */}
 
           {/* Поля для загрузки картинок и указания количества */}
 
@@ -146,7 +193,7 @@ const AddNewGood = () => {
                 <p> Изображение для цвета</p>
                 <p
                   className={st.chooseColor}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: color, border: '1px solid #000' }}
                 ></p>
               </label>
               <input
@@ -154,40 +201,26 @@ const AddNewGood = () => {
                 id={`image-${color}`}
                 onChange={(e) => handleImageUpload(color, e)}
               />
-              <label htmlFor={`quantity-${color}`}>Количество товара:</label>
+              <label
+                style={{ marginRight: '10px' }}
+                htmlFor={`quantity-${color}`}
+              >
+                Количество товара:
+              </label>
               <input
                 type="number"
                 id={`quantity-${color}`}
                 onChange={(e) => handleQuantityChange(color, e)}
               />
+              <p>x</p>
             </div>
           ))}
-          <button type="submit">Создать</button>
+          <button className={st.btnCreateNew} type="submit">
+            Создать
+          </button>
         </form>
       </div>
     </section>
-  )
-}
-
-const renderColorOption = (
-  backgroundColor,
-  selectedColors,
-  handleColorSelect,
-) => {
-  const isSelected = selectedColors.includes(backgroundColor)
-  return (
-    <li
-      onClick={() => handleColorSelect(backgroundColor)}
-      key={backgroundColor}
-      style={{
-        backgroundColor: backgroundColor,
-        border: '1px solid black',
-        cursor: 'pointer',
-      }}
-      className={`${st.color} ${isSelected ? st.activeColor : ''}`}
-    >
-      <p>name</p>
-    </li>
   )
 }
 

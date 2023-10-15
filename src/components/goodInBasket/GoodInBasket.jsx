@@ -10,7 +10,7 @@ import st from './GoodInBasket.module.scss'
 
 //логика страницы заказа
 const GoodInBasket = () => {
-  const { cart, deleteCart, setCart, ticket, setTicket } = useContext(
+  const { cart, deleteCart, setCart, ticket, setTicket,formatPrice } = useContext(
     CustomContext,
   )
   const [totalPrice, setTotalPrice] = useState(0)
@@ -48,12 +48,10 @@ const GoodInBasket = () => {
   }, [cart, ticket])
 
   const handleIncrease = (item) => {
-    console.log(item)
     const updatedCart = [...cart]
     const index = updatedCart.findIndex(
       (el) => el.id === item.id && el.colors === item.colors,
     )
-
     const maxCount = item.quantity
     console.log(maxCount)
     if (index !== -1 && updatedCart[index].count < maxCount) {
@@ -108,9 +106,9 @@ const GoodInBasket = () => {
                         effect="blur"
                       />
                     </div>
-                    <p>{name}</p>
+                    <p className={st.nameGood}>{name}</p>
                   </div>
-                  <p>{price}</p>
+                  <p>{formatPrice(price)}</p>
                   <div className={st.counter}>
                     <button
                       className={st.btn}
@@ -131,7 +129,7 @@ const GoodInBasket = () => {
                     </button>
                   </div>
                   <p>{colors}</p>
-                  <p>{res} р</p>
+                  <p>{formatPrice(res)} р</p>
                 </div>
               )
             })}
@@ -144,9 +142,7 @@ const GoodInBasket = () => {
               <div className={st.result}>
                 <span> Итого:</span>
                 <span style={{ color: totalPrice > 50000 ? 'green' : 'black' }}>
-                  {Math.round(totalPrice).toString().slice(0, -3) +
-                    ' ' +
-                    Math.round(totalPrice).toString().slice(-3)}{' '}
+                  {formatPrice(totalPrice)}
                   ₽
                 </span>
               </div>
