@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CustomContext } from '../../Context'
 import { useTranslation } from 'react-i18next'
 import TypingEffect from '../../AnimatedText'
@@ -23,6 +23,7 @@ const Main = () => {
 
   return (
     <>
+
       <StyleRoot>
         <div className={st.mainImg}>
           <LazyLoadImage

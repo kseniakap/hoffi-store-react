@@ -232,7 +232,8 @@
           "image": "bed_nemi_gray.jpg",
           "quantity": 20
         }
-      ]
+      ],
+      "newPrice": "26999"
     },
     {
       "id": 4,
@@ -1161,6 +1162,5 @@
       "number": "8-953-599-01-01",
       "linkSite": "www.alekseivinogradov.com"
     }
-  ],
-  "goodsEn": []
+  ]
 }

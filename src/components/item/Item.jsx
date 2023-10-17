@@ -8,10 +8,18 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import st from './Item.module.scss'
 
 const Item = ({ list }) => {
-  const { id, name, description, price, newPrice, colors,category } = list
+  const { id, name, description, price, newPrice, colors, category } = list
 
   const firstImg = colors && colors[0].image
-  const { formatPrice,AddCart } = useContext(CustomContext)
+  
+  const path = `${process.env.PUBLIC_URL}/img/${firstImg}`
+  let newPath = path
+
+  if (path.startsWith('/img/https://')) {
+    newPath = path.substring(5)
+  }
+
+  const { formatPrice, AddCart } = useContext(CustomContext)
 
   const { t } = useTranslation()
 
@@ -25,7 +33,7 @@ const Item = ({ list }) => {
       <Link to={`/onegood/${id}`} className={st.item}>
         <LazyLoadImage
           className={st.img}
-          src={`${process.env.PUBLIC_URL}/img/${firstImg}`}
+          src={newPath}
           alt={name}
           effect="blur"
         />
@@ -45,25 +53,25 @@ const Item = ({ list }) => {
               <p>{formatPrice(price)} ₽</p>
             )}
           </div>
-          {totalCount && colors[0].quantity? (
+          {totalCount && colors[0].quantity ? (
             <div
-            className={st.add}
-            onClick={(e) => {
-              e.preventDefault()
-              AddCart({
-                id: id,
-                name: name,
-                price: price,
-                colors: colors[0].name,
-                image: colors[0].image,
-                count: 1,
-                category: category,
-                quantity: colors[0].quantity,
-              })
-            }}
-          >
-            +
-          </div>
+              className={st.add}
+              onClick={(e) => {
+                e.preventDefault()
+                AddCart({
+                  id: id,
+                  name: name,
+                  price: price,
+                  colors: colors[0].name,
+                  image: colors[0].image,
+                  count: 1,
+                  category: category,
+                  quantity: colors[0].quantity,
+                })
+              }}
+            >
+              +
+            </div>
           ) : (
             <p className={st.instock}>{t('goodsPage.outOfStock')}</p>
           )}

@@ -4,19 +4,26 @@ import { useNavigate } from 'react-router'
 import axios from 'axios'
 import ItemServices from '../../services/ItemServices'
 
+import { imgDB } from './../../fireBase'
+import { v4 } from 'uuid'
+import { getDownloadURL, ref, uploadBytes, collection } from 'firebase/storage'
+
 import st from './AddNewGood.module.scss'
 import './../../style/style.scss'
 
 const AddNewGood = () => {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit } = useForm()
   const [selectedColors, setSelectedColors] = useState([])
   const [colorImages, setColorImages] = useState({})
+  const [imageName, setImageName] = useState('') //хранить название загруженной картинки
+
   const [colorQuantities, setColorQuantities] = useState({})
-  const [newColor, setNewColor] = useState('')
+  // const [newColor, setNewColor] = useState('')
   const [addColor, setAddColor] = useState(false)
   const [newColorCode, setNewColorCode] = useState('#fff')
   //добавление нового цвета
   const { getAllItems } = ItemServices()
+  const [image, setImage] = useState(null)
 
   const colors = [
     'white',
@@ -27,28 +34,9 @@ const AddNewGood = () => {
     'DarkGray',
     'dimgray',
     'black',
-    // Add more colors as needed
   ]
 
   const navigate = useNavigate()
-
-  const AddNewGood = (data) => {
-    axios
-      .post(`http://localhost:3001/goods`, {
-        ...data,
-        colors: selectedColors.map((color) => ({
-          name: getColorName(color),
-          code: color,
-          image: colorImages[color],
-          quantity: colorQuantities[color],
-        })),
-      })
-      .then(() => {
-        getAllItems()
-        navigate('/goods')
-      })
-  }
-
   const getColorName = (colorCode) => {
     switch (colorCode) {
       case 'white':
@@ -75,6 +63,24 @@ const AddNewGood = () => {
     }
   }
 
+  const AddNewGood = (data) => {
+    axios
+      .post(`http://localhost:3001/goods`, {
+        ...data,
+        imageName: imageName,
+        colors: selectedColors.map((color) => ({
+          name: getColorName(color),
+          code: color,
+          image: colorImages[color],
+          quantity: colorQuantities[color],
+        })),
+      })
+      .then(() => {
+        getAllItems()
+        navigate('/goods')
+      })
+  }
+
   const handleColorSelect = (color) => {
     if (selectedColors.includes(color)) {
       setSelectedColors(selectedColors.filter((c) => c !== color))
@@ -82,10 +88,35 @@ const AddNewGood = () => {
       setSelectedColors([...selectedColors, color])
     }
   }
+  // const handleUpload = (e) => {
+  //   const imgs = ref(imgDB, `Images/${v4()}`)
+  //   uploadBytes(imgs, e.target.files[0]).then((data) =>
+  //     getDownloadURL(data.ref).then((img) => {
+  //       setImage(img)
+  //     }),
+  //   )
+  // }
 
   const handleImageUpload = (color, e) => {
     const file = e.target.files[0]
-    setColorImages({ ...colorImages, [color]: file.name })
+    const storageRef = ref(imgDB, `Images/${file.name}`)
+    uploadBytes(storageRef, file)
+      .then((snapshot) => {
+        getDownloadURL(storageRef)
+          .then((url) => {
+            setColorImages((prevColorImages) => ({
+              ...prevColorImages,
+              [color]: url,
+            }))
+            setImageName(file.name)
+          })
+          .catch((error) => {
+            console.log('Error getting download URL: ', error)
+          })
+      })
+      .catch((error) => {
+        console.log('Error uploading file: ', error)
+      })
   }
 
   const handleQuantityChange = (color, e) => {
@@ -93,10 +124,10 @@ const AddNewGood = () => {
     setColorQuantities({ ...colorQuantities, [color]: quantity })
   }
 
-  const addNewColor = () => {
-    setAddColor(true)
-    setSelectedColors([...selectedColors, newColorCode])
-  }
+  // const addNewColor = () => {
+  //   setAddColor(true)
+  //   setSelectedColors([...selectedColors, newColorCode])
+  // }
 
   return (
     <section className={st.create}>
@@ -196,11 +227,27 @@ const AddNewGood = () => {
                   style={{ backgroundColor: color, border: '1px solid #000' }}
                 ></p>
               </label>
+
               <input
                 type="file"
                 id={`image-${color}`}
+                // onChange={(e) => handleUpload(e)}
                 onChange={(e) => handleImageUpload(color, e)}
               />
+
+              {image && (
+                <div>
+                  <img
+                    src={image}
+                    alt="изображение"
+                    effect="blur"
+                    height={200}
+                    width={200}
+                  />
+                  <p>Название картинки: {imageName}</p>{' '}
+                  {/* отображение названия картинки */}
+                </div>
+              )}
               <label
                 style={{ marginRight: '10px' }}
                 htmlFor={`quantity-${color}`}

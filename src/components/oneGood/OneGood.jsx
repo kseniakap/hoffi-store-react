@@ -29,6 +29,7 @@ const OneGood = ({ list }) => {
 
   const [isDisable, setIsDisable] = useState(false)
   const [changeInfo, setChangeInfo] = useState(false)
+
   const {
     AddCart,
     formatPrice,
@@ -84,6 +85,12 @@ const OneGood = ({ list }) => {
         console.error('Возникла ошибка при изменении товара:', error)
       })
   }
+  const path = `${process.env.PUBLIC_URL}/img/${imgChoose}`
+  let newPath = path
+
+  if (path.startsWith('/img/https://')) {
+    newPath = path.substring(5)
+  }
 
   return (
     <>
@@ -92,11 +99,7 @@ const OneGood = ({ list }) => {
         <div className="container">
           <div className={st.oneGood__wrapper}>
             <div className={st.oneGood__img}>
-              <LazyLoadImage
-                src={`${process.env.PUBLIC_URL}/img/${imgChoose}`}
-                alt={name}
-                effect="blur"
-              />
+              <LazyLoadImage src={newPath} alt={name} effect="blur" />
             </div>
             <form
               className={st.oneGood__info}
