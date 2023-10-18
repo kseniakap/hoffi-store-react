@@ -656,8 +656,8 @@
     },
     {
       "id": 29,
-      "name": "Каркас кровати Бланка 140х200 см ",
-      "description": "Кровать Бланка со спальным местом 120х200 см станет гармоничным элементом современной спальни. Каркас кровати выполнен в неброских естественных тонах, благодаря чему отлично подойдет к любому цветовому решению в дизайне интерьера. Детали изделия сделаны из ламинированной плиты, имитирующей древесину светлого дуба. Высокое мягкое изголовье обтянуто серой рогожкой и декорировано красивой стежкой в виде прямоугольников. Под спальным местом находится 2 вместительных ящика, где можно хранить постельные принадлежности и другие вещи. Матрас и реечное основание для кровати приобретается дополнительно.",
+      "name": "Пуф круглый Garda ",
+      "description": "",
       "price": 12999,
       "category": "bed",
       "colors": [
@@ -667,7 +667,8 @@
           "image": "bedframe_blanka.jpg",
           "quantity": 18
         }
-      ]
+      ],
+      "newPrice": "3999"
     },
     {
       "id": 30,
@@ -1079,6 +1080,56 @@
         }
       ],
       "id": 52
+    },
+    {
+      "name": "Диван-кровать SCANDICA Норман мини",
+      "description": "",
+      "price": "24999",
+      "category": "sofa-bed",
+      "imageName": "sofa-bed_scandica_norman_mini.jpg",
+      "colors": [
+        {
+          "name": "белый",
+          "code": "white",
+          "image": "https://firebasestorage.googleapis.com/v0/b/hoffistore-7cd26.appspot.com/o/Images%2Fsofa-bed_scandica_norman_mini_white.jpg?alt=media&token=9ec78bfc-114b-4a21-a219-27bf4a739a30",
+          "quantity": "3"
+        },
+        {
+          "name": "бежевый",
+          "code": "burlywood",
+          "image": "https://firebasestorage.googleapis.com/v0/b/hoffistore-7cd26.appspot.com/o/Images%2Fsofa-bed_scandica_norman_mini.jpg?alt=media&token=a74703a2-d621-49d6-a10b-014e65a324bc",
+          "quantity": "7"
+        }
+      ],
+      "id": 53
+    },
+    {
+      "name": "Пуф Бета 2 ",
+      "description": "Пуф Бета обеспечит в прихожей удобное место для переобувания и одновременно – дополнительное место для хранения. В ящик под мягким сиденьем можно сложить домашние тапочки, аксессуары и косметику для ухода за обувью, бытовую химию. Для удобства открывания между внутренней и внешней обивкой вшита тканевая петля, крышка удерживается в открытом состоянии с помощью лент-фиксаторов. Чехол из микровелюра не электризуется, не притягивает пыль и шерсть домашних питомцев, легко поддается сухой чистке.\n\n",
+      "price": "3699",
+      "category": "puff",
+      "imageName": "puff_beta_blue.jpg",
+      "colors": [
+        {
+          "name": "Серебрянный",
+          "code": "silver",
+          "image": "https://firebasestorage.googleapis.com/v0/b/hoffistore-7cd26.appspot.com/o/Images%2Fpuff_beta_gray.jpg?alt=media&token=82988a97-9584-4952-9021-fd138edd14dd",
+          "quantity": "6"
+        },
+        {
+          "name": "мокасин",
+          "code": "Moccasin",
+          "image": "https://firebasestorage.googleapis.com/v0/b/hoffistore-7cd26.appspot.com/o/Images%2Fpuff_beta.jpg?alt=media&token=156a6b1f-e5f1-47d3-a42e-50cf9f6bc128",
+          "quantity": "7"
+        },
+        {
+          "name": "темно-голубой",
+          "code": "DeepSkyBlue",
+          "image": "https://firebasestorage.googleapis.com/v0/b/hoffistore-7cd26.appspot.com/o/Images%2Fpuff_beta_blue.jpg?alt=media&token=49f51efd-37ce-4f92-9f96-1d9ffea1f626",
+          "quantity": "4"
+        }
+      ],
+      "id": 54
     }
   ],
   "membersEn": [

@@ -71,7 +71,7 @@
     transform: scale(1.1);
   }
 }
-.active {
+.activeBlack {
   transform: scale(1.2);
   &:before {
     content: "✔";
@@ -80,7 +80,20 @@
     left: 50%;
     font-size: 20px;
     transform: rotate(10deg) translate(-63%, -45%);
-    color: black;
+    color: black; /* Черная галочка для всех, кроме черного */
+  }
+}
+
+.activeBlackWhite {
+  transform: scale(1.2);
+  &:before {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    transform: rotate(10deg) translate(-63%, -45%);
+    color: white; /* Белая галочка для черного цвета */
   }
 }
 .otherGood {

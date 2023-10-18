@@ -152,7 +152,7 @@ const OneGood = ({ list }) => {
                     {...register('description')}
                     type="text"
                     defaultValue={description}
-                    placeholder="Введите опимание товара"
+                    placeholder="Введите опиcание товара"
                     id="descr"
                   />
                 </>
@@ -227,7 +227,11 @@ const OneGood = ({ list }) => {
                       <li
                         key={item.code}
                         className={`${st.color} ${
-                          item.code === colorChoose ? st.active : ''
+                          item.code === colorChoose && item.code === 'black'
+                            ? st.activeBlackWhite
+                            : item.code === colorChoose
+                            ? st.activeBlack
+                            : ''
                         }`}
                         onClick={() => chooseColor(item)}
                         style={{

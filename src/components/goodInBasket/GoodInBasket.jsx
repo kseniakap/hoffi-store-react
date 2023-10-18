@@ -10,9 +10,14 @@ import st from './GoodInBasket.module.scss'
 
 //логика страницы заказа
 const GoodInBasket = () => {
-  const { cart, deleteCart, setCart, ticket, setTicket,formatPrice } = useContext(
-    CustomContext,
-  )
+  const {
+    cart,
+    deleteCart,
+    setCart,
+    ticket,
+    setTicket,
+    formatPrice,
+  } = useContext(CustomContext)
   const [totalPrice, setTotalPrice] = useState(0)
 
   const [showMessage, setShowMessage] = useState(false)
@@ -90,6 +95,12 @@ const GoodInBasket = () => {
               const { id, name, price, image, colors, count, quantity } = item
               const res = price * count
               const isDisable = count >= quantity
+              const path = `${process.env.PUBLIC_URL}/img/${image}`
+              let newPath = path
+              if (path.startsWith('/img/https://')) {
+                newPath = path.substring(5)
+              }
+
               return (
                 <div className={st.item} key={idx}>
                   <div
@@ -101,7 +112,7 @@ const GoodInBasket = () => {
                   <div className={st.block}>
                     <div className={st.img}>
                       <LazyLoadImage
-                        src={`${process.env.PUBLIC_URL}/img/${image}`}
+                        src={newPath}
                         alt="фото заказа"
                         effect="blur"
                       />
@@ -142,8 +153,7 @@ const GoodInBasket = () => {
               <div className={st.result}>
                 <span> Итого:</span>
                 <span style={{ color: totalPrice > 50000 ? 'green' : 'black' }}>
-                  {formatPrice(totalPrice)}
-                  ₽
+                  {formatPrice(totalPrice)}₽
                 </span>
               </div>
             </div>

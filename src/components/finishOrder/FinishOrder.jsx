@@ -54,22 +54,20 @@ const FinishOrder = () => {
       await axios(`http://localhost:3001/users/${user.id}`).then((res) =>
         setUser(res.data),
       )
-      
+
       if (Array.isArray(ticket) && ticket.length > 0) {
         if (ticket[0].quality > 1) {
           axios
             .patch(`http://localhost:3001/tickets/${ticket[0].id}`, {
               quality: ticket[0].quality - 1,
             })
-            .then(() => console.log(''));
+            .then(() => console.log(''))
         } else if (ticket[0].quality === 1) {
-          axios.delete(`http://localhost:3001/tickets/${ticket[0].id}`);
+          axios.delete(`http://localhost:3001/tickets/${ticket[0].id}`)
         } else {
-          console.log('Возникла ошибка');
+          console.log('Возникла ошибка')
         }
       }
-
-  
 
       await reset()
       await setCart([])
@@ -104,15 +102,18 @@ const FinishOrder = () => {
               {cart.map((item, idx) => {
                 const { name, image, colors, count, price } = item
                 const totalPrice = count * price
+                const path = `${process.env.PUBLIC_URL}/img/${image}`
+                let newPath = path
+
+                if (path.startsWith('/img/https://')) {
+                  newPath = path.substring(5)
+                }
+
                 return (
                   <ul key={idx} className={st.table_bottom}>
                     <li className={st.name}>
                       <div className={st.image}>
-                        <LazyLoadImage
-                          src={`${process.env.PUBLIC_URL}/img/${image}`}
-                          alt={name}
-                          effect="blur"
-                        />
+                        <LazyLoadImage src={newPath} alt={name} effect="blur" />
                       </div>
                       {name}
                     </li>

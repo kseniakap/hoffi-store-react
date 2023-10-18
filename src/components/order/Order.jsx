@@ -34,15 +34,17 @@ const Order = ({ item }) => {
       updateTotalPrice()
     }
   }
+  const path = `${process.env.PUBLIC_URL}/img/${image}`
+  let newPath = path
+
+  if (path.startsWith('/img/https://')) {
+    newPath = path.substring(5)
+  }
 
   return (
     <Link to={`/onegood/${id}`}>
       <div className={st.item}>
-        <img
-          className={st.img}
-          src={`${process.env.PUBLIC_URL}/img/${image}`}
-          alt={name}
-        />
+        <img className={st.img} src={newPath} alt={name} />
         <h2 className={st.name}>{name}</h2>
         <p className="">{colors}</p>
         <div className={st.wrapper}>
