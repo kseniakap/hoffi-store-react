@@ -88,7 +88,7 @@
   margin-bottom: 100px;
 }
 .content {
-  width: 470px;
+  max-width: 470px;
 }
 .descr {
   color: $text-color;
@@ -119,7 +119,6 @@
   img {
     transition: $transition !important;
   }
-
 }
 @keyframes pulse {
   from {
@@ -168,4 +167,123 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media (max-width: 1600px) {
+  .item {
+    height: 180px;
+  }
+  .mainImg {
+    height: 550px;
+  }
+  .item__descr,
+  .descr {
+    font-size: 20px;
+  }
+  .tel {
+    span {
+      font-size: 18px;
+    }
+  }
+  .item__title {
+    font-size: 23px;
+  }
+  .img {
+    width: 660px;
+    height: 580px;
+    border-radius: 0 273px 0px 125px;
+  }
+
+  .brandWrapper {
+    justify-content: space-around;
+  }
+}
+@media (max-width: 1400px) {
+  // .img {
+  //   width: 640px;
+  //   height: 610px;
+  // }
+}
+@media (max-width: 1200px) {
+  // .list {
+  //   justify-content: center;
+  //   gap: 40px 30px;
+  // }
+  // .item {
+  //   padding-left: 0;
+  //   height: 165px;
+  //   & + .item {
+  //     border-left: none;
+  //   }
+  //   &__link {
+  //     left: 50%;
+  //   }
+  // }
+  // .img {
+  //   width: 530px;
+  //   height: 495px;
+  //   border-radius: 0 240px 0px 133px;
+  // }
+  // .wrapper {
+  //   gap: 25px;
+  // }
+  // .tel {
+  //   span {
+  //     font-size: 18px;
+  //   }
+  // }
+  // .brandWrapper {
+  //   justify-content: center;
+  //   gap: 50px;
+  // }
+}
+@media (max-width: 992px) {
+  // .list {
+  //   gap: 20px 12px;
+  // }
+  // .wrapper {
+  //   flex-direction: column;
+  // }
+  // .content {
+  //   width: 90%;
+  //   max-width: none;
+  //   margin: 0 auto;
+  //   h1 {
+  //     text-align: center;
+  //   }
+  //   .tel {
+  //     justify-content: center;
+  //   }
+  // }
+  // .img {
+  //   width: 95%;
+  //   height: 650px;
+  //   display: block;
+  //   margin: 0 auto;
+  //   object-fit: cover;
+  //   object-position: bottom;
+  // }
+  // .imageWrapper {
+  //   width: 90%;
+  //   margin: 0 auto;
+  //   height: 650px;
+
+  //   span {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+  // }
+  // .brandWrapper {
+  //   flex-wrap: wrap;
+  //   gap: 40px 65px;
+  // }
+}
+
+@media (max-width: 768px) {
+  // .img, .imageWrapper {
+  //   height: 500px;
+  // }
+}
+@media (max-width: 576px) {
+}
+@media (max-width: 320px) {
 }

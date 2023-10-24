@@ -3,12 +3,17 @@ import { useTranslation } from "react-i18next";
 import GoodInBasket from "../components/goodInBasket/GoodInBasket";
 import HeaderComponents from "../components/headerComponents/HeaderComponents";
 import IMAGES from "../assets/img";
+import { motion } from "framer-motion";
 import "./../style/style.scss";
 
 const OrderPage = () => {
   const { t } = useTranslation();
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <HeaderComponents
         pageTitle="Корзина"
         headerImage={IMAGES.orderHeaderImg}
@@ -19,7 +24,7 @@ const OrderPage = () => {
       <div className="container">
         <GoodInBasket />
       </div>
-    </>
+    </motion.div>
   );
 };
 

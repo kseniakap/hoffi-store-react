@@ -14,7 +14,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className={st.wrapper}>
-          <div>
+          <div className={st.descrWrap}>
             <a href="/" className={st.logo}>
               <img src={ICONS.iconLogoSign} alt="logo icon" />
               <img src={IMAGES.iconLogo} alt="logo" className={st.logoImg} />

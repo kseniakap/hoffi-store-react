@@ -4,24 +4,15 @@
       "email": "admin@gmail.com",
       "password": "$2a$10$U1TBW/XEh0snO/bvsKf7ceAEILJg/3u4Zh03nCnSgW0hAhbSm1VrC",
       "name": "admin",
-      "tel": "+7 (998) 389-38-43",
+      "tel": "+7 (998) 389-38-42",
       "confirmPassword": "111111",
-      "orders": [],
-      "id": 1
-    },
-    {
-      "email": "ksenia@gmail.com",
-      "password": "$2a$10$B6Isn2VYOhw8ANyu96zv0OY.zlZrRA.8wUyc1N82CElDjXkKUk59.",
-      "name": "Ksenia",
-      "tel": "+7 (896) 587-68-57",
-      "confirmPassword": "123456",
       "orders": [
         {
           "goods": [
             {
               "id": 3,
               "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
-              "price": 26999,
+              "price": "26999",
               "colors": "белый",
               "image": "bed_nemi.jpg",
               "count": 1,
@@ -30,10 +21,43 @@
             }
           ],
           "totalPrice": 26999,
-          "date": "2023-10-15T20:12:00.511Z"
+          "date": "2023-10-22T17:07:34.605Z"
         }
       ],
+      "id": 1
+    },
+    {
+      "email": "ksenia@gmail.com",
+      "password": "$2a$10$B6Isn2VYOhw8ANyu96zv0OY.zlZrRA.8wUyc1N82CElDjXkKUk59.",
+      "name": "Ksenia",
+      "tel": "+7 (896) 587-68-57",
+      "confirmPassword": "123456",
+      "orders": [],
       "id": 2
+    }
+  ],
+  "orders": [
+    {
+      "city": "ооо",
+      "street": "ыы",
+      "house": "88",
+      "flat": "33",
+      "additional": "",
+      "goods": [
+        {
+          "id": 3,
+          "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+          "price": "26999",
+          "colors": "белый",
+          "image": "bed_nemi.jpg",
+          "count": 1,
+          "category": "bed",
+          "quantity": 10
+        }
+      ],
+      "totalPrice": 26999,
+      "date": "2023-10-22T17:07:34.222Z",
+      "id": 1
     }
   ],
   "tickets": [
@@ -130,30 +154,6 @@
       "email": "alekseivinogradov@gmail.com",
       "number": "8-953-599-01-01",
       "linkSite": "www.alekseivinogradov.com"
-    }
-  ],
-  "orders": [
-    {
-      "city": "hhhh",
-      "street": "ggggggggg",
-      "house": "33",
-      "flat": "20",
-      "additional": "",
-      "goods": [
-        {
-          "id": 3,
-          "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
-          "price": 26999,
-          "colors": "белый",
-          "image": "bed_nemi.jpg",
-          "count": 1,
-          "category": "bed",
-          "quantity": 10
-        }
-      ],
-      "totalPrice": 26999,
-      "date": "2023-10-15T20:12:00.474Z",
-      "id": 1
     }
   ],
   "goods": [

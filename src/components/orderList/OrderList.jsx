@@ -77,6 +77,10 @@ const OrderList = () => {
       {cardOpen && (
         <div ref={orderRef} className={st.shop} style={styles.fadeIn}>
           <h2 className={st.title}>Ваша корзина</h2>
+          <p className={st.closeBtn} onClick={() => setCardOpen(false)}>
+            {' '}
+            &#10006;
+          </p>
           {cart && cart.length > 0 ? showOrders(cart) : showNothing()}
         </div>
       )}

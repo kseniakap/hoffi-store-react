@@ -34,9 +34,9 @@ const TypingEffect = ({ text }) => {
   return (
     <>
       <h1
-        className={`title mainTitle ${
+        className={` ${
           displayText.length === text.length ? "fadeIn" : ""
-        }`}
+        } title  mainTitle  `}
       >
         {displayText}
       </h1>

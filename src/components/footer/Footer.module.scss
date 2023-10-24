@@ -43,3 +43,16 @@ footer {
     }
   }
 }
+@media (max-width: 1600px) {
+  .descrWrap {
+    p {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .descrWrap {
+    display: none;
+  }
+}

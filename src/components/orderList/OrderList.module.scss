@@ -16,6 +16,17 @@
     overflow: auto;
   }
 }
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  transition: $transition;
+  cursor: pointer;
+  &:hover {
+    color: $main-color;
+  }
+}
 .shop__list::-webkit-scrollbar-track {
   border: 1px solid $accent-color;
 
@@ -46,7 +57,6 @@
   span {
     font-weight: 600;
     font-size: 20px;
-  
   }
 }
 .delivery {

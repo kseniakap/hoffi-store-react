@@ -5,6 +5,8 @@ import axios from "axios";
 export const CustomContext = createContext();
 
 export const Context = (props) => {
+  //получение списка всех пользователь
+  const [allUsers, setAllUsers] = useState([])
   const [user, setUser] = useState({
     login: "",
   });
@@ -19,6 +21,12 @@ export const Context = (props) => {
   });
   const [ticket, setTicket] = useState([]); //купон
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios('http://localhost:3001/users')
+      .then((res) => setAllUsers(res.data))
+      .catch((error) => console.error(`Error: ${error}`))
+  }, [])
 
   const AddCart = (good) => {
     let idx = cart.findIndex(
@@ -54,6 +62,7 @@ export const Context = (props) => {
   };
 
   const [totalPrice, setTotalPrice] = useState(0);
+
   const updateTotalPrice = () => {
     let totalPrice = 0;
     cart.forEach((item) => {
@@ -145,7 +154,9 @@ export const Context = (props) => {
     ticket,
     setTicket,
 
-    updateTotalPrice
+    updateTotalPrice,
+
+    allUsers
   };
 
   return (

@@ -12,24 +12,30 @@
   width: 110px;
   height: 60px;
 }
+.logoOne {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 ul.list {
   float: right;
   list-style: none;
+  align-items: center;
   display: flex;
   gap: 25px;
   li {
     cursor: pointer;
     transition: $transition;
+    font-size: 20px;
     a {
       text-decoration: none;
       color: #000;
@@ -68,4 +74,111 @@ ul.list {
       background-color: $btn-hover;
     }
   }
+}
+.entranceExit {
+  font-size: 16px;
+}
+.overlay {
+  height: 110vh;
+  width: 40%;
+  padding: 20px 10px;
+  background-color: #fff;
+  box-shadow: -10px 0 5px -5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  right: 0;
+  top: -10px;
+  z-index: 200;
+  transition: opacity 3s ease-in-out;
+}
+.listSide {
+  display: none;
+}
+@media (max-width: 1600px) {
+  .logo {
+    gap: 3px;
+  }
+  .logoImg {
+    width: 95px;
+    height: 50px;
+  }
+  .logoOne {
+    width: 28px;
+    height: 28px;
+  }
+  ul.list li,
+  .language {
+    font-size: 14px;
+  }
+  .entranceExit {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1200px) {
+  // .logoImg {
+  //   width: 93px;
+  //   height: 48px;
+  // }
+  // ul.list {
+  //   font-size: 14px;
+  //   gap: 20px;
+  // }
+  // .entranceExit {
+  //   font-size: 14px;
+  // }
+  // .logoOne {
+  //   width: 30px;
+  //   height: 30px;
+  // }
+}
+@media (max-width: 992px) {
+  // ul.list {
+  //   display: none;
+  // }
+  // .header {
+  //   justify-content: end;
+  //   gap: 15px;
+  // }
+  // .logo {
+  //   gap: 0;
+  // }
+  // .listSide {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 20px;
+  //   color: #292f36;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   font-size: 25px;
+  //   text-align: center;
+  //   width: 90%;
+  //   cursor: pointer;
+  //   li {
+  //     cursor: pointer;
+  //     transition: $transition;
+  //     a {
+  //       text-decoration: none;
+  //       color: #000;
+  //       position: relative;
+  //       display: inline-block;
+  //       &::after {
+  //         content: "";
+  //         background-color: #b5b3b3;
+  //         display: block;
+  //         position: absolute;
+  //         bottom: -10px;
+  //         height: 2px;
+  //         width: 0%;
+  //         transition: width 0.5s ease-in-out;
+  //       }
+  //       &:hover:after {
+  //         width: 100%;
+  //       }
+  //     }
+  //   }
+  // }
 }

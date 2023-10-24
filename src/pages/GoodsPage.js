@@ -7,7 +7,7 @@ import List from "../components/list/List";
 import { Link } from "react-router-dom";
 import HeaderComponents from "../components/headerComponents/HeaderComponents";
 import IMAGES from "../assets/img";
-
+import { motion } from "framer-motion";
 import "./../style/style.scss";
 
 const GoodsPage = ({
@@ -53,7 +53,11 @@ const GoodsPage = ({
   });
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <HeaderComponents
         pageTitle={t("goodsPage.headerTitle")}
         headerImage={IMAGES.goodsHeaderImg}
@@ -124,7 +128,7 @@ const GoodsPage = ({
           />
         )}
       </div>
-    </>
+    </motion.div>
   );
 };
 

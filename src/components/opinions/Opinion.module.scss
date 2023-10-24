@@ -16,6 +16,29 @@
 .items {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1600px) {
+  .title {
+    width: auto;
+    font-size: 45px;
+  }
+  .items{
+    justify-content: space-around;
+  }
+  .wrapper{
+    min-height: 620px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .items {
+    justify-content: center;
+    gap: 30px;
+  }
+  .title {
+    width: auto;
+  }
 }

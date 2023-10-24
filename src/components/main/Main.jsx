@@ -23,7 +23,6 @@ const Main = () => {
 
   return (
     <>
-
       <StyleRoot>
         <div className={st.mainImg}>
           <LazyLoadImage
@@ -98,7 +97,7 @@ const Main = () => {
               ></p>
               <div className={st.tel}>
                 <a href="tel:89103022000" className={st.imgTel}>
-                  <LazyLoadImage
+                  <img
                     src={ICONS.imgTel}
                     alt="картинка телефона"
                     effect="blur"
@@ -114,12 +113,14 @@ const Main = () => {
                 </div>
               </div>
             </div>
-            <LazyLoadImage
-              className={st.img}
-              src={IMAGES.interiorPhoto}
-              alt="about us"
-              effect="blur"
-            />
+            <div className={st.imageWrapper}>
+              <LazyLoadImage
+                className={st.img}
+                src={IMAGES.interiorPhoto}
+                alt="about us"
+                effect="blur"
+              />
+            </div>
           </div>
         </div>
       </section>

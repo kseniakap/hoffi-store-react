@@ -342,7 +342,12 @@ const AddNewGood = () => {
             {/* категории */}
             <div className={st.formSubtitle}>
               <label>Категория</label>
-              <select id="category" {...register('category')} defaultValue="">
+              <select
+                id="category"
+                {...register('category')}
+                defaultValue=""
+                required
+              >
                 <option value="" disabled hidden>
                   Выберите категорию
                 </option>

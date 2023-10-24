@@ -6,14 +6,17 @@
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    min-height: 450px;
   }
   &__img {
     width: 600px;
     height: 400px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    span {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   &__info {
@@ -116,15 +119,21 @@
   min-height: 450px;
   margin-bottom: 50px;
   overflow: hidden;
-  transition: box-shadow 0.5s ease;
+  transition: all 2s ease;
   border-radius: 10px 10px 0 0;
   position: relative;
   padding: 20px 10px 10px;
   cursor: pointer;
   &:hover {
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
-    img {
-      transform: scale(1.05);
+    // img {
+    //   transform: scale(1.05);
+    // }
+  }
+  .img {
+    transition: $transition !important;
+    &:hover {
+      transform: scale(1.1);
     }
   }
   &:hover .instock {

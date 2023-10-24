@@ -4,7 +4,10 @@
   background-color: #fff;
   border-radius: 20px;
   padding: 45px 37px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
+}
+.name {
+  font-size: 25px;
 }
 .top,
 .decscr {
@@ -34,4 +37,28 @@
   width: 77px;
   height: 77px;
   border-radius: 100%;
+}
+@media (max-width: 1600px) {
+  .item {
+    width: 350px;
+    min-height: 330px;
+  }
+  .descr {
+    font-size: 18px;
+  }
+  .name {
+    font-size: 23px;
+  }
+}
+@media (max-width: 1400px) {
+}
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+}
+@media (max-width: 320px) {
 }

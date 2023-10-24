@@ -54,7 +54,7 @@ const OneGood = ({ list }) => {
       .catch((error) => {
         console.error(error)
       })
-  }, [location])
+  }, [])
 
   const chooseColor = (color) => {
     setColorName(color.name)

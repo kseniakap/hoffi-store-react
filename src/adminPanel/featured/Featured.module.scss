@@ -1,0 +1,29 @@
+@import "./../../style/variables";
+
+.feature {
+  flex: 2;
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.5);
+  padding: 20px;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      font-size: 16px;
+    }
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    .title {
+      font-weight: 500;
+      color: $main-color;
+    }
+    .count{
+        font-size: 26px;
+    }
+  }
+}
