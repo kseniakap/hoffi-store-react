@@ -1,4 +1,4 @@
-<a href ="https://skrinshoter.ru/vMcp50S89eN" />
+<a href ="https://skrinshoter.ru/vMcp50S89eN" >Видео-демонстрация работы сайта</a>
 <h1>Прототип интернет-магазина Hoff</h1>
 <p>Данный проект представляет собой web-приложение (интернет-магазин)</p>
 <p align="center">
