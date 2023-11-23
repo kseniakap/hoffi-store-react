@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
@@ -10,10 +10,11 @@ import ICONS from '../../assets/icons'
 import st from './Login.module.scss'
 
 const Login = () => {
-  const { register, handleSubmit, formState, reset, watch } = useForm()
+  const { register, handleSubmit } = useForm()
   const [changeData, setChangeData] = useState(false)
   const { loginUser, user, error } = useContext(CustomContext)
   const { t } = useTranslation()
+
   return (
     <>
       <section className={st.login}>
@@ -29,7 +30,7 @@ const Login = () => {
                   className={st.changeBtn}
                   onClick={() => setChangeData(true)}
                 >
-                  Хотите изменить данные?
+                  {t('accountPage.btnChangeData')}
                 </button>
               </div>
             )

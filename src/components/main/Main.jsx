@@ -23,28 +23,17 @@ const Main = () => {
 
   return (
     <>
-      <StyleRoot>
-        <div className={st.mainImg}>
-          <LazyLoadImage
-            style={styles.fadeIn}
-            src={IMAGES.presentationImg}
-            alt="изобрашение в шапке сайта"
-            effect="blur"
-            height={600}
-            width="100%"
-          />
-        </div>
-      </StyleRoot>
-      <div className={st.mainImgText}>
+      <div className={st.mainImg}>
         <div className="container">
-          <TypingEffect text={t('homePage.mainImg.title')} />
-
-          <p
-            className={`text-descr ${st.text_descr}`}
-            dangerouslySetInnerHTML={{
-              __html: t('homePage.mainImg.subtitle'),
-            }}
-          />
+          <div className={st.mainImgText}>
+            <TypingEffect text={t('homePage.mainImg.title')} />
+            <p
+              className={`text-descr ${st.text_descr}`}
+              dangerouslySetInnerHTML={{
+                __html: t('homePage.mainImg.subtitle'),
+              }}
+            />
+          </div>
         </div>
       </div>
 
@@ -52,32 +41,39 @@ const Main = () => {
         <div className="container">
           <div className={st.list}>
             <div className={st.item}>
-              <div className={st.item__title}>Товары</div>
+              <div className={st.item__title}>
+                {t('homePage.blockafterImg.taskOne.title')}
+              </div>
               <div className={`text-descr ${st.item__descr}`}>
-                Здесь вы можете ознакомиться со всем ассортиментом
+                {t('homePage.blockafterImg.taskOne.descr')}
               </div>
               <a className={st.item__link} href="/goods">
-                Перейти
+                {t('homePage.blockafterImg.taskOne.link')}
                 <img src={ICONS.iconArrow} alt="стрелка" />
               </a>
             </div>
             <div className={st.item}>
-              <div className={st.item__title}>Наша главная задача</div>
+              <div className={st.item__title}>
+                {' '}
+                {t('homePage.blockafterImg.taskTwo.title')}
+              </div>
               <div className={`text-descr ${st.item__descr}`}>
-                Создать уют в вашем доме по разумной цене
+                {t('homePage.blockafterImg.taskTwo.descr')}
               </div>
               <a className={st.item__link} href="/about">
-                Читать больше
+                {t('homePage.blockafterImg.taskTwo.link')}
                 <img src={ICONS.iconArrow} alt="стрелка" />
               </a>
             </div>
             <div className={st.item}>
-              <div className={st.item__title}>Команда</div>
+              <div className={st.item__title}>
+                {t('homePage.blockafterImg.taskThree.title')}
+              </div>
               <div className={`text-descr ${st.item__descr}`}>
-                В нашей команде работают только опытные специалисты
+                {t('homePage.blockafterImg.taskThree.descr')}
               </div>
               <a className={st.item__link} href="/team">
-                Ознакомиться
+                {t('homePage.blockafterImg.taskThree.link')}
                 <img src={ICONS.iconArrow} alt="arrrow" />
               </a>
             </div>
@@ -136,6 +132,7 @@ const Main = () => {
               src={ICONS.iconStyleVintage}
               alt="брэнд StyleVintage"
               effect="blur"
+              className={st.BrandVs}
             />
             <LazyLoadImage
               src={ICONS.iconBrand}

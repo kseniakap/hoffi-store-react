@@ -3,7 +3,9 @@
 .name_columns {
   display: grid;
   min-height: 40px;
-  grid-template-columns: 40% auto auto auto auto;
+  // grid-template-columns: 40% auto auto auto auto;
+  grid-template-columns: 32% 15% 15% 15% 15%;
+  text-align: center;
   background-color: $main-color;
   gap: 10px;
   padding: 10px 20px;
@@ -14,15 +16,34 @@
 .item {
   display: grid;
   padding: 10px 20px;
-  grid-template-columns: 40% auto auto auto auto;
+  grid-template-columns: 33% 15% 15% 15% 15%;
   align-items: center;
+  justify-items: center;
   gap: 10px;
   position: relative;
+}
+.wrapper {
+  height: 310px;
+  overflow-y: auto;
+}
+.wrapper::-webkit-scrollbar-track {
+  border: 1px solid $accent-color;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
 }
 .delete {
   position: absolute;
   top: 50%;
-  left: -20px;
+  left: 0px;
   transform: translateY(-50%);
   transition: $transition;
   font-size: 25px;
@@ -37,15 +58,15 @@
   gap: 10px;
 }
 .img {
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 200px;
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
 }
-.nameGood{
+.nameGood {
   width: 200px;
 }
 .counter {
@@ -115,7 +136,7 @@
     margin-bottom: 10px;
   }
   input {
-    padding: 5px 10px 5px 0;
+    padding: 5px;
     border: none;
     border-bottom: 1px solid black;
     margin-right: 10px;
@@ -142,6 +163,130 @@
     &:hover,
     &:active {
       color: #000;
+    }
+  }
+}
+.ticket {
+  input {
+    width: 255px;
+  }
+}
+.column,
+.columnPrice {
+  display: block;
+}
+.columnPriceAdd {
+  display: none;
+}
+.counter {
+  span {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1600px) {
+  .name_columns {
+    margin-bottom: 10px;
+  }
+  .img {
+    width: 120px;
+    height: 80px;
+  }
+  .delete {
+    font-size: 16px;
+    left: 0;
+  }
+  .sum {
+    span {
+      font-size: 18px;
+    }
+  }
+  .delivery {
+    font-size: 13px;
+  }
+  .ticket {
+    input {
+      font-size: 13px;
+      width: 188px;
+    }
+  }
+  .text {
+    font-size: 12px;
+  }
+  .name_columns {
+    min-height: 30px;
+  }
+  .btn {
+    width: 20px;
+    height: 20px;
+    span {
+      line-height: 20px;
+    }
+  }
+  .ticket {
+    margin-bottom: 70px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .block {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .block {
+    flex-direction: column;
+  }
+  .column {
+    display: none;
+  }
+  .name_columns,
+  .item {
+    grid-template-columns: 45% 18% 15% 15%;
+  }
+  .name_columns {
+    grid-template-columns: 42% 19% 15% 17%;
+  }
+  .nameGood {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .img {
+    width: 95px;
+    height: 50px;
+  }
+  .counter {
+    gap: 5px;
+  }
+  .columnPrice {
+    display: none;
+  }
+  .columnPriceAdd {
+    display: block;
+    text-align: center;
+  }
+  .wrapperCounter {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 5px;
+  }
+  .item {
+    grid-template-columns: 45% 28% 24%;
+  }
+  .name_columns {
+    grid-template-columns: 45% 30% 21%;
+  }
+  .res {
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .btn_top {
+    margin-top: 0;
+  }
+  .ticket {
+    input {
+      margin-bottom: 5px;
     }
   }
 }

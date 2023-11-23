@@ -76,6 +76,10 @@
       padding: 26px 41px;
       color: #fff;
       text-decoration: none;
+      transition: $transition;
+      &:hover {
+        background-color: $btn-hover;
+      }
       img {
         margin-left: 10px;
         vertical-align: sub;
@@ -111,4 +115,108 @@
 }
 .aboutWork__block_2 {
   justify-content: end;
+}
+@media (max-width: 1600px) {
+  .quote {
+    padding: 20px 40px 40px 40px;
+    border-width: 18px;
+    border-radius: 60px;
+    width: 690px;
+    min-height: 275px;
+    margin-top: 100px;
+
+    q {
+      font-size: 25px;
+      width: 90%;
+      text-align: center;
+      margin: 0 auto 20px;
+    }
+    p {
+      font-size: 20px;
+    }
+    &__img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  }
+  .aboutWork {
+    h2 {
+      font-size: 45px;
+    }
+    p {
+      font-size: 16px;
+    }
+    &__img {
+      width: 500px;
+      height: 270px;
+      img {
+        border-radius: 45px;
+      }
+    }
+    &__block {
+      padding: 0 70px;
+      a {
+        font-size: 14px;
+        padding: 19px 30px;
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  .aboutWork {
+    &__block {
+      padding: 0;
+      margin-bottom: 70px;
+      gap: 20px;
+    }
+    &__info {
+      order: 2;
+      p {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .workTwoLink {
+    float: right;
+  }
+}
+@media (max-width: 768px) {
+  .quote {
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 70px;
+    &:before {
+      width: 80%;
+      top: -20px;
+    }
+    &:after {
+      width: 80%;
+    }
+  }
+  .aboutWork {
+    &__img {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .quote {
+    border: 15px #f4f0ec solid;
+    border-radius: 30px;
+    q {
+      font-size: 20px;
+    }
+    &__img {
+      margin-bottom: 10px;
+    }
+  }
+  .aboutWork {
+    h2 {
+      font-size: 35px;
+    }
+    &__block p {
+      width: 100%;
+    }
+  }
 }

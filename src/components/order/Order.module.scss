@@ -23,6 +23,7 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .deleteIcon {
   transition: $translow;
@@ -52,5 +53,38 @@
   &:hover,
   &:active {
     background-color: $btn-hover;
+  }
+}
+@media (max-width: 1600px) {
+  .item {
+    width: 95%;
+    min-height: 160px;
+    padding: 15px;
+    p {
+      font-size: 12px;
+    }
+  }
+  .img {
+    width: 60%;
+  }
+  .name {
+    font-size: 13px;
+  }
+  .btn {
+    width: 20px;
+    height: 20px;
+    span {
+      line-height: 21px;
+    }
+  }
+  .counter {
+    font-size: 12px;
+  }
+  .wrapper {
+    svg {
+      width: 13px;
+      height: 13px;
+      object-fit: contain;
+    }
   }
 }

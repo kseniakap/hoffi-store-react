@@ -2,6 +2,8 @@
 .item {
   text-align: center;
   margin-bottom: 50px;
+  position: relative;
+  min-height: 535px;
   width: 284px;
   &:hover .image {
     transform: scale(1.05);
@@ -31,20 +33,51 @@
     line-height: 150%;
     letter-spacing: 0.25px;
   }
-  &_prof {
-    margin-bottom: 17px;
-  }
 }
 .social {
   display: flex;
   gap: 37px;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  a {
+    svg {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+  }
   &_icon {
     transition: $translow;
     &:hover,
     &.active {
       color: rgba(0, 0, 0, 0.8);
       transform: scale(1.2);
+    }
+  }
+}
+@media (max-width: 1600px) {
+  .item {
+    width: 200px;
+    margin-bottom: 0;
+    min-height: 395px;
+    .image {
+      height: auto;
+      margin-bottom: 0;
+    }
+    &_name {
+      font-size: 20px;
+    }
+  }
+  .social {
+    gap: 25px;
+    a {
+      svg {
+        width: 14px;
+        height: 14px;
+      }
     }
   }
 }

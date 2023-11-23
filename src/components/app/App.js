@@ -16,8 +16,7 @@ function App() {
           {location.pathname === "/admin" || location.pathname.startsWith('/admin/')  ? null : <Header />}
           <AnimatedRoutes />
         </div>
-        {location.pathname === "/login" ||
-        location.pathname.includes("/register") ||
+        {
         location.pathname.includes("/404") ||
         location.pathname.includes("/admin") ||
         location.pathname.includes("/createnewitem") ? (

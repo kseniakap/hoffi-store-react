@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -30,9 +30,9 @@ const TableOfOrders = () => {
           <TableHead>
             <TableRow>
               <TableCell className={st.tableCell}>Название продукта</TableCell>
-              <TableCell className={st.tableCell}>Покуаатель</TableCell>
+              <TableCell className={st.tableCell}>Покупатель</TableCell>
               <TableCell className={st.tableCell}>Дата</TableCell>
-              <TableCell className={st.tableCell}>стоимотсь</TableCell>
+              <TableCell className={st.tableCell}>Стоимость</TableCell>
               <TableCell className={st.tableCell}>метод</TableCell>
               <TableCell className={st.tableCell}>статус</TableCell>
             </TableRow>
@@ -40,13 +40,10 @@ const TableOfOrders = () => {
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id}>
-                {/* <TableCell>
-                  {row.id}
-                </TableCell> */}
                 <TableCell className={st.tableCell}>
                   <div className={st.goodWrapper}>
-                    <img src={row.img} alt="photo" className={st.image}/>
-                    {row.product}
+                    <img src={row.img} className={st.image}  alt="фото товара"/>
+                    <p> {row.product}</p>
                   </div>
                 </TableCell>
                 <TableCell className={st.tableCell}>{row.customer}</TableCell>

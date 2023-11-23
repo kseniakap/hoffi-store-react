@@ -11,9 +11,28 @@
             "link4": "Our team",
             "link5": "Contacts",
             "link6": "Account",
+            "link7": "Admin panel",
+            "pages":"Pages",
             "loginIn":"Log in",
             "logOut":"Log out"        
 
+        },
+        "blockafterImg":{
+            "taskOne":{
+                "title":"Good", 
+                "descr": "Here you can get acquainted with the entire range",
+                "link":"Follow the link"
+            },
+            "taskTwo":{
+                "title":"Our main task",
+                "descr": "Create comfort in your home at a reasonable price",
+                "link":"Read more"
+            },
+            "taskThree":{
+                "title": "Team",
+                "descr": "Only experienced specialists work in our team",
+                "link":"Get acquainted"
+            }
         },
         "mainImg":{
             "title":"The best furniture for your home",
@@ -77,6 +96,7 @@
         "outOfStock":"Out of stock",
         "ascending":"Ascending",
         "descending":"Descending ",
+        "addBtn":"Add a new product",
         "shown" :"Shown:",
         "outOf":"out of",
         "products":"products"
@@ -88,6 +108,29 @@
     },
     "accountPage":{
         "headerTitle":"Account",
+        "btnChangeData":"Do you want to change the data?",
+        "personData":{
+            "title":"Personal data",
+            "name":"Name",
+            "tel":"Phone Number",
+            "email":"Email",
+            "save":"Save",
+            "change":"Change"
+        },  
+        "changePassword":{
+            "title":"Change password",
+            "oldPassword":"Old password",
+            "newPassword":"New password",
+            "corfirmPassword":"Confirm new password"
+        },  
+        "errors":{
+           "oldPasswordIsIncorrect": "* Old password is incorrect",
+           "oldNewPasswordSame":"* Old and new passwords are the same",
+           "notRequired":"* New password and confirmation password do not match",
+           "moreSixChar":"* Password must be more than 6 characters"
+           
+        },  
+        "successCghange":"Password changed successfully!",  
         "login":{
             "title":"Log in to your account",
             "inputEmail": "Enter email",
@@ -111,6 +154,7 @@
             "textLink":"Log in to it",
             "incorrect":"Password mismatch"
         }
+        
     },
     "userSchema":{
         "minNum":"The password must contain at least 6 characters",
@@ -119,11 +163,52 @@
         "containNum":"The password must contain at least one number",
         "passwordMatch":""
     },
+    "OneGoodPage":{
+        "inBasket":"Add in basket",
+        "change":"Change product",
+        "save":"Save changes",
+        "name":"Name",
+        "placeholderName":"Enter the product name",
+        "descr":"Product description",
+        "placeholderDescr":"Enter the product description",
+        "oldPrice":"Old product price",
+        "newPrice":"New product price",
+        "placeholderPrice":"Enter a new price"
+    },
     "OrderList":{
         "delivery":"Delivery:",
-        "free": "Free of charge when ordering from 1 000 $",
+        "free": "Free of charge when ordering from 1000 $",
         "total":"Total:",
         "logIn":"Log in to your account",
-        "placeAnOrder":"Place an order"
+        "placeAnOrder":"Place an order"   
+    },
+    "AddNewGood":{
+        "title":"Creating a new product",
+        "name": "Title",
+        "descr":"Product Description",
+        "price":"Price",
+        "category":"Category",
+        "chooseCategory":"Select a category",
+        "chooseColors":"Selected colors",
+        "mainColors":"Primary colors:",
+        "hiddenAdditiaonalColors":"Hide additional colors",
+        "dontFind":"Didn't find a suitable color?",
+        "imgForColor":"Image for color:",
+        "countGoods":"Product quantity:",
+        "create":"Create",
+        "additionalColors":"Additional colors",
+        "red":"Red tones:",
+        "pink":"Pink tones:",
+        "orange":"Orange tones:",
+        "yellow":"Yellow tones:",
+        "purple":"Purple tones:",
+        "brown":"Brown tones:",
+        "green":"Green tones:",
+        "blue":"Blue tones:"     
+    },
+    "Footer":{
+        "quote":"*Hoffi is the winner of the annual Consumer Confidence Award «Brand No. 1 in Russia» in 2022 in the category «Hypermarket of furniture and household goods»  according to the results of consumer voting based on the criteria of fame and perceived quality",
+        "additional": "Additional",
+        "address":"G. Moscow, 1st Trunk passage, 11, p.1, pom. II, floor 2, room 54"
     }
 }

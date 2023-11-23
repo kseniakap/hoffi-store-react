@@ -1,94 +1,101 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import {
   FaUserFriends,
   FaClipboardList,
-  FaStoreAlt,
   FaAddressCard,
-  FaShippingFast,
-  FaSortAmountUp,
-  FaRegBell,
-  FaUserEdit,
+  FaFolderPlus,
   FaCogs,
   FaSignOutAlt,
 } from 'react-icons/fa'
+import { CustomContext } from '../../Context'
 import ICONS from '../../assets/icons'
 import IMAGES from '../../assets/img'
 import st from './SideBar.module.scss'
 
 const SideBar = () => {
+  const { logOutUser } = useContext(CustomContext)
   return (
     <>
       <div className={st.sidebar}>
         <div className={st.top}>
-          {' '}
           <a href="/" className={st.logo}>
-            <img src={ICONS.iconLogoSign} alt="logo icon" />
+            <img
+              src={ICONS.iconLogoSign}
+              alt="logo icon"
+              className={st.logoOne}
+            />
             <img src={IMAGES.iconLogo} alt="logo" className={st.logoImg} />
           </a>
         </div>
         <div className={st.center}>
           <ul>
             <li>
-              <Link to="/admin">
-                <FaClipboardList className={st.icon} />
-                <span>Дашборд</span>
-              </Link>
+              <CustomNavLink to="/admin">
+                <div>
+                  <FaClipboardList className={st.icon} />
+                  <span>Дашборд</span>
+                </div>
+              </CustomNavLink>
             </li>
             <li>
-              <Link to="/admin/users">
-                <FaUserFriends />
-                <span>Пользователи</span>
-              </Link>
+              <CustomNavLink to="/admin/users">
+                <div>
+                  <FaUserFriends />
+                  <span>Пользователи</span>
+                </div>
+              </CustomNavLink>
             </li>
             <li>
-              <Link to="/admin/goods">
-                <FaAddressCard />
-                <span>Продукты</span>
-              </Link>
+              <CustomNavLink to="/admin/goods">
+                <div>
+                  <FaAddressCard />
+                  <span>Продукты</span>
+                </div>
+              </CustomNavLink>
             </li>
             <li>
-              <Link to="/admin/order">
-                <FaAddressCard />
-                <span>Заказы</span>
-              </Link>
+              <CustomNavLink to="/admin/order">
+                <div>
+                  <FaAddressCard />
+                  <span>Заказы</span>
+                </div>
+              </CustomNavLink>
             </li>
             <li>
-              <Link to="/admin/delivery">
-                <FaAddressCard />
-                <span>Доставка</span>
-              </Link>
+              <CustomNavLink to="/admin/newgood">
+                <div>
+                  <FaFolderPlus />
+                  <span>Создать новый товар</span>
+                </div>
+              </CustomNavLink>
             </li>
             <li>
-              <Link to="/admin/statistics">
-                <FaSortAmountUp />
-                <span>Статистика</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin/delivery">
-                <FaRegBell />
-                <span>Уведомления</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin/settings">
-                <FaCogs />
-                <span>Настройки</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin/logout">
-                <FaSignOutAlt />
-                <span>Выйти</span>
-              </Link>
+              <CustomNavLink to="/" onClick={() => logOutUser()}>
+                <div>
+                  <FaSignOutAlt />
+                  <span>Выйти</span>
+                </div>
+              </CustomNavLink>
             </li>
           </ul>
         </div>
-        <div className={st.bottom}></div>
       </div>
     </>
   )
 }
 
 export default SideBar
+
+const CustomNavLink = ({ to, children }) => (
+  <NavLink
+    to={to}
+    style={({ isActive, isPending }) => {
+      return {
+        fontWeight: isActive ? 'bold' : '',
+      }
+    }}
+  >
+    {children}
+  </NavLink>
+)

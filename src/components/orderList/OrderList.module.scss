@@ -1,14 +1,14 @@
 @import "./../../style/_variables.scss";
 
 .shop {
-  height: 100vh;
+  height: calc(100vh + 6px);
   width: 400px;
   position: fixed;
-  top: 0;
+  top: -5px;
   right: 0;
-  padding: 20px 10px;
+  padding: 20px 15px;
   background-color: #fff;
-  z-index: 10;
+  z-index: 202;
   box-shadow: -10px 0 5px -5px rgba(0, 0, 0, 0.3);
   &__list {
     width: 100%;
@@ -29,11 +29,11 @@
 }
 .shop__list::-webkit-scrollbar-track {
   border: 1px solid $accent-color;
-
+  border-radius: 10px;
   background-color: #fff;
 }
 .shop__list::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 .shop__list::-webkit-scrollbar-thumb {
@@ -95,5 +95,51 @@
   transition: $transition;
   &:hover {
     background-color: $main-color;
+  }
+}
+
+@media (max-width: 1600px) {
+  .shop {
+    width: 25%;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .text {
+    font-size: 12px;
+  }
+  .basket {
+    font-size: 14px;
+  }
+  .sum {
+    left: 20px;
+    span {
+      font-size: 16px;
+    }
+  }
+  .delivery {
+    font-size: 13px;
+  }
+  .orderLink {
+    font-size: 14px;
+  }
+  .shop__list::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+@media (max-width: 992px) {
+  .shop {
+    width: 30%;
+  }
+}
+@media (max-width: 768px) {
+  .shop {
+    width: 45%;
+  }
+}
+
+@media (max-width: 576px) {
+  .shop {
+    width: 70%;
   }
 }

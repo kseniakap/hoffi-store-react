@@ -39,26 +39,38 @@
   border-radius: 100%;
 }
 @media (max-width: 1600px) {
+  .top {
+    align-items: center;
+    margin-bottom: 25px;
+  }
   .item {
-    width: 350px;
-    min-height: 330px;
+    width: 330px;
+    min-height: 320px;
   }
   .descr {
-    font-size: 18px;
+    font-size: 16px;
   }
   .name {
-    font-size: 23px;
+    font-size: 17px;
+  }
+  .sity {
+    font-size: 16px;
   }
 }
 @media (max-width: 1400px) {
+  .item {
+    width: 300px;
+  }
 }
 @media (max-width: 1200px) {
+  .item {
+    width: 280px;
+  }
 }
 @media (max-width: 992px) {
 }
 @media (max-width: 768px) {
 }
-@media (max-width: 576px) {
-}
+
 @media (max-width: 320px) {
 }

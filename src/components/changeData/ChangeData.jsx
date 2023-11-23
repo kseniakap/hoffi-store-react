@@ -7,13 +7,12 @@ import InputMask from 'react-input-mask'
 import ChangePassword from '../changePassword/ChangePassword'
 import st from './ChangeData.module.scss'
 
+//сомпонент по изменению данных пользователя
 const ChangeData = () => {
   const [userChange, setUserChange] = useState(false)
-
   const { t } = useTranslation()
   const { user, setUser } = useContext(CustomContext)
   const { register, handleSubmit } = useForm()
-
   const [telValue, setTelValue] = useState(user.tel)
 
   const changeInfoUser = (data) => {
@@ -29,8 +28,6 @@ const ChangeData = () => {
       })
   }
 
-
-
   return (
     <div className="container">
       <div className={st.wrapperForms}>
@@ -38,10 +35,10 @@ const ChangeData = () => {
           className={st.personalData}
           onSubmit={handleSubmit(changeInfoUser)}
         >
-          <div className={st.subtitle}>Личные данные</div>
+          <div className={st.subtitle}>{t('accountPage.personData.title')}</div>
           <div className={st.wrapper}>
             <div className={st.name}>
-              <p>Имя</p>
+              <p>{t('accountPage.personData.name')}</p>
               {userChange ? (
                 <input
                   {...register('name')}
@@ -53,7 +50,7 @@ const ChangeData = () => {
               )}
             </div>
             <div className={st.name}>
-              <p>Номер телефона</p>
+              <p>{t('accountPage.personData.tel')}</p>
               {userChange ? (
                 <InputMask
                   {...register('tel')}
@@ -66,13 +63,14 @@ const ChangeData = () => {
                 <span>{user.tel}</span>
               )}
             </div>
-            <div className={st.name}>
-              <p>Почта</p>
+            <div className={st.name} style={{ width: '190px' }}>
+              <p>{t('accountPage.personData.email')}</p>
               {userChange ? (
                 <input
                   {...register('email')}
                   type="email"
                   defaultValue={user.email}
+                  style={{ width: '100%' }}
                 />
               ) : (
                 <span>{user.email}</span>
@@ -85,7 +83,7 @@ const ChangeData = () => {
             type="submit"
             className={st.changeBtn}
           >
-            Сохранить
+            {t('accountPage.personData.save')}
           </button>
 
           <div
@@ -93,7 +91,7 @@ const ChangeData = () => {
             className={`${st.changeBtn} ${st.block}`}
             onClick={() => setUserChange(true)}
           >
-            Изменить
+            {t('accountPage.personData.change')}
           </div>
         </form>
 

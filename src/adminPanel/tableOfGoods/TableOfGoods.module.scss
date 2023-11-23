@@ -1,0 +1,70 @@
+@import "./../../style/variables";
+
+.image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.price {
+  display: flex;
+}
+.table {
+  height: 550px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.table::-webkit-scrollbar-track {
+  border: 1px solid $accent-color;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.table::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  button {
+    background-color: rgb(205, 162, 116);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+    padding: 5px 15px;
+    height: 40px;
+    transition: $transition;
+    &:hover {
+      background-color: $main-color;
+    }
+  }
+}
+.descr {
+  width: 450px;
+  height: 100px;
+}
+.changePrice {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 80px;
+  label {
+    font-size: 11px;
+  }
+}
+input {
+  font-size: 12px;
+}
+@media (max-width: 1600px) {
+  .image {
+    width: 130px;
+    height: 90px;
+  }
+}

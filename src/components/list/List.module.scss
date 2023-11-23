@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+  margin-bottom: 50px;
 }
 .pagination {
   margin: 0 auto 100px;
@@ -14,6 +15,38 @@
   width: 100%;
   img {
     display: flex;
-    margin: 0 auto 50px;
+    margin: 50px auto;
+  }
+}
+
+@media (max-width: 1600px) {
+  .main {
+    justify-content: center;
+    gap: 50px;
+  }
+}
+@media (max-width: 1200px) {
+  .main {
+    justify-content: end;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .main {
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .main {
+    padding-right: 0px;
+    justify-content: center;
+    margin-top: 65px;
   }
 }

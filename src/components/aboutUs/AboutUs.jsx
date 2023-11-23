@@ -1,65 +1,69 @@
-import React, { useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
-import { NavLink } from 'react-router-dom'
-import ICONS from './../../assets/icons'
-import IMAGES from '../../assets/img'
-import st from './AboutUs.module.scss'
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+import ICONS from './../../assets/icons';
+import IMAGES from '../../assets/img';
+import st from './AboutUs.module.scss';
 
 const AboutUs = () => {
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const { t } = useTranslation()
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const { t } = useTranslation();
 
   const [blockStyle, setBlockStyle] = useState({
     position: 'absolute',
     top: '0px',
     left: '50%',
     transition: 'left 3s ease-out',
-  })
+  });
 
   const [blockStyleRight, setBlockStyleRight] = useState({
     position: 'absolute',
     top: '0px',
     right: '50%',
     transition: 'right 3s ease-out',
-  })
+  });
 
   const handleScroll = () => {
-    const currentScrollPosition = window.scrollY
-    setScrollPosition(currentScrollPosition)
+    const currentScrollPosition = window.scrollY;
+    setScrollPosition(currentScrollPosition);
     const widthPercentage =
-      currentScrollPosition / (document.body.scrollHeight - window.innerHeight)
+      currentScrollPosition / (document.body.scrollHeight - window.innerHeight);
 
     setBlockStyle({
       position: 'absolute',
       top: '0px',
       left: `${5 + widthPercentage * 100}%`,
       transition: 'left 3s ease-out',
-    })
-  }
+    });
+  };
 
   const handleScrollRight = () => {
-    const currentScrollPosition = window.scrollY
-    setScrollPosition(currentScrollPosition)
+    const currentScrollPosition = window.scrollY;
+    setScrollPosition(currentScrollPosition);
     const widthPercentage =
-      currentScrollPosition / (document.body.scrollHeight - window.innerHeight)
+      currentScrollPosition / (document.body.scrollHeight - window.innerHeight);
 
     setBlockStyleRight({
       position: 'absolute',
       top: '0px',
       right: `${5 + widthPercentage * 100}%`,
       transition: 'right 3s ease-out',
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('scroll', handleScrollRight)
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScrollRight);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('scroll', handleScrollRight)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScrollRight);
+    };
+  }, []);
+
+  // Check the screen width and apply styles conditionally
+  const screenWidth = window.innerWidth;
+  const isMobileScreen = screenWidth <= 992;
 
   return (
     <>
@@ -86,12 +90,12 @@ const AboutUs = () => {
                 <img src={ICONS.iconArrow} alt="arrow" />
               </NavLink>
             </div>
-            <div style={blockStyle} className={st.aboutWork__img}>
+            <div style={isMobileScreen ? {} : blockStyle} className={st.aboutWork__img}>
               <img src={IMAGES.aboutWorkImg_1} alt="наша мебель" />
             </div>
           </div>
           <div className={`${st.aboutWork__block} ${st.aboutWork__block_2}`}>
-            <div style={blockStyleRight} className={st.aboutWork__img}>
+            <div style={isMobileScreen ? {} : blockStyleRight} className={st.aboutWork__img}>
               <img src={IMAGES.aboutWorkImg_2} alt="наша мебель" />
             </div>
             <div className={st.aboutWork__info}>
@@ -101,7 +105,7 @@ const AboutUs = () => {
               <p className="text-descr">
                 {t('aboutUsPage.aboutWork.sectionTwo.descr')}
               </p>
-              <NavLink to="/goods">
+              <NavLink to="/goods" className={st.workTwoLink}>
                 {t('aboutUsPage.aboutWork.sectionTwo.link')}
                 <img src={ICONS.iconArrow} alt="arrow" />
               </NavLink>
@@ -109,9 +113,8 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-   
     </>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;

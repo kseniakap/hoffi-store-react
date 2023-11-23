@@ -1,6 +1,8 @@
+@import "./../../style/style.scss";
+
 .member {
-  margin-bottom: 100px;
   &__wrapper {
+    margin: 70px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,6 +22,7 @@
     width: 550px;
     p {
       margin-bottom: 30px;
+      color: $main-color;
     }
   }
   &__bio {
@@ -42,5 +45,53 @@
       background-color: transparent;
       border-radius: 100%;
     }
+  }
+}
+
+@media (max-width: 1600px) {
+  .member {
+    &__wrapper {
+      justify-content: center;
+      gap: 40px;
+    }
+    &__img {
+      width: 300px;
+      height: 420px;
+    }
+    &__content {
+      width: auto;
+      p {
+        margin-bottom: 20px;
+      }
+    }
+    &__bio {
+      font-size: 13px;
+      margin-bottom: 20px;
+      width: 400px;
+    }
+    &__item {
+      font-size: 14px;
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+  .title {
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .member__wrapper {
+    flex-wrap: wrap;
+  }
+  .title {
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  .member__bio {
+    width: 100%;
   }
 }

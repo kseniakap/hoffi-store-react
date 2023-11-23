@@ -29,13 +29,23 @@ const Header = ({ order }) => {
     },
   }
 
+  const sideMenu = useRef(null)
+
+  const closeOpenMenus = (e) => {
+    if (sideMenu.current && isOpen && !sideMenu.current.contains(e.target)) {
+      setOpen(false)
+    }
+  }
+  document.addEventListener('mousedown', closeOpenMenus)
+
+
   return (
     <header>
       {isOpen && (
         <>
           <div className={st.overlay} style={styles.fadeIn}>
-            <nav>
-            <ul className={st.listSide}>
+            <nav >
+              <ul className={st.listSide}>
                 <li>
                   <CustomNavLink to="/">
                     {t('homePage.headerMenu.link1')}
@@ -64,10 +74,31 @@ const Header = ({ order }) => {
                 </li>
                 {user.email === 'admin@gmail.com' && (
                   <li>
-                    <CustomNavLink to="/admin">Панель админа</CustomNavLink>
+                    <CustomNavLink to="/admin">
+                      {t('homePage.headerMenu.link7')}
+                    </CustomNavLink>
                   </li>
                 )}
               </ul>
+              <div className={st.language}>
+                <button
+                  type="button"
+                  data-lang="ru"
+                  className={currentLanguage === 'ru' ? 'active-lang' : ''}
+                  onClick={() => changeLanguage('ru')}
+                >
+                  ru
+                </button>
+                <span>/</span>
+                <button
+                  type="button"
+                  data-lang="en"
+                  className={currentLanguage === 'en' ? 'active-lang' : ''}
+                  onClick={() => changeLanguage('en')}
+                >
+                  en
+                </button>
+              </div>
             </nav>
           </div>
         </>
@@ -118,7 +149,10 @@ const Header = ({ order }) => {
                 </li>
                 {user.email === 'admin@gmail.com' && (
                   <li>
-                    <CustomNavLink to="/admin">Панель админа</CustomNavLink>
+                    <CustomNavLink to="/admin">
+                      {' '}
+                      {t('homePage.headerMenu.link7')}
+                    </CustomNavLink>
                   </li>
                 )}
               </ul>

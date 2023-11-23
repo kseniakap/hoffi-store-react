@@ -5,28 +5,36 @@ import axios from "axios";
 export const CustomContext = createContext();
 
 export const Context = (props) => {
-  //получение списка всех пользователь
-  const [allUsers, setAllUsers] = useState([])
+  //получение списка всех пользователей
+  const [allUsers, setAllUsers] = useState([]);
+  //получение всего списка товаров
+  const [allGoods, setAllGoods] = useState([]);
   const [user, setUser] = useState({
     login: "",
   });
   const [error, setError] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
   const [imgChoose, setImgChoose] = useState(null);
-
   const [colorName, setColorName] = useState("");
+  const [ticket, setTicket] = useState([]); //купон
+  const navigate = useNavigate();
+
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const [ticket, setTicket] = useState([]); //купон
-  const navigate = useNavigate();
 
   useEffect(() => {
-    axios('http://localhost:3001/users')
+    axios("http://localhost:3001/users")
       .then((res) => setAllUsers(res.data))
-      .catch((error) => console.error(`Error: ${error}`))
-  }, [])
+      .catch((error) => console.error(`Error: ${error}`));
+  }, []);
+
+  useEffect(() => {
+    axios("http://localhost:3001/goods")
+      .then((res) => setAllGoods(res.data))
+      .catch((error) => console.error(`Error: ${error}`));
+  }, []);
 
   const AddCart = (good) => {
     let idx = cart.findIndex(
@@ -52,6 +60,13 @@ export const Context = (props) => {
       setCart([...cart, good]);
     }
     setCardOpen(true);
+  };
+  const formatPrice = (p) => {
+    if (!p) return "";
+    const priceStr = p.toString();
+    return priceStr.length > 3
+      ? priceStr.slice(0, -3) + " " + priceStr.slice(-3)
+      : priceStr;
   };
 
   const deleteCart = (id, colors) => {
@@ -117,17 +132,10 @@ export const Context = (props) => {
   const logOutUser = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("cart");
+    navigate("/");
     setUser({
       login: "",
     });
-  };
-
-  const formatPrice = (p) => {
-    if (!p) return "";
-    const priceStr = p.toString();
-    return priceStr.length > 3
-      ? priceStr.slice(0, -3) + " " + priceStr.slice(-3)
-      : priceStr;
   };
 
   const value = {
@@ -135,8 +143,8 @@ export const Context = (props) => {
     setCart,
     AddCart,
     cardOpen,
-    deleteCart,
     setCardOpen,
+    deleteCart,
 
     user,
     setUser,
@@ -156,7 +164,8 @@ export const Context = (props) => {
 
     updateTotalPrice,
 
-    allUsers
+    allUsers,
+    allGoods,
   };
 
   return (

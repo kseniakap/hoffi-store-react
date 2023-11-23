@@ -4,35 +4,31 @@
   margin: 100px 0;
   &__wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 50px;
     min-height: 450px;
+    margin-bottom: 30px;
   }
   &__img {
-    width: 600px;
-    height: 400px;
-    span {
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
   }
   &__info {
     width: calc(100% - 650px);
     h2 {
       margin-bottom: 20px;
+      font-size: 24px;
     }
     button {
       padding: 10px 30px;
       background-color: $accent-color;
       border-radius: 10px;
-      width: 200px !important;
       color: #fff;
       border: none;
       outline: none;
       transition: $transition;
+
       cursor: pointer;
       &:hover {
         background-color: $btn-hover;
@@ -107,11 +103,6 @@
   &__wrapper {
     display: flex;
   }
-  &__container {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
 }
 
 .item {
@@ -119,22 +110,16 @@
   min-height: 450px;
   margin-bottom: 50px;
   overflow: hidden;
-  transition: all 2s ease;
   border-radius: 10px 10px 0 0;
   position: relative;
   padding: 20px 10px 10px;
   cursor: pointer;
+  transition: $transition;
   &:hover {
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
-    // img {
-    //   transform: scale(1.05);
-    // }
   }
-  .img {
-    transition: $transition !important;
-    &:hover {
-      transform: scale(1.1);
-    }
+  &:hover img {
+    transform: scale(1.1);
   }
   &:hover .instock {
     background-color: $accent-color;
@@ -197,6 +182,9 @@
     }
   }
 }
+.img {
+  transition: $transition !important;
+}
 .count {
   margin-bottom: 10px;
 }
@@ -223,10 +211,12 @@
   right: -70px;
 }
 
-.btnChange {
-  position: absolute;
-  right: 0px;
-  bottom: 0;
+.btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
 }
 .oneGood__info {
   display: flex;
@@ -263,4 +253,128 @@ textarea::-webkit-scrollbar-thumb {
 textarea::-webkit-scrollbar-track {
   border: 1px solid $accent-color;
   background-color: #fff;
+}
+
+@media (max-width: 1600px) {
+  .oneGood {
+    margin: 0;
+    &__wrapper {
+      justify-content: center;
+      margin-top: 70px;
+    }
+    &__descr {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    &__img {
+      width: 420px;
+    }
+    &__info {
+      width: 400px;
+      gap: 5px;
+      h2 {
+        margin-bottom: 10px;
+      }
+    }
+    label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    input,
+    textarea {
+      font-size: 12px;
+    }
+    &__price {
+      font-size: 13px;
+    }
+  }
+  .color {
+    width: 25px;
+    height: 25px;
+  }
+  .item {
+    max-width: 300px !important;
+    min-height: 360px;
+    .img {
+      width: 80%;
+      height: 160px;
+      display: block;
+      margin: 0 auto;
+    }
+    .price {
+      font-size: 12px;
+    }
+    .name {
+      font-size: 14px;
+    }
+    p {
+      font-size: 13px;
+    }
+    .add {
+      width: 25px;
+      height: 25px;
+      font-size: 20px;
+    }
+  }
+  .color {
+    width: 23px;
+    height: 23px;
+  }
+  .activeBlack {
+    &:before {
+      font-size: 14px;
+    }
+  }
+  .btnChange {
+    font-size: 12px;
+  }
+  .oneGood__wrapper {
+    min-height: 380px;
+  }
+  .oneGood__img {
+    width: 360px;
+  }
+}
+@media (max-width: 1400px) {
+  .oneGood__wrapper {
+    gap: 30px;
+  }
+}
+@media (max-width: 992px) {
+  .btns {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .oneGood {
+    &__wrapper {
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    &__img {
+      width: 100%;
+      height: 250px;
+    }
+    &__info {
+      width: 100%;
+      h2 {
+        text-align: center;
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .oneGood {
+    &__img {
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  .oneGood__info button {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

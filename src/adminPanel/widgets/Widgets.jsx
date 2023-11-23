@@ -3,7 +3,7 @@ import { FaAngleUp, FaUser, FaShoppingBasket, FaMoneyCheckAlt, FaMoneyCheck} fro
 import ICONS from '../../assets/icons'
 import { CustomContext } from '../../Context'
 import { Link } from 'react-router-dom'
-import st from './Widget.module.scss'
+import st from './Widgets.module.scss'
 
 const Widgets = ({ type }) => {
   const { allUsers } = useContext(CustomContext);

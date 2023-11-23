@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { CustomContext } from '../../Context'
 
@@ -11,17 +12,16 @@ const ChangePassword = () => {
   const [passwordChange, setUserPassword] = useState(false)
   const { register, handleSubmit } = useForm()
   const { user, setUser } = useContext(CustomContext)
-
   const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
-
   const [isCorrectOldPassword, setIsCorrectOldPassword] = useState(false)
   const [errorNewOldPassword, setErrorNewPasword] = useState(false)
   const [errorComfirm, setErrorComfirm] = useState(false)
   const [paswordLength, setPasswordLenght] = useState(false)
   const [passwordChangeSuccess, setPasswordChangeSuccess] = useState(false)
   //  состояние  для отображения сообщения об успешном изменении пароля
+  const { t } = useTranslation()
 
   const reserAllError = () => {
     setErrorNewPasword(false)
@@ -102,11 +102,11 @@ const ChangePassword = () => {
       className={st.personalData}
       onSubmit={handleSubmit(handleChangePassword)}
     >
-      <div className={st.subtitle}>Изменить пароль</div>
+      <div className={st.subtitle}>{t('accountPage.changePassword.title')}</div>
       {passwordChange && (
         <div className={st.wrapper}>
-          <div className={st.name}>
-            <p>Старый пароль</p>
+          <div className={`${st.name} ${st.namePassword}`}>
+            <p>{t('accountPage.changePassword.oldPassword')}</p>
             <input
               {...register('password')}
               type="password"
@@ -120,7 +120,7 @@ const ChangePassword = () => {
           </div>
 
           <div className={st.name}>
-            <p>Новый пароль</p>
+            <p>{t('accountPage.changePassword.newPassword')}</p>
             <input
               {...register('newPassword')}
               type="password"
@@ -133,7 +133,7 @@ const ChangePassword = () => {
             />
           </div>
           <div className={st.name}>
-            <p>Потвердить новый пароль</p>
+            <p>{t('accountPage.changePassword.corfirmPassword')}</p>
             <input
               {...register('NewPasswordComfirn')}
               type="password"
@@ -147,17 +147,21 @@ const ChangePassword = () => {
           </div>
         </div>
       )}
-      {isCorrectOldPassword && <p>* Старый пароль неверный</p>}
-      {errorNewOldPassword && <p>* Старый и новый пароли одинаковые</p>}
-      {errorComfirm && <p>* Новый пароль и пароль подверждения не совпадают</p>}
-      {paswordLength && <p>* Пароль должен быть больше 6-ти символов</p>}
+      {isCorrectOldPassword && (
+        <p> {t('accountPage.errors.oldPasswordIsIncorrect')}</p>
+      )}
+      {errorNewOldPassword && (
+        <p> {t('accountPage.errors.oldNewPasswordSame')}</p>
+      )}
+      {errorComfirm && <p> {t('accountPage.errors.notRequired')}</p>}
+      {paswordLength && <p>{t('accountPage.errors.moreSixChar')}</p>}
 
       <button
         style={{ display: passwordChange ? 'block' : 'none' }}
         type="submit"
         className={st.changeBtn}
       >
-        Сохранить
+        {t('accountPage.personData.save')}
       </button>
 
       <div
@@ -170,10 +174,12 @@ const ChangePassword = () => {
           setConfirmNewPassword('')
         }}
       >
-        Изменить
+        {t('accountPage.personData.change')}
       </div>
       {passwordChangeSuccess && (
-        <div className={st.successMessage}>Пароль успешно изменен!</div>
+        <div className={st.successMessage}>
+          {t('accountPage.successCghange')}
+        </div>
       )}
     </form>
   )

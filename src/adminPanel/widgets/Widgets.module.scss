@@ -53,3 +53,9 @@
   width: 20px;
   height: 20px;
 }
+@media (max-width: 1600px) {
+  .title {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}

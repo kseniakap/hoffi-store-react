@@ -4,10 +4,9 @@
   min-height: 450px;
   margin-bottom: 50px;
   overflow: hidden;
-  transition: box-shadow 0.5s ease;
   border-radius: 10px 10px 0 0;
   position: relative;
-  padding: 20px 10px 10px;
+  padding: 20px;
   cursor: pointer;
   transition: $transition;
   &:hover {
@@ -16,6 +15,9 @@
   &:hover .instock {
     background-color: $accent-color;
     color: #fff;
+  }
+  &:hover img {
+    transform: scale(1.1);
   }
 }
 .instock {
@@ -32,21 +34,14 @@
 .img {
   display: block;
   margin: 0 auto;
-  width: 90%;
+  width: 85%;
   height: 220px;
-  transition: $transition!important;
-  &:hover{
-    transform: scale(1.1);
-  }
+  transition: $transition !important;
 }
 
 .name {
   font-size: 20px;
   margin-bottom: 10px;
-}
-
-.content {
-  padding: 10px;
 }
 
 .price {
@@ -77,5 +72,42 @@
   }
   &:active {
     background-color: #fff;
+  }
+}
+
+@media (max-width: 1600px) {
+  .item {
+    width: 300px;
+    min-height: 340px;
+    margin-bottom: 0;
+  }
+  .img {
+    width: 75%;
+    height: 160px;
+    display: block;
+    margin: 0 auto;
+  }
+  .price {
+    font-size: 12px;
+  }
+  .name {
+    font-size: 14px;
+  }
+  p {
+    font-size: 12px;
+  }
+  .instock {
+    font-size: 12px;
+  }
+  .add {
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 992px) {
+  .item {
+    width: 270px;
+    min-height: 350px;
   }
 }

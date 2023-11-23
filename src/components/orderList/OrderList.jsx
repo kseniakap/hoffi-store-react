@@ -10,8 +10,16 @@ import st from './OrderList.module.scss'
 
 const OrderList = () => {
   const { user, cardOpen, setCardOpen, cart } = useContext(CustomContext)
-  const orderRef = useRef(null)
   const { t } = useTranslation()
+
+  const catMenu = useRef(null)
+
+  const closeOpenMenus = (e) => {
+    if (catMenu.current && cardOpen && !catMenu.current.contains(e.target)) {
+      setCardOpen(false)
+    }
+  }
+  document.addEventListener('mousedown', closeOpenMenus)
 
   const styles = {
     fadeIn: {
@@ -75,10 +83,9 @@ const OrderList = () => {
   return (
     <StyleRoot>
       {cardOpen && (
-        <div ref={orderRef} className={st.shop} style={styles.fadeIn}>
+        <div ref={catMenu} className={st.shop} style={styles.fadeIn}>
           <h2 className={st.title}>Ваша корзина</h2>
           <p className={st.closeBtn} onClick={() => setCardOpen(false)}>
-            {' '}
             &#10006;
           </p>
           {cart && cart.length > 0 ? showOrders(cart) : showNothing()}

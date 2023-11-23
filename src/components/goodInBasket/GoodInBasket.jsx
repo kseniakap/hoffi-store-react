@@ -50,6 +50,8 @@ const GoodInBasket = () => {
     }, 0)
 
     setTotalPrice(newTotalPrice)
+    console.log(newTotalPrice)
+    console.log(newTotalPrice.toFixed(2))
   }, [cart, ticket])
 
   const handleIncrease = (item) => {
@@ -82,9 +84,9 @@ const GoodInBasket = () => {
     <>
       <div className={st.name_columns}>
         <p>Товар</p>
-        <p>Цена</p>
+        <p className={st.columnPrice}>Цена</p>
         <p>Количество</p>
-        <p>Цвет</p>
+        <p className={st.column}>Цвет</p>
         <p>Всего</p>
       </div>
 
@@ -119,28 +121,31 @@ const GoodInBasket = () => {
                     </div>
                     <p className={st.nameGood}>{name}</p>
                   </div>
-                  <p>{formatPrice(price)}</p>
-                  <div className={st.counter}>
-                    <button
-                      className={st.btn}
-                      onClick={() => handleDecrease(item)}
-                    >
-                      <span>-</span>
-                    </button>
-                    <span>{count}</span>
-                    <button
-                      className={st.btn}
-                      onClick={() => handleIncrease(item)}
-                      style={{
-                        backgroundColor: isDisable ? 'rgba(0,0,0,.1)' : '',
-                        cursor: isDisable ? 'auto' : '',
-                      }}
-                    >
-                      <span>+</span>
-                    </button>
+                  <p className={st.columnPrice}>{formatPrice(price)} ₽</p>
+                  <div className={st.wrapperCounter}>
+                    <p className={st.columnPriceAdd}>{formatPrice(price)} ₽</p>
+                    <div className={st.counter}>
+                      <button
+                        className={st.btn}
+                        onClick={() => handleDecrease(item)}
+                      >
+                        <span>-</span>
+                      </button>
+                      <span>{count}</span>
+                      <button
+                        className={st.btn}
+                        onClick={() => handleIncrease(item)}
+                        style={{
+                          backgroundColor: isDisable ? 'rgba(0,0,0,.1)' : '',
+                          cursor: isDisable ? 'auto' : '',
+                        }}
+                      >
+                        <span>+</span>
+                      </button>
+                    </div>
                   </div>
-                  <p>{colors}</p>
-                  <p>{formatPrice(res)} р</p>
+                  <p className={st.column}>{colors}</p>
+                  <p>{formatPrice(res)} ₽</p>
                 </div>
               )
             })}
@@ -153,7 +158,7 @@ const GoodInBasket = () => {
               <div className={st.result}>
                 <span> Итого:</span>
                 <span style={{ color: totalPrice > 50000 ? 'green' : 'black' }}>
-                  {formatPrice(totalPrice)}₽
+                  {totalPrice.toFixed(2)} ₽
                 </span>
               </div>
             </div>
@@ -188,7 +193,7 @@ const GoodInBasket = () => {
         <div>
           <p className={st.empty}>Корзина пуста</p>
           <p className={st.text}>
-            Купите комплекст из{' '}
+            Купите комплекст из
             <Link to="/onegood/43">журнального стола Бруклин</Link> и стула
             <Link to="/onegood/32"> Белен</Link> в сентябре, и вы получите в
             подарок

@@ -5,7 +5,6 @@ import IMAGES from '../../assets/img'
 import st from './List.module.scss'
 
 const List = ({
-  // addToOrder,
   list,
   setList,
 }) => {

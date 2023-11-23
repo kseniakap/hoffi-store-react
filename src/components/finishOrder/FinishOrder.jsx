@@ -81,52 +81,88 @@ const FinishOrder = () => {
   return (
     <>
       <section className={st.finishOrder}>
-        {isSendOrder ? (
-          <>
-            <div className={st.text}>
-              <img src={ICONS.iconv1} alt="v1" />
-              <p>Ваш заказ успешно отправлен</p>
-            </div>
-            <Link to="/" className={st.goBack}>
-              Вернуться на главную
-            </Link>
-          </>
-        ) : (
-          <div className={st.table}>
-            <ul className={st.table_top}>
-              <li className={st.name}>Название</li>
-              <li className={st.colors}>Выбр. цвета</li>
-              <li className={st.totalPrice}>Общ. стоимость</li>
-            </ul>
-            <div className={st.tableContainer}>
-              {cart.map((item, idx) => {
-                const { name, image, colors, count, price } = item
-                const totalPrice = count * price
-                const path = `${process.env.PUBLIC_URL}/img/${image}`
-                let newPath = path
+        <div className={st.right}>
+          {isSendOrder ? (
+            <>
+              <div className={st.text}>
+                <img src={ICONS.iconv1} alt="v1" />
+                <p>Ваш заказ успешно отправлен</p>
+              </div>
+              <Link to="/" className={st.goBack}>
+                Вернуться на главную
+              </Link>
+            </>
+          ) : (
+            <div className={st.table}>
+              <ul className={st.table_top}>
+                <li className={st.name}>Название</li>
+                <li className={st.colors}>Выбр. цвета</li>
+                <li className={st.totalPrice}>Общ. стоимость</li>
+              </ul>
+              <div className={st.tableContainer}>
+                {cart.map((item, idx) => {
+                  const { name, image, colors, count, price } = item
+                  const totalPrice = count * price
+                  const path = `${process.env.PUBLIC_URL}/img/${image}`
+                  let newPath = path
 
-                if (path.startsWith('/img/https://')) {
-                  newPath = path.substring(5)
-                }
+                  if (path.startsWith('/img/https://')) {
+                    newPath = path.substring(5)
+                  }
 
-                return (
-                  <ul key={idx} className={st.table_bottom}>
-                    <li className={st.name}>
-                      <div className={st.image}>
-                        <LazyLoadImage src={newPath} alt={name} effect="blur" />
-                      </div>
-                      {name}
-                    </li>
-                    <li className={st.colors}>{colors}</li>
-                    <li className={st.totalPrice}>
-                      {formatPrice(totalPrice)} ₽
-                    </li>
-                  </ul>
-                )
-              })}
+                  return (
+                    <ul key={idx} className={st.table_bottom}>
+                      <li className={st.name}>
+                        <div className={st.image}>
+                          <LazyLoadImage
+                            src={newPath}
+                            alt={name}
+                            effect="blur"
+                          />
+                        </div>
+                        {name}
+                      </li>
+                      <li className={st.colors}>{colors}</li>
+                      <li className={st.totalPrice}>
+                        {formatPrice(totalPrice)} ₽
+                      </li>
+                    </ul>
+                  )
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+          {isSendOrder ? null : (
+            <>
+              <hr />
+              <div className={st.result}>
+                <div>
+                  {Array.isArray(ticket) && ticket.length ? (
+                    <div>
+                      <p>Подытог:</p>
+                      <span className={st.price}>
+                        {cart.reduce(
+                          (acc, rec) => acc + rec.count * rec.price,
+                          0,
+                        )}
+                        ₽
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+                <div>
+                  {Array.isArray(ticket) && ticket.length ? (
+                    <p>Итого с учетом промокода:</p>
+                  ) : (
+                    <p> Итого :</p>
+                  )}
+
+                  <span className={st.price}>{formatPrice(totalPrice)}₽</span>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
 
         <form className={st.forms} onSubmit={handleSubmit(sendOrder)}>
           <div className={st.forms_users}>
@@ -198,32 +234,6 @@ const FinishOrder = () => {
           </button>
         </form>
       </section>
-      {isSendOrder ? null : (
-        <>
-          <hr />
-          <div className={st.result}>
-            <div>
-              {Array.isArray(ticket) && ticket.length ? (
-                <div>
-                  <p>Подытог:</p>
-                  <span>
-                    {cart.reduce((acc, rec) => acc + rec.count * rec.price, 0)}₽
-                  </span>
-                </div>
-              ) : null}
-            </div>
-            <div>
-              {Array.isArray(ticket) && ticket.length ? (
-                <p>Итого с учетом промокода:</p>
-              ) : (
-                <p> Итого :</p>
-              )}
-
-              <span>{formatPrice(totalPrice)}₽</span>
-            </div>
-          </div>
-        </>
-      )}
     </>
   )
 }

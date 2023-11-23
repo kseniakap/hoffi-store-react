@@ -25,11 +25,13 @@
     width: auto;
     font-size: 45px;
   }
-  .items{
+  .items {
     justify-content: space-around;
   }
-  .wrapper{
-    min-height: 620px;
+  .wrapper {
+    min-height: 540px;
+    padding: 70px 25px;
+    margin-bottom: 70px;
   }
 }
 
@@ -40,5 +42,10 @@
   }
   .title {
     width: auto;
+  }
+}
+@media (max-width: 576px) {
+  .title {
+    font-size: 35px;
   }
 }

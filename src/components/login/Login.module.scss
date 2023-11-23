@@ -21,8 +21,9 @@
     letter-spacing: 0.36px;
     margin-bottom: 20px;
     transition: $transition;
+    cursor: pointer;
     &:hover {
-      background-color: $accent-color;
+      background-color: $btn-hover;
     }
   }
 }
@@ -71,6 +72,7 @@
   &_link {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 5px;
     a {
       font-weight: 600;
@@ -86,6 +88,11 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 40px;
+  img {
+    width: 58px;
+    height: 34px;
+    object-fit: contain;
+  }
   p {
     color: #4d5053;
     text-align: center;
@@ -109,5 +116,79 @@
 
   &:hover {
     background-color: $btn-hover;
+  }
+}
+@media (max-width: 1600px) {
+  .login_wrapper {
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px;
+    margin: 70px auto;
+    h2 {
+      font-size: 35px;
+      margin-bottom: 30px;
+      line-height: 100%;
+    }
+    input {
+      font-size: 16px;
+      width: 50%;
+    }
+  }
+  .form {
+    button {
+      font-size: 14px;
+      padding: 20px 40px;
+      line-height: 1;
+      font-weight: normal;
+    }
+  }
+  .text {
+    margin-bottom: 18px;
+    img {
+      width: 48px;
+      height: 24px;
+      object-fit: contain;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  .changeBtn {
+    padding: 15px 20px;
+    font-size: 12px;
+  }
+  .login {
+    &_link a {
+      font-size: 13px;
+    }
+    &_inputs {
+      margin-bottom: 30px;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .login_wrapper {
+    width: 80%;
+    input {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .login_wrapper {
+    padding: 30px;
+    width: 100%;
+    input {
+      width: 70%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .login_wrapper {
+    input {
+      width: 90%;
+    }
   }
 }

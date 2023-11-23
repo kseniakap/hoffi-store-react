@@ -4,8 +4,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 50px 0;
   width: 650px;
+}
+.form_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .title {
+    font-size: 30px;
+    margin-bottom: 0;
+  }
 }
 .formSubtitle {
   display: flex;
@@ -94,7 +102,7 @@
 
 .addNewColor,
 .btnCreateNew {
-  padding: 20px 30px;
+  padding: 10px 15px;
   background-color: $accent-color;
   width: 200px;
   color: #fff;
@@ -104,9 +112,6 @@
   &:hover {
     background-color: $btn-hover;
   }
-}
-.btnCreateNew {
-  margin-top: 30px;
 }
 .addNewColor {
   display: inline-block;
@@ -133,15 +138,15 @@
 }
 .allImageColors::-webkit-scrollbar-track {
   border: 1px solid $accent-color;
-
+  border-radius: 5px;
   background-color: #fff;
 }
 .allImageColors::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 .allImageColors::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: $accent-color;
   border: 1px solid $accent-color;
 }
@@ -149,7 +154,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 50px;
 }
 .countItemImage {
   display: flex;
@@ -173,14 +177,108 @@
 .wrapperCreate {
   display: flex;
   justify-content: space-between;
+  margin: 70px 0;
 }
 
 .additionalColors {
-  padding-top: 100px;
   h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
   }
 }
 .subtitleColor {
   margin-bottom: 10px;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+@media (max-width: 1600px) {
+  .formSubtitle {
+    font-size: 13px;
+    textarea {
+      min-height: 150px;
+    }
+  }
+  .color,
+  .chooseColor {
+    width: 23px;
+    height: 23px;
+  }
+  .countItemImage {
+    font-size: 13px;
+  }
+  .allImageColors {
+    gap: 10px;
+  }
+  .additionalColors {
+    font-size: 18px;
+  }
+  .subtitleColor {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1200px) {
+  .additionalColors {
+    position: absolute;
+    background-color: #fff;
+    right: 0;
+    padding: 20px;
+    border: 1px solid $main-color;
+    border-radius: 17px;
+    box-shadow: -10px 0 5px -5px rgba(0, 0, 0, 0.3);
+  }
+  .form {
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  .itemImage {
+    width: 45%;
+  }
+  .allImageColors {
+    gap: 10px 20px;
+  }
+  .btnSort {
+    flex-wrap: wrap;
+    justify-content: end;
+  }
+}
+@media (max-width: 576px) {
+  .allImageColors {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 90%;
+  }
+  .itemImage {
+    width: 100%;
+  }
+  .formSubtitle {
+    flex-wrap: wrap;
+    gap: 10px;
+    textarea,
+    input {
+      width: 100%;
+    }
+  }
+  .title {
+    text-align: left !important;
+  }
+  .additionalColors {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .colorWrapper {
+    gap: 5px;
+    margin-right: 0;
+  }
+  .form_top {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }

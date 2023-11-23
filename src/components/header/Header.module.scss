@@ -35,7 +35,7 @@ ul.list {
   li {
     cursor: pointer;
     transition: $transition;
-    font-size: 20px;
+    font-size: 18px;
     a {
       text-decoration: none;
       color: #000;
@@ -69,6 +69,7 @@ ul.list {
     border-radius: 5px;
     transition: $translow;
     cursor: pointer;
+    font-size: 18px;
 
     &:hover {
       background-color: $btn-hover;
@@ -78,107 +79,133 @@ ul.list {
 .entranceExit {
   font-size: 16px;
 }
-.overlay {
-  height: 110vh;
-  width: 40%;
-  padding: 20px 10px;
-  background-color: #fff;
-  box-shadow: -10px 0 5px -5px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  right: 0;
-  top: -10px;
-  z-index: 200;
-  transition: opacity 3s ease-in-out;
-}
+
 .listSide {
   display: none;
 }
+.overlay {
+  nav {
+    display: none;
+  }
+}
+
 @media (max-width: 1600px) {
+  .header {
+    margin: 3px auto;
+  }
   .logo {
     gap: 3px;
   }
   .logoImg {
-    width: 95px;
-    height: 50px;
+    width: 85px;
+    height: 45px;
   }
   .logoOne {
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
   }
   ul.list li,
   .language {
-    font-size: 14px;
+    font-size: 12px;
+  }
+  .language {
+    button {
+      font-size: 12px;
+      padding: 3px 15px;
+    }
   }
   .entranceExit {
-    font-size: 14px;
+    font-size: 12px;
   }
-}
-@media (max-width: 1400px) {
+  ul.list li a {
+    &::after {
+      bottom: -5px;
+      height: 1.5px;
+    }
+  }
 }
 
 @media (max-width: 1200px) {
-  // .logoImg {
-  //   width: 93px;
-  //   height: 48px;
-  // }
-  // ul.list {
-  //   font-size: 14px;
-  //   gap: 20px;
-  // }
-  // .entranceExit {
-  //   font-size: 14px;
-  // }
-  // .logoOne {
-  //   width: 30px;
-  //   height: 30px;
-  // }
 }
 @media (max-width: 992px) {
-  // ul.list {
-  //   display: none;
-  // }
-  // .header {
-  //   justify-content: end;
-  //   gap: 15px;
-  // }
-  // .logo {
-  //   gap: 0;
-  // }
-  // .listSide {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 20px;
-  //   color: #292f36;
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   font-size: 25px;
-  //   text-align: center;
-  //   width: 90%;
-  //   cursor: pointer;
-  //   li {
-  //     cursor: pointer;
-  //     transition: $transition;
-  //     a {
-  //       text-decoration: none;
-  //       color: #000;
-  //       position: relative;
-  //       display: inline-block;
-  //       &::after {
-  //         content: "";
-  //         background-color: #b5b3b3;
-  //         display: block;
-  //         position: absolute;
-  //         bottom: -10px;
-  //         height: 2px;
-  //         width: 0%;
-  //         transition: width 0.5s ease-in-out;
-  //       }
-  //       &:hover:after {
-  //         width: 100%;
-  //       }
-  //     }
-  //   }
-  // }
+  ul.list {
+    display: none;
+  }
+  .header {
+    justify-content: end;
+    gap: 15px;
+  }
+  .logo {
+    gap: 0;
+  }
+  .overlay {
+    height: 110vh;
+    width: 35%;
+    padding: 20px 10px;
+    background-color: #fff;
+    box-shadow: -10px 0 5px -5px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    right: 0;
+    top: -10px;
+    z-index: 201;
+    transition: opacity 3s ease-in-out;
+    nav {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+    }
+    .language {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .listSide {
+    font-family: Jost;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #292f36;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+    li {
+      cursor: pointer;
+      transition: $transition;
+      a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+        display: inline-block;
+        padding: 7px 30px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .listSide {
+    font-size: 18px;
+  }
+}
+@media (max-width: 576px) {
+  .language {
+    display: none;
+  }
+  .overlay {
+    width: 67%;
+  }
+  .listSide {
+    font-size: 16px;
+  }
+  .logoOne {
+    width: 20px;
+    height: 20px;
+  }
+  .logoImg {
+    width: 70px;
+    height: 37px;
+  }
 }

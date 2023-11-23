@@ -1,10 +1,10 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { Suspense, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Context } from "./Context";
 
 import { fadeIn } from "react-animations";
 import Radium from "radium";
-
+import Img from "./Loading.gif";
 const App = React.lazy(() => import("./components/app/App"));
 
 const styles = {
@@ -35,9 +35,14 @@ const DelayedFallback = () => {
     return () => clearTimeout(delayTimeout);
   }, []);
 
-  return showFallback
-    ? <div style={styles.fadeIn} className="fallback">Loading....</div>
-    : null;
+  return showFallback ? (
+    <div style={styles.fadeIn} className="fallback">
+      <div>
+        <img src={Img} alt="загрузка" />
+        <p>Загрузка...</p>
+      </div>
+    </div>
+  ) : null;
 };
 
 const AppWrapper = () => (

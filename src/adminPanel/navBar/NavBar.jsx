@@ -27,14 +27,6 @@ const NavBar = () => {
             <FaMoon className={st.icon} />
           </div>
           <div className={st.item}>
-            <FaBell className={st.icon} />
-            <div className={st.counter}>1</div>
-          </div>
-          <div className={st.item}>
-            <FaRegCommentAlt className={st.icon} />
-            <div className={st.counter}>1</div>
-          </div>
-          <div className={st.item}>
             <FaRegListAlt className={st.icon} />
           </div>
           <div className={st.item}>

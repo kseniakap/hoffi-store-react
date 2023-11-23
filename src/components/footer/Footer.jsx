@@ -16,63 +16,61 @@ const Footer = () => {
         <div className={st.wrapper}>
           <div className={st.descrWrap}>
             <a href="/" className={st.logo}>
-              <img src={ICONS.iconLogoSign} alt="logo icon" />
+              <img
+                src={ICONS.iconLogoSign}
+                alt="logo icon"
+                className={st.logoOne}
+              />
               <img src={IMAGES.iconLogo} alt="logo" className={st.logoImg} />
             </a>
-            <p className={st.descr}>
-              *Hoffi – лауреат ежегодной Премии доверия потребителей «Марка № 1
-              в России» в 2022 году в категории «Гипермаркет мебели и товаров
-              для дома» по результатам голосования потребителей на основании
-              критериев известности и воспринимаемого качества
-            </p>
+            <p className={st.descr}>{t('Footer.quote')}</p>
             <p>© Ноff, 2009–2023</p>
+          </div>
+          <div className={st.list}>
+            <p>{t('homePage.headerMenu.pages')}</p>
+            <ul>
+              <li>
+                <CustomNavLink to="/">
+                  {t('homePage.headerMenu.link1')}
+                </CustomNavLink>
+              </li>
+              <li>
+                <CustomNavLink to="/goods">
+                  {t('homePage.headerMenu.link3')}
+                </CustomNavLink>
+              </li>
+              <li>
+                <CustomNavLink to="/about">
+                  {t('homePage.headerMenu.link2')}
+                </CustomNavLink>
+              </li>
+
+              <li>
+                <CustomNavLink to="/team">
+                  {t('homePage.headerMenu.link4')}
+                </CustomNavLink>
+              </li>
+              <li>
+                <CustomNavLink to="/login">
+                  {t('homePage.headerMenu.link6')}
+                </CustomNavLink>
+              </li>
+              {user.email === 'admin@gmail.com' && (
+                <li>
+                  <CustomNavLink to="/admin">
+                    {t('homePage.headerMenu.link6')}
+                  </CustomNavLink>
+                </li>
+              )}
+            </ul>
           </div>
 
           <ul className={st.list}>
             <li>
-              <p>Страницы</p>
+              <p> {t('Footer.additional')}</p>
             </li>
             <li>
-              <CustomNavLink to="/">
-                {t('homePage.headerMenu.link1')}
-              </CustomNavLink>
-            </li>
-            <li>
-              <CustomNavLink to="/goods">
-                {t('homePage.headerMenu.link3')}
-              </CustomNavLink>
-            </li>
-            <li>
-              <CustomNavLink to="/about">
-                {t('homePage.headerMenu.link2')}
-              </CustomNavLink>
-            </li>
-
-            <li>
-              <CustomNavLink to="/team">
-                {t('homePage.headerMenu.link4')}
-              </CustomNavLink>
-            </li>
-            <li>
-              <CustomNavLink to="/login">
-                {t('homePage.headerMenu.link6')}
-              </CustomNavLink>
-            </li>
-            {user.email === 'admin@gmail.com' && (
-              <li>
-                <CustomNavLink to="/admin">Панель админа</CustomNavLink>
-              </li>
-            )}
-          </ul>
-          <ul className={st.list}>
-            <li>
-              <p>Дополнительно</p>
-            </li>
-            <li>
-              <address>
-                г. Москва, 1-й Магистральный проезд, д.11, стр.1, пом. II, этаж
-                2, ком. 54
-              </address>
+              <address>{t('Footer.address')}</address>
             </li>
             <li>
               <a href="mailto:hoffi@mail.ru">hoffi@mail.ru</a>

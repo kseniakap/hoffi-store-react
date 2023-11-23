@@ -1,16 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,100;1,300&display=swap");
+
 @import "animate.css";
+
 @import "./_variables.scss";
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 .container {
-  max-width: 1400px;
+  width: 1400px;
   padding: 0 40px;
   min-height: auto;
   margin: 0 auto;
@@ -30,6 +33,13 @@ body {
   text-align: center;
   padding-top: 20px;
   transition: $transition;
+  position: relative;
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .global_container {
   position: relative;
@@ -50,7 +60,7 @@ body {
   margin-bottom: 35px;
 }
 .text-descr {
-  color: #4d5053;
+  color: #fff;
   font-family: Jost;
   font-size: 22px;
   font-style: normal;
@@ -137,18 +147,29 @@ button:focus {
     color: #222;
   }
 }
+.text-descr {
+  color: #4d5053;
+  font-family: Jost;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.22px;
+}
 .mainTitle {
-  position: absolute;
-  top: 100px;
-  left: 50px;
+  padding-top: 100px;
   width: 350px;
   font-size: 75px;
   width: 500px;
   line-height: 90%;
+  min-height: 300px;
   color: #fff;
 }
 .adminContainer {
   display: flex;
+}
+.containerAdmin {
+  width: 60%;
 }
 .containerAdmin {
   flex: 6;
@@ -166,23 +187,76 @@ button:focus {
   padding: 5px 20px;
 }
 .hamburger-react {
-  display: none;
+  display: none !important;
 }
+.slick-slide {
+  margin: 0 20px;
+}
+.slick-track {
+  margin-left: auto;
+  margin-right: auto;
+}
+.countGoods {
+  display: block;
+}
+.topGood {
+  align-items: center;
+}
+
 @media (max-width: 1600px) {
+  .container {
+    width: 1320px;
+  }
+  .title {
+    font-size: 45px;
+    line-height: 1;
+  }
   .mainTitle {
     font-size: 60px !important;
     width: 370px;
-    top: 140px;
+    min-height: 250px;
+    padding-top: 70px;
+  }
+  .btnAddNewGood {
+    font-size: 14px;
+  }
+  .topGood {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .basket {
+    width: 26px;
+    height: 15px;
+  }
+  .btnSort {
+    button {
+      padding: 5px 15px;
+      height: 40px;
+    }
+  }
+  .topGood {
+    margin-bottom: 5px !important;
+  }
+  .countGoods {
+    font-size: 13px;
+    margin-bottom: 0 !important;
+    margin-left: 5px;
+  }
+
+  .widgets {
+    padding: 20px;
   }
 }
 @media (max-width: 1400px) {
   .container {
-    width: 1440px;
+    width: 1140px;
   }
-  // .mainTitle {
-  //   font-size: 55px!important;
-  //   width: 440px;
-  // }
+  .slick-slider {
+    height: 360px;
+  }
+  .content {
+    min-height: calc(100vh - 220px);
+  }
 }
 @media (max-width: 1200px) {
   .container {
@@ -197,31 +271,72 @@ button:focus {
 }
 @media (max-width: 992px) {
   .container {
-    width: 920px;
+    width: 720px;
+    padding: 0 20px;
   }
-  //  .basket{
-  //   margin-right: 0;
-  //  }
-  //  .hamburger-react{
-  //   display: block;
-  //   position: absolute!important;
-  //   left: 0;
-  //   top: 0;
-  //  }
+
+  .basket {
+    margin-right: 0;
+  }
+  .hamburger-react {
+    display: block !important;
+    position: absolute !important;
+    left: 0;
+    top: 0;
+  }
+  .btnSort {
+    gap: 10px;
+  }
+  .topGood {
+    width: 100%;
+  }
+  .countGoods {
+    margin-left: 0;
+  }
+  .hamburger-react {
+    top: -5px;
+    left: -10px;
+  }
 }
 @media (max-width: 768px) {
   .container {
-    width: 720px;
-  }
-}
-@media (max-width: 576px) {
-  .container {
     width: 540px;
+  }
+  .fallback img {
+    width: 100px;
+    height: 100px;
+  }
+  .slick-list {
+    height: 360px;
+  }
+  .countGoods {
+    display: none;
   }
 }
 @media (max-width: 576px) {
   .container {
     width: 100%;
     padding: 0 20px;
+  }
+
+  .title {
+    font-size: 35px;
+    text-align: center;
+  }
+  .mainTitle {
+    font-size: 45px !important;
+    width: 75%;
+    min-height: 220px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .btnAddNewGood {
+    width: 150px;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    top: -243px;
+    right: 20px;
   }
 }

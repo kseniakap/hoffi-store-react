@@ -1,3 +1,5 @@
+@import "./../../style/variables";
+
 .header {
   &__img {
     position: relative;
@@ -27,15 +29,17 @@
     left: 50%;
     text-align: center;
     transform: translateX(-50%);
-    span a {
-      color: #4d5053;
-      font-family: Jost;
-      font-size: 22px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 150%;
-      letter-spacing: 0.22px;
-      text-decoration: none;
+    span {
+      a {
+        color: #4d5053;
+        font-family: Jost;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        letter-spacing: 0.22px;
+        text-decoration: none;
+      }
     }
     span + span {
       margin-left: 10px;
@@ -44,4 +48,38 @@
 }
 .title {
   margin-bottom: 10px;
+}
+@media (max-width: 1600px) {
+  .header {
+    &__img {
+      height: 200px;
+      margin-bottom: 25px;
+      margin-top: 0;
+    }
+    &__block {
+      min-height: 120px;
+      padding: 50px 0 0px;
+      span {
+        a {
+          font-size: 17px;
+        }
+      }
+      h1 {
+        font-size: 35px;
+        line-height: 35px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header__block {
+    min-height: 90px;
+    padding: 20px 0 0px;
+    width: 90%;
+  }
+  .header__img {
+    height: 230px;
+  }
 }

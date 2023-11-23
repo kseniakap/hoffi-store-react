@@ -11,7 +11,7 @@ const Item = ({ list }) => {
   const { id, name, description, price, newPrice, colors, category } = list
 
   const firstImg = colors && colors[0].image
-  
+
   const path = `${process.env.PUBLIC_URL}/img/${firstImg}`
   let newPath = path
 
@@ -36,6 +36,8 @@ const Item = ({ list }) => {
           src={newPath}
           alt={name}
           effect="blur"
+          style={{ display: 'block', margin: '0 auto' }}
+          width="100%"
         />
         <div className={st.content}>
           <h2 className={st.name}>{name}</h2>

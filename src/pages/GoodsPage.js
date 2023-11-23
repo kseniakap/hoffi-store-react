@@ -10,6 +10,7 @@ import IMAGES from "../assets/img";
 import { motion } from "framer-motion";
 import "./../style/style.scss";
 
+//Страница со всеми товарами (2 по счету)
 const GoodsPage = ({
   // addToOrder,
   list,
@@ -75,14 +76,15 @@ const GoodsPage = ({
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             marginBottom: "20px",
+            fontSize: "14px",
           }}
+          className="topGood"
         >
-          <div style={{ marginBottom: "30px" }}>
+          <div className="countGoods" style={{ marginBottom: "30px" }}>
             {t("goodsPage.shown")} {filteredListByCategory.length}{" "}
             <span>
-              {" "}
               {t("goodsPage.outOf")} {filterListByCountPage.length}{" "}
             </span>
             {t("goodsPage.products")}
@@ -92,7 +94,7 @@ const GoodsPage = ({
           <div className="btnSort">
             {user.email === "admin@gmail.com" && (
               <Link to="/createnewitem" className="btnAddNewGood">
-                Добавить новый товар
+                {t("goodsPage.addBtn")}
               </Link>
             )}
 
@@ -113,7 +115,6 @@ const GoodsPage = ({
           </div>
         </div>
         <List
-          //  addToOrder={addToOrder}
           list={sortList}
           setList={setList}
         />
