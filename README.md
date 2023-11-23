@@ -1,5 +1,5 @@
 
-<video src="https://skrinshoter.ru/vMcp50S89eN" width=180/>
+<video src="https://github.com/kseniakap/Hoffi-store/issues/1#issue-2008828178" width=180/>
 <h1>Прототип интернет-магазина Hoff</h1>
 <p>Данный проект представляет собой web-приложение (интернет-магазин)</p>
 <p align="center">
