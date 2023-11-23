@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://github.com/kseniakap/site-furniture-store-on-react/blob/main/Readme/site_main-1.png" />
+  <img src="https://github.com/kseniakap/Hoffi-store/blob/main/Readme/mainPage.png" />
 </p>
 <p align="center">
-  <img src="https://github.com/kseniakap/site-furniture-store-on-react/blob/main/Readme/aboutUs.png" />
+  <img src="https://github.com/kseniakap/Hoffi-store/blob/main/Readme/goodsPage.png" />
 </p>
 <p align="center">
-  <img src="https://github.com/kseniakap/site-furniture-store-on-react/blob/main/Readme/aboutUs_block.png" />
+  <img src="https://github.com/kseniakap/Hoffi-store/blob/main/Readme/oneGood.png" />
 </p>
 
 
