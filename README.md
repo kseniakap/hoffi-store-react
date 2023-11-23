@@ -1,7 +1,7 @@
 
 <h1>Прототип интернет-магазина Hoff</h1>
 
-<a href="https://skrinshoter.ru/vMcp50S89eN"><p>Полное видео-демонстрация работы интернет-магазина</p></a>
+<a href="https://skrinshoter.ru/vMcp50S89eN">Полное видео-демонстрация работы интернет-магазина</a>
 
 https://github.com/kseniakap/Hoffi-store/assets/119811424/ba946124-68cd-46d4-a98b-2c7f1c4907fe
 
