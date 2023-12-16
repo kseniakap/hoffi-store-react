@@ -19,6 +19,12 @@ export const Context = (props) => {
   const [ticket, setTicket] = useState([]); //купон
   const navigate = useNavigate();
 
+  //Поиск
+  const [searchGoods, setSearchGoods] = useState("");
+  const [searchUserByName, setSearchUserByName] = useState("");
+  const [searchUserByEmail, setSearchUserEmail] = useState("");
+  const [searchOrder, setSearchOrder] = useState("");
+
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -166,6 +172,16 @@ export const Context = (props) => {
 
     allUsers,
     allGoods,
+
+    //Поиск
+    searchGoods,
+    setSearchGoods,
+    searchUserByName,
+    setSearchUserByName,
+    searchUserByEmail,
+    setSearchUserEmail,
+    searchOrder,
+    setSearchOrder,
   };
 
   return (

@@ -17,15 +17,152 @@
       "confirmPassword": "123456",
       "orders": [],
       "id": 2
+    },
+    {
+      "email": "novikova@gmail.com",
+      "password": "$2a$10$V/r0lVzTtUEN2IQXZ5VF1.Kc8O5Bm8dlJpcgu9O7VXjOFa4Phe0Zi",
+      "name": "Анастасия Новикова",
+      "tel": "+7 (777) 777-77-77",
+      "confirmPassword": "777777",
+      "orders": [
+        {
+          "goods": [
+            {
+              "id": 1,
+              "name": "Угловой диван-кровать Торонто",
+              "price": 23999,
+              "colors": "светло-серый",
+              "image": "bed_toronto.jpg",
+              "count": 1,
+              "category": "sofa-bed",
+              "quantity": 7
+            }
+          ],
+          "totalPrice": 21599,
+          "date": "2023-12-16T14:09:13.987Z"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "email": "maslov@gmail.com",
+      "password": "$2a$10$mJWJY8CBOcN15jjk8J/I/O2ZKAlZbfUICTbExgKNkfScqjPlbuUfq",
+      "name": "Олег Маслов",
+      "tel": "+7 (888) 888-88-88",
+      "confirmPassword": "888888",
+      "orders": [
+        {
+          "goods": [
+            {
+              "id": 3,
+              "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+              "price": 26999,
+              "colors": "белый",
+              "image": "bed_nemi.jpg",
+              "count": 1,
+              "category": "bed",
+              "quantity": 10
+            },
+            {
+              "id": 5,
+              "name": "Журнальный стол Мартин ",
+              "price": 3599,
+              "colors": "белый",
+              "image": "table_martin.jpg",
+              "count": 1,
+              "category": "table",
+              "quantity": 17
+            },
+            {
+              "id": 4,
+              "name": "Кресло Агата  ",
+              "price": 32999,
+              "colors": "бежевый",
+              "image": "armchair_arata_beige.jpg",
+              "count": 1,
+              "category": "chair",
+              "quantity": 1
+            }
+          ],
+          "totalPrice": 63597,
+          "date": "2023-12-16T15:12:22.300Z"
+        }
+      ],
+      "id": 4
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "city": "Москва",
+      "street": "Пушкина",
+      "house": "33",
+      "flat": "",
+      "additional": "",
+      "goods": [
+        {
+          "id": 1,
+          "name": "Угловой диван-кровать Торонто",
+          "price": 23999,
+          "colors": "светло-серый",
+          "image": "bed_toronto.jpg",
+          "count": 1,
+          "category": "sofa-bed",
+          "quantity": 7
+        }
+      ],
+      "totalPrice": 21599,
+      "date": "2023-12-16T14:09:13.604Z",
+      "id": 1
+    },
+    {
+      "city": "Ярославль",
+      "street": "Ленина",
+      "house": "55",
+      "flat": "",
+      "additional": "",
+      "goods": [
+        {
+          "id": 3,
+          "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+          "price": 26999,
+          "colors": "белый",
+          "image": "bed_nemi.jpg",
+          "count": 1,
+          "category": "bed",
+          "quantity": 10
+        },
+        {
+          "id": 5,
+          "name": "Журнальный стол Мартин ",
+          "price": 3599,
+          "colors": "белый",
+          "image": "table_martin.jpg",
+          "count": 1,
+          "category": "table",
+          "quantity": 17
+        },
+        {
+          "id": 4,
+          "name": "Кресло Агата  ",
+          "price": 32999,
+          "colors": "бежевый",
+          "image": "armchair_arata_beige.jpg",
+          "count": 1,
+          "category": "chair",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 63597,
+      "date": "2023-12-16T15:12:21.911Z",
+      "id": 2
+    }
+  ],
   "tickets": [
     {
       "id": 2,
       "title": "Hoffi",
       "procent": 10,
-      "quality": 16
+      "quality": 15
     },
     {
       "id": 2,
@@ -1092,6 +1229,14 @@
         }
       ],
       "id": 54
+    },
+    {
+      "name": "bbbbbbbbbbbbb",
+      "description": "bbbbb",
+      "price": "888",
+      "category": "sofa-bed",
+      "colors": [],
+      "id": 55
     }
   ],
   "membersEn": [

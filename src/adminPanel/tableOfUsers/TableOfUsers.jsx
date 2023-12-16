@@ -11,7 +11,16 @@ import Paper from '@mui/material/Paper'
 import st from './TableOfUsers.module.scss'
 
 const TableOfUsers = () => {
-  const { allUsers } = useContext(CustomContext)
+  const { allUsers, searchUserByName, searchUserByEmail } = useContext(
+    CustomContext,
+  )
+
+  const filterArrayByName = allUsers.filter((item) =>
+    item.name.toLowerCase().includes(searchUserByName.toLowerCase()),
+  )
+  const filterArrayByEmail = filterArrayByName.filter((item) =>
+    item.name.toLowerCase().includes(searchUserByEmail.toLowerCase()),
+  )
   return (
     <div className={st.table}>
       <TableContainer component={Paper}>
@@ -25,7 +34,10 @@ const TableOfUsers = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {allUsers.map((user) => (
+            {filterArrayByEmail.length === 0 && (
+              <p>Пользователей нет по вашему запросу</p>
+            )}
+            {filterArrayByEmail.map((user) => (
               <TableRow key={user.id}>
                 <TableCell className={st.tableCell}>{user.id}</TableCell>
                 <TableCell className={st.tableCell}>{user.email}</TableCell>
@@ -37,21 +49,6 @@ const TableOfUsers = () => {
         </Table>
       </TableContainer>
     </div>
-    // <div className={st.table}>
-    //   <div style={{ height: 400, width: '100%' }}>
-    //     <DataGrid
-    //       rows={allUsers}
-    //       columns={columns}
-    //       initialState={{
-    //         pagination: {
-    //           paginationModel: { page: 0, pageSize: 5 },
-    //         },
-    //       }}
-    //       pageSizeOptions={[5, 10]}
-    //       checkboxSelection
-    //     />
-    //   </div>
-    // </div>
   )
 }
 

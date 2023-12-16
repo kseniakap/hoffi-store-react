@@ -3,16 +3,14 @@ import { useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { CustomContext } from '../../Context'
-import ICONS from './../../assets/icons'
-import Slider from 'react-slick'
+import Carousel from 'react-multi-carousel'
+
 import ItemServices from '../../services/ItemServices'
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useTranslation } from 'react-i18next'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-
+import 'react-multi-carousel/lib/styles.css'
 import './../../style/style.scss'
 import st from './OneGood.module.scss'
 
@@ -303,152 +301,131 @@ const OneGood = ({ list }) => {
 
 export default OneGood
 
-const CustomPrevArrow = ({ onClick }) => (
-  <button className={st.nextArrow} onClick={onClick}>
-    <img src={ICONS.iconArrowLeft} alt="arrow" />
-  </button>
-)
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 3,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 992 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 992, min: 576 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 576, min: 0 },
+    items: 1,
+  },
+}
 
-const CustomNextArrow = ({ onClick }) => (
-  <button className={st.prevArrow} onClick={onClick}>
-    <img src={ICONS.iconArrow} alt="arrow" />
-  </button>
-)
-
-const SimilarProducts = ({ list, good, count }) => {
+const SimilarProducts = ({ good, count }) => {
+  const { formatPrice, AddCart } = useContext(CustomContext)
   const { category } = good
-  const { AddCart, formatPrice } = useContext(CustomContext)
+  const [newItemLoading, setNewItemLoading] = useState(false)
+  const { getAllItems } = ItemServices()
+  const [allGoods, setAllGoods] = useState([])
 
-  const [similar, setSimilar] = useState({})
   useEffect(() => {
-    axios(`http://localhost:3001/goods`)
-      .then(({ data }) => {
-        setSimilar(data)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    onRequest(true)
   }, [])
-  const [slidesToShow, setSlidesToShow] = useState(3)
 
-  const settings = {
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    centerMode: true, 
-    variableWidth: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    cssEase: 'linear',
-    centerPadding: '0',
+  const onRequest = (initial) => {
+    initial ? setNewItemLoading(false) : setNewItemLoading(true)
+    getAllItems().then(onListItemLoaded)
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 992) {
-        setSlidesToShow(2)
-      } else {
-        setSlidesToShow(3)
-      }
-    }
-    window.addEventListener('resize', handleResize)
-    handleResize()
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+  const onListItemLoaded = (newcharList) => {
+    setAllGoods(newcharList)
+    setNewItemLoading(false)
+  }
+
+  const renderItems = (arr) => {
+    return arr
+      .filter((item) => item.id !== good.id && item.category === category)
+      .map((item) => {
+        const { name, description, price, newPrice, colors } = item
+        const firstColorImage =
+          colors && colors.length > 0 ? colors[0].image : null
+        const descr = description
+          ? `${item.description.slice(0, 130)}...`
+          : 'В данный момент описание о данном товаре отсутствует'
+        const path = `${process.env.PUBLIC_URL}/img/${firstColorImage}`
+        let newPath = path
+
+        if (path.startsWith('/img/https://')) {
+          newPath = path.substring(5)
+        }
+
+        const totalCount = colors.reduce(
+          (accumulator, color) => accumulator + color.quantity,
+          0,
+        )
+
+        return (
+          <Link to={`/onegood/${item.id}`} className={st.item} key={item.id}>
+            <LazyLoadImage
+              className={st.img}
+              src={newPath}
+              alt={name}
+              effect="blur"
+            />
+            <div className={st.content}>
+              <h2 className={st.name}>{name}</h2>
+              <p className={st.descr}>{descr}</p>
+              <div className={st.price}>
+                {newPrice ? (
+                  <>
+                    <span style={{ textDecoration: 'line-through' }}>
+                      {formatPrice(price)}₽
+                    </span>
+                    <span> / </span>
+                    <span>{formatPrice(newPrice)} ₽</span>
+                  </>
+                ) : (
+                  <p>{formatPrice(price)} ₽</p>
+                )}
+              </div>
+              {totalCount ? (
+                <div
+                  className={st.add}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    AddCart({
+                      id: item.id,
+                      name: item.name,
+                      price: item.price,
+                      colors: item.colors[0].name,
+                      image: item.colors[0].image,
+                      count: count,
+                      category: item.category,
+                      quantity: item.colors[0].quantity,
+                    })
+                  }}
+                >
+                  +
+                </div>
+              ) : (
+                <p className={st.instock}>Нет в наличии</p>
+              )}
+            </div>
+          </Link>
+        )
+      })
+  }
+
+  const additionalGoods = renderItems(allGoods)
+
   return (
     <>
       <section className={st.otherGood}>
         <div className="container">
           <h2 className={st.otherGood__title}>Похожие товары</h2>
           <div className={st.otherGood__container}>
-            {similar.length > 2 && (
-              <Slider {...settings} className={st.slider}>
-                {similar
-                  .filter(
-                    (item) => item.id !== good.id && item.category === category,
-                  )
-                  .map((item) => {
-                    const { name, description, price, newPrice, colors } = item
-                    const firstColorImage =
-                      colors && colors.length > 0 ? colors[0].image : null
-                    const descr = description
-                      ? `${item.description.slice(0, 130)}...`
-                      : 'В данный момент описание о данном товаре отсутствует'
-                    const path = `${process.env.PUBLIC_URL}/img/${firstColorImage}`
-                    let newPath = path
-
-                    if (path.startsWith('/img/https://')) {
-                      newPath = path.substring(5)
-                    }
-
-                    const totalCount = colors.reduce(
-                      (accumulator, color) => accumulator + color.quantity,
-                      0,
-                    )
-
-                    return (
-                      <Link
-                        to={`/onegood/${item.id}`}
-                        className={st.item}
-                        key={item.id}
-                      >
-                        <LazyLoadImage
-                          className={st.img}
-                          src={newPath}
-                          alt={name}
-                          effect="blur"
-                        />
-                        <div className={st.content}>
-                          <h2 className={st.name}>{name}</h2>
-                          <p className={st.descr}>{descr}</p>
-                          <div className={st.price}>
-                            {newPrice ? (
-                              <>
-                                <span
-                                  style={{ textDecoration: 'line-through' }}
-                                >
-                                  {formatPrice(price)}₽
-                                </span>
-                                <span> / </span>
-                                <span>{formatPrice(newPrice)} ₽</span>
-                              </>
-                            ) : (
-                              <p>{formatPrice(price)} ₽</p>
-                            )}
-                          </div>
-                          {totalCount ? (
-                            <div
-                              className={st.add}
-                              onClick={(e) => {
-                                e.preventDefault()
-                                AddCart({
-                                  id: item.id,
-                                  name: item.name,
-                                  price: item.price,
-                                  colors: item.colors[0].name,
-                                  image: item.colors[0].image,
-                                  count: count,
-                                  category: item.category,
-                                  quantity: item.colors[0].quantity,
-                                })
-                              }}
-                            >
-                              +
-                            </div>
-                          ) : (
-                            <p className={st.instock}>Нет в наличии</p>
-                          )}
-                        </div>
-                      </Link>
-                    )
-                  })}
-              </Slider>
-            )}
+            <Carousel key={`allSaleCarousel`} responsive={responsive}>
+              {additionalGoods}
+            </Carousel>
           </div>
         </div>
       </section>

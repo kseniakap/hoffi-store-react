@@ -12,16 +12,21 @@ import st from './TableOfGoods.module.scss'
 import { useTranslation } from 'react-i18next'
 
 const TableOfGoods = () => {
-  const { allGoods, formatPrice, deleteCart } = useContext(CustomContext)
+  const { allGoods, setAllGoods, formatPrice, searchGoods } = useContext(
+    CustomContext,
+  )
   const [changeInfo, setChangeInfo] = useState(allGoods.map(() => false))
 
   const [changeIndex, setChangeIndex] = useState(null)
   const [deleteGood, setDeleteGood] = useState(null)
   const { t } = useTranslation()
   const { register, handleSubmit } = useForm()
-
-  // const onSubmit = (data) => {
-  //   console.log(data)
+  const filterArray = allGoods.filter((item) =>
+    item.name.toLowerCase().includes(searchGoods.toLowerCase()),
+  )
+  // const deleteCart = (id) => {
+  //   const updatedCart = allGoods.filter((item) => item.id !== id)
+  //   setAllGoods(updatedCart)
   // }
 
   return (
@@ -39,10 +44,13 @@ const TableOfGoods = () => {
           </TableHead>
 
           <TableBody>
-            {allGoods.map((good, index) => {
+            {filterArray.length === 0 && (
+              <p>Товаров нет по заданному запросу</p>
+            )}
+            {filterArray.map((good, index) => {
               const { id, name, description, price, newPrice, colors } = good
 
-              const firstImg = colors && colors[0].image
+              const firstImg = colors && colors[0]?.image
               const path = `${process.env.PUBLIC_URL}/img/${firstImg}`
               let newPath = path
               if (path.startsWith('/img/https://')) {
@@ -176,10 +184,7 @@ const TableOfGoods = () => {
                       <button onClick={() => setChangeIndex(index)}>
                         Изменить
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => deleteCart(index, colors)}
-                      >
+                      <button type="button">
                         Удалить
                       </button>
                     </div>
