@@ -11,10 +11,10 @@ import Paper from '@mui/material/Paper'
 import st from './TableOfOrders.module.scss'
 
 const TableOfOrders = () => {
-  const { searchOrder } = useContext(CustomContext)
+  const { BASE_URL } = useContext(CustomContext)
   const [order, setOrder] = useState([])
   useEffect(() => {
-    axios(` http://localhost:3001/orders`).then(({ data }) => setOrder(data))
+    axios(`${BASE_URL}/orders`).then(({ data }) => setOrder(data))
   }, [])
 
   // const filterArrayByEmail = order.filter((item) =>

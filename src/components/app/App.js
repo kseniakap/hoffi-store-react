@@ -1,5 +1,5 @@
 
-import { Route, Routes, useLocation } from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import "../../i18n";
 import Header from "./../header/Header";
 import Footer from "./../footer/Footer";

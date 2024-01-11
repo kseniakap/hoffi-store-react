@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import ICONS from '../../assets/icons'
 import IMAGES from '../../assets/img'
 import st from './Footer.module.scss'
-import { Link, NavLink } from 'react-router-dom'
+import {NavLink } from 'react-router-dom'
 import './../../style/style.scss'
 
 const Footer = () => {

@@ -1,14 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import ItemServices from '../../services/ItemServices'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-
 import { imgDB } from './../../fireBase'
-import { v4 } from 'uuid'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import st from './AddNewGood.module.scss'
+import { CustomContext } from '../../Context'
 
 const colors = [
   'white',
@@ -247,6 +246,7 @@ const getColorName = (colorCode) => {
 }
 
 const WrappperCreateNewGood = () => {
+  const { BASE_URL } = useContext(CustomContext)
   const { register, handleSubmit } = useForm()
   const [selectedColors, setSelectedColors] = useState([])
   const [colorImages, setColorImages] = useState({})
@@ -275,7 +275,7 @@ const WrappperCreateNewGood = () => {
 
   const AddNewGood = (data) => {
     axios
-      .post(`http://localhost:3001/goods`, {
+      .post(`${BASE_URL}/goods`, {
         ...data,
         colors: selectedColors.map((color) => ({
           name: getColorName(color),

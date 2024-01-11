@@ -1,16 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { CustomContext } from '../../Context'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { UserSchema } from '../../Validations/UserValidate'
 import InputMask from 'react-input-mask'
 import ICONS from './../../assets/icons'
 import st from './Register.module.scss'
 
 const Register = () => {
-  const { register, handleSubmit, formState, reset, watch } = useForm()
+  const { register, handleSubmit, formState, watch } = useForm()
 
   const { errors } = formState
   const { registerUser } = useContext(CustomContext)

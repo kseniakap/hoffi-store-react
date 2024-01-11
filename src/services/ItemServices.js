@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { useHttp } from "../hooks/http.hook";
 import { useTranslation } from "react-i18next";
+import { CustomContext } from "../Context";
 
 const ItemServices = () => {
   const { t } = useTranslation();
+  const { BASE_URL } = useContext(CustomContext)
   const { loading, request, error, clearError } = useHttp();
 
   const getAllItems = async () => {
-    const res = await request(`http://localhost:3001/goods`);
+    const res = await request(`${BASE_URL}/goods`);
     return res.map((item) => _transformItems(item));
   };
 
@@ -29,7 +32,7 @@ const ItemServices = () => {
   };
 
   const getAllMembers = async () => {
-    const res = await request(`http://localhost:3001/${t("url.allMembers")}`);
+    const res = await request(`${BASE_URL}/${t("url.allMembers")}`);
     return res.map((item) => _transformDataMembers(item));
   };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
@@ -9,14 +9,16 @@ import siteImg from './site.svg'
 import { useTranslation } from 'react-i18next'
 import './../../style/style.scss'
 import st from './TeamMember.module.scss'
+import { CustomContext } from '../../Context'
 
 const TeamMember = () => {
   const params = useParams()
   const [member, setMember] = useState({})
   const { t } = useTranslation()
+  const {BASE_URL } = useContext(CustomContext)
 
   useEffect(() => {
-    axios(`http://localhost:3001/${t('url.allMembers')}/${params.id}`)
+    axios(`${BASE_URL}/${t('url.allMembers')}/${params.id}`)
       .then(({ data }) => setMember(data))
       .catch((error) => {
         console.error(error)

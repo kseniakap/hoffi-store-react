@@ -1,11 +1,8 @@
-import React, { useContext, useState } from 'react'
-import { CustomContext } from '../../Context'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import TypingEffect from '../../AnimatedText'
-import { fadeIn } from 'react-animations'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import Radium, { StyleRoot } from 'radium'
 import ICONS from './../../assets/icons'
 import IMAGES from './../../assets/img'
 import './../../style/style.scss'
@@ -13,14 +10,6 @@ import st from './Main.module.scss'
 
 const Main = () => {
   const { t } = useTranslation()
-
-  const styles = {
-    fadeIn: {
-      animation: '2s',
-      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-    },
-  }
-
   return (
     <>
       <div className={st.mainImg}>

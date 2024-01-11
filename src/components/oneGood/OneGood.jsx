@@ -36,12 +36,13 @@ const OneGood = ({ list }) => {
     setColorName,
     user,
     setCardOpen,
+    BASE_URL
   } = useContext(CustomContext)
   const { t } = useTranslation()
   const { name, description, price, newPrice, colors } = good
 
   useEffect(() => {
-    axios(`http://localhost:3001/goods/${params.id}`)
+    axios(`${BASE_URL}/goods/${params.id}`)
       .then(({ data }) => {
         setGood(data)
         setImgChoose(data.colors[0].image)
@@ -64,7 +65,7 @@ const OneGood = ({ list }) => {
 
   const changeData = (data) => {
     axios
-      .patch(`http://localhost:3001/goods/${good.id}`, {
+      .patch(`${BASE_URL}/goods/${good.id}`, {
         name: data.name,
         description: data.description,
         newPrice: data.newPrice,

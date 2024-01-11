@@ -30,14 +30,17 @@ export const Context = (props) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const BASE_URL = "https://api-hoffi-store.vercel.app"
+  // process.env.SERVER_URL
+
   useEffect(() => {
-    axios("http://localhost:3001/users")
+    axios(`${BASE_URL}/users`)
       .then((res) => setAllUsers(res.data))
       .catch((error) => console.error(`Error: ${error}`));
   }, []);
 
   useEffect(() => {
-    axios("http://localhost:3001/goods")
+    axios(`${BASE_URL}/goods`)
       .then((res) => setAllGoods(res.data))
       .catch((error) => console.error(`Error: ${error}`));
   }, []);
@@ -107,7 +110,7 @@ export const Context = (props) => {
 
   const registerUser = (data) => {
     axios
-      .post("http://localhost:3001/register", { ...data, orders: [] })
+      .post(`${BASE_URL}/register`, { ...data, orders: [] })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setUser(res.data.user);
@@ -120,7 +123,7 @@ export const Context = (props) => {
 
   const loginUser = (data) => {
     axios
-      .post("http://localhost:3001/login", data)
+      .post(`${BASE_URL}/login`, data)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setUser(res.data.user);
@@ -182,6 +185,7 @@ export const Context = (props) => {
     setSearchUserEmail,
     searchOrder,
     setSearchOrder,
+    BASE_URL
   };
 
   return (

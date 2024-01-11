@@ -31,14 +31,17 @@ const Item = ({ list }) => {
   return (
     <>
       <Link to={`/onegood/${id}`} className={st.item}>
-        <LazyLoadImage
-          className={st.img}
-          src={newPath}
-          alt={name}
-          effect="blur"
-          style={{ display: 'block', margin: '0 auto' }}
-          width="100%"
-        />
+        {newPath && (
+          <LazyLoadImage
+            className={st.img}
+            src={newPath}
+            alt={name}
+            effect="blur"
+            style={{ display: 'block', margin: '0 auto' }}
+            width="100%"
+          />
+        )}
+
         <div className={st.content}>
           <h2 className={st.name}>{name}</h2>
           <p className={st.descr}>{description}</p>
@@ -64,11 +67,11 @@ const Item = ({ list }) => {
                   id: id,
                   name: name,
                   price: price,
-                  colors: colors[0].name,
-                  image: colors[0].image,
+                  colors: colors[0]?.name,
+                  image: colors[0]?.image,
                   count: 1,
                   category: category,
-                  quantity: colors[0].quantity,
+                  quantity: colors[0]?.quantity,
                 })
               }}
             >

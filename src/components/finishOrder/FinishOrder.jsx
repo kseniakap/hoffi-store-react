@@ -17,6 +17,7 @@ const FinishOrder = () => {
     user,
     setUser,
     formatPrice,
+    BASE_URL, 
   } = useContext(CustomContext)
   const { reset, register, handleSubmit } = useForm()
   const [isSendOrder, setIsSendOrder] = useState(false)
@@ -34,13 +35,13 @@ const FinishOrder = () => {
     console.log(data)
     console.log(cart)
     try {
-      await axios.post(`http://localhost:3001/orders`, {
+      await axios.post(`${BASE_URL}/orders`, {
         ...data,
         goods: cart,
         totalPrice: totalPrice,
         date: new Date(),
       })
-      await axios.patch(`http://localhost:3001/users/${user.id}`, {
+      await axios.patch(`${BASE_URL}/users/${user.id}`, {
         orders: [
           ...user.orders,
           {
@@ -51,19 +52,19 @@ const FinishOrder = () => {
         ],
       })
 
-      await axios(`http://localhost:3001/users/${user.id}`).then((res) =>
+      await axios(`${BASE_URL}/users/${user.id}`).then((res) =>
         setUser(res.data),
       )
 
       if (Array.isArray(ticket) && ticket.length > 0) {
         if (ticket[0].quality > 1) {
           axios
-            .patch(`http://localhost:3001/tickets/${ticket[0].id}`, {
+            .patch(`${BASE_URL}/tickets/${ticket[0].id}`, {
               quality: ticket[0].quality - 1,
             })
             .then(() => console.log(''))
         } else if (ticket[0].quality === 1) {
-          axios.delete(`http://localhost:3001/tickets/${ticket[0].id}`)
+          axios.delete(`${BASE_URL}/tickets/${ticket[0].id}`)
         } else {
           console.log('Возникла ошибка')
         }

@@ -11,7 +11,7 @@ const ChangePassword = () => {
 
   const [passwordChange, setUserPassword] = useState(false)
   const { register, handleSubmit } = useForm()
-  const { user, setUser } = useContext(CustomContext)
+  const { user, setUser, BASE_URL } = useContext(CustomContext)
   const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
@@ -31,7 +31,7 @@ const ChangePassword = () => {
   }
 
   const handleChangePassword = (data) => {
-    axios(`http://localhost:3001/users/${user.id}`, data).then(({ data }) => {
+    axios(`${BASE_URL}/users/${user.id}`, data).then(({ data }) => {
       const encryptedPasswordFromServer = data.password
 
       bcrypt.compare(
@@ -59,7 +59,7 @@ const ChangePassword = () => {
                   }
                   axios
                     .patch(
-                      `http://localhost:3001/users/${user.id}`,
+                      `${BASE_URL}/users/${user.id}`,
                       newDataoOfPassword,
                     )
                     .then(({ data }) => {

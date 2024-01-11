@@ -12,22 +12,17 @@ import st from './TableOfGoods.module.scss'
 import { useTranslation } from 'react-i18next'
 
 const TableOfGoods = () => {
-  const { allGoods, setAllGoods, formatPrice, searchGoods } = useContext(
+  const { allGoods, formatPrice, searchGoods } = useContext(
     CustomContext,
   )
   const [changeInfo, setChangeInfo] = useState(allGoods.map(() => false))
 
   const [changeIndex, setChangeIndex] = useState(null)
-  const [deleteGood, setDeleteGood] = useState(null)
   const { t } = useTranslation()
-  const { register, handleSubmit } = useForm()
+  const { register } = useForm()
   const filterArray = allGoods.filter((item) =>
     item.name.toLowerCase().includes(searchGoods.toLowerCase()),
   )
-  // const deleteCart = (id) => {
-  //   const updatedCart = allGoods.filter((item) => item.id !== id)
-  //   setAllGoods(updatedCart)
-  // }
 
   return (
     <form className={st.table}>
@@ -48,7 +43,7 @@ const TableOfGoods = () => {
               <p>Товаров нет по заданному запросу</p>
             )}
             {filterArray.map((good, index) => {
-              const { id, name, description, price, newPrice, colors } = good
+              const {name, description, price, newPrice, colors } = good
 
               const firstImg = colors && colors[0]?.image
               const path = `${process.env.PUBLIC_URL}/img/${firstImg}`
