@@ -3,16 +3,16 @@ import { useLocation } from "react-router-dom";
 import { Context } from "./Context";
 
 import { fadeIn } from "react-animations";
-import Radium from "radium";
+// import Radium from "radium";
 import Img from "./Loading.gif";
 const App = React.lazy(() => import("./components/app/App"));
 
-const styles = {
-  fadeIn: {
-    animation: "x 2s",
-    animationName: Radium.keyframes(fadeIn, "fadeIn"),
-  },
-};
+// const styles = {
+//   fadeIn: {
+//     animation: "x 2s",
+//     animationName: Radium.keyframes(fadeIn, "fadeIn"),
+//   },
+// };
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -36,7 +36,9 @@ const DelayedFallback = () => {
   }, []);
 
   return showFallback ? (
-    <div style={styles.fadeIn} className="fallback">
+    <div 
+    // style={styles.fadeIn} 
+    className="fallback">
       <div>
         <img src={Img} alt="загрузка" />
         <p>Загрузка...</p>

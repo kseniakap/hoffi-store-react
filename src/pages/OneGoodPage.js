@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import OneGood from "../components/oneGood/OneGood";
 import IMAGES from "../assets/img";
 import { motion } from "framer-motion";
-import transitions from "@material-ui/core/styles/transitions";
+// import transitions from "@material-ui/core/styles/transitions";
 
 const OneGoodPage = ({ list }) => {
   const { t } = useTranslation();

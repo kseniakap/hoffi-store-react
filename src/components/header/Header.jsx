@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
 import { CustomContext } from '../../Context'
-import Radium, { StyleRoot } from 'radium'
+// import Radium, { StyleRoot } from 'radium'
 import { fadeIn } from 'react-animations'
 import Hamburger from 'hamburger-react'
 import { Link, NavLink } from 'react-router-dom'
@@ -22,12 +22,12 @@ const Header = ({ order }) => {
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang)
   }
-  const styles = {
-    fadeIn: {
-      animation: 'x 2s',
-      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-    },
-  }
+  // const styles = {
+  //   fadeIn: {
+  //     animation: 'x 2s',
+  //     animationName: Radium.keyframes(fadeIn, 'fadeIn'),
+  //   },
+  // }
 
   const sideMenu = useRef(null)
 
@@ -43,7 +43,9 @@ const Header = ({ order }) => {
     <header>
       {isOpen && (
         <>
-          <div className={st.overlay} style={styles.fadeIn}>
+          <div className={st.overlay} 
+          // style={styles.fadeIn}
+          >
             <nav >
               <ul className={st.listSide}>
                 <li>

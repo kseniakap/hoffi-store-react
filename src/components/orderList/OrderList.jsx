@@ -3,7 +3,7 @@ import { CustomContext } from '../../Context'
 import { useTranslation } from 'react-i18next'
 import Order from '../order/Order'
 import { fadeIn } from 'react-animations'
-import Radium, { StyleRoot } from 'radium'
+// import Radium, { StyleRoot } from 'radium'
 import { Link } from 'react-router-dom'
 import './../../style/style.scss'
 import st from './OrderList.module.scss'
@@ -21,12 +21,12 @@ const OrderList = () => {
   }
   document.addEventListener('mousedown', closeOpenMenus)
 
-  const styles = {
-    fadeIn: {
-      animation: 'x 2s',
-      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-    },
-  }
+  // const styles = {
+  //   fadeIn: {
+  //     animation: 'x 2s',
+  //     animationName: Radium.keyframes(fadeIn, 'fadeIn'),
+  //   },
+  // }
 
   const showOrders = (order) => {
     let sum = 0
@@ -81,9 +81,14 @@ const OrderList = () => {
     )
   }
   return (
-    <StyleRoot>
+    // <StyleRoot>
+    <>
       {cardOpen && (
-        <div ref={catMenu} className={st.shop} style={styles.fadeIn}>
+        <div
+          ref={catMenu}
+          className={st.shop}
+          //  style={styles.fadeIn}
+        >
           <h2 className={st.title}>Ваша корзина</h2>
           <p className={st.closeBtn} onClick={() => setCardOpen(false)}>
             &#10006;
@@ -91,7 +96,8 @@ const OrderList = () => {
           {cart && cart.length > 0 ? showOrders(cart) : showNothing()}
         </div>
       )}
-    </StyleRoot>
+    </>
+    // </StyleRoot>
   )
 }
 
