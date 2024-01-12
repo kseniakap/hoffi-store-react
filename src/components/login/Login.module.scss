@@ -74,6 +74,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 5px;
     a {
       font-weight: 600;
@@ -180,6 +181,9 @@
   .login_wrapper {
     padding: 30px;
     width: 100%;
+    h2{
+      font-size: 27px;
+    }
     input {
       width: 70%;
     }

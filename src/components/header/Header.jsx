@@ -31,22 +31,32 @@ const Header = ({ order }) => {
 
   const sideMenu = useRef(null)
 
-  const closeOpenMenus = (e) => {
-    if (sideMenu.current && isOpen && !sideMenu.current.contains(e.target)) {
-      setOpen(false)
-    }
+  const toggleMenu = () => {
+    setOpen(!isOpen)
   }
-  document.addEventListener('mousedown', closeOpenMenus)
 
+  const handleCloseMenu = (e) => {
+    if (sideMenu.current && isOpen & sideMenu.current.contains(e.target)) {
+      setOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleCloseMenu);
+    return () => {
+      document.removeEventListener('mousedown', handleCloseMenu);
+    };
+  }, []);
 
   return (
     <header>
       {isOpen && (
         <>
-          <div className={st.overlay} 
-          // style={styles.fadeIn}
+          <div
+            className={st.overlay}
+            ref={sideMenu}
           >
-            <nav >
+            <nav>
               <ul className={st.listSide}>
                 <li>
                   <CustomNavLink to="/">
@@ -109,9 +119,10 @@ const Header = ({ order }) => {
         <div className={st.header}>
           <Hamburger
             toggled={isOpen}
-            toggle={setOpen}
+            toggle={toggleMenu}
             className={st.hamburger}
           />
+
           <a href="/" className={st.logo}>
             <img
               src={ICONS.iconLogoSign}

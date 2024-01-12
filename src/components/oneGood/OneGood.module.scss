@@ -370,6 +370,8 @@ textarea::-webkit-scrollbar-track {
   .oneGood {
     &__img {
       width: 80%;
+      height: 280px;
+      
       margin: 0 auto;
       display: block;
     }
@@ -377,5 +379,8 @@ textarea::-webkit-scrollbar-track {
   .oneGood__info button {
     width: 90%;
     margin: 0 auto;
+  }
+  .otherGood{
+    margin-bottom: 50px;
   }
 }

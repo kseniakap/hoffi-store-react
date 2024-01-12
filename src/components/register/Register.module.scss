@@ -108,3 +108,24 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .register_wrapper {
+    padding: 30px;
+    width: 100%;
+    h2 {
+      font-size: 27px;
+    }
+    input {
+      width: 70%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .register_wrapper {
+    input {
+      width: 90%;
+    }
+  }
+}

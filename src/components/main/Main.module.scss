@@ -12,7 +12,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 0px 0px 0px 100px;
-    filter: brightness(75%);
+    filter: brightness(65%);
   }
 }
 .list {
@@ -24,6 +24,7 @@
 }
 .mainImgText {
   p {
+    position: absolute;
     color: #fff !important;
   }
 }
@@ -285,7 +286,7 @@
   }
   .content {
     order: 2;
-    max-width: 80%;
+    max-width: 90%;
   }
   .imageWrapper {
     order: 1;

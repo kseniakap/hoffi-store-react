@@ -250,7 +250,7 @@ const OneGood = ({ list }) => {
                         category: good.category,
                         quantity: quantityGoods,
                       })
-                      setCardOpen(true)
+                      // setCardOpen(true)
                     }}
                     style={{
                       backgroundColor: isDisable ? 'rgba(0,0,0,.2)' : '',

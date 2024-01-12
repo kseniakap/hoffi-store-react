@@ -8,7 +8,7 @@
   right: 0;
   padding: 20px 15px;
   background-color: #fff;
-  z-index: 202;
+  z-index: 1100;
   box-shadow: -10px 0 5px -5px rgba(0, 0, 0, 0.3);
   &__list {
     width: 100%;
@@ -140,6 +140,6 @@
 
 @media (max-width: 576px) {
   .shop {
-    width: 70%;
+    width: 75%;
   }
 }

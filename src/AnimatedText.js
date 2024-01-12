@@ -11,7 +11,7 @@ const TypingEffect = ({ text }) => {
         setDisplayText((prevText) => prevText + text[currentIndex]);
         setCurrentIndex(currentIndex + 1);
       }
-    }, 150);
+    }, 200);
 
     return () => {
       clearTimeout(typingTimer);
