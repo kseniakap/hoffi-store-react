@@ -275,7 +275,7 @@ const WrappperCreateNewGood = () => {
 
   const AddNewGood = (data) => {
     axios
-      .post(`${BASE_URL}/goods`, {
+      .post(`${process.env.REACT_APP_SERVER_URL}/goods`, {
         ...data,
         colors: selectedColors.map((color) => ({
           name: getColorName(color),

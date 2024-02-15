@@ -32,16 +32,16 @@ const FinishOrder = () => {
       : cart.reduce((acc, rec) => acc + rec.count * rec.price, 0)
 
   const sendOrder = async (data) => {
-    console.log(data)
-    console.log(cart)
+    // console.log(data)
+    // console.log(cart)
     try {
-      await axios.post(`${BASE_URL}/orders`, {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/orders`, {
         ...data,
         goods: cart,
         totalPrice: totalPrice,
         date: new Date(),
       })
-      await axios.patch(`${BASE_URL}/users/${user.id}`, {
+      await axios.patch(`${process.env.REACT_APP_SERVER_URL}/users/${user.id}`, {
         orders: [
           ...user.orders,
           {
@@ -52,19 +52,19 @@ const FinishOrder = () => {
         ],
       })
 
-      await axios(`${BASE_URL}/users/${user.id}`).then((res) =>
+      await axios(`${process.env.REACT_APP_SERVER_URL}/users/${user.id}`).then((res) =>
         setUser(res.data),
       )
 
       if (Array.isArray(ticket) && ticket.length > 0) {
         if (ticket[0].quality > 1) {
           axios
-            .patch(`${BASE_URL}/tickets/${ticket[0].id}`, {
+            .patch(`${process.env.REACT_APP_SERVER_URL}/tickets/${ticket[0].id}`, {
               quality: ticket[0].quality - 1,
             })
             .then(() => console.log(''))
         } else if (ticket[0].quality === 1) {
-          axios.delete(`${BASE_URL}/tickets/${ticket[0].id}`)
+          axios.delete(`${process.env.REACT_APP_SERVER_URL}/tickets/${ticket[0].id}`)
         } else {
           console.log('Возникла ошибка')
         }

@@ -9,7 +9,7 @@ const ItemServices = () => {
   const { loading, request, error, clearError } = useHttp();
 
   const getAllItems = async () => {
-    const res = await request(`${BASE_URL}/goods`);
+    const res = await request(`${process.env.REACT_APP_SERVER_URL}/goods`);
     return res.map((item) => _transformItems(item));
   };
 
@@ -32,7 +32,7 @@ const ItemServices = () => {
   };
 
   const getAllMembers = async () => {
-    const res = await request(`${BASE_URL}/${t("url.allMembers")}`);
+    const res = await request(`${process.env.REACT_APP_SERVER_URL}/${t("url.allMembers")}`);
     return res.map((item) => _transformDataMembers(item));
   };
 

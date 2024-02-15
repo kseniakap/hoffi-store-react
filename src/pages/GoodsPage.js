@@ -12,7 +12,6 @@ import "./../style/style.scss";
 
 //Страница со всеми товарами (2 по счету)
 const GoodsPage = ({
-  // addToOrder,
   list,
   setList,
 }) => {

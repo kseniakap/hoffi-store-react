@@ -42,7 +42,7 @@ const OneGood = ({ list }) => {
   const { name, description, price, newPrice, colors } = good
 
   useEffect(() => {
-    axios(`${BASE_URL}/goods/${params.id}`)
+    axios(`${process.env.REACT_APP_SERVER_URL}/goods/${params.id}`)
       .then(({ data }) => {
         setGood(data)
         setImgChoose(data.colors[0].image)
@@ -65,7 +65,7 @@ const OneGood = ({ list }) => {
 
   const changeData = (data) => {
     axios
-      .patch(`${BASE_URL}/goods/${good.id}`, {
+      .patch(`${process.env.REACT_APP_SERVER_URL}/goods/${good.id}`, {
         name: data.name,
         description: data.description,
         newPrice: data.newPrice,

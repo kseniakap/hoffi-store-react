@@ -9,16 +9,14 @@ import siteImg from './site.svg'
 import { useTranslation } from 'react-i18next'
 import './../../style/style.scss'
 import st from './TeamMember.module.scss'
-import { CustomContext } from '../../Context'
 
 const TeamMember = () => {
   const params = useParams()
   const [member, setMember] = useState({})
   const { t } = useTranslation()
-  const {BASE_URL } = useContext(CustomContext)
 
   useEffect(() => {
-    axios(`${BASE_URL}/${t('url.allMembers')}/${params.id}`)
+    axios(`${process.env.REACT_APP_SERVER_URL}/${t('url.allMembers')}/${params.id}`)
       .then(({ data }) => setMember(data))
       .catch((error) => {
         console.error(error)

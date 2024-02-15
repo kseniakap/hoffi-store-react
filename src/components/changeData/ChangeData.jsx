@@ -11,13 +11,13 @@ import st from './ChangeData.module.scss'
 const ChangeData = () => {
   const [userChange, setUserChange] = useState(false)
   const { t } = useTranslation()
-  const { user, setUser, BASE_URL } = useContext(CustomContext)
+  const { user, setUser } = useContext(CustomContext)
   const { register, handleSubmit } = useForm()
   const [telValue, setTelValue] = useState(user.tel)
 
   const changeInfoUser = (data) => {
     axios
-      .patch(`${BASE_URL}/users/${user.id}`, data)
+      .patch(`${process.env.REACT_APP_SERVER_URL}/users/${user.id}`, data)
       .then(({ data }) => {
         setUser(data)
         localStorage.setItem('user', JSON.stringify(data))

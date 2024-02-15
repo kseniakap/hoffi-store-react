@@ -17,7 +17,6 @@ const GoodInBasket = () => {
     ticket,
     setTicket,
     formatPrice,
-    BASE_URL
   } = useContext(CustomContext)
   const [totalPrice, setTotalPrice] = useState(0)
 
@@ -25,7 +24,7 @@ const GoodInBasket = () => {
 
   const getAllTickets = (e) => {
     e.preventDefault()
-    axios(`${BASE_URL}/tickets?title=${e.target[0].value}`).then(
+    axios(`${process.env.REACT_APP_SERVER_URL}/tickets?title=${e.target[0].value}`).then(
       ({ data }) => {
         setTicket(data)
         if (!Array.isArray(data) || data.length === 0) {

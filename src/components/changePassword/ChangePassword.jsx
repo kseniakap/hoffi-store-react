@@ -31,7 +31,7 @@ const ChangePassword = () => {
   }
 
   const handleChangePassword = (data) => {
-    axios(`${BASE_URL}/users/${user.id}`, data).then(({ data }) => {
+    axios(`${process.env.REACT_APP_SERVER_URL}/users/${user.id}`, data).then(({ data }) => {
       const encryptedPasswordFromServer = data.password
 
       bcrypt.compare(
@@ -59,7 +59,7 @@ const ChangePassword = () => {
                   }
                   axios
                     .patch(
-                      `${BASE_URL}/users/${user.id}`,
+                      `${process.env.REACT_APP_SERVER_URL}/users/${user.id}`,
                       newDataoOfPassword,
                     )
                     .then(({ data }) => {

@@ -30,17 +30,14 @@ export const Context = (props) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  const BASE_URL = "https://api-hoffi-store.vercel.app"
-  // process.env.SERVER_URL
-
   useEffect(() => {
-    axios(`${BASE_URL}/users`)
+    axios(`${process.env.REACT_APP_SERVER_URL}/users`)
       .then((res) => setAllUsers(res.data))
       .catch((error) => console.error(`Error: ${error}`));
   }, []);
 
   useEffect(() => {
-    axios(`${BASE_URL}/goods`)
+    axios(`${process.env.REACT_APP_SERVER_URL}/goods`)
       .then((res) => setAllGoods(res.data))
       .catch((error) => console.error(`Error: ${error}`));
   }, []);
@@ -110,7 +107,7 @@ export const Context = (props) => {
 
   const registerUser = (data) => {
     axios
-      .post(`${BASE_URL}/register`, { ...data, orders: [] })
+      .post(`${process.env.REACT_APP_SERVER_URL}/register`, { ...data, orders: [] })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setUser(res.data.user);
@@ -122,8 +119,9 @@ export const Context = (props) => {
   };
 
   const loginUser = (data) => {
+    const { confirmPassword, ...userData } = data;
     axios
-      .post(`${BASE_URL}/login`, data)
+      .post(`${process.env.REACT_APP_SERVER_URL}/login`, userData)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setUser(res.data.user);
@@ -185,7 +183,7 @@ export const Context = (props) => {
     setSearchUserEmail,
     searchOrder,
     setSearchOrder,
-    BASE_URL
+
   };
 
   return (
