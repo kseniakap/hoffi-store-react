@@ -13,6 +13,7 @@ import st from './TeamMember.module.scss'
 const TeamMember = () => {
   const params = useParams()
   const [member, setMember] = useState({})
+  const { name, prof, img, bio, email, number, linkSite } = member
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -22,8 +23,6 @@ const TeamMember = () => {
         console.error(error)
       })
   }, [])
-
-  const { name, prof, img, bio, email, number, linkSite } = member
 
   return (
     <section className={st.member}>

@@ -64,7 +64,7 @@ const Login = () => {
                   <p>{t('accountPage.login.text')} </p>
                   <Link to="/register"> {t('accountPage.login.textLink')}</Link>
                 </div>
-                {/* <p style={{textDecoration:"underline"}}>*Данные админа: admin@gmail.com, 111111 </p> */}
+                <p style={{textDecoration:"underline"}}>*Данные админа: admin@gmail.com, 111111 </p>
               </form>
             </div>
           )}

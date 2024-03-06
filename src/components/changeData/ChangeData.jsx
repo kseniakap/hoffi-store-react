@@ -24,7 +24,7 @@ const ChangeData = () => {
         setUserChange(false)
       })
       .catch((error) => {
-        console.error('An error occurred:', error)
+        console.error(error)
       })
   }
 

@@ -4,10 +4,10 @@ const IMAGES = {
   loadingGif: require("./loading.gif"),
 
   //Изображения шапки страниц
-  aboutUsHeaderImg: require("./aboutUs/aboutUs_header.jpg"),
-  goodsHeaderImg: require("./goods/goodsHeaderImg.jpg"),
+  aboutUsHeaderImg: require("./aboutUs/aboutUs_header_1.webp"),
+  goodsHeaderImg: require("./goods/goodsHeaderImg.webp"),
   teamHeaderImg: require("./team/teamHeaderImg.jpeg"),
-  memberHeaderImg: require("./member/memberHeaderImg.jpg"),
+  memberHeaderImg: require("./member/memberHeaderImg.webp"),
   orderHeaderImg: require("./order/orderHeaderImg.jpg"),
 
   //Фотографии сотрудников компании
@@ -22,7 +22,7 @@ const IMAGES = {
 
   presentationImg: require("./main/presentation.jpg"),
   interiorPhoto: require("./main/interiorPhoto.jpg"),
-  aboutWorkImg_1: require("./aboutUs/aboutWok_img-1.jpg"),
+  aboutWorkImg_1: require("./aboutUs/aboutWok_img-1.webp"),
   aboutWorkImg_2: require("./aboutUs/aboutWork_img-2.jpg"),
   opinionPerson_1: require("./opinion/Photo.jpg"),
   opinionPerson_2: require("./opinion/Photo-1.jpg"),

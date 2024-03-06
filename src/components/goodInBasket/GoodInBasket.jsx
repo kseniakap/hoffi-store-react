@@ -24,17 +24,17 @@ const GoodInBasket = () => {
 
   const getAllTickets = (e) => {
     e.preventDefault()
-    axios(`${process.env.REACT_APP_SERVER_URL}/tickets?title=${e.target[0].value}`).then(
-      ({ data }) => {
-        setTicket(data)
-        if (!Array.isArray(data) || data.length === 0) {
-          setShowMessage(true)
-          setTimeout(() => {
-            setShowMessage(false)
-          }, 4000)
-        }
-      },
-    )
+    axios(
+      `${process.env.REACT_APP_SERVER_URL}/tickets?title=${e.target[0].value}`,
+    ).then(({ data }) => {
+      setTicket(data)
+      if (!Array.isArray(data) || data.length === 0) {
+        setShowMessage(true)
+        setTimeout(() => {
+          setShowMessage(false)
+        }, 4000)
+      }
+    })
   }
   const handleCouponInputChange = () => {
     setShowMessage(false)
@@ -50,8 +50,6 @@ const GoodInBasket = () => {
     }, 0)
 
     setTotalPrice(newTotalPrice)
-    console.log(newTotalPrice)
-    console.log(newTotalPrice.toFixed(2))
   }, [cart, ticket])
 
   const handleIncrease = (item) => {
@@ -60,7 +58,6 @@ const GoodInBasket = () => {
       (el) => el.id === item.id && el.colors === item.colors,
     )
     const maxCount = item.quantity
-    console.log(maxCount)
     if (index !== -1 && updatedCart[index].count < maxCount) {
       updatedCart[index].count += 1
       setCart(updatedCart)
@@ -153,7 +150,7 @@ const GoodInBasket = () => {
           <hr />
           <div className={st.res}>
             <div className={st.sum}>
-              <span>Доставка:</span>
+              <span>Доставка: 1000 ₽</span>
               <p className={st.delivery}>Бесплатно при заказе от 50 000 ₽</p>
               <div className={st.result}>
                 <span> Итого:</span>

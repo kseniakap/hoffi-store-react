@@ -106,8 +106,13 @@ export const Context = (props) => {
   }, [cart]);
 
   const registerUser = (data) => {
+    const { confirmPassword, ...userData } = data;
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/register`, { ...data, orders: [] })
+      .post(`${process.env.REACT_APP_SERVER_URL}/register`, {
+        ...userData,
+        orders: [],
+        isAdmin: false,
+      })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setUser(res.data.user);
@@ -183,7 +188,6 @@ export const Context = (props) => {
     setSearchUserEmail,
     searchOrder,
     setSearchOrder,
-
   };
 
   return (

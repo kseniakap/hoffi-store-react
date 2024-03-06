@@ -17,10 +17,11 @@ const FinishOrder = () => {
     user,
     setUser,
     formatPrice,
-    BASE_URL, 
   } = useContext(CustomContext)
+
   const { reset, register, handleSubmit } = useForm()
   const [isSendOrder, setIsSendOrder] = useState(false)
+
   //расчет всей стоимости (с учетом промокода)
   const totalPrice =
     Array.isArray(ticket) && ticket.length
@@ -32,8 +33,6 @@ const FinishOrder = () => {
       : cart.reduce((acc, rec) => acc + rec.count * rec.price, 0)
 
   const sendOrder = async (data) => {
-    // console.log(data)
-    // console.log(cart)
     try {
       await axios.post(`${process.env.REACT_APP_SERVER_URL}/orders`, {
         ...data,
@@ -66,7 +65,7 @@ const FinishOrder = () => {
         } else if (ticket[0].quality === 1) {
           axios.delete(`${process.env.REACT_APP_SERVER_URL}/tickets/${ticket[0].id}`)
         } else {
-          console.log('Возникла ошибка')
+          console.error('Возникла ошибка при использовании промокода, повторите позже')
         }
       }
 

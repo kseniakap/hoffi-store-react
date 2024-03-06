@@ -6,6 +6,7 @@
       "name": "admin",
       "tel": "+7 (179) 983-89-32",
       "orders": [],
+      "isAdmin": true,
       "id": 1
     },
     {
@@ -31,6 +32,7 @@
           "date": "2023-12-16T14:09:13.987Z"
         }
       ],
+      "isAdmin": false,
       "id": 3
     },
     {
@@ -76,15 +78,54 @@
           "date": "2023-12-16T15:12:22.300Z"
         }
       ],
+      "isAdmin": false,
       "id": 4
     },
     {
-      "email": "ksenia@gmail.com",
-      "password": "$2a$10$iE1qoQ1m0OfjUJGWez.QM.8iy83oWUBogE2lLFS69Z7OEA32DY8.C",
-      "name": "Ксения",
-      "tel": "+7 (900) 000-45-45",
-      "confirmPassword": "123456",
-      "orders": [],
+      "email": "sonya@gmail.com",
+      "password": "$2a$10$QLY77AnUw.CxGNaz/Z.tY.JkZBTQcTrf2WqCjIh/jKnGKPt7TElI6",
+      "name": "Sonya",
+      "tel": "+7 (900) 000-00-00",
+      "confirmPassword": "12345678",
+      "orders": [
+        {
+          "goods": [
+            {
+              "id": 29,
+              "name": "Пуф круглый Garda ",
+              "price": "3999",
+              "colors": "белый",
+              "image": "bedframe_blanka.jpg",
+              "count": 2,
+              "category": "bed",
+              "quantity": 18
+            },
+            {
+              "id": 3,
+              "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+              "price": 26999,
+              "colors": "белый",
+              "image": "bed_nemi.jpg",
+              "count": 1,
+              "category": "bed",
+              "quantity": 10
+            },
+            {
+              "id": 1,
+              "name": "Угловой диван-кровать Торонто",
+              "price": 23999,
+              "colors": "светло-серый",
+              "image": "bed_toronto.jpg",
+              "count": 1,
+              "category": "sofa-bed",
+              "quantity": 7
+            }
+          ],
+          "totalPrice": 58996,
+          "date": "2024-03-05T19:44:12.571Z"
+        }
+      ],
+      "isAdmin": false,
       "id": 5
     }
   ],
@@ -152,6 +193,48 @@
       "totalPrice": 63597,
       "date": "2023-12-16T15:12:21.911Z",
       "id": 2
+    },
+    {
+      "city": "Ярославль",
+      "street": "Московская",
+      "house": "12",
+      "flat": "67",
+      "additional": "",
+      "goods": [
+        {
+          "id": 29,
+          "name": "Пуф круглый Garda ",
+          "price": "3999",
+          "colors": "белый",
+          "image": "bedframe_blanka.jpg",
+          "count": 2,
+          "category": "bed",
+          "quantity": 18
+        },
+        {
+          "id": 3,
+          "name": "Кровать с подъёмным механизмом Nemi 160х200 см  ",
+          "price": 26999,
+          "colors": "белый",
+          "image": "bed_nemi.jpg",
+          "count": 1,
+          "category": "bed",
+          "quantity": 10
+        },
+        {
+          "id": 1,
+          "name": "Угловой диван-кровать Торонто",
+          "price": 23999,
+          "colors": "светло-серый",
+          "image": "bed_toronto.jpg",
+          "count": 1,
+          "category": "sofa-bed",
+          "quantity": 7
+        }
+      ],
+      "totalPrice": 58996,
+      "date": "2024-03-05T19:44:11.810Z",
+      "id": 3
     }
   ],
   "tickets": [

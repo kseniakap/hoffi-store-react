@@ -312,11 +312,11 @@ const WrappperCreateNewGood = () => {
             setImageName(file.name)
           })
           .catch((error) => {
-            console.log('Error getting download URL: ', error)
+            console.error('Возникла ошибка при получении создании url: ', error)
           })
       })
       .catch((error) => {
-        console.log('Error uploading file: ', error)
+        console.error('Ошибка при загрузки файла: ', error)
       })
   }
 

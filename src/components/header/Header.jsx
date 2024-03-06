@@ -1,7 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
 import { CustomContext } from '../../Context'
-// import Radium, { StyleRoot } from 'radium'
-import { fadeIn } from 'react-animations'
 import Hamburger from 'hamburger-react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBasketShopping } from 'react-icons/fa6'
@@ -22,12 +20,6 @@ const Header = ({ order }) => {
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang)
   }
-  // const styles = {
-  //   fadeIn: {
-  //     animation: 'x 2s',
-  //     animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-  //   },
-  // }
 
   const sideMenu = useRef(null)
 
@@ -160,7 +152,7 @@ const Header = ({ order }) => {
                     {t('homePage.headerMenu.link6')}
                   </CustomNavLink>
                 </li>
-                {user.email === 'admin@gmail.com' && (
+                {user?.isAdmin && (
                   <li>
                     <CustomNavLink to="/admin">
                       {' '}
@@ -197,7 +189,7 @@ const Header = ({ order }) => {
             </button>
           </div>
           <div className={st.entranceExit}>
-            {user && user.name && user.name.length ? (
+            {user?.name?.length ? (
               <Link to="/" onClick={() => logOutUser()}>
                 {t('homePage.headerMenu.logOut')}
               </Link>
